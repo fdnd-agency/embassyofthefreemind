@@ -1,6 +1,7 @@
 <script>
     /** @type {import('./$types').PageData} */
 	export let authors;
+    export let authorsPage;
 
     function applyFilter(event) {
         // TODO: fetch api, update authors
@@ -8,18 +9,24 @@
 </script>
 <a href="/digital-catalog">Clear</a>
 
-<label for="expand-authors" class="button">Authors</label>
-<input type="checkbox" id="expand-authors"/>
+<details>
+    <summary>Authors</summary>
+    <form action="/digital-catalog">
+        <div id="author-filter-list">
+            {#each authors as author}
+                <input class="author-radio" value={author.id} id="author-{author.id}" type="radio" name="author"/>
+                <label class="author-label" for="author-{author.id}">{author.label} ({author.count})</label>
+            {/each}
+        </div>
 
-<form action="/digital-catalog">
-    <div id="author-filter-list">
-        {#each authors as author}
-            <input class="author-radio" value={author.id} id="author-{author.id}" type="radio" name="author"/>
-            <label class="author-label" for="author-{author.id}">{author.label} ({author.count})</label>
-        {/each}
-    </div>
-    <button type="submit">Filter</button>
-</form>
+        <input type="hidden" name="authors_page" value={authorsPage}>
+
+        <input type="submit" name="authors_page_action" value="previous" disabled={authorsPage <= 1}>
+        <input type="submit" name="authors_page_action" value="next">
+
+        <button type="submit">Filter</button>
+    </form>
+</details>
 
 <style>
     #author-filter-list {
@@ -51,9 +58,9 @@
     form {
         margin: 2em 0;
     }
-    
+
     #author-filter-list {
         border: 1px solid black;
-        width: 60em;
+        width: 65em;
     }
 </style>

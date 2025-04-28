@@ -5,7 +5,7 @@
 	export let data;
 </script>
 <h1>Blog</h1>
-<FilterButtonAuthor authors={data.authors} />
+<FilterButtonAuthor authors={data.authors} authorsPage={data.authorsPage} />
 
 <table>
 	<tbody>

@@ -5,9 +5,9 @@ import { arrayToObject, booksURL, authorsURL } from '$lib';
 export async function load({ url }) {
     let query = booksURL;
 
-    const author = url.searchParams.get('author');
-    if (author) {
-        query += `&fq[]=search_s_auteur:"${author}"`; //Add searchterm to url
+    const filterAuthor = url.searchParams.get('author');
+    if (filterAuthor) {
+        query += `&fq[]=search_s_auteur:"${filterAuthor}"`; //Add searchterm to url
     }
 
 	const res = await fetch(query);
@@ -21,12 +21,21 @@ export async function load({ url }) {
         }
     });
 
-	const resAuthors = await fetch(authorsURL);
+	let authorsPage = parseInt(url.searchParams.get('authors_page')) || 1;
+	const authorsPageAction = url.searchParams.get('authors_page_action');
+	if (authorsPageAction === 'next') {
+		authorsPage++;
+	} else if (authorsPageAction === 'previous') {
+		authorsPage--;
+	}
+
+	const resAuthors = await fetch(authorsURL + '&page=' + authorsPage);
 	const dataAuthors = await resAuthors.json();
     const authors = dataAuthors.filter;
 
     return {
         books,
-        authors
+        authors,
+		authorsPage
     }
 }
