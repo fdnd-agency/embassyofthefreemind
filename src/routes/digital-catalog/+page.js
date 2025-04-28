@@ -21,6 +21,7 @@ export async function load({ url }) {
         }
     });
 
+	// If the 'next' button was clicked, increment(++) authorsPage. If 'previous' was clicked, decrement(--) instead.
 	let authorsPage = parseInt(url.searchParams.get('authors_page')) || 1;
 	const authorsPageAction = url.searchParams.get('authors_page_action');
 	if (authorsPageAction === 'next') {

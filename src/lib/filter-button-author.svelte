@@ -19,6 +19,7 @@
             {/each}
         </div>
 
+        <!-- This contains the current authors page and will be sent to the server when the form is submitted -->
         <input type="hidden" name="authors_page" value={authorsPage}>
 
         <input type="submit" name="authors_page_action" value="previous" disabled={authorsPage <= 1}>
@@ -45,14 +46,6 @@
 
     label {
         cursor: pointer;
-    }
-
-    #expand-authors {
-        display: none;
-    }
-
-    #expand-authors:not(:checked) + form {
-        display: none;
     }
 
     form {
