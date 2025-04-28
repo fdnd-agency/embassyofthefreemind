@@ -17,7 +17,10 @@
 			</tr>
 		{/each}
 	</tbody>
-	</table>
+</table>
+
 <style>
-	
+	table {
+		margin-top: 2em;
+	}
 </style>

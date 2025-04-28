@@ -1,3 +1,7 @@
+<svelte:head>
+	<link rel="stylesheet" href="/global.css">
+</svelte:head>
+
 <a href="/">Home</a>
 <a href="/about-EFM">About EFM</a>
 <a href="/plan-your-visit">Plan your visit</a>

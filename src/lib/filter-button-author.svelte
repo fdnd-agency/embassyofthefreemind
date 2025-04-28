@@ -7,6 +7,10 @@
     }
 </script>
 <a href="/digital-catalog">Clear</a>
+
+<label for="expand-authors" class="button">Authors</label>
+<input type="checkbox" id="expand-authors"/>
+
 <form action="/digital-catalog">
     <div id="author-filter-list">
         {#each authors as author}
@@ -32,7 +36,24 @@
         color: red;
     }
 
-    .author-label {
+    label {
         cursor: pointer;
+    }
+
+    #expand-authors {
+        display: none;
+    }
+
+    #expand-authors:not(:checked) + form {
+        display: none;
+    }
+
+    form {
+        margin: 2em 0;
+    }
+    
+    #author-filter-list {
+        border: 1px solid black;
+        width: 60em;
     }
 </style>
