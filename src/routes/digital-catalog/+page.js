@@ -1,19 +1,32 @@
 /** @type {import('./$types').PageLoad} */
-import { PUBLIC_APIURL } from '$env/static/public';
-import { arrayToObject } from '$lib';
+import { PUBLIC_APIURL, PUBLIC_API_KEY } from '$env/static/public';
+import { arrayToObject, booksURL, authorsURL } from '$lib';
 
-export async function load({ fetch }) {
-	console.log(PUBLIC_APIURL)
-	const res = await fetch(PUBLIC_APIURL)
-	const data = await res.json()
-	return {
-		books: data.media.map((book) =>{
-			const meta = arrayToObject(book.metadata)
-			return {
-				title: book.title,
-				author: meta.auteur,
-				publicationYear: meta.jaar
-			}
-		})
-	};
+export async function load({ url }) {
+    let query = booksURL;
+
+    const author = url.searchParams.get('author');
+    if (author) {
+        query += `&fq[]=search_s_auteur:"${author}"`; //Add searchterm to url
+    }
+
+	const res = await fetch(query);
+    const data = await res.json();
+    const books = data.media.map((book) =>{
+        const meta = arrayToObject(book.metadata, 'value')
+        return {
+            title: book.title,
+            author: meta.auteur,
+            publicationYear: meta.jaar
+        }
+    });
+
+	const resAuthors = await fetch(authorsURL);
+	const dataAuthors = await resAuthors.json();
+    const authors = dataAuthors.filter;
+
+    return {
+        books,
+        authors
+    }
 }
