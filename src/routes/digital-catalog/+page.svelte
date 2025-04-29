@@ -10,6 +10,7 @@
 				<td>{book.title}</td>
 				<td>{book.author}</td>
 				<td>{book.publicationYear}</td>
+				<td>{book.publicationPlace}</td>
 			</tr>
 		{/each}
 	</tbody>

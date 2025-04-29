@@ -12,7 +12,8 @@ export async function load({ fetch }) {
 			return {
 				title: book.title,
 				author: meta.auteur,
-				publicationYear: meta.jaar
+				publicationYear: meta.jaar, 
+				publicationPlace: meta.plaats_van_uitgave
 			}
 		})
 	};
