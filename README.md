@@ -10,26 +10,20 @@ Embassy of the Free Mind is...
 ## 🚀Features
 - ✅ Built with SvelteKit 5
 
-- ✅ TypeScript support (optional)
-
 - ✅ File-based routing
 
-- ✅ SSR (Server-Side Rendering) / SSG (Static Site Generation) / SPA modes
+- ✅ SSR (Server-Side Rendering)
 
-- ✅ TailwindCSS or other styling (if used)
+- ✅ TailwindCSS
 
-- ✅ API routes (if applicable)
-
-- ✅ SEO-friendly
+- ✅ API routes
 
 ## 🧰Tech stack
 - Frontend: SvelteKit 5, Svelte
 
-- Styling: Tailwind CSS / SCSS / CSS Modules (adjust if different)
+- Styling: Tailwind CSS 
 
-- State Management: Store / Zustand / other (optional)
-
-- Deployment: Vercel / Netlify / Docker / Node.js (mention whatever is used)
+- Deployment: Vercel
 
 ## Installation
 ```
