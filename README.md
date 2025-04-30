@@ -3,9 +3,18 @@ A brief, compelling description of your project.
 Built with the modern and powerful SvelteKit 5, offering a lightning-fast developer experience and optimized web performance.
 
 ## Table of contents
+- [About](https://github.com/fdnd-agency/embassyofthefreemind?tab=readme-ov-file#about)
+- [Features]
+- [Tech stack]
+- [Installation]
+- [Development]
+- [Building]
+- [Project structure]
+- [Documentation]
+- [Liscence]
 
 ## About
-Embassy of the Free Mind is...
+Embassy of theFree Mind is a museum with a vast collection of valuablebooks. It is a community wherepeople also come to see lectures and discuss the themes of the knowledge of free thinkers.To teach educate and inspire is the goal. EFM has 3 main groups of target audience:young creatives, changemakers and scholars.
 
 ## 🚀Features
 - ✅ Built with SvelteKit 5
@@ -45,10 +54,10 @@ npm run preview
 src/
 ├── lib/            # Reusable components, stores, utilities
 ├── routes/         # Route-based pages
+  └── +layout.svelte  # App layout
+  └── +page.svelte    # Main route
 ├── app.html        # HTML template
-├── hooks.server.ts # Server hooks (auth, etc.)
-├── +layout.svelte  # App layout
-└── +page.svelte    # Main route
+├── hooks.server.js # Server hooks (auth, etc.)
 ```
 ## Documentation
 We use confluence for general project information, ux ui documentation, and progress.
