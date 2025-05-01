@@ -1,6 +1,6 @@
-<svelte:head>
-	<link rel="stylesheet" href="/global.css">
-</svelte:head>
+<script>
+	import '../app.css';
+</script>
 
 <a href="/">Home</a>
 <a href="/about-EFM">About EFM</a>
