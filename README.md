@@ -14,7 +14,19 @@ Built with the modern and powerful SvelteKit 5, offering a lightning-fast develo
 - [Liscence](https://github.com/fdnd-agency/embassyofthefreemind?tab=readme-ov-file#liscence)
 
 ## About
-Embassy of theFree Mind is a museum with a vast collection of valuablebooks. It is a community wherepeople also come to see lectures and discuss the themes of the knowledge of free thinkers.To teach educate and inspire is the goal. EFM has 3 main groups of target audience:young creatives, changemakers and scholars.
+Embassy of theFree Mind is a museum with a vast collection of valuablebooks. It is a place where you can find wisdom from all over the world, where images and texts will tell you centuries-old stories created by free thinkers. It also is a community where people come to see lectures and discuss the themes of the knowledge of free thinkers. 
+It is a platform where you can discuss life questions with other people, irrespective of religion, culture or age. It is a place where you can encounter history, science, art and spirituality all connected.
+To teach educate and inspire is the goal. EFM has 3 main groups of target audience: young creatives, changemakers and scholars.
+
+The Embassy of the Free Mind offers:
+- a platform for sharing wisdom and creating consciousness.
+- a collection of books spanning 2,000 years of collected wisdom, made available to the public 
+- a network organisation and knowledge centre for international collaboration 
+- study spaces for young and old
+
+And much more.
+
+You can see the rest on their [website](https://embassyofthefreemind.com/en/embassy/about-the-embassy-of-the-free-mind).
 
 ## 🚀Features
 - ✅ Built with SvelteKit 5
