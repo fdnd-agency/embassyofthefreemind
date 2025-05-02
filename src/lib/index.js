@@ -9,7 +9,9 @@ export function arrayToObject(array) {
     return result;
 }
 
-export const booksURL = `${PUBLIC_APIURL}/media?apiKey=${PUBLIC_API_KEY}&facetFields%5B%5D=search_s_auteur&facetFields%5B%5D=search_s_plaats_van_uitgave&facetFields%5B%5D=search_s_jaar&facetFields%5B%5D=search_s_digitized_publication&fq%5B%5D=search_s_digitized_publication:%22Ja%22&lang=nl&page=1&q=&rows=25&sort=random%7B1709035870679%7D+asc`;
+const nRows = 25;
+
+export const booksURL = `${PUBLIC_APIURL}/media?apiKey=${PUBLIC_API_KEY}&facetFields%5B%5D=search_s_auteur&facetFields%5B%5D=search_s_plaats_van_uitgave&facetFields%5B%5D=search_s_jaar&facetFields%5B%5D=search_s_digitized_publication&fq%5B%5D=search_s_digitized_publication:%22Ja%22&lang=nl&page=1&q=&rows=${nRows}&sort=random%7B1709035870679%7D+asc`;
 
 // TODO: Add filters as arguments
 export async function getBooks(pageNr, customFetch = null) {
@@ -17,7 +19,7 @@ export async function getBooks(pageNr, customFetch = null) {
 
 	const res = await (customFetch ?? fetch)(query);
     const data = await res.json();
-    return data.media.map((book) =>{
+    const books = data.media.map((book) =>{
         const meta = arrayToObject(book.metadata, 'value')
         return {
             title: book.title,
@@ -25,4 +27,8 @@ export async function getBooks(pageNr, customFetch = null) {
             publicationYear: meta.jaar
         }
     });
+    return {
+        totalPages: Math.ceil(data.metadata.pagination.total / nRows),
+        books
+    }
 }

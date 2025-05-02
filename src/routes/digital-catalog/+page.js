@@ -11,10 +11,11 @@ export async function load({ url, fetch }) {
 		resultsPage--
 	}
 
-	const books = await getBooks(resultsPage, fetch);
+	const { books, totalPages } = await getBooks(resultsPage, fetch);
 
 	return {
 		books,
-		resultsPage
+		resultsPage,
+		totalPages
 	}
 }

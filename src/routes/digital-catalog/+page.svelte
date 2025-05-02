@@ -7,10 +7,11 @@
 
 	let resultsPage = $state(data.resultsPage);
 	let books = $state(data.books);
+	let totalPages = data.totalPages;
 
 	// $effect means this anonymous function will be called every time resultsPage is updated
 	$effect(async () => { // https://svelte.dev/docs/svelte/$effect
-		books = await getBooks(resultsPage);
+		books = (await getBooks(resultsPage)).books;
 	})
 </script>
 <h1>Blog</h1>
@@ -20,7 +21,7 @@
 </noscript>
 
 <!-- bind: allows PaginatedView to update the value of resultsPage -->
-<PaginatedView bind:pageNr={resultsPage} name="results" />
+<PaginatedView bind:pageNr={resultsPage} name="results" totalPages={totalPages} />
 <table>
 	<thead>
 		<tr>
