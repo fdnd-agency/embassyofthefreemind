@@ -2,7 +2,7 @@
 import { PUBLIC_APIURL, PUBLIC_API_KEY } from '$env/static/public';
 import { arrayToObject, booksURL, authorsURL } from '$lib';
 
-export async function load({ url }) {
+export async function load({ url, fetch }) {
     let query = booksURL;
 
     const filterAuthor = url.searchParams.get('author');
@@ -37,6 +37,7 @@ export async function load({ url }) {
     return {
         books,
         authors,
-		authorsPage
+		authorsPage,
+		filterAuthor
     }
 }

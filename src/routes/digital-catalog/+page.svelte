@@ -2,10 +2,10 @@
 	import FilterButtonAuthor from '$lib/filter-button-author.svelte';
 
 	/** @type {import('./$types').PageData} */
-	export let data;
+	let { data } = $props();
 </script>
 <h1>Blog</h1>
-<FilterButtonAuthor authors={data.authors} authorsPage={data.authorsPage} />
+<FilterButtonAuthor authors={data.authors} authorsPage={data.authorsPage} filterAuthor={data.filterAuthor} />
 
 <table>
 	<tbody>
