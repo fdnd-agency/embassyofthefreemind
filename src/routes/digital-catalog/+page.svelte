@@ -1,5 +1,6 @@
 <script>
   	import { getBooks } from '$lib';
+  	import PaginatedView from '$lib/paginated-view.svelte';
 
 	/** @type {import('./$types').PageData} */
 	let { data } = $props();
@@ -7,17 +8,10 @@
 	let resultsPage = $state(data.resultsPage);
 	let books = $state(data.books);
 
-	async function nextResultsPage(event) {
-		event.preventDefault();
-		resultsPage++;
+	// $effect means this anonymous function will be called every time resultsPage is updated
+	$effect(async () => { // https://svelte.dev/docs/svelte/$effect
 		books = await getBooks(resultsPage);
-	}
-
-	async function previousResultsPage(event) {
-		event.preventDefault();
-		resultsPage--;
-		books = await getBooks(resultsPage);
-	}
+	})
 </script>
 <h1>Blog</h1>
 
@@ -25,14 +19,8 @@
 	JAVASCRIPT DISABLED
 </noscript>
 
-<section id="results-nav">
-	<form action="/digital-catalog">
-		<!-- TODO: Add more hidden inputs containing the current filters sothat they are not removed when navigating -->
-		<input type="hidden" name="results-page" value={resultsPage}>
-		<input type="submit" name="results-page-action" value="previous" onclick={previousResultsPage}>
-		<input type="submit" name="results-page-action" value="next" onclick={nextResultsPage}>
-	</form>
-</section>
+<!-- bind: allows PaginatedView to update the value of resultsPage -->
+<PaginatedView bind:pageNr={resultsPage} name="results" />
 <table>
 	<thead>
 		<tr>
