@@ -1,3 +1,7 @@
+<script>
+	import "./app.css";
+  </script>
+
 <a href="/">Home</a>
 <a href="/about-EFM">About EFM</a>
 <a href="/plan-your-visit">Plan your visit</a>
