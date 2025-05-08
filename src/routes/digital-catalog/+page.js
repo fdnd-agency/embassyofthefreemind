@@ -1,19 +1,21 @@
 /** @type {import('./$types').PageLoad} */
-import { PUBLIC_APIURL } from '$env/static/public';
-import { arrayToObject } from '$lib';
+import { getBooks } from '$lib';
 
-export async function load({ fetch }) {
-	console.log(PUBLIC_APIURL)
-	const res = await fetch(PUBLIC_APIURL)
-	const data = await res.json()
+export async function load({ url, fetch }) {
+
+	let resultsPage = parseInt(url.searchParams.get('results-page')) || 1;
+	const resultsPageAction = url.searchParams.get('results-page-action');
+	if (resultsPageAction === 'next') {
+		resultsPage++;
+	} else if (resultsPageAction === 'previous') {
+		resultsPage--
+	}
+
+	const { books, totalPages } = await getBooks(resultsPage, fetch);
+
 	return {
-		books: data.media.map((book) =>{
-			const meta = arrayToObject(book.metadata)
-			return {
-				title: book.title,
-				author: meta.auteur,
-				publicationYear: meta.jaar
-			}
-		})
-	};
+		books,
+		resultsPage,
+		totalPages
+	}
 }
