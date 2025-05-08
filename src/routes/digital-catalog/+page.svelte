@@ -1,17 +1,21 @@
 <script>
   	import { getBooks } from '$lib';
   	import PaginatedView from '$lib/paginated-view.svelte';
+	import Search from '$lib/search.svelte';
 
 	/** @type {import('./$types').PageData} */
 	let { data } = $props();
 
 	let resultsPage = $state(data.resultsPage);
 	let books = $state(data.books);
-	let totalPages = data.totalPages;
+	let searchTerm = $state(data.searchTerm);
+	let totalResults = $state(data.totalResults);
 
-	// $effect means this anonymous function will be called every time resultsPage is updated
+	// $effect means this anonymous function will be called every time resultsPage or searchTerm is updated
 	$effect(async () => { // https://svelte.dev/docs/svelte/$effect
-		books = (await getBooks(resultsPage)).books;
+		const res = await getBooks(resultsPage, searchTerm);
+		books = res.books;
+		totalResults = res.totalResults;
 	})
 </script>
 <h1>Blog</h1>
@@ -21,7 +25,13 @@
 </noscript>
 
 <!-- bind: allows PaginatedView to update the value of resultsPage -->
-<PaginatedView bind:pageNr={resultsPage} name="results" totalPages={totalPages} />
+<Search bind:searchTerm={searchTerm}/>
+<PaginatedView
+	name="results"
+	bind:pageNr={resultsPage}
+	totalResults={totalResults}
+	preserveFields={{q: searchTerm}}
+/>
 <table>
 	<thead>
 		<tr>
@@ -39,7 +49,7 @@
 			</tr>
 		{/each}
 	</tbody>
-	</table>
+</table>
 <style>
 	table, td, th {
 		border: none;
