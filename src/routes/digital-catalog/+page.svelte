@@ -2,6 +2,7 @@
   	import { getBooks } from '$lib';
 	import FiltersAside from '$lib/filters-aside.svelte';
   	import PaginatedView from '$lib/paginated-view.svelte';
+	import Search from '$lib/search.svelte';
 	import Headercomponent from '$lib/Headercomponent.svelte';
 
 	import Footer from '$lib/footer.svelte';
@@ -11,11 +12,14 @@
 
 	let resultsPage = $state(data.resultsPage);
 	let books = $state(data.books);
-	let totalPages = data.totalPages;
+	let searchTerm = $state(data.searchTerm);
+	let totalResults = $state(data.totalResults);
 
-	// $effect means this anonymous function will be called every time resultsPage is updated
+	// $effect means this anonymous function will be called every time resultsPage or searchTerm is updated
 	$effect(async () => { // https://svelte.dev/docs/svelte/$effect
-		books = (await getBooks(resultsPage)).books;
+		const res = await getBooks(resultsPage, searchTerm);
+		books = res.books;
+		totalResults = res.totalResults;
 	})
 </script>
 <noscript>
@@ -28,7 +32,13 @@
 	<!-- bind: allows PaginatedView to update the value of resultsPage -->
 	<FiltersAside />
 	<div class="page-container">
-		<PaginatedView bind:pageNr={resultsPage} name="results" totalPages={totalPages} />
+		<Search bind:searchTerm={searchTerm}/>
+<PaginatedView
+	name="results"
+	bind:pageNr={resultsPage}
+	totalResults={totalResults}
+	preserveFields={{q: searchTerm}}
+/>
 		<hr/>
 		<table class="table-zebra">
 			<thead>
@@ -47,7 +57,7 @@
 					</tr>
 				{/each}
 			</tbody>
-		</table>
+	</table>
 	</div>
 </div>
 <Footer />
