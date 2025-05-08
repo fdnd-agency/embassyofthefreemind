@@ -11,17 +11,21 @@ export function arrayToObject(array, valueField) {
 
 const nRows = 25;
 
-export const booksURL = `${PUBLIC_APIURL}/media?apiKey=${PUBLIC_API_KEY}&facetFields%5B%5D=search_s_auteur&facetFields%5B%5D=search_s_plaats_van_uitgave&facetFields%5B%5D=search_s_jaar&facetFields%5B%5D=search_s_digitized_publication&fq%5B%5D=search_s_digitized_publication:%22Ja%22&lang=nl&page=1&q=&rows=${nRows}&sort=random%7B1709035870679%7D+asc`;
+export const booksURL = `${PUBLIC_APIURL}/media?apiKey=${PUBLIC_API_KEY}&facetFields%5B%5D=search_s_auteur&facetFields%5B%5D=search_s_plaats_van_uitgave&facetFields%5B%5D=search_s_jaar&facetFields%5B%5D=search_s_digitized_publication&lang=nl&page=1&q=&rows=${nRows}&sort=random%7B1709035870679%7D+asc`;
 
-export const authorsURL = `${PUBLIC_APIURL}/filter/search_s_auteur?ac=&apiKey=${PUBLIC_API_KEY}&facetFields[]=search_s_auteur&facetFields[]=search_s_plaats_van_uitgave&facetFields[]=search_s_jaar&facetFields[]=search_s_digitized_publication&facetSort=index&fq[]=search_s_digitized_publication:"Ja"&lang=nl&page=1&q=&rows=45`;
+export const authorsURL = `${PUBLIC_APIURL}/filter/search_s_auteur?ac=&apiKey=${PUBLIC_API_KEY}&facetFields[]=search_s_auteur&facetFields[]=search_s_plaats_van_uitgave&facetFields[]=search_s_jaar&facetFields[]=search_s_digitized_publication&facetSort=index&lang=nl&page=1&q=&rows=45`;
 
 // TODO: Add filters as arguments
-export async function getBooks(pageNr, customFetch = null) {
+export async function getBooks(pageNr, author, customFetch = null) {
     let query = booksURL + '&page=' + pageNr;
+
+    if (author) {
+        query += '&fq[]=search_s_auteur:"' + author + '"';
+    }
 
 	const res = await (customFetch ?? fetch)(query);
     const data = await res.json();
-    const books = data.media.map((book) =>{
+    const books = data.media.map((book) => {
         const meta = arrayToObject(book.metadata, 'value')
         return {
             title: book.title,

@@ -1,42 +1,28 @@
 <script>
     import { authorsURL } from "$lib";
+    import PaginatedView from "./paginated-view.svelte";
+
     /** @type {import('./$types').PageData} */
-    let { authors, authorsPage, filterAuthor } = $props();
+    let { author = $bindable(), authors, authorsPage, filterAuthor } = $props();
 
-    let form; // the form element, sothat it can be submitted from code
+    function updateAuthor(event) {
+        author = event.target.value;
+        console.log(author);
+    }
 
-    async function updateAuthorsPage() {
+    $effect(async () => {
         const resAuthors = await fetch(authorsURL + '&page=' + authorsPage);
         const dataAuthors = await resAuthors.json();
         authors = dataAuthors.filter;
-    }
-
-    async function nextAuthorsPage(event) {
-        authorsPage++;
-        updateAuthorsPage();
-        event.preventDefault();
-    }
-
-    async function previousAuthorsPage(event) {
-        authorsPage--;
-        updateAuthorsPage();
-        event.preventDefault();
-    }
-
-    function submitForm() {
-        form.submit();
-    }
-
-    function clearAuthorFilter() {
-        filterAuthor = null;
-        submitForm();
-    }
+    })
 </script>
 <a href="/digital-catalog">Clear</a>
 
 <details>
     <summary>Authors</summary>
-    <form action="/digital-catalog" bind:this={form}>
+    <PaginatedView name="authors" bind:pageNr={authorsPage} totalPages="TODO"/>
+    
+    <form action="/digital-catalog">
         <div id="author-filter-list">
             {#each authors as author}
                 <input
@@ -45,17 +31,11 @@
                     id="author-{author.id}"
                     type="radio"
                     name="author"
-                    onchange={submitForm}
+                    onchange={updateAuthor}
                 />
                 <label class="author-label" for="author-{author.id}">{author.label} ({author.count})</label>
             {/each}
         </div>
-
-        <!-- This contains the current authors page and will be sent to the server when the form is submitted -->
-        <input type="hidden" name="authors_page" value={authorsPage}>
-
-        <input type="submit" name="authors_page_action" value="previous" disabled={authorsPage <= 1} onclick={previousAuthorsPage}>
-        <input type="submit" name="authors_page_action" value="next" onclick={nextAuthorsPage}>
 
         <button type="submit">Filter</button>
     </form>
