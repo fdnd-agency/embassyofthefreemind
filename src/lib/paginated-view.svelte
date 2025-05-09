@@ -14,10 +14,23 @@
     }
 </script>
 
-<div>{pageNr}/{totalPages}</div>
 <form action="/digital-catalog">
     <!-- TODO: Add more hidden inputs containing the current filters sothat they are not removed when navigating -->
-    <input type="hidden" name="{name}-page" value={pageNr}>
-    <input type="submit" name="{name}-page-action" value="previous" onclick={previousPage} disabled={pageNr <= 1}>
-    <input type="submit" name="{name}-page-action" value="next" onclick={nextPage} disabled={pageNr >= totalPages}>
+    <input class="join-item btn" type="hidden" name="{name}-page" value={pageNr}>
+    <input class="join-item btn" type="submit" name="{name}-page-action" value="previous" onclick={previousPage} disabled={pageNr <= 1}>
+    <div><span>{pageNr}</span>/<span>{totalPages}</span></div>
+    <input class="join-item btn" type="submit" name="{name}-page-action" value="next" onclick={nextPage} disabled={pageNr >= totalPages}>
 </form>
+
+<style>
+    form {
+        float: right;
+        display: flex;
+        margin-bottom: 1em;
+        align-items: center;
+    }
+
+    input, span {
+        padding: 5px;
+    }
+</style>
