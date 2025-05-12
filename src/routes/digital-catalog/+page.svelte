@@ -1,18 +1,21 @@
 <script>
 	import { getBooks } from '$lib';
   	import PaginatedView from '$lib/paginated-view.svelte';
-
 	import FilterButtonPublicationPlace from "$lib/filter-button-publication-place.svelte";
+
 	/** @type {import('./$types').PageData} */
 	let { data } = $props();
 
 	let resultsPage = $state(data.resultsPage);
 	let books = $state(data.books);
-	let totalPages = data.totalPages;
+	let totalPages = $state(data.totalPages);
+	let publicationPlace = $state(data.publicationPlace)
 
 	// $effect means this anonymous function will be called every time resultsPage is updated
 	$effect(async () => { // https://svelte.dev/docs/svelte/$effect
-		books = (await getBooks(resultsPage)).books;
+		const res = await getBooks(resultsPage, publicationPlace);
+		books = res.books;
+		totalPages = res.totalPages	
 	})
 </script>
 
@@ -22,10 +25,10 @@
 	JAVASCRIPT DISABLED
 </noscript>
 
-<FilterButtonPublicationPlace bind:publicationPlace={data.publicationPlace} publicationPlaces={data.places} placePage={data.placesPage}/>
+<FilterButtonPublicationPlace bind:publicationPlace={publicationPlace} publicationPlaces={data.places} placesPage={data.placesPage}/>
 
 <!-- bind: allows PaginatedView to update the value of resultsPage -->
-<PaginatedView bind:pageNr={resultsPage} name="results" totalPages={totalPages} />
+<PaginatedView bind:pageNr={resultsPage} name="results" totalPages={totalPages} preservedFields={{place: publicationPlace}} />
 
 <table>
 	<thead>
