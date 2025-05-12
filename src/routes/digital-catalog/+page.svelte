@@ -6,17 +6,18 @@
 	/** @type {import('./$types').PageData} */
 	let { data } = $props();
 
+	// The following variables are updated and are therefore declared with $state
 	let resultsPage = $state(data.resultsPage);
 	let books = $state(data.books);
 	let totalPages = $state(data.totalPages);
-	let publicationPlace = $state(data.publicationPlace)
+	let publicationPlace = $state(data.publicationPlace);
 
-	// $effect means this anonymous function will be called every time resultsPage is updated
-	$effect(async () => { // https://svelte.dev/docs/svelte/$effect
+	// $effect means this anonymous function will be called every time any of the $state variables inside are updated
+	$effect(async () => {
 		const res = await getBooks(resultsPage, publicationPlace);
 		books = res.books;
-		totalPages = res.totalPages	
-	})
+		totalPages = res.totalPages;
+	});
 </script>
 
 <h1>Blog</h1>

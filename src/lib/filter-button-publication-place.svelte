@@ -2,7 +2,7 @@
     /** @type {import('./$types').PageData} */
     import { placesURL } from "$lib";
     import PaginatedView from "./paginated-view.svelte";
-    let { publicationPlace = $bindable(), publicationPlaces, placesPage, filterPlace } = $props();
+    let { publicationPlace = $bindable(), publicationPlaces, placesPage } = $props();
 
     $effect(async () => {
         const resPlaces = await fetch(placesURL + '&page=' + placesPage);
@@ -15,6 +15,7 @@
     <PaginatedView name="places" bind:pageNr={placesPage} totalPages="TODO"/>
     <form action="/digital-catalog">
         <div id="place-filter-list">
+            <!-- bind:group means that publicationPlace will be automatically updated when the user clicks on a radio input -->
             {#each publicationPlaces as place}
                 <input
                     class="place-radio"
@@ -27,8 +28,9 @@
                 <label
                     class="place-label"
                     for="place-{place.id}"
-                    >{place.label} ({place.count})</label
                 >
+                    {place.label} ({place.count})
+                </label>
             {/each}
         </div>
         <noscript>
@@ -36,12 +38,6 @@
         </noscript>
     </form>
 </details>
-{#if filterPlace}
-<div>
-    <button onclick={clearPlaceFilter}>X</button>
-    { filterPlace }
-</div>
-{/if}
 
 <style>
     #place-filter-list {
