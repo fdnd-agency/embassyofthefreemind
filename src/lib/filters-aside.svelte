@@ -1,14 +1,12 @@
-<script>
 
-</script>
 <aside>
     <ul>
-        <p>Filters</p>
+        <summary>Filters</summary>
         <hr/>
         <li>
             <details>
                 <summary>Digitalised</summary>
-                <input type="checkbox" class="checkbox"/>
+                <p>WIP: Digitalised filter</p>
             </details>
         </li>
         <hr/>
@@ -39,5 +37,23 @@
         width: 15em;
         height: auto;
         background-color: #eee;
+        padding: 1em;
+    }
+
+    li, ul {
+        padding: 5px;
+    }
+
+    summary {
+        color: rgb(22, 22, 72);
+        font-weight: bold;
+        padding: 5px;
+    }
+
+    p {
+        padding: 5px;
+    }
+    hr {
+        border-color: #ccc;
     }
 </style>

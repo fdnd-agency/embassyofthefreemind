@@ -30,7 +30,7 @@
         align-items: center;
     }
 
-    input, span {
-        padding: 5px;
+    span {
+        padding: 10px;
     }
 </style>
