@@ -1,6 +1,6 @@
 /** @type {import('./$types').PageLoad} */
 import { PUBLIC_APIURL, PUBLIC_API_KEY } from '$env/static/public';
-import { arrayToObject, booksURL, placesURL } from '$lib';
+import { getBooks, placesURL } from '$lib';
 
 export async function load({ fetch, url }) {
 	let query = booksURL;
