@@ -25,7 +25,8 @@ export async function getBooks(pageNr, customFetch = null) {
         return {
             title: book.title,
             author: meta.auteur,
-            publicationYear: meta.jaar
+            publicationYear: meta.jaar,
+            publicationPlace: meta.plaats_van_uitgave
         }
     });
     return {
