@@ -15,8 +15,12 @@ export const booksURL = `${PUBLIC_APIURL}/media?apiKey=${PUBLIC_API_KEY}&facetFi
 export const placesURL = `${PUBLIC_APIURL}/filter/search_s_plaats_van_uitgave?ac=&apiKey=${PUBLIC_API_KEY}&facetFields%5B%5D=search_s_auteur&facetFields%5B%5D=search_s_plaats_van_uitgave&facetFields%5B%5D=search_s_jaar&facetFields%5B%5D=search_s_digitized_publication&facetSort=index&lang=nl&page=1&q=&rows=45`;
 
 // TODO: Add filters as arguments
-export async function getBooks(pageNr, customFetch = null) {
+export async function getBooks(pageNr, publicationPlace, customFetch = null) {
     let query = booksURL + '&page=' + pageNr;
+
+    if (publicationPlace) {
+        query += '&fq[]=search_s_plaats_van_uitgave:"' + publicationPlace + '"';
+    }
 
 	const res = await (customFetch ?? fetch)(query);
     const data = await res.json();
