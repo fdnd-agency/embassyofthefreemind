@@ -12,7 +12,9 @@ export async function load({ url, fetch }) {
 		resultsPage--
 	}
 
+	const publicationPlace = url.searchParams.get('publicationPlace');
 
+	const { books, totalPages } = await getBooks(resultsPage, publicationPlace, fetch);
 
 
 }
