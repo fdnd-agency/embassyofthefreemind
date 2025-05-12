@@ -1,6 +1,6 @@
 <script>
     /** @type {import('./$types').PageData} */
-    export let publicationPlaces;
+    let {publicationPlaces, publicationPlace = $bindable() } = $props();
 
     function applyFilter(event) {
         // TODO: fetch api, update publicationPlaces
