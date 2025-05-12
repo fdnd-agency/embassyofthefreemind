@@ -1,4 +1,7 @@
 <script>
+	import { getBooks } from '$lib';
+  	import PaginatedView from '$lib/paginated-view.svelte';
+
 	import FilterButtonUitgaveplaats from "$lib/filter-button-uitgaveplaats.svelte";
 	/** @type {import('./$types').PageData} */
 	let { data } = $props();
@@ -16,6 +19,11 @@
 <h1>Blog</h1>
 
 <FilterButtonUitgaveplaats publicationPlaces={data.publicationPlaces} />
+<noscript>
+	JAVASCRIPT DISABLED
+</noscript>
+<!-- bind: allows PaginatedView to update the value of resultsPage -->
+<PaginatedView bind:pageNr={resultsPage} name="results" totalPages={totalPages} />
 
 <table>
 	<thead>
@@ -23,6 +31,7 @@
 			<th>Titel</th>
 			<th>Auteur</th>
 			<th>Publicatie jaar</th>
+			<th>Plaats van publicatie</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -36,3 +45,25 @@
 		{/each}
 	</tbody>
 </table>
+
+<style>
+	table, td, th {
+		border: none;
+		border-collapse: collapse;
+	}
+	thead, thead tr, th {
+		background-color: #ccc;
+	}
+
+	tbody tr:nth-of-type(even) td {
+		background-color: #eee;
+	}
+
+	th {
+		text-align: left;
+	}
+
+	td {
+		padding-right: 1em;
+	}
+</style>
