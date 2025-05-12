@@ -16,5 +16,12 @@ export async function load({ url, fetch }) {
 
 	const { books, totalPages } = await getBooks(resultsPage, publicationPlace, fetch);
 
+	 let placesPage = parseInt(url.searchParams.get('places-page')) || 1;
+    const placesPageAction = url.searchParams.get('places-page-action');
+    if (placesPageAction === 'next') {
+        placesPage++;
+    } else if (placesPageAction === 'previous') {
+        placesPage--;
+    }
 
 }
