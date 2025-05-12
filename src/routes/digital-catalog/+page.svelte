@@ -2,7 +2,7 @@
 	import { getBooks } from '$lib';
   	import PaginatedView from '$lib/paginated-view.svelte';
 
-	import FilterButtonUitgaveplaats from "$lib/filter-button-uitgaveplaats.svelte";
+	import FilterButtonPublicationPlace from "$lib/filter-button-publication-place.svelte";
 	/** @type {import('./$types').PageData} */
 	let { data } = $props();
 
@@ -22,7 +22,7 @@
 	JAVASCRIPT DISABLED
 </noscript>
 
-<FilterButtonUitgaveplaats bind:publicationPlace={data.publicationPlace} publicationPlaces={data.places} placePage={data.placesPage}/>
+<FilterButtonPublicationPlace bind:publicationPlace={data.publicationPlace} publicationPlaces={data.places} placePage={data.placesPage}/>
 
 <!-- bind: allows PaginatedView to update the value of resultsPage -->
 <PaginatedView bind:pageNr={resultsPage} name="results" totalPages={totalPages} />
