@@ -24,4 +24,15 @@ export async function load({ url, fetch }) {
         placesPage--;
     }
 
+	const resPlaces = await fetch(placesURL + '&page=' + placesPage);
+    const dataPlaces = await resPlaces.json();
+    const places = dataPlaces.filter;
+    return {
+        books,
+        resultsPage,
+        totalPages,
+        publicationPlace,
+        places,
+        placesPage,
+    }
 }
