@@ -18,10 +18,12 @@
 
 <h1>Blog</h1>
 
-<FilterButtonUitgaveplaats publicationPlaces={data.publicationPlaces} />
 <noscript>
 	JAVASCRIPT DISABLED
 </noscript>
+
+<FilterButtonUitgaveplaats bind:publicationPlace={data.publicationPlace} publicationPlaces={data.places} placePage={data.placesPage}/>
+
 <!-- bind: allows PaginatedView to update the value of resultsPage -->
 <PaginatedView bind:pageNr={resultsPage} name="results" totalPages={totalPages} />
 
