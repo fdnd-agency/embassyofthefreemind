@@ -17,11 +17,11 @@
 
 <div>{pageNr}/{totalPages}</div>
 <!-- Object entries transforms an object into an array of key-value pairs -->
-<form action="/digital-catalog">
-    {#each Object.entries(preservedFields) as [name, value]}
-        <input type="hidden" name={name} value={value}>
-    {/each}
-    <input type="hidden" name="{name}-page" value={pageNr}>
-    <input type="submit" name="{name}-page-action" value="previous" onclick={previousPage} disabled={pageNr <= 1}>
-    <input type="submit" name="{name}-page-action" value="next" onclick={nextPage} disabled={pageNr >= totalPages}>
+<form >
+    <!-- {#each Object.entries(preservedFields) as [name, value]} -->
+        <!-- <input type="hidden" name={name} value={value}> -->
+    
+    <input type="hidden" name="{name}-page" value={pageNr} form="filter-place-form">
+    <input type="submit" name="{name}-page-action" value="previous" onclick={previousPage} disabled={pageNr <= 1} form="filter-place-form">
+    <input type="submit" name="{name}-page-action" value="next" onclick={nextPage} disabled={pageNr >= totalPages}  form="filter-place-form">
 </form>

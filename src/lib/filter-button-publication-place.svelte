@@ -13,7 +13,7 @@
 
 <details>
     <PaginatedView name="places" bind:pageNr={placesPage} totalPages="TODO"/>
-    <form action="/digital-catalog">
+    <form action="/digital-catalog" id="filter-place-form">
         <div id="place-filter-list">
             <!-- bind:group means that publicationPlace will be automatically updated when the user clicks on a radio input -->
             {#each publicationPlaces as place}
