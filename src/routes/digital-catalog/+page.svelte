@@ -65,7 +65,7 @@
 		width: 65em;
 	}
 	thead, thead tr, th {
-		background-color: #ccc;
+		background-color: var(--secondaryBackgroundColor);
 	}
 
 	th {

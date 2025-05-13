@@ -36,7 +36,7 @@
     aside {
         width: 15em;
         height: auto;
-        background-color: #eee;
+        background-color: var(--tertiaryBackgroundColor);
         padding: 1em;
     }
 
@@ -45,8 +45,8 @@
     }
 
     summary {
-        color: rgb(22, 22, 72);
-        font-weight: bold;
+        color: var(--primaryColor);
+        font-weight: var(--fontWeightBold);
         padding: 5px;
     }
 
@@ -54,6 +54,6 @@
         padding: 5px;
     }
     hr {
-        border-color: #ccc;
+        border-color:var(--secondaryBackgroundColor);
     }
 </style>
