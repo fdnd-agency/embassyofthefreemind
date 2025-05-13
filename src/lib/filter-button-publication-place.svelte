@@ -1,49 +1,60 @@
 <script>
     /** @type {import('./$types').PageData} */
-    let {publicationPlaces, publicationPlace = $bindable() } = $props();
+    import { placesURL } from "$lib";
+    import PaginatedView from "./paginated-view.svelte";
+    let { publicationPlace = $bindable(), publicationPlaces, placesPage } = $props();
 
-    function applyFilter(event) {
-        // TODO: fetch api, update publicationPlaces
-    }
+    $effect(async () => {
+        const resPlaces = await fetch(placesURL + '&page=' + placesPage);
+        const dataPlaces = await resPlaces.json();
+        publicationPlaces = dataPlaces.filter;
+    })
 </script>
 
-<a href="/digital-catalog">Clear</a>
-<form action="/digital-catalog">
-    <div id="publicationPlace-filter-list">
-        {#each publicationPlaces as place}
-            <input
-                class="publicationPlace-radio"
-                value={place.id}
-                id="publicationPlace-{place.id}"
-                type="radio"
-                name="publicationPlace"
-            />
-            <label
-                class="publicationPlace-label"
-                for="publicationPlace-{place.id}"
-                >{place.label} ({place.count})</label
-            >
-        {/each}
-    </div>
-    <button type="submit">Filter</button>
-</form>
+<details>
+    <PaginatedView name="places" bind:pageNr={placesPage} totalPages="TODO"/>
+    <form action="/digital-catalog" id="filter-place-form">
+        <div id="place-filter-list">
+            <!-- bind:group means that publicationPlace will be automatically updated when the user clicks on a radio input -->
+            {#each publicationPlaces as place}
+                <input
+                    class="place-radio"
+                    value={place.id}
+                    id="place-{place.id}"
+                    type="radio"
+                    name="place"
+                    bind:group={publicationPlace}
+                />
+                <label
+                    class="place-label"
+                    for="place-{place.id}"
+                >
+                    {place.label} ({place.count})
+                </label>
+            {/each}
+        </div>
+        <noscript>
+            <button type="submit">Filter</button>
+        </noscript>
+    </form>
+</details>
 
 <style>
-    #publicationPlace-filter-list {
+    #place-filter-list {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(15, 1fr);
     }
 
-    .publicationPlace-radio {
+    .place-radio {
         display: none;
     }
 
-    .publicationPlace-radio:checked + .publicationPlace-label {
+    .place-radio:checked + .place-label {
         color: red;
     }
 
-    .publicationPlace-label {
+    .place-label {
         cursor: pointer;
     }
 </style>
