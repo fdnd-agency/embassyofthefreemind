@@ -1,5 +1,6 @@
 <script>
   	import { getBooks } from '$lib';
+  import FiltersAside from '$lib/filters-aside.svelte';
   	import PaginatedView from '$lib/paginated-view.svelte';
 	import Search from '$lib/search.svelte';
 
@@ -18,49 +19,64 @@
 		totalResults = res.totalResults;
 	})
 </script>
-<h1>Blog</h1>
-
 <noscript>
 	JAVASCRIPT DISABLED
 </noscript>
-
-<!-- bind: allows PaginatedView to update the value of resultsPage -->
-<Search bind:searchTerm={searchTerm}/>
+<div class="catalog-container">
+	<!-- bind: allows PaginatedView to update the value of resultsPage -->
+	<FiltersAside />
+	<div class="page-container">
+		<Search bind:searchTerm={searchTerm}/>
 <PaginatedView
 	name="results"
 	bind:pageNr={resultsPage}
 	totalResults={totalResults}
+	totalPages={totalPages}
 	preserveFields={{q: searchTerm}}
 />
-<table>
-	<thead>
-		<tr>
-			<th>Titel</th>
-			<th>Auteur</th>
-			<th>Publicatie jaar</th>
-		</tr>
-	</thead>
-	<tbody>
-		{#each books as book}
-			<tr>
-				<td>{book.title}</td>
-				<td>{book.author}</td>
-				<td>{book.publicationYear}</td>
-			</tr>
-		{/each}
-	</tbody>
-</table>
+		<hr/>
+		<table class="table-zebra">
+			<thead>
+				<tr>
+					<th>Titel</th>
+					<th>Auteur</th>
+					<th>Publicatie jaar</th>
+				</tr>
+			</thead>
+			<tbody>
+				{#each books as book}
+					<tr>
+						<td>{book.title}</td>
+						<td>{book.author}</td>
+						<td>{book.publicationYear}</td>
+					</tr>
+				{/each}
+			</tbody>
+	</table>
+	</div>
+</div>
+
 <style>
+	.catalog-container {
+		display: flex;
+		margin: 3em;
+	}
+
+	.page-container {
+		display: flex;
+		flex-direction: column;
+		padding: 2em;
+	}
+	table {
+		margin-top: 1em;
+	}
 	table, td, th {
 		border: none;
 		border-collapse: collapse;
+		width: 65em;
 	}
 	thead, thead tr, th {
-		background-color: #ccc;
-	}
-
-	tbody tr:nth-of-type(even) td {
-		background-color: #eee;
+		background-color: var(--secondaryBackgroundColor);
 	}
 
 	th {

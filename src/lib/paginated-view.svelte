@@ -23,7 +23,21 @@
     {#each Object.entries(preserveFields) as [name, value]}
         <input type="hidden" name={name} value={value}/>
     {/each}
-    <input type="hidden" name="{name}-page" value={pageNr}>
-    <input type="submit" name="{name}-page-action" value="previous" onclick={previousPage} disabled={pageNr <= 1}>
-    <input type="submit" name="{name}-page-action" value="next" onclick={nextPage} disabled={pageNr >= totalPages}>
+    <input class="btn" type="hidden" name="{name}-page" value={pageNr}>
+    <input class="btn" type="submit" name="{name}-page-action" value="previous" onclick={previousPage} disabled={pageNr <= 1}>
+    <div class="pagination-view">{pageNr}<span>/</span>{totalPages}</div>
+    <input class="btn" type="submit" name="{name}-page-action" value="next" onclick={nextPage} disabled={pageNr >= totalPages}>
 </form>
+
+<style>
+    form {
+        float: right;
+        display: flex;
+        margin-bottom: 1em;
+        align-items: center;
+    }
+
+    span, .pagination-view {
+        padding: 10px;
+    }
+</style>
