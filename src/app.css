@@ -31,6 +31,10 @@
     --fontWeightRegular: 400;
     --fontWeightBold: 700;
 
+    /* Borders */
+    --borderHard: 1px solid var(--textColor);
+    --borderSoft: 1px solid var(--secondaryBackgroundColor);
+
     /* TODO: Spacing */
 }
 

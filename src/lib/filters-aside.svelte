@@ -1,29 +1,25 @@
 
 <aside>
+    <span>Filters</span>
     <ul>
-        <summary>Filters</summary>
-        <hr/>
         <li>
             <details>
                 <summary>Digitalised</summary>
                 <p>WIP: Digitalised filter</p>
             </details>
         </li>
-        <hr/>
         <li>
             <details>
                 <summary>Year</summary>
                 <p>WIP: Year filter</p>
             </details>
         </li>
-        <hr/>
         <li>
            <details>
                 <summary>Author</summary>
                 <p>WIP: Author filter</p>
            </details> 
         </li>
-        <hr/>
         <li>
             <details>
                 <summary>Place of publication</summary>
@@ -44,16 +40,17 @@
         padding: 5px;
     }
 
-    summary {
+    summary, span {
         color: var(--primaryColor);
         font-weight: var(--fontWeightBold);
         padding: 5px;
     }
 
+    summary {
+        border-top: var(--borderSoft);
+    }
+
     p {
         padding: 5px;
-    }
-    hr {
-        border-color:var(--secondaryBackgroundColor);
     }
 </style>
