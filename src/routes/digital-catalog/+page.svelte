@@ -22,11 +22,11 @@
 </noscript>
 
 <!-- bind: allows PaginatedView to update the value of resultsPage -->
-<PaginatedView bind:pageNr={resultsPage} name="results" totalPages={totalPages} />
 <PaginatedView bind:pageNr={resultsPage} name="results" {totalPages} />
 <table>
 	<thead>
 		<tr>
+			<th>Afbeeldingen</th>
 			<th>Titel</th>
 			<th>Auteur</th>
 			<th>Publicatie jaar</th>
@@ -35,6 +35,11 @@
 	<tbody>
 		{#each books as book}
 			<tr>
+				<td>
+					{#if book.bookImages}
+						<img src={book.bookImages.small} alt=""/>
+					{/if}
+				</td>
 				<td>{book.title}</td>
 				<td>{book.author}</td>
 				<td>{book.publicationYear}</td>
