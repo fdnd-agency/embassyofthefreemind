@@ -14,6 +14,7 @@
 		books = (await getBooks(resultsPage)).books;
 	})
 </script>
+
 <h1>Blog</h1>
 
 <noscript>
@@ -22,6 +23,7 @@
 
 <!-- bind: allows PaginatedView to update the value of resultsPage -->
 <PaginatedView bind:pageNr={resultsPage} name="results" totalPages={totalPages} />
+<PaginatedView bind:pageNr={resultsPage} name="results" {totalPages} />
 <table>
 	<thead>
 		<tr>
@@ -39,7 +41,8 @@
 			</tr>
 		{/each}
 	</tbody>
-	</table>
+</table>
+
 <style>
 	table, td, th {
 		border: none;
