@@ -1,22 +1,41 @@
 <script>
     let { searchTerm = $bindable() } = $props();
+
+    function doNothing(event) {
+        event.preventDefault();
+    }
 </script>
 
-<form action="/digital-catalog">
+<div class="search input">
     <input
+        form="main-form"
         name="q"
         type="search"
-        placeholder="search..."
+        placeholder="Search here..."
         bind:value={searchTerm}
     />
-    <noscript>
-        <button type="submit">Search</button>
-    </noscript>
-</form>
+        <button onclick={doNothing} type="submit" form="main-form"><img src="/search-icon.svg" alt="search"></button>
+</div>
 
 <style>
+    .search {
+        border-radius: 2px;
+        width: 30em;
+        height: 2.5em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     input { /* placeholder */
-        border: 1px solid black;
-        border-radius: 3px;
+        outline: none;
+        width: calc(100% - 1em);
+        border-right: var(--borderSoft);
+        padding-right: 0.5em;
+        margin-right: 1em;
+    }
+
+    button {
+        width: 1em;
     }
 </style>
