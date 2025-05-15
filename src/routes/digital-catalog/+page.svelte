@@ -1,6 +1,8 @@
 <script>
   	import { getBooks } from '$lib';
   	import PaginatedView from '$lib/paginated-view.svelte';
+	import Headercomponent from '$lib/Headercomponent.svelte';
+
 
 	/** @type {import('./$types').PageData} */
 	let { data } = $props();
@@ -19,6 +21,8 @@
 <noscript>
 	JAVASCRIPT DISABLED
 </noscript>
+
+<Headercomponent />
 
 <!-- bind: allows PaginatedView to update the value of resultsPage -->
 <PaginatedView bind:pageNr={resultsPage} name="results" totalPages={totalPages} />
