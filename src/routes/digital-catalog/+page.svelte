@@ -2,6 +2,8 @@
   	import { getBooks } from '$lib';
   import FiltersAside from '$lib/filters-aside.svelte';
   	import PaginatedView from '$lib/paginated-view.svelte';
+	import Headercomponent from '$lib/Headercomponent.svelte';
+
 
 	/** @type {import('./$types').PageData} */
 	let { data } = $props();
@@ -18,6 +20,9 @@
 <noscript>
 	JAVASCRIPT DISABLED
 </noscript>
+
+<Headercomponent />
+
 <div class="catalog-container">
 	<!-- bind: allows PaginatedView to update the value of resultsPage -->
 	<FiltersAside />
