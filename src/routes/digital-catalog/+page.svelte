@@ -1,7 +1,8 @@
 <script>
   	import { getBooks } from '$lib';
-  import FiltersAside from '$lib/filters-aside.svelte';
+	import FiltersAside from '$lib/filters-aside.svelte';
   	import PaginatedView from '$lib/paginated-view.svelte';
+	import Footer from '$lib/footer.svelte';
 
 	/** @type {import('./$types').PageData} */
 	let { data } = $props();
@@ -44,6 +45,7 @@
 		</table>
 	</div>
 </div>
+<Footer />
 
 <style>
 	.catalog-container {
