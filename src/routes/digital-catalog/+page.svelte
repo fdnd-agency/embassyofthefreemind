@@ -3,6 +3,7 @@
   import FiltersAside from '$lib/filters-aside.svelte';
   	import PaginatedView from '$lib/paginated-view.svelte';
 	import Search from '$lib/search.svelte';
+	import Headercomponent from '$lib/Headercomponent.svelte';
 
 	/** @type {import('./$types').PageData} */
 	let { data } = $props();
@@ -24,6 +25,7 @@
 	JAVASCRIPT DISABLED
 </noscript>
 
+<Headercomponent />                                     
 <main>
 	<form id="main-form">
 		<!-- All filter inputs and submit buttons should connect to this form using form="main-form" -->
@@ -39,6 +41,7 @@
 			<hr/>
 			<table class="table-zebra">
 				<thead>
+
 					<tr>
 						<th>Titel</th>
 						<th>Auteur</th>
