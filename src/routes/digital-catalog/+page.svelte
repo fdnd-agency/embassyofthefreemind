@@ -68,4 +68,10 @@
 	td {
 		padding-right: 1em;
 	}
+
+	img{
+		max-width: none;
+		width: 20vw;
+	}
+
 </style>
