@@ -1,3 +1,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    /* Main Colors */
+    --primaryColor: #002646; /* Dark blue */
+    --secondaryColor: #B59A66; /* Light brown */ 
+
+    /* Background Colors */
+    --backgroundColor: #ffffff; /* White */
+    --secondaryBackgroundColor: #D9D9D9; /* Gray */
+    --tertiaryBackgroundColor:#F3F3F3; /* Light Gray */
+    --footerBackgroundColor: #677078; /* Dark Gray */
+
+    /* Text Colors */
+    --textColor: #4A4A4A; /* Dark grey */
+    --navigationTextColor: white;  
+    --headingColor: #567682; /* Dusty blue */ 
+
+    /* Font Families */
+    --primaryFont: 'Roboto', sans-serif;
+
+    /* Font Sizes */
+    --fontSizeSmall: 0.875rem;  /* 14px */
+    --fontSizeNormal: 1rem;     /* 16px */
+    --fontSizeLarge: 1.25rem;   /* 20px */
+    --fontSizeHeading: 2.25rem; /* 36px */
+
+    /* Font Weights */
+    --fontWeightRegular: 400;
+    --fontWeightBold: 700;
+
+    /* Borders */
+    --borderHard: 1px solid var(--textColor);
+    --borderSoft: 1px solid var(--secondaryBackgroundColor);
+
+    /* TODO: Spacing */
+}
+
+ 
+.btn {
+    border-radius: 0;
+ }
