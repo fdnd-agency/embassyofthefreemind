@@ -11,11 +11,14 @@ export async function load({ url, fetch }) {
 		resultsPage--
 	}
 
-	const { books, totalPages } = await getBooks(resultsPage, fetch);
+	const searchTerm = url.searchParams.get('q');
+
+	const { books, totalResults } = await getBooks(resultsPage, searchTerm, fetch);
 
 	return {
 		books,
 		resultsPage,
-		totalPages
+		totalResults,
+		searchTerm
 	}
 }
