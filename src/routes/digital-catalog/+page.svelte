@@ -4,6 +4,7 @@
   	import PaginatedView from '$lib/paginated-view.svelte';
 	import Search from '$lib/search.svelte';
 	import Headercomponent from '$lib/Headercomponent.svelte';
+  import Breadcrumbs from '$lib/breadcrumbs.svelte';
 
 	/** @type {import('./$types').PageData} */
 	let { data } = $props();
@@ -27,6 +28,9 @@
 
 <Headercomponent />                                     
 <main>
+	<Breadcrumbs/>
+	<h1>Digital catalog</h1>
+	<p>Discover a unique collection of books and prints full of wisdom, symbolism and free thinking. Browse through the collection, search for authors or place and date of publication and be inspired by ideas that span the ages.</p>
 	<form id="main-form">
 		<!-- All filter inputs and submit buttons should connect to this form using form="main-form" -->
 	</form>
@@ -74,7 +78,7 @@
 	main {
 		width: 90%;
 		margin: 0 auto;
-		margin-top: 3em;
+		margin-top: 1em;
 	}
 	.search-container {
 		background-color: var(--secondaryBackgroundColor);
@@ -82,6 +86,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		margin-top: 3em;
 	}
 	.catalog-container {
 		display: flex;
