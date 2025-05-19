@@ -3,7 +3,6 @@
   import FiltersAside from '$lib/filters-aside.svelte';
   	import PaginatedView from '$lib/paginated-view.svelte';
 	import Headercomponent from '$lib/Headercomponent.svelte';
-
 	import FilterButtonAuthor from '$lib/filter-button-author.svelte';
 
 	/** @type {import('./$types').PageData} */
@@ -11,12 +10,15 @@
 
 	let resultsPage = $state(data.resultsPage);
 	let books = $state(data.books);
-	let totalPages = data.totalPages;
+	let totalPages = $state(data.totalPages);
 	let author = $state(data.author);
+
 
 	// $effect means this anonymous function will be called every time resultsPage or author is updated
 	$effect(async () => { // https://svelte.dev/docs/svelte/$effect
-		books = (await getBooks(resultsPage, author)).books;
+		const res = await getBooks(resultsPage, author);
+		books = res.books;
+		totalPages = res.totalPages;
 	})
 </script>
 <noscript>
@@ -27,9 +29,10 @@
 
 <div class="catalog-container">
 	<!-- bind: allows PaginatedView to update the value of resultsPage -->
-	<FiltersAside />
+	<FiltersAside bind:author={author} authors={data.authors} authorsPage={data.authorsPage} />
 	<div class="page-container">
 		<PaginatedView bind:pageNr={resultsPage} name="results" totalPages={totalPages} />
+
 		<hr/>
 		<table class="table-zebra">
 			<thead>

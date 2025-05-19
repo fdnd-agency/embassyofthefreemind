@@ -4,10 +4,20 @@
 
     /** @type {import('./$types').PageData} */
     let { author = $bindable(), authors, authorsPage, filterAuthor } = $props();
+    let isModalOpen = $state(false);
 
-    function updateAuthor(event) {
-        author = event.target.value;
-        console.log(author);
+    function closeModal() {
+        isModalOpen = false;
+    }
+
+    function handleKey(event) {
+        if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
+            event.preventDefault();
+            event.target.previousElementSibling?.previousElementSibling?.focus();
+        } else if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
+            event.preventDefault();
+            event.target.nextElementSibling?.nextElementSibling?.focus();
+        }
     }
 
     $effect(async () => {
@@ -16,50 +26,62 @@
         authors = dataAuthors.filter;
     })
 </script>
-<a href="/digital-catalog">Clear</a>
+<div class="dropdown">
+    <div tabindex="0" role="button">More...</div>
+    <div
+    tabindex="0"
+    class="dropdown-content card card-compact z-[1] w-64 p-2 shadow">
+    <div class="card-body">
+        <PaginatedView name="authors" bind:pageNr={authorsPage} totalPages="TODO"/>
+        <form action="/digital-catalog" id="filter-place-form">
+            <div id="author-filter-list">
+                {#each authors as authorOption}
+                    <input
+                        class="author-radio"
+                        value={authorOption.id}
+                        id="author-{authorOption.id}"
+                        type="radio"
+                        name="author"
+                        bind:group={author}
+                        onchange={closeModal}
+                        onkeydown={handleKey}
+                    />
+                    <label class="author-label" for="author-{authorOption.id}">{authorOption.label} ({authorOption.count})</label>
+                {/each}
+            </div>
 
-<details>
-    <summary>Authors</summary>
-    <PaginatedView name="authors" bind:pageNr={authorsPage} totalPages="TODO"/>
-    
-    <form action="/digital-catalog">
-        <div id="author-filter-list">
-            {#each authors as author}
-                <input
-                    class="author-radio"
-                    value={author.id}
-                    id="author-{author.id}"
-                    type="radio"
-                    name="author"
-                    onchange={updateAuthor}
-                />
-                <label class="author-label" for="author-{author.id}">{author.label} ({author.count})</label>
-            {/each}
-        </div>
-
-        <button type="submit">Filter</button>
-    </form>
-</details>
-{#if filterAuthor}
-<div>
-    <button onclick={clearAuthorFilter}>X</button>
-    { filterAuthor }
+            <noscript><button type="submit">Filter</button></noscript>
+        </form>
+    </div>
+    </div>
 </div>
-{/if}
-
 <style>
+    .card-body {
+        max-width: fit-content;
+        background-color: var(--secondaryBackgroundColor);
+        position: absolute;
+    }
     #author-filter-list {
-        display: grid;
+        /* display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(15, 1fr);
+        grid-template-rows: repeat(15, 1fr); */
+        display: flex;
+        flex-wrap: wrap;
     }
 
     .author-radio {
-        display: none;
+        width: 0;
+        height: 0;
+        opacity: 0;
     }
 
     label {
         cursor: pointer;
+        width: 33%;
+    }
+
+    input:focus + label {
+        outline: 1px solid black;
     }
 
     form {
@@ -67,7 +89,6 @@
     }
 
     #author-filter-list {
-        border: 1px solid black;
         width: 65em;
     }
 </style>

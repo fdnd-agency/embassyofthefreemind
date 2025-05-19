@@ -41,4 +41,18 @@
  
 .btn {
     border-radius: 0;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--primaryColor);
+    color: var(--navigationTextColor);
+    border: none;
+}
+
+.btn:hover {
+    border-radius: 0;
+    border: none;
+    background-color: var(--primaryColor);
+    color: var(--navigationTextColor);
  }
