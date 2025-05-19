@@ -21,5 +21,6 @@
         width: 100vw;
         max-height: 15em;
         object-fit: cover;
+        margin-top: 4rem; /* from fixed nav height */
     }
 </style>
