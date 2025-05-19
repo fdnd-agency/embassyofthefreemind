@@ -11,9 +11,11 @@ export async function load({ url, fetch }) {
 		resultsPage--
 	}
 
+	const searchTerm = url.searchParams.get('q');
+
 	const author = url.searchParams.get('author');
 
-	const { books, totalPages } = await getBooks(resultsPage, author, fetch);
+	const { books, totalResults } = await getBooks(resultsPage, searchTerm, author, fetch);
 
 	let authorsPage = parseInt(url.searchParams.get('authors-page')) || 1;
 	const authorsPageAction = url.searchParams.get('authors-page-action');
@@ -30,7 +32,8 @@ export async function load({ url, fetch }) {
 	return {
 		books,
 		resultsPage,
-		totalPages,
+		totalResults,
+		searchTerm,
 		author,
         authors,
 		authorsPage,
