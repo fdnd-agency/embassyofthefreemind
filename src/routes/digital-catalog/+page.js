@@ -28,6 +28,7 @@ export async function load({ url, fetch }) {
 	const resAuthors = await fetch(authorsURL + '&page=' + authorsPage);
 	const dataAuthors = await resAuthors.json();
     const authors = dataAuthors.filter;
+    const totalAuthors = dataAuthors.metadata.pagination.total;
 
 	return {
 		books,
@@ -36,6 +37,7 @@ export async function load({ url, fetch }) {
 		searchTerm,
 		author,
         authors,
+        totalAuthors,
 		authorsPage,
 	}
 }

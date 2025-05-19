@@ -1,10 +1,9 @@
 <script>
     /** @type {import('./$types').PageData} */
-    import { nRows } from '$lib';
     // name must be unique. It is used for the no-js version to ensure that different instances of this component don't conflict.
-    let { pageNr = $bindable(), totalResults, name } = $props();
+    let { pageNr = $bindable(), totalResults, name, perPage } = $props();
 
-    let totalPages = $derived(Math.ceil(totalResults / nRows)); // math.ceil rounds up
+    let totalPages = $derived(Math.ceil(totalResults / perPage)); // math.ceil rounds up
 
     async function nextPage(event) {
         event.preventDefault();

@@ -1,7 +1,7 @@
 <script>
     import FilterButtonAuthor from '$lib/filter-button-author.svelte';
 
-    let { author = $bindable(), authors, authorsPage } = $props();
+    let { author = $bindable(), authors, totalAuthors, authorsPage } = $props();
 
     function clearAuthor() {
         author = null;
@@ -28,7 +28,7 @@
         <li>
            <details>
                 <summary>Author</summary>
-                <FilterButtonAuthor bind:author={author} authors={authors} authorsPage={authorsPage}/>           
+                <FilterButtonAuthor bind:author={author} {authors} {totalAuthors} {authorsPage}/>           
             </details> 
         </li>
         <li>

@@ -3,7 +3,7 @@
     import PaginatedView from "./paginated-view.svelte";
 
     /** @type {import('./$types').PageData} */
-    let { author = $bindable(), authors, authorsPage, filterAuthor } = $props();
+    let { author = $bindable(), authors, totalAuthors, authorsPage, filterAuthor } = $props();
     let isModalOpen = $state(false);
 
     function closeModal() {
@@ -28,31 +28,33 @@
 </script>
 <div class="dropdown">
     <div tabindex="0" role="button">More...</div>
+    <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
     <div
-    tabindex="0"
-    class="dropdown-content card card-compact z-[1] w-64 p-2 shadow">
-    <div class="card-body">
-        <PaginatedView name="authors" bind:pageNr={authorsPage} totalPages="TODO"/>
-        <form action="/digital-catalog" id="filter-place-form">
-            <div id="author-filter-list">
-                {#each authors as authorOption}
-                    <input
-                        class="author-radio"
-                        value={authorOption.id}
-                        id="author-{authorOption.id}"
-                        type="radio"
-                        name="author"
-                        bind:group={author}
-                        onchange={closeModal}
-                        onkeydown={handleKey}
-                    />
-                    <label class="author-label" for="author-{authorOption.id}">{authorOption.label} ({authorOption.count})</label>
-                {/each}
-            </div>
+        tabindex="0"
+        class="dropdown-content card card-compact z-[1] w-64 p-2 shadow"
+    >
+        <div class="card-body">
+            <PaginatedView name="authors" bind:pageNr={authorsPage} totalResults={totalAuthors} perPage={65}/>
+            <form action="/digital-catalog" id="filter-place-form">
+                <div id="author-filter-list">
+                    {#each authors as authorOption}
+                        <input
+                            class="author-radio"
+                            value={authorOption.id}
+                            id="author-{authorOption.id}"
+                            type="radio"
+                            name="author"
+                            bind:group={author}
+                            onchange={closeModal}
+                            onkeydown={handleKey}
+                        />
+                        <label class="author-label" for="author-{authorOption.id}">{authorOption.label} ({authorOption.count})</label>
+                    {/each}
+                </div>
 
-            <noscript><button type="submit">Filter</button></noscript>
-        </form>
-    </div>
+                <noscript><button type="submit">Filter</button></noscript>
+            </form>
+        </div>
     </div>
 </div>
 <style>

@@ -38,7 +38,7 @@
 	</div>
 	<div class="catalog-container">
 		<!-- bind: allows PaginatedView to update the value of resultsPage -->
-		<FiltersAside bind:author={author} authors={data.authors} authorsPage={data.authorsPage}/>
+		<FiltersAside bind:author={author} authors={data.authors} totalAuthors={data.totalAuthors} authorsPage={data.authorsPage}/>
 		<div class="page-container">
 			<p class="results" ><span class="total-results">{totalResults}</span>results</p>
 			<hr/>
@@ -66,6 +66,7 @@
 					name="results"
 					bind:pageNr={resultsPage}
 					totalResults={totalResults}
+					perPage={45}
 				/>
 			</div>
 		</div>
