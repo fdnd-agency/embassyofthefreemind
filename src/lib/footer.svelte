@@ -2,7 +2,7 @@
   <h1>Follow us</h1>
   <nav>
     <div class="grid grid-flow-col gap-4">
-      <a
+      <a class="social-media-link"
         href="https://www.instagram.com/embassyofthefreemind/"
         aria-label="Link to Instagram"
       >
@@ -18,7 +18,7 @@
           ></path>
         </svg>
       </a>
-      <a
+      <a class="social-media-link"
         href="https://www.youtube.com/theritmanlibrary"
         aria-label="Link to Youtube"
       >
@@ -34,7 +34,7 @@
           ></path>
         </svg>
       </a>
-      <a
+      <a class="social-media-link"
         href="https://www.facebook.com/embassyofthefreemind/"
         aria-label="Link to Facebook"
       >
@@ -70,6 +70,14 @@
 
   .p-10 {
     padding: 1.5rem;
+  }
+
+  .social-media-link{
+    transition: transform .5s;
+  }
+
+  .social-media-link:hover{
+     transform: scale(1.2);
   }
 
   @media only screen and (min-width: 600px) {
