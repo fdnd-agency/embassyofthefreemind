@@ -66,6 +66,8 @@
 <style>
   .footer {
     row-gap: 1.5rem;
+    font-size: 16px;
+    overflow-y: hidden;
   }
 
   .p-10 {
