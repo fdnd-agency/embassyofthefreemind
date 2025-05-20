@@ -55,8 +55,7 @@
     .menu {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
-        width: 80em;
+        max-width: 80em;
         margin-left: auto;
     }
 
@@ -65,14 +64,21 @@
         border-right: 2px solid var(--backgroundColor);
     }
 
+    .hamburger-container {
+        display: none;
+    }
+
     #menu-toggle {
         width: 0;
         opacity: 0;
     }
 
     label {
-        display: none;
         z-index: 2;
+    }
+
+    input:focus + label {
+        outline: var(--outline);
     }
 
     path {
@@ -99,13 +105,13 @@
         transform: translateX(1px) rotate(-45deg);
     }
 
-    @media only screen and (max-width: 927px) {
+    @media only screen and (max-width: 932px) {
         .menu {
             display: none;
         }
 
-        label {
-            display: flex;
+        .hamburger-container {
+            display: block;
         }
 
         .hamburger-container:has(#menu-toggle:checked) ~ .menu {
