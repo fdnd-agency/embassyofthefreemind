@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-css{
+:root {
     /* Main Colors */
 --primaryColor: #002646; /* Dark blue */
 --secondaryColor: #B59A66; /* Light brown */ 
