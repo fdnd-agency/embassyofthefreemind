@@ -137,6 +137,10 @@
 		cursor: pointer;
 	}
 
+	.image-container button:hover{
+		opacity: 0.8;
+	}
+
 	.image-container button:disabled {
 		opacity: 0.5;
 		cursor: not-allowed;
