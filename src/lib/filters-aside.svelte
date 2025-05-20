@@ -10,7 +10,10 @@
 <aside>
     <span>Filters</span>
     {#if author}
-        <button class=" btn btn-primary" onclick={clearAuthor}>x {author}</button>
+        <noscript>
+            <p class="current-filter">{author}</p>
+        </noscript>
+        <button class="js-only btn btn-primary" onclick={clearAuthor}>x {author}</button>
     {/if}
     <ul>
         <li>
@@ -63,5 +66,11 @@
 
     p {
         padding: 5px;
+    }
+
+    .current-filter {
+        background-color: var(--primaryColor);
+        color: var(--navigationTextColor);
+        text-align: center;
     }
 </style>

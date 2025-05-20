@@ -2,6 +2,14 @@
 	import "../app.css";
 </script>
 
+<noscript>
+	<style>
+		.js-only {
+			display: none;
+		}
+	</style>
+</noscript>
+
 <a href="/">Home</a>
 <a href="/about-EFM">About EFM</a>
 <a href="/plan-your-visit">Plan your visit</a>

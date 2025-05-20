@@ -10,13 +10,14 @@
         isModalOpen = false;
     }
 
+    // Normally, pressing the arrow keys automatically *choses* an option, but this function makes sure it focusses instead.
     function handleKey(event) {
         if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
             event.preventDefault();
-            event.target.previousElementSibling?.previousElementSibling?.focus();
+            event.target.previousElementSibling?.previousElementSibling?.focus(); // skip the label
         } else if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
             event.preventDefault();
-            event.target.nextElementSibling?.nextElementSibling?.focus();
+            event.target.nextElementSibling?.nextElementSibling?.focus(); // skip the label
         }
     }
 
@@ -26,15 +27,17 @@
         authors = dataAuthors.filter;
     })
 </script>
-<div class="dropdown">
-    <div tabindex="0" role="button">More...</div>
+<div>
+    <input type="checkbox" id="author-filter-more" bind:checked={isModalOpen}/>
+    <label for="author-filter-more">More...</label>
     <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
-    <div
-        tabindex="0"
-        class="dropdown-content card card-compact z-[1] w-64 p-2 shadow"
-    >
+    <div class="card card-compact z-[1] w-64 p-2 ">
         <div class="card-body">
-            <PaginatedView name="authors" bind:pageNr={authorsPage} totalResults={totalAuthors} perPage={65}/>
+            <div class="filter-header">
+                <PaginatedView name="authors" bind:pageNr={authorsPage} totalResults={totalAuthors} perPage={65}/>
+                <label for="author-filter-more" class="btn">X</label>
+            </div>
+
             <form action="/digital-catalog" id="filter-place-form">
                 <div id="author-filter-list">
                     {#each authors as authorOption}
@@ -52,12 +55,30 @@
                     {/each}
                 </div>
 
-                <noscript><button type="submit">Filter</button></noscript>
+                <noscript><button class="btn btn-primary" type="submit">Filter</button></noscript>
             </form>
         </div>
     </div>
 </div>
 <style>
+    #author-filter-more {
+        width: 0;
+        opacity: 0;
+    }
+
+    .card {
+        display: none;
+    }
+
+    #author-filter-more:checked ~ .card {
+        display: block;
+    }
+    
+    .filter-header {
+        display: flex;
+        justify-content: space-between;
+    }
+
     .card-body {
         max-width: fit-content;
         background-color: var(--secondaryBackgroundColor);
@@ -77,7 +98,7 @@
         opacity: 0;
     }
 
-    label {
+    .author-label {
         cursor: pointer;
         width: 33%;
     }
