@@ -46,15 +46,15 @@
 }
 
 .btn {
-    border-radius: 0;
- }
+	border-radius: 0;
+}
 
- h1 {
+h1 {
     color: var(--headingColor);
     font-size: var(--fontSizeHeading);
     font-weight: var(--fontWeightRegular);
- }
+}
 
- p {
+p {
     max-width: 40em;
- }
+}

@@ -1,5 +1,7 @@
 <script>
     import logoSmall from '$lib/static/logo-small.png';
+    import englishFlag from '$lib/static/united-kingdom.png';
+    import dutchFlag from '$lib/static/netherlands.png';
 </script>
 
 <div class="nav-container">
@@ -16,11 +18,14 @@
         </div>
         <a class="logo" href="/"><img src={logoSmall} alt="logo"></a>
         <div class="menu">
-            <a class="btn btn-ghost text-xl" href="/">Home</a>
             <a class="btn btn-ghost text-xl" href="/about-EFM">About EFM</a>
             <a class="btn btn-ghost text-xl" href="/plan-your-visit">Plan your visit</a>
             <a class="btn btn-ghost text-xl" href="/digital-catalog">Digital catalog</a>
             <a class="btn btn-ghost text-xl" href="/research-institute">Research institute</a>
+            <div class="flag-container">
+                <button><img class="flag" src="{englishFlag}" alt="English-version"></button>
+                <button><img class="flag" src="{dutchFlag}" alt="Dutch-version"></button>
+            </div>
         </div>
     </nav>
 </div>
@@ -38,7 +43,6 @@
     nav {
         color: var(--primaryColor);
         max-height: 2em;
-        /* box-shadow: 0 8px 6px -6px var(--primaryColor); */
         width: 90%;
         margin: auto;
     }
@@ -48,12 +52,27 @@
     }
 
     img {
-        min-width: 7em;
         object-fit: contain;
+    }
+
+    .flag {
+        width: 2em;
+        height: 2em;
+    }
+
+    .flag-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+
+    .flag-container button {
+        padding: 5px;
     }
 
     .menu {
         display: flex;
+        flex-wrap: nowrap;
         flex-direction: row;
         max-width: 80em;
         margin-left: auto;
