@@ -1,6 +1,6 @@
 <script>
-  	import { getBooks } from '$lib';
-  	import PaginatedView from '$lib/paginated-view.svelte';
+	import { getBooks } from "$lib";
+	import PaginatedView from "$lib/paginated-view.svelte";
 
 	/** @type {import('./$types').PageData} */
 	let { data } = $props();
@@ -10,16 +10,15 @@
 	let totalPages = data.totalPages;
 
 	// $effect means this anonymous function will be called every time resultsPage is updated
-	$effect(async () => { // https://svelte.dev/docs/svelte/$effect
+	$effect(async () => {
+		// https://svelte.dev/docs/svelte/$effect
 		books = (await getBooks(resultsPage)).books;
-	})
+	});
 </script>
 
 <h1>Blog</h1>
 
-<noscript>
-	JAVASCRIPT DISABLED
-</noscript>
+<noscript> JAVASCRIPT DISABLED </noscript>
 
 <!-- bind: allows PaginatedView to update the value of resultsPage -->
 <PaginatedView bind:pageNr={resultsPage} name="results" {totalPages} />
@@ -33,7 +32,6 @@
 		</tr>
 	</thead>
 	<tbody>
-		{#each books as book}
 			<tr>
 				<td>
 					{#if book.bookImages}
@@ -49,11 +47,15 @@
 </table>
 
 <style>
-	table, td, th {
+	table,
+	td,
+	th {
 		border: none;
 		border-collapse: collapse;
 	}
-	thead, thead tr, th {
+	thead,
+	thead tr,
+	th {
 		background-color: #ccc;
 	}
 
@@ -73,5 +75,4 @@
 		max-width: none;
 		width: 20vw;
 	}
-
 </style>
