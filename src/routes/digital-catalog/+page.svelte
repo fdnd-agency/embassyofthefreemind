@@ -1,10 +1,10 @@
 <script>
   	import { getBooks } from '$lib';
-  import FiltersAside from '$lib/filters-aside.svelte';
+	import FiltersAside from '$lib/filters-aside.svelte';
   	import PaginatedView from '$lib/paginated-view.svelte';
 	import Search from '$lib/search.svelte';
 	import Headercomponent from '$lib/Headercomponent.svelte';
-  import Breadcrumbs from '$lib/breadcrumbs.svelte';
+	import Breadcrumbs from '$lib/breadcrumbs.svelte';
 
 	/** @type {import('./$types').PageData} */
 	let { data } = $props();

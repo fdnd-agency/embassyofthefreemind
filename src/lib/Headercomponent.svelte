@@ -1,14 +1,11 @@
 <script>
-
-    import HeaderImage from '$lib/static/header-catalog.jpg';
     import Nav from './nav.svelte';
-
 </script>
 
 <header>
     <div class="header-image">
         <Nav/>
-        <img src={HeaderImage} alt="klassiek geschrift logo catalogus">
+        <enhanced:img class="img-header-catalog" src="$lib/static/header-catalog.jpg" alt="klassiek geschrift logo catalogus">
     </div>
 </header>
 
@@ -17,7 +14,7 @@
         width: 100vw;
     }
 
-    img {
+    .img-header-catalog {
         width: 100vw;
         max-height: 15em;
         object-fit: cover;

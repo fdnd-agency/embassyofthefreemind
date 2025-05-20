@@ -1,9 +1,3 @@
-<script>
-    import logoSmall from '$lib/static/logo-small.png';
-    import englishFlag from '$lib/static/united-kingdom.png';
-    import dutchFlag from '$lib/static/netherlands.png';
-</script>
-
 <div class="nav-container">
     <nav class="navbar bg-base-100">
         <div class="hamburger-container">
@@ -16,15 +10,19 @@
                 </svg>
             </label>
         </div>
-        <a class="logo" href="/"><img src={logoSmall} alt="logo"></a>
+        <!-- This incorrectly gives a warning due to enhanced:img instead of img -->
+        <!-- svelte-ignore a11y_consider_explicit_label -->
+        <a class="logo" href="/" aria-label="home"><enhanced:img class="logo-img" src="$lib/static/logo-efm.png" alt="logo"></a>
         <div class="menu">
             <a class="btn btn-ghost text-xl" href="/about-EFM">About EFM</a>
             <a class="btn btn-ghost text-xl" href="/plan-your-visit">Plan your visit</a>
             <a class="btn btn-ghost text-xl" href="/digital-catalog">Digital catalog</a>
             <a class="btn btn-ghost text-xl" href="/research-institute">Research institute</a>
             <div class="flag-container">
-                <button><img class="flag" src="{englishFlag}" alt="English-version"></button>
-                <button><img class="flag" src="{dutchFlag}" alt="Dutch-version"></button>
+                <!-- svelte-ignore a11y_consider_explicit_label -->
+                <button aria-label="english"><enhanced:img class="flag" src="$lib/static/united-kingdom.png" alt="English-version"></button>
+                <!-- svelte-ignore a11y_consider_explicit_label -->
+                <button aria-label="nederlands"><enhanced:img class="flag" src="$lib/static/netherlands.png" alt="Dutch-version"></button>
             </div>
         </div>
     </nav>
@@ -49,9 +47,12 @@
 
     .logo {
         background-color: var(--backgroundColor);
+        height: 4em;
     }
 
-    img {
+    .logo-img {
+        height: 4em;
+        width: min-content;
         object-fit: contain;
     }
 
