@@ -1,5 +1,6 @@
 <script>
     /** @type {import('./$types').PageData} */
+    import { nRows } from '$lib';
     // name must be unique. It is used for the no-js version to ensure that different instances of this component don't conflict.
     let { pageNr = $bindable(), totalResults, name, perPage } = $props();
 

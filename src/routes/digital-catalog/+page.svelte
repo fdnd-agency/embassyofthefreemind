@@ -38,8 +38,27 @@
 	</div>
 	<div class="catalog-container">
 		<!-- bind: allows PaginatedView to update the value of resultsPage -->
-		<FiltersAside bind:author={author} authors={data.authors} totalAuthors={data.totalAuthors} authorsPage={data.authorsPage}/>
+		<div class="big-screen-only">
+			<FiltersAside  bind:author={author} authors={data.authors} totalAuthors={data.totalAuthors} authorsPage={data.authorsPage}/>
+		</div>
 		<div class="page-container">
+			<div class="small-screen-only">
+				Filters
+				<ul class="filters-small">
+					<li>
+						<label for="todo" class="btn">Digitized</label>
+					</li>
+					<li>
+						<label for="todo" class="btn">Year</label>
+					</li>
+					<li>
+						<label for="todo" class="btn">Author</label>
+					</li>
+					<li>
+						<label for="todo" class="btn">Place</label>
+					</li>
+				</ul>
+			</div>
 			<p class="results" ><span class="total-results">{totalResults}</span>results</p>
 			<hr/>
 			<table class="table-zebra">
@@ -127,5 +146,30 @@
 		display: flex;
 		justify-content: end;
 		margin: 1em;
+	}
+
+	.small-screen-only {
+		display: none;
+	}
+
+	.filters-small {
+		display: flex;
+		gap: 1em;
+		max-width: 90vw;
+		overflow-x: auto;
+	}
+
+	@media only screen and (max-width: 800px) {
+		.small-screen-only {
+			display: initial;
+		}
+
+		.big-screen-only {
+			display: none;
+		}
+
+		.page-container {
+			padding-left: 0;
+		}
 	}
 </style>
