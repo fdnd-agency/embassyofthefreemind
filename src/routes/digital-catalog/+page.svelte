@@ -33,11 +33,14 @@
 		</tr>
 	</thead>
 	<tbody>
+		{#each books as book, i}
 			<tr>
 				<td>
-					{#if book.bookImages}
-						<img src={book.bookImages.small} alt=""/>
-					{/if}
+					<div class="skeleton">
+						{#if book.bookImages}
+							<BookViewer images={book.bookImages} queryKey={"boek" + i} title={book.title} />
+						{/if}
+					</div>
 				</td>
 				<td>{book.title}</td>
 				<td>{book.author}</td>
@@ -72,8 +75,10 @@
 		padding-right: 1em;
 	}
 
-	img{
-		max-width: none;
+	.skeleton {
+		border-radius: 0rem;
 		width: 20vw;
+		height: 20vw;
+		animation: skeleton none;
 	}
 </style>
