@@ -4,10 +4,10 @@
 
     /** @type {import('./$types').PageData} */
     let { author = $bindable(), authors, totalAuthors, authorsPage, filterAuthor } = $props();
-    let isModalOpen = $state(false);
+    let isDropdownOpen = $state(false);
 
-    function closeModal() {
-        isModalOpen = false;
+    function closeDropdown() {
+        isDropdownOpen = false;
     }
 
     // Normally, pressing the arrow keys automatically *choses* an option, but this function makes sure it focusses instead.
@@ -28,13 +28,13 @@
     })
 </script>
 <div>
-    <input type="checkbox" id="author-filter-more" bind:checked={isModalOpen}/>
+    <input type="checkbox" id="author-filter-more" bind:checked={isDropdownOpen}/>
     <label for="author-filter-more">More...</label>
     <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
     <div class="card card-compact z-[1] w-64 p-2 ">
         <div class="card-body">
             <div class="filter-header">
-                <PaginatedView name="authors" bind:pageNr={authorsPage} totalResults={totalAuthors} perPage={65}/>
+                <PaginatedView name="authors" bind:pageNr={authorsPage} totalResults={totalAuthors} perPage={66}/>
                 <label for="author-filter-more" class="btn">X</label>
             </div>
 
@@ -48,7 +48,7 @@
                             type="radio"
                             name="author"
                             bind:group={author}
-                            onchange={closeModal}
+                            onchange={closeDropdown}
                             onkeydown={handleKey}
                         />
                         <label class="author-label" for="author-{authorOption.id}">{authorOption.label} ({authorOption.count})</label>
@@ -81,9 +81,15 @@
 
     .card-body {
         max-width: fit-content;
+        width: calc(95vw - 2em);
         background-color: var(--secondaryBackgroundColor);
         position: absolute;
     }
+
+    #filter-place-form {
+        overflow-x: auto;
+    }
+    
     #author-filter-list {
         /* display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -100,19 +106,17 @@
 
     .author-label {
         cursor: pointer;
-        width: 33%;
+        flex-basis: 18em;
+        flex-grow: 0.5;
     }
 
     input:focus + label {
         outline: 1px solid black;
     }
 
-    form {
-        margin: 2em 0;
-    }
-
     #author-filter-list {
         width: 65em;
+        max-width: calc(95vw - 4em);
     }
 </style>
 
