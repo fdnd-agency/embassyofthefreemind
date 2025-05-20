@@ -1,6 +1,7 @@
 <script>
 	import { getBooks } from "$lib";
 	import PaginatedView from "$lib/paginated-view.svelte";
+	import BookViewer from "$lib/book-viewer.svelte";
 
 	/** @type {import('./$types').PageData} */
 	let { data } = $props();
