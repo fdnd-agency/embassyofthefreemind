@@ -9,13 +9,17 @@ export function arrayToObject(array) {
     return result;
 }
 
-const nRows = 25;
+export const nRows = 25;
 
-export const booksURL = `${PUBLIC_APIURL}/media?apiKey=${PUBLIC_API_KEY}&facetFields%5B%5D=search_s_auteur&facetFields%5B%5D=search_s_plaats_van_uitgave&facetFields%5B%5D=search_s_jaar&facetFields%5B%5D=search_s_digitized_publication&fq%5B%5D=search_s_digitized_publication:%22Ja%22&lang=nl&page=1&q=&rows=${nRows}&sort=random%7B1709035870679%7D+asc`;
+export const booksURL = `${PUBLIC_APIURL}/media?apiKey=${PUBLIC_API_KEY}&facetFields%5B%5D=search_s_auteur&facetFields%5B%5D=search_s_plaats_van_uitgave&facetFields%5B%5D=search_s_jaar&facetFields%5B%5D=search_s_digitized_publication&lang=nl&page=1&rows=${nRows}&sort=random%7B1709035870679%7D+asc`;
 
 // TODO: Add filters as arguments
-export async function getBooks(pageNr, customFetch = null) {
+export async function getBooks(pageNr, searchTerm, customFetch = null) {
     let query = booksURL + '&page=' + pageNr;
+
+    if (searchTerm) {
+        query += "&q=" + searchTerm;
+    }
 
 	const res = await (customFetch ?? fetch)(query);
     const data = await res.json();
@@ -29,7 +33,7 @@ export async function getBooks(pageNr, customFetch = null) {
         }
     });
     return {
-        totalPages: Math.ceil(data.metadata.pagination.total / nRows),
+        totalResults: data.metadata.pagination.total,
         books
     }
 }
