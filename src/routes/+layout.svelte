@@ -1,13 +1,9 @@
 <script>
 	import "../app.css";
+	import Nav from "$lib/nav.svelte";
 </script>
 
-<a href="/">Home</a>
-<a href="/about-EFM">About EFM</a>
-<a href="/plan-your-visit">Plan your visit</a>
-<a href="/digital-catalog">Digital catalog</a>
-<a href="/research-institute">Research institute</a>
-
+<Nav/>
 <div>
 	<slot />
 </div>

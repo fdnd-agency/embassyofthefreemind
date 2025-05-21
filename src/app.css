@@ -35,10 +35,26 @@
     --borderHard: 1px solid var(--textColor);
     --borderSoft: 1px solid var(--secondaryBackgroundColor);
 
+    /* Outline */
+    --outline: 2px solid var(--primaryColor);
+
     /* TODO: Spacing */
 }
 
- 
+*:focus {
+   outline: var(--outline);
+}
+
 .btn {
-    border-radius: 0;
- }
+	border-radius: 0;
+}
+
+h1 {
+    color: var(--headingColor);
+    font-size: var(--fontSizeHeading);
+    font-weight: var(--fontWeightRegular);
+}
+
+p {
+    max-width: 40em;
+}
