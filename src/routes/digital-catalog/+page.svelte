@@ -4,6 +4,7 @@
   import Breadcrumbs from '$lib/breadcrumbs.svelte';
   import Search from '$lib/search.svelte';
 	import FiltersAside from '$lib/filters-aside.svelte';
+  import BookViewer from "$lib/book-viewer.svelte";
   import PaginatedView from '$lib/paginated-view.svelte';
   import Footer from '$lib/footer.svelte';
 
@@ -15,6 +16,7 @@
 	let searchTerm = $state(data.searchTerm);
 	let totalResults = $state(data.totalResults);
 
+<h1>Blog</h1>
 	// $effect means this anonymous function will be called every time resultsPage or searchTerm is updated
 	$effect(async () => { // https://svelte.dev/docs/svelte/$effect
 		const res = await getBooks(resultsPage, searchTerm);
@@ -23,9 +25,7 @@
 	})
 </script>
 
-<noscript>
-	JAVASCRIPT DISABLED
-</noscript>
+<noscript> JAVASCRIPT DISABLED </noscript>
 
 <Headercomponent />                                     
 <main>
@@ -46,16 +46,23 @@
 			<hr/>
 			<table class="table-zebra">
 				<thead>
-
 					<tr>
+            <th>Afbeeldingen</th>
 						<th>Titel</th>
 						<th>Auteur</th>
 						<th>Publicatie jaar</th>
 					</tr>
 				</thead>
 				<tbody>
-					{#each books as book}
+					{#each books as book, i}
 						<tr>
+              <td>
+                <div class="skeleton">
+                  {#if book.bookImages}
+                    <BookViewer images={book.bookImages} queryKey={"boek" + i} title={book.title} />
+                  {/if}
+                </div>
+              </td>
 							<td>{book.title}</td>
 							<td>{book.author}</td>
 							<td>{book.publicationYear}</td>
@@ -76,7 +83,6 @@
 </main>
 
 <style>
-	
 	main {
 		width: 90%;
 		margin: 0 auto;
@@ -113,6 +119,10 @@
 		border-collapse: collapse;
 		width: 65em;
 	}
+
+	tbody tr:nth-of-type(even) td {
+		background-color: #eee;
+    
 	thead, thead tr, th {
 		background-color: var(--secondaryBackgroundColor);
 	}
@@ -129,5 +139,12 @@
 		display: flex;
 		justify-content: end;
 		margin: 1em;
+	}
+
+	.skeleton {
+		border-radius: 0rem;
+		width: 20vw;
+		height: 20vw;
+		animation: skeleton none;
 	}
 </style>
