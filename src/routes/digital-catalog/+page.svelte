@@ -16,7 +16,6 @@
 	let searchTerm = $state(data.searchTerm);
 	let totalResults = $state(data.totalResults);
 
-<h1>Blog</h1>
 	// $effect means this anonymous function will be called every time resultsPage or searchTerm is updated
 	$effect(async () => { // https://svelte.dev/docs/svelte/$effect
 		const res = await getBooks(resultsPage, searchTerm);
@@ -88,6 +87,7 @@
 		margin: 0 auto;
 		margin-top: 1em;
 	}
+	
 	.search-container {
 		background-color: var(--secondaryBackgroundColor);
 		height: 5em;
@@ -96,6 +96,7 @@
 		align-items: center;
 		margin-top: 3em;
 	}
+
 	.catalog-container {
 		display: flex;
 		margin-top: 0;
@@ -111,9 +112,15 @@
 		font-weight: var(--fontWeightBold);
 		padding-right: 5px;
 	}
+
+	table{
+		z-index: -1;
+	}
+
 	table, .results, hr {
 		margin-top: 1.5em;
 	}
+
 	table, td, th {
 		border: none;
 		border-collapse: collapse;
@@ -122,6 +129,7 @@
 
 	tbody tr:nth-of-type(even) td {
 		background-color: #eee;
+	}
     
 	thead, thead tr, th {
 		background-color: var(--secondaryBackgroundColor);
