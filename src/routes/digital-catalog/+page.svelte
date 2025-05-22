@@ -12,7 +12,6 @@
 	let { data } = $props();
 
 	let resultsPage = $state(data.resultsPage);
-	let books = $state(data.books);
 	let searchTerm = $state(data.searchTerm);
 	let totalResults = $state(data.totalResults);
 
@@ -20,7 +19,6 @@
 	$effect(async () => {
 		// https://svelte.dev/docs/svelte/$effect
 		const res = await getBooks(resultsPage, searchTerm);
-		books = res.books;
 		totalResults = res.totalResults;
 	});
 </script>
@@ -47,34 +45,10 @@
 		<!-- bind: allows PaginatedView to update the value of resultsPage -->
 		<FiltersAside />
 		<div class="page-container">
-			<p class="results" ><span class="total-results">{totalResults}</span>results</p>
-			<hr/>
-			<table class="table-zebra">
-				<thead>
-					<tr>
-            <th>Afbeeldingen</th>
-						<th>Titel</th>
-						<th>Auteur</th>
-						<th>Publicatie jaar</th>
-					</tr>
-				</thead>
-				<tbody>
-					{#each books as book, i}
-						<tr>
-              <td>
-                <div class="skeleton">
-                  {#if book.bookImages}
-                    <BookViewer images={book.bookImages} queryKey={"boek" + i} title={book.title} />
-                  {/if}
-                </div>
-              </td>
-							<td>{book.title}</td>
-							<td>{book.author}</td>
-							<td>{book.publicationYear}</td>
-						</tr>
-					{/each}
-				</tbody>
-			</table>
+			<p class="results">
+				<span class="total-results">{totalResults}</span>results
+			</p>
+			<hr />
 			<div class="paginated-view">
 				<PaginatedView
 					name="results"
