@@ -7,6 +7,7 @@
   import BookViewer from "$lib/book-viewer.svelte";
   import PaginatedView from '$lib/paginated-view.svelte';
   import Footer from '$lib/footer.svelte';
+	import BookList from "$lib/book-list.svelte"
 
 	/** @type {import('./$types').PageData} */
 	let { data } = $props();
