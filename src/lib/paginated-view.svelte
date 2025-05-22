@@ -6,12 +6,12 @@
 
     let totalPages = $derived(Math.ceil(totalResults / perPage) || 1); // math.ceil rounds up
 
-    async function nextPage(event) {
+    function nextPage(event) {
         event.preventDefault();
         pageNr++;
     }
 
-    async function previousPage(event) {
+    function previousPage(event) {
         event.preventDefault();
         pageNr--;
     }

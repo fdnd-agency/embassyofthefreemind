@@ -31,7 +31,7 @@
         <li>
            <details>
                 <summary>Author</summary>
-                <FilterButtonAuthor bind:author={author} {authors} {totalAuthors} {authorsPage}/>           
+                <FilterButtonAuthor id="aside" bind:author={author} {authors} {totalAuthors} {authorsPage}/>
             </details> 
         </li>
         <li>

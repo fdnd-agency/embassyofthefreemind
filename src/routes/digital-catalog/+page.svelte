@@ -1,10 +1,10 @@
 <script>
   	import { getBooks } from '$lib';
-  import FiltersAside from '$lib/filters-aside.svelte';
+  	import FiltersAside from '$lib/filters-aside.svelte';
   	import PaginatedView from '$lib/paginated-view.svelte';
 	import Search from '$lib/search.svelte';
 	import Headercomponent from '$lib/Headercomponent.svelte';
-	import FilterButtonAuthor from '$lib/filter-button-author.svelte';
+	import FilterContainerSmall from '$lib/filter-container-small.svelte';
 
 	/** @type {import('./$types').PageData} */
 	let { data } = $props();
@@ -39,27 +39,11 @@
 	<div class="catalog-container">
 		<!-- bind: allows PaginatedView to update the value of resultsPage -->
 		<div class="big-screen-only">
-			<FiltersAside  bind:author={author} authors={data.authors} totalAuthors={data.totalAuthors} authorsPage={data.authorsPage}/>
+			<FiltersAside bind:author={author} authors={data.authors} totalAuthors={data.totalAuthors} authorsPage={data.authorsPage}/>
 		</div>
 		<div class="page-container">
-			<div class="small-screen-only">
-				Filters
-				<ul class="filters-small">
-					<li>
-						<label for="todo" class="btn">Digitized</label>
-					</li>
-					<li>
-						<label for="todo" class="btn">Year</label>
-					</li>
-					<li>
-						<label for="todo" class="btn">Author</label>
-					</li>
-					<li>
-						<label for="todo" class="btn">Place</label>
-					</li>
-				</ul>
-			</div>
 			<p class="results" ><span class="total-results">{totalResults}</span>results</p>
+			<FilterContainerSmall bind:author={author} authors={data.authors} totalAuthors={data.totalAuthors} authorsPage={data.authorsPage}/>
 			<hr/>
 			<table class="table-zebra">
 				<thead>
@@ -85,7 +69,7 @@
 					name="results"
 					bind:pageNr={resultsPage}
 					totalResults={totalResults}
-					perPage={45}
+					perPage={25}
 				/>
 			</div>
 		</div>
@@ -148,21 +132,9 @@
 		margin: 1em;
 	}
 
-	.small-screen-only {
-		display: none;
-	}
 
-	.filters-small {
-		display: flex;
-		gap: 1em;
-		max-width: 90vw;
-		overflow-x: auto;
-	}
 
 	@media only screen and (max-width: 800px) {
-		.small-screen-only {
-			display: initial;
-		}
 
 		.big-screen-only {
 			display: none;
