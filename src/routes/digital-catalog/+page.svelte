@@ -93,36 +93,6 @@
 		padding-right: 5px;
 	}
 
-	table{
-		z-index: -1;
-	}
-
-	table, .results, hr {
-		margin-top: 1.5em;
-	}
-
-	table, td, th {
-		border: none;
-		border-collapse: collapse;
-		width: 65em;
-	}
-
-	tbody tr:nth-of-type(even) td {
-		background-color: #eee;
-	}
-    
-	thead, thead tr, th {
-		background-color: var(--secondaryBackgroundColor);
-	}
-
-	th {
-		text-align: left;
-	}
-
-	td {
-		padding-right: 1em;
-	}
-
 	.paginated-view {
 		display: flex;
 		justify-content: end;
