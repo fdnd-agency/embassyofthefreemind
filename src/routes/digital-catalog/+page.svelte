@@ -49,6 +49,7 @@
 				<span class="total-results">{totalResults}</span>results
 			</p>
 			<hr />
+			<BookList booksData={data.books} />
 			<div class="paginated-view">
 				<PaginatedView
 					name="results"
