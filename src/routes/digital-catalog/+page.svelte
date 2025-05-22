@@ -39,7 +39,7 @@
 		<!-- All filter inputs and submit buttons should connect to this form using form="main-form" -->
 	</form>
 	<div class="search-container">
-		<Search bind:searchTerm={searchTerm}/>
+		<Search bind:searchTerm />
 	</div>
 	<div class="catalog-container">
 		<!-- bind: allows PaginatedView to update the value of resultsPage -->
@@ -53,7 +53,7 @@
 				<PaginatedView
 					name="results"
 					bind:pageNr={resultsPage}
-					totalResults={totalResults}
+					{totalResults}
 				/>
 			</div>
 		</div>
