@@ -1,31 +1,27 @@
+<script>
+    import FilterGroup from "./FilterGroup.svelte";
+    export let summary
+</script>
 
 <aside>
     <span>Filters</span>
     <ul>
-        <li>
-            <details>
-                <summary>Digitalised</summary>
-                <p>WIP: Digitalised filter</p>
-            </details>
-        </li>
-        <li>
-            <details>
-                <summary>Year</summary>
-                <p>WIP: Year filter</p>
-            </details>
-        </li>
-        <li>
-           <details>
-                <summary>Author</summary>
-                <p>WIP: Author filter</p>
-           </details> 
-        </li>
-        <li>
-            <details>
-                <summary>Place of publication</summary>
-                <p>WIP: Place filter</p>
-            </details>
-        </li>
+        <FilterGroup 
+            summary="Digitalised"
+            optionsList={["Yes", "No"]}
+        />
+        <FilterGroup 
+        summary="Year"
+        optionsList={["15th century", "16th century", "17th century"]}
+        />
+        <FilterGroup 
+        summary="Author"
+        optionsList={["author1", "author2", "author3"]}
+        />
+        <FilterGroup 
+        summary="Place of publication"
+        optionsList={["Amsterdam", "The Hague", "Rotterdam"]}
+        />
     </ul>
 </aside>
 <style>

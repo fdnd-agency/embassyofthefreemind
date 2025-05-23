@@ -15,7 +15,7 @@
 
   <style>
     summary{
-      background-color: aqua;
+      font-weight: var(--fontWeightBold);
     }
   </style>
   
