@@ -38,7 +38,34 @@
     /* TODO: Spacing */
 }
 
+summary, .summary {
+    color: var(--primaryColor);
+    font-weight: var(--fontWeightBold);
+    padding: 5px 0px;
+}
  
 .btn {
     border-radius: 0;
- }
+    border: 1px solid var(--secondaryBackgroundColor);
+    background-color: var(--backgroundColor);
+    color: var(--primaryColor);
+    font-weight: var(--fontWeightBold);
+}
+
+.btn-primary {
+    background-color: var(--primaryColor);
+    color: var(--navigationTextColor);
+    border: none;
+}
+
+.btn:hover {
+    border-radius: 0;
+    background-color: var(--primaryColor);
+    color: var(--navigationTextColor);
+    border:1px solid var(--primaryColor);
+}
+
+.btn-primary:hover {
+    border: none;
+    transform: scale(1.03);
+}

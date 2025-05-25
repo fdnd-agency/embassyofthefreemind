@@ -1,4 +1,4 @@
-
+<div class="big-screen-only">
 <aside>
     <span>Filters</span>
     <ul>
@@ -28,6 +28,8 @@
         </li>
     </ul>
 </aside>
+</div>
+
 <style>
     aside {
         width: 15em;
@@ -53,4 +55,10 @@
     p {
         padding: 5px;
     }
+
+    @media only screen and (max-width: 800px) {
+		.big-screen-only {
+			display: none;
+		}
+	}
 </style>
