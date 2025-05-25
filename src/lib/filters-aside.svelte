@@ -8,12 +8,12 @@
     }
 </script>
 <aside>
-    <span>Filters</span>
+    <p class="summary">Filters</p>
     {#if author}
         <noscript>
             <p class="current-filter">{author}</p>
         </noscript>
-        <button class="js-only btn btn-primary" onclick={clearAuthor}>x {author}</button>
+        <button class="js-only badge btn-primary" onclick={clearAuthor}>x Author: <span class="bold">{author}</span></button>
     {/if}
     <ul>
         <li>
@@ -51,12 +51,6 @@
     }
 
     li, ul {
-        padding: 5px;
-    }
-
-    summary, span {
-        color: var(--primaryColor);
-        font-weight: var(--fontWeightBold);
         padding: 5px;
     }
 

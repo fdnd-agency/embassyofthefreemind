@@ -36,7 +36,6 @@
 <style>
     .pagination-form {
         display: flex;
-        margin-bottom: 1em;
         align-items: center;
     }
 
