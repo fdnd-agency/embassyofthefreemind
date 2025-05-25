@@ -24,7 +24,7 @@
     });
 </script>
 
-<div id="filter-place-form">
+<div id="filter-author-form">
     <div id="author-filter-list">
         {#each authors as authorOption}
             <input
@@ -47,7 +47,7 @@
 
 <style>
 
-    #filter-place-form {
+    #filter-author-form {
         overflow-x: auto;
     }
     

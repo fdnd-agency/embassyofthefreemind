@@ -1,5 +1,5 @@
 <script>
-    import Authors from "$lib/authors.svelte";
+    import AuthorsFilter from "$lib/authors-filter.svelte";
     import PaginatedView from "./paginated-view.svelte";
 
     /** @type {import('./$types').PageData} */
@@ -20,7 +20,7 @@
                 <label for="author-filter-more" class="btn">X</label>
             </div>
 
-            <Authors bind:author={author} {authors} {totalAuthors} {authorsPage} hideFn={closeDropdown}/>
+            <AuthorsFilter bind:author={author} {authors} {totalAuthors} {authorsPage} hideFn={closeDropdown}/>
         </div>
     </div>
 </div>

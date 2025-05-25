@@ -1,5 +1,5 @@
 <script>
-    import Authors from '$lib/authors.svelte';
+    import AuthorsFilter from '$lib/authors-filter.svelte';
     import PaginatedView from '$lib/paginated-view.svelte';
 
     let { author = $bindable(), authors, totalAuthors, authorsPage } = $props();
@@ -36,7 +36,7 @@
                             <label for="my_modal_6" class="btn">X</label>
                         </div>
                         <div class="scrollbox">
-                            <Authors bind:author={author} {authors} {totalAuthors} {authorsPage} hideFn={closePopup}/>
+                            <AuthorsFilter bind:author={author} {authors} {totalAuthors} {authorsPage} hideFn={closePopup}/>
                         </div>
                         <div class="modal-action"></div>
                     </div>
