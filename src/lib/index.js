@@ -34,7 +34,8 @@ export async function getBooks(pageNr, searchTerm, author, customFetch = null) {
         return {
             title: book.title,
             author: meta.auteur,
-            publicationYear: meta.jaar
+            publicationYear: meta.jaar,
+            bookImages: book.asset?.map(asset => asset.thumb) ?? []
         }
     });
     return {
