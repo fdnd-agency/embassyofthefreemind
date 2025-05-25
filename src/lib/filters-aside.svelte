@@ -2,11 +2,12 @@
     import FilterButtonAuthor from '$lib/filter-button-author.svelte';
 
     let { author = $bindable(), authors, totalAuthors, authorsPage } = $props();
-
     function clearAuthor() {
         author = null;
     }
 </script>
+<div class="big-screen-only">
+
 <aside>
     <p class="summary">Filters</p>
     {#if author}
@@ -42,6 +43,8 @@
         </li>
     </ul>
 </aside>
+</div>
+
 <style>
     aside {
         width: 15em;
@@ -67,4 +70,10 @@
         color: var(--navigationTextColor);
         text-align: center;
     }
+
+    @media only screen and (max-width: 800px) {
+		.big-screen-only {
+			display: none;
+		}
+	}
 </style>
