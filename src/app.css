@@ -35,6 +35,9 @@
     --borderHard: 1px solid var(--textColor);
     --borderSoft: 1px solid var(--secondaryBackgroundColor);
 
+    /* Outline */
+    --outline: 2px solid var(--primaryColor);
+
     /* TODO: Spacing */
 }
 
@@ -68,4 +71,17 @@ summary, .summary {
 .btn-primary:hover {
     border: none;
     transform: scale(1.03);
+}
+*:focus {
+   outline: var(--outline);
+}
+
+h1 {
+    color: var(--headingColor);
+    font-size: var(--fontSizeHeading);
+    font-weight: var(--fontWeightRegular);
+}
+
+p {
+    max-width: 40em;
 }
