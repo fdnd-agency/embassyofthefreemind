@@ -71,7 +71,7 @@
     }
 
     label {
-        margin: 2   px 0;
+        margin: 2px 0;
     }
 
     li:has(input[type="checkbox"]:focus) label {
