@@ -12,12 +12,24 @@
 </script>
 <div>
     <input type="checkbox" id="author-filter-more" bind:checked={isDropdownOpen}/>
-    <label for="author-filter-more">More...</label>
+    <label for="author-filter-more" class="author-filter-more-label" aria-label="More filters">More...</label>
     <div class="card card-compact z-[1] w-64 p-2 ">
         <div class="card-body">
             <div class="filter-header">
                 <PaginatedView name="authors" bind:pageNr={authorsPage} totalResults={totalAuthors} perPage=66/>
-                <label for="author-filter-more" class="btn">X</label>
+                <label for="author-filter-more" class="btn" aria-label="Close popup">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        class="inline-block h-4 w-4 stroke-current">
+                        <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </label>
             </div>
 
             <AuthorsFilter bind:author={author} {authors} {totalAuthors} {authorsPage} hideFn={closeDropdown}/>
@@ -32,6 +44,18 @@
 
     .card {
         display: none;
+    }
+
+    .author-filter-more-label {
+        cursor: pointer;
+    }
+
+    input:focus + .author-filter-more-label {
+        outline: var(--outline);
+    }
+
+    .author-filter-more-label:hover {
+        text-decoration: underline;
     }
 
     #author-filter-more:checked ~ .card {

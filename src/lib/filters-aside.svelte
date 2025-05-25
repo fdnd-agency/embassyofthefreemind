@@ -14,8 +14,20 @@
         <noscript>
             <p class="current-filter">{author}</p>
         </noscript>
-        <button class="js-only badge btn-primary" onclick={clearAuthor}>x Author: <span class="bold">{author}</span></button>
-    {/if}
+        <button class="js-only badge btn-primary" onclick={clearAuthor} aria-label="remove author filter">                                
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                class="inline-block h-4 w-4 stroke-current">
+                <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"></path>
+            </svg> Author: 
+            <span class="bold">{author}</span>
+        </button>    {/if}
     <ul>
         <li>
             <details>
