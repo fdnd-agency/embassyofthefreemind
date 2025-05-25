@@ -20,10 +20,12 @@
     <p class="summary">Filters</p>
         <ul class="filters-small">
             <li>
-                <label for="todo" class="btn">Digitized</label>
+                <label for="filter-digitized" class="btn">Digitized</label>
+                <input type="checkbox" id="filter-digitized">
             </li>
             <li>
-                <label for="todo" class="btn">Year</label>
+                <label for="filter-year" class="btn">Year</label>
+                <input type="checkbox" id="filter-year">
             </li>
             <li>
                 <label for="my_modal_6" class="btn">Author</label>
@@ -43,7 +45,8 @@
                 </div>
             </li>
             <li>
-                <label for="todo" class="btn">Place</label>
+                <label for="filter-place" class="btn">Place</label>
+                <input type="checkbox" id="filter-place">
             </li>
         </ul>
     </div>
@@ -58,15 +61,27 @@
 </div>
 
 <style>
+    ul {
+        padding-left: 2px;
+    }
 
     input[type="checkbox"] {
         width: 0;
         opacity: 0;
     }
 
-    .modal {
+    label {
+        margin: 2   px 0;
+    }
+
+    li:has(input[type="checkbox"]:focus) label {
+        outline: var(--outline);
+    }
+
+    div.modal {
         justify-items: unset;
         display: unset;
+        visibility: hidden;
     }
 
     .modal-box {
