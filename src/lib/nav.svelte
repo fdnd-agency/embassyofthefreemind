@@ -2,7 +2,7 @@
     <nav class="navbar bg-base-100">
         <div class="hamburger-container">
             <input type="checkbox" id="menu-toggle">
-            <label for="menu-toggle" class="btn">
+            <label for="menu-toggle" class="btn hamburger-btn">
                 <svg viewBox="0 0 8 6" fill="#000" width="32">
                     <path d="M 0.5 0 h 7 a 0.5 0.5 0 0 1 0 1 h -7 a 0.5 0.5 0 0 1 0 -1"/>
                     <path d="M 0.5 2.5 h 7 a 0.5 0.5 0 0 1 0 1 h -7 a 0.5 0.5 0 0 1 0 -1"/>
@@ -71,6 +71,17 @@
         padding: 5px;
     }
 
+    .hamburger-btn {
+        box-shadow: none;
+    }
+    .hamburger-btn:hover {
+        background-color: var(--backgroundColor);
+    }
+
+    .btn {
+        border: unset;
+    }
+
     .menu {
         display: flex;
         flex-wrap: nowrap;
@@ -81,7 +92,6 @@
 
     .menu a {
         padding: 0 0.5em;
-        border-right: 2px solid var(--backgroundColor);
     }
 
     .hamburger-container {
