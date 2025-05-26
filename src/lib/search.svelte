@@ -14,7 +14,7 @@
         placeholder="Search here..."
         bind:value={searchTerm}
     />
-        <button onclick={doNothing} type="submit" form="main-form"><img src="/search-icon.svg" alt="search"></button>
+        <button onclick={doNothing} type="submit" form="main-form" aria-label="search"><enhanced:img src="$lib/static/search-icon.svg" alt="search"></button>
 </div>
 
 <style>
