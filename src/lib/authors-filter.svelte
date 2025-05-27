@@ -28,7 +28,7 @@
     <div id="author-filter-list">
         {#each authors as authorOption}
             <input
-                form="main-form"
+                form="filter-form"
                 class="author-radio"
                 value={authorOption.id}
                 id="author-{authorOption.id}-{id}"

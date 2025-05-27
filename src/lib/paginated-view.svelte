@@ -18,16 +18,16 @@
 </script>
 
 <div class="pagination-form">
-    <input id="{name}-previous" form="main-form" class="btn" type="submit" name="{name}-page-action" value="previous" onclick={previousPage} disabled={pageNr <= 1}>
+    <input id="{name}-previous" form="filter-form" class="btn" type="submit" name="{name}-page-action" value="previous" onclick={previousPage} disabled={pageNr <= 1}>
     <label for="{name}-previous" aria-label="previous">
         <enhanced:img src="$lib/static/icon2.svg" alt="previous-{name}-page">
     </label>
     <div class="pagination-view">
-        <input class="page-nr" form="main-form" type="number" name="{name}-page" bind:value={pageNr} max={totalPages} aria-label="page number">
+        <input class="page-nr" form="filter-form" type="number" name="{name}-page" bind:value={pageNr} max={totalPages} aria-label="page number">
         <span>/</span>
         {totalPages}
     </div>
-    <input id="{name}-next" form="main-form" class="btn" type="submit" name="{name}-page-action" value="next" onclick={nextPage} disabled={pageNr >= totalPages}>
+    <input id="{name}-next" form="filter-form" class="btn" type="submit" name="{name}-page-action" value="next" onclick={nextPage} disabled={pageNr >= totalPages}>
     <label for="{name}-next" aria-label="next">
         <enhanced:img src="$lib/static/icon.svg" alt="next-{name}-page">
     </label>

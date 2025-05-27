@@ -34,8 +34,8 @@
 	<Breadcrumbs/>
 	<h1>Digital catalog</h1>
 	<p>Discover a unique collection of books and prints full of wisdom, symbolism and free thinking. Browse through the collection, search for authors or place and date of publication and be inspired by ideas that span the ages.</p>
-	<form id="main-form">
-		<!-- All filter inputs and submit buttons should connect to this form using form="main-form" -->
+	<form id="filter-form">
+		<!-- All filter inputs and submit buttons should connect to this form using form="filter-form" -->
 	</form>
 	<div class="search-container">
 		<Search bind:searchTerm={searchTerm}/>
