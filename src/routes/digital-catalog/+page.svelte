@@ -4,7 +4,7 @@
 	import Breadcrumbs from "$lib/breadcrumbs.svelte";
 	import Search from "$lib/search.svelte";
 	import FiltersAside from "$lib/filters-aside.svelte";
-	import BookList from "$lib/book-list.svelte"
+	import BookList from "$lib/book-list.svelte";
 	import PaginatedView from "$lib/paginated-view.svelte";
 	import Footer from "$lib/footer.svelte";
 
