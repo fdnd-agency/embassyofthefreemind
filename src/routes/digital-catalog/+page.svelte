@@ -4,6 +4,7 @@
   import Breadcrumbs from '$lib/breadcrumbs.svelte';
   import Search from '$lib/search.svelte';
 	import FiltersAside from '$lib/filters-aside.svelte';
+  import FilterContainerSmall from '$lib/filter-container-small.svelte';
   import BookViewer from "$lib/book-viewer.svelte";
   import PaginatedView from '$lib/paginated-view.svelte';
   import Footer from '$lib/footer.svelte';
@@ -15,10 +16,12 @@
 	let books = $state(data.books);
 	let searchTerm = $state(data.searchTerm);
 	let totalResults = $state(data.totalResults);
+	let author = $state(data.author);
 
-	// $effect means this anonymous function will be called every time resultsPage or searchTerm is updated
+
+	// $effect means this anonymous function will be called every time resultsPage, searchTerm or author is updated
 	$effect(async () => { // https://svelte.dev/docs/svelte/$effect
-		const res = await getBooks(resultsPage, searchTerm);
+		const res = await getBooks(resultsPage, searchTerm, author);
 		books = res.books;
 		totalResults = res.totalResults;
 	})
@@ -31,17 +34,20 @@
 	<Breadcrumbs/>
 	<h1>Digital catalog</h1>
 	<p>Discover a unique collection of books and prints full of wisdom, symbolism and free thinking. Browse through the collection, search for authors or place and date of publication and be inspired by ideas that span the ages.</p>
-	<form id="main-form">
-		<!-- All filter inputs and submit buttons should connect to this form using form="main-form" -->
+	<form id="filter-form">
+		<!-- All filter inputs and submit buttons should connect to this form using form="filter-form" -->
 	</form>
 	<div class="search-container">
 		<Search bind:searchTerm={searchTerm}/>
 	</div>
 	<div class="catalog-container">
 		<!-- bind: allows PaginatedView to update the value of resultsPage -->
-		<FiltersAside />
+		<div class="big-screen-only">
+			<FiltersAside bind:author={author} authors={data.authors} totalAuthors={data.totalAuthors} authorsPage={data.authorsPage}/>
+		</div>
 		<div class="page-container">
 			<p class="results" ><span class="total-results">{totalResults}</span>results</p>
+			<FilterContainerSmall bind:author={author} authors={data.authors} totalAuthors={data.totalAuthors} authorsPage={data.authorsPage}/>
 			<hr/>
 			<table class="table-zebra">
 				<thead>
@@ -74,6 +80,7 @@
 					name="results"
 					bind:pageNr={resultsPage}
 					totalResults={totalResults}
+					perPage={25}
 				/>
 			</div>
 		</div>
@@ -127,10 +134,6 @@
 		width: 65em;
 	}
 
-	tbody tr:nth-of-type(even) td {
-		background-color: #eee;
-	}
-    
 	thead, thead tr, th {
 		background-color: var(--secondaryBackgroundColor);
 	}
@@ -148,11 +151,20 @@
 		justify-content: end;
 		margin: 1em;
 	}
-
-	.skeleton {
+  
+  .skeleton {
 		border-radius: 0rem;
 		width: 20vw;
 		height: 20vw;
 		animation: skeleton none;
+  }
+
+
+
+	@media only screen and (max-width: 800px) {
+
+		.page-container {
+			padding-left: 0;
+		}
 	}
 </style>
