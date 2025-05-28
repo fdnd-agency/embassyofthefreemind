@@ -41,6 +41,22 @@
     /* TODO: Spacing */
 }
 
+h3 {
+    font-size: var(--fontSizeLarge);
+    font-weight: var(--fontWeightBold);
+    color: var(--primaryColor);
+}
+
+.badge {
+    height: fit-content;
+    padding: 0.5rem;
+    border-radius: 0;
+}
+
+.bold {
+    font-weight: var(--fontWeightBold);
+}
+
 summary, .summary {
     color: var(--primaryColor);
     font-weight: var(--fontWeightBold);
@@ -84,4 +100,12 @@ h1 {
 
 p {
     max-width: 40em;
+}
+
+a {
+    transition: transform .5s;
+}
+
+a:hover {
+     transform: scale(1.1);
 }
