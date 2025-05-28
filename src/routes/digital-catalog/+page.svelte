@@ -1,9 +1,10 @@
 <script>
-  import { getBooks } from '$lib';
+  	import { getBooks } from '$lib';
 	import Headercomponent from '$lib/Headercomponent.svelte';
-  import Breadcrumbs from '$lib/breadcrumbs.svelte';
-  import Search from '$lib/search.svelte';
+  	import Breadcrumbs from '$lib/breadcrumbs.svelte';
+  	import Search from '$lib/search.svelte';
 	import FiltersAside from '$lib/filters-aside.svelte';
+
   import FilterContainerSmall from '$lib/filter-container-small.svelte';
   import BookViewer from "$lib/book-viewer.svelte";
   import PaginatedView from '$lib/paginated-view.svelte';
