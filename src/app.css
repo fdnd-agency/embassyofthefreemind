@@ -101,3 +101,11 @@ h1 {
 p {
     max-width: 40em;
 }
+
+a {
+    transition: transform .5s;
+}
+
+a:hover {
+     transform: scale(1.1);
+}
