@@ -4,12 +4,11 @@
   	import Breadcrumbs from '$lib/breadcrumbs.svelte';
   	import Search from '$lib/search.svelte';
 	import FiltersAside from '$lib/filters-aside.svelte';
-
-  import FilterContainerSmall from '$lib/filter-container-small.svelte';
-  import BookViewer from "$lib/book-viewer.svelte";
-  import PaginatedView from '$lib/paginated-view.svelte';
-  import Footer from '$lib/footer.svelte';
-  import BookList from "$lib/book-list.svelte";
+  	import FilterContainerSmall from '$lib/filter-container-small.svelte';
+  	import BookViewer from "$lib/book-viewer.svelte";
+  	import PaginatedView from '$lib/paginated-view.svelte';
+  	import Footer from '$lib/footer.svelte';
+  	import BookList from "$lib/book-list.svelte";
 
 	/** @type {import('./$types').PageData} */
 	let { data } = $props();
@@ -18,12 +17,13 @@
 	let searchTerm = $state(data.searchTerm);
 	let totalResults = $state(data.totalResults);
 	let author = $state(data.author);
+	let books = $state(data.books);
 
 	// $effect means this anonymous function will be called every time resultsPage or searchTerm is updated
 	$effect(async () => {
 		// https://svelte.dev/docs/svelte/$effect
 		const res = await getBooks(resultsPage, searchTerm, author);
-
+		books = res.books;
 		totalResults = res.totalResults;
 	});
 </script>
@@ -56,15 +56,16 @@
 			<p class="results">
 				<span class="total-results">{totalResults}</span>results
 			</p>
+			<FilterContainerSmall bind:author={author} authors={data.authors} totalAuthors={data.totalAuthors} authorsPage={data.authorsPage}/>
 			<hr />
-			<BookList booksData={data.books} />
+			<BookList {books}/>
 
 			<div class="paginated-view">
 				<PaginatedView
 					name="results"
 					bind:pageNr={resultsPage}
 					{totalResults}
-
+					perPage={25}
 				/>
 			</div>
 		</div>

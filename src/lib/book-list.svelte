@@ -2,17 +2,7 @@
     import { getBooks } from "$lib";
     import BookViewer from "$lib/book-viewer.svelte";
     /** @type {import('./$types').PageData} */
-    let { booksData } = $props();
-
-    let books = $state(booksData);
-
-    // $effect means this anonymous function will be called every time resultsPage or searchTerm is updated
-    $effect(async () => {
-        // https://svelte.dev/docs/svelte/$effect
-        const res = await getBooks(resultsPage, searchTerm);
-        books = res.books;
-        totalResults = res.totalResults;
-    });
+    let { books } = $props();
 </script>
 
 <ul class="book-list">
