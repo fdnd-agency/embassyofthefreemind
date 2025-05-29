@@ -17,5 +17,13 @@
     summary{
       font-weight: var(--fontWeightBold);
     }
+
+    li {
+        padding: 5px;
+    }
+
+    summary {
+        border-top: var(--borderSoft);
+    }
   </style>
   

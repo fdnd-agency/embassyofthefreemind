@@ -2,18 +2,26 @@
     import FilterGroup from "./FilterGroup.svelte";
     import FilterButtonAuthor from '$lib/filter-button-author.svelte';
 
-    let { author = $bindable(), authors, totalAuthors, authorsPage } = $props();
+    let { filter = $bindable(), previewFilters, totalAuthors, authorsPage } = $props();
+
     function clearAuthor() {
-        author = null;
+        filter.author = null;
+    }
+
+    let century = $state(null);
+
+    function filterByCentury() {
+        filter.startYear = (century-1) * 100;
+        filter.endYear = century * 100;
     }
 </script>
 <div class="big-screen-only">
 
 <aside>
     <p class="summary">Filters</p>
-    {#if author}
+    {#if filter.author}
         <noscript>
-            <p class="current-filter">{author}</p>
+            <p class="current-filter">{filter.author}</p>
         </noscript>
         <button class="js-only badge btn-primary" onclick={clearAuthor} aria-label="remove author filter">                                
             <svg
@@ -28,16 +36,32 @@
                 d="M6 18L18 6M6 6l12 12"></path>
             </svg> Author: 
             <span class="bold">{author}</span>
-        </button>    {/if}
+        </button>
+    {/if}
     <ul>
-        <FilterGroup 
-            summary="Digitalised"
-            optionsList={["Yes", "No"]}
-        />
-        <FilterGroup 
-        summary="Year"
-        optionsList={["15th century", "16th century", "17th century"]}
-        />
+        <li>
+            <details>
+                <summary>Digitalized</summary>
+                <p>Only show digitalized books.</p>
+                <input bind:group={filter.digitalized} value={false} type="radio" name="digitalized" id="digitalized-off">
+                <label for="digitalized-off">All ({previewFilters.digitalized[0].count})</label>
+                <input bind:group={filter.digitalized} value={true} type="radio" name="digitalized" id="digitalized-on">
+                <label for="digitalized-on">Digitalized ({previewFilters.digitalized[1].count})</label>
+            </details>
+        </li>
+        <li>
+            <details>
+                <summary>Year</summary>
+                <ul>
+                {#each previewFilters.centuries as [loopCentury, count]}
+                    <li>
+                        <input bind:group={century} onchange={filterByCentury} value={loopCentury} type="radio" name="century" id="century-{loopCentury}">
+                        <label for="century-{loopCentury}">{loopCentury}th century ({count})</label>
+                    </li>
+                    {/each}
+                </ul>
+            </details>
+        </li>
         <FilterGroup 
         summary="Author"
         optionsList={["author1", "author2", "author3"]}

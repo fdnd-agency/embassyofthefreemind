@@ -14,15 +14,17 @@
 	let { data } = $props();
 
 	let resultsPage = $state(data.resultsPage);
-	let searchTerm = $state(data.searchTerm);
 	let totalResults = $state(data.totalResults);
-	let author = $state(data.author);
 	let books = $state(data.books);
+
+	let filter = $state(data.filter);
+
+	$inspect(filter);
 
 	// $effect means this anonymous function will be called every time resultsPage or searchTerm is updated
 	$effect(async () => {
 		// https://svelte.dev/docs/svelte/$effect
-		const res = await getBooks(resultsPage, searchTerm, author);
+		const res = await getBooks(resultsPage, filter);
 		books = res.books;
 		totalResults = res.totalResults;
 	});
@@ -45,18 +47,18 @@
 
 	</form>
 	<div class="search-container">
-		<Search bind:searchTerm />
+		<Search bind:searchTerm={filter.searchTerm} />
 	</div>
 	<div class="catalog-container">
 		<!-- bind: allows PaginatedView to update the value of resultsPage -->
 		<div class="big-screen-only">
-			<FiltersAside bind:author={author} authors={data.authors} totalAuthors={data.totalAuthors} authorsPage={data.authorsPage}/>
+			<FiltersAside bind:filter previewFilters={data.previewFilters} authors={data.authors} totalAuthors={data.totalAuthors} authorsPage={data.authorsPage}/>
 		</div>
 		<div class="page-container">
 			<p class="results">
 				<span class="total-results">{totalResults}</span>results
 			</p>
-			<FilterContainerSmall bind:author={author} authors={data.authors} totalAuthors={data.totalAuthors} authorsPage={data.authorsPage}/>
+			<FilterContainerSmall bind:filter previewFilters={data.previewFilters} authors={data.authors} totalAuthors={data.totalAuthors} authorsPage={data.authorsPage}/>
 			<hr />
 			<BookList {books}/>
 

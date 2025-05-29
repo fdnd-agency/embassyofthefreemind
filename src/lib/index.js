@@ -1,10 +1,10 @@
 import { PUBLIC_APIURL, PUBLIC_API_KEY } from '$env/static/public';
 
 // place files you want to import through the `$lib` alias in this folder.
-export function arrayToObject(array, valueField) {
+export function arrayToObject(array, keyField, valueField) {
     const result = {};
     for (const entry of array) {
-        result[entry.field] = entry[valueField];
+        result[entry[keyField]] = entry[valueField];
     }
     return result;
 }
@@ -15,22 +15,19 @@ export const booksURL = `${PUBLIC_APIURL}/media?apiKey=${PUBLIC_API_KEY}&facetFi
 
 export const authorsURL = `${PUBLIC_APIURL}/filter/search_s_auteur?ac=&apiKey=${PUBLIC_API_KEY}&facetFields[]=search_s_auteur&facetFields[]=search_s_plaats_van_uitgave&facetFields[]=search_s_jaar&facetFields[]=search_s_digitized_publication&facetSort=index&lang=nl&page=1&q=&rows=66`;
 
-// TODO: Add filters as arguments
-export async function getBooks(pageNr, searchTerm, author, customFetch = null) {
+export async function getBooks(pageNr, {searchTerm, author, place, digitalized, startYear, endYear}, customFetch = null) {
     let query = booksURL + '&page=' + pageNr;
 
-    if (searchTerm) {
-        query += "&q=" + searchTerm;
-    }
-
-    if (author) {
-        query += '&fq[]=search_s_auteur:"' + author + '"';
-    }
+    if (searchTerm) query += "&q=" + searchTerm;
+    if (author) query += '&fq[]=search_s_auteur:"' + author + '"';
+    if (place) query += '&fq[]=search_s_plaats:"' + place + '"';
+    if (digitalized) query += '&fq[]=search_s_digitized_publication:"Ja"';
+    if (startYear && endYear) query += '&fq[]=search_s_jaar:[' + startYear * 10000 + ' TO ' + endYear * 10000 + ']';
 
 	const res = await (customFetch ?? fetch)(query);
     const data = await res.json();
     const books = data.media.map((book) => {
-        const meta = arrayToObject(book.metadata, 'value')
+        const meta = arrayToObject(book.metadata, 'field', 'value')
         return {
             title: book.title,
             author: meta.auteur,
@@ -43,4 +40,38 @@ export async function getBooks(pageNr, searchTerm, author, customFetch = null) {
         totalResults: data.metadata.pagination.total,
         books
     }
+}
+
+export async function getPreviewFilters(customFetch) {
+    const result = await Promise.all([
+        customFetch(`${PUBLIC_APIURL}/filter/search_s_auteur?apiKey=${PUBLIC_API_KEY}&facetSort=count&lang=nl&rows=6`).then(res => res.json()),
+        customFetch(`${PUBLIC_APIURL}/filter/search_s_plaats_van_uitgave?apiKey=${PUBLIC_API_KEY}&facetSort=count&lang=nl&rows=5`).then(res => res.json()),
+        customFetch(`${PUBLIC_APIURL}/filter/search_s_jaar?apiKey=${PUBLIC_API_KEY}&lang=nl&rows=2200`).then(res => res.json()),
+        customFetch(`${PUBLIC_APIURL}/filter/search_s_digitized_publication?apiKey=${PUBLIC_API_KEY}&lang=nl&rows=2`).then(res => res.json()),
+    ]);
+
+    result[0].filter.shift() // remove anonymous
+
+    return {
+        authors: result[0].filter,
+        places: result[1].filter,
+        centuries: yearsToCenturies(result[2].filter),
+        digitalized: result[3].filter
+    }
+}
+
+const centuries = {};
+for (let i = 15; i <= 21; i++) {
+    centuries[i] = 0;
+}
+
+function yearsToCenturies(years) {
+    const result = {...centuries}; // copy to prevent overwrite
+    for (const {filter: year, count} of years) {
+        const century = Math.floor(parseInt(year) / 100) + 1;
+        if (century >= 15 && century <= 21) {
+            result[century] += count;
+        }
+    }
+    return Object.entries(result);
 }

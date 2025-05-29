@@ -1,5 +1,5 @@
 /** @type {import('./$types').PageLoad} */
-import { getBooks, authorsURL } from '$lib';
+import { getBooks, getPreviewFilters } from '$lib';
 
 export async function load({ url, fetch }) {
 
@@ -11,11 +11,16 @@ export async function load({ url, fetch }) {
 		resultsPage--
 	}
 
-	const searchTerm = url.searchParams.get('q');
+	const filter = {
+		searchTerm: url.searchParams.get('q'),
+		author: url.searchParams.get('author'),
+		place: null,
+		digitalized: false,
+		startYear: null,
+		endYear: null
+	}
 
-	const author = url.searchParams.get('author');
-
-	const { books, totalResults } = await getBooks(resultsPage, searchTerm, author, fetch);
+	const { books, totalResults } = await getBooks(resultsPage, filter, fetch);
 
 	let authorsPage = parseInt(url.searchParams.get('authors-page')) || 1;
 	const authorsPageAction = url.searchParams.get('authors-page-action');
@@ -25,19 +30,16 @@ export async function load({ url, fetch }) {
 		authorsPage--;
 	}
 
-	const resAuthors = await fetch(authorsURL + '&page=' + authorsPage);
-	const dataAuthors = await resAuthors.json();
-    const authors = dataAuthors.filter;
-    const totalAuthors = dataAuthors.metadata.pagination.total;
+	const previewFilters = await getPreviewFilters(fetch);
 
 	return {
 		books,
 		resultsPage,
 		totalResults,
-		searchTerm,
-		author,
-        authors,
-        totalAuthors,
+        authors: null,
+        totalAuthors: null,
 		authorsPage,
+		filter,
+		previewFilters
 	}
 }
