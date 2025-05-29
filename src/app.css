@@ -41,12 +41,55 @@
     /* TODO: Spacing */
 }
 
-*:focus {
-   outline: var(--outline);
+h3 {
+    font-size: var(--fontSizeLarge);
+    font-weight: var(--fontWeightBold);
+    color: var(--primaryColor);
 }
 
+.badge {
+    height: fit-content;
+    padding: 0.5rem;
+    border-radius: 0;
+}
+
+.bold {
+    font-weight: var(--fontWeightBold);
+}
+
+summary, .summary {
+    color: var(--primaryColor);
+    font-weight: var(--fontWeightBold);
+    padding: 5px 0px;
+}
+ 
 .btn {
-	border-radius: 0;
+    border-radius: 0;
+    border: 1px solid var(--secondaryBackgroundColor);
+    background-color: var(--backgroundColor);
+    color: var(--primaryColor);
+    font-weight: var(--fontWeightBold);
+}
+
+.btn-primary {
+    background-color: var(--primaryColor);
+    color: var(--navigationTextColor);
+    border: none;
+}
+
+.btn:hover {
+    border-radius: 0;
+    background-color: var(--primaryColor);
+    color: var(--navigationTextColor);
+    border:1px solid var(--primaryColor);
+}
+
+.btn-primary:hover {
+    border: none;
+    transform: scale(1.03);
+}
+*:focus {
+   outline: var(--outline);
 }
 
 h1 {
@@ -57,4 +100,12 @@ h1 {
 
 p {
     max-width: 40em;
+}
+
+a {
+    transition: transform .5s;
+}
+
+a:hover {
+     transform: scale(1.1);
 }
