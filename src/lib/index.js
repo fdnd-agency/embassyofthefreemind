@@ -20,7 +20,7 @@ export async function getBooks(pageNr, {searchTerm, author, place, digitalized, 
 
     if (searchTerm) query += "&q=" + searchTerm;
     if (author) query += '&fq[]=search_s_auteur:"' + author + '"';
-    if (place) query += '&fq[]=search_s_plaats:"' + place + '"';
+    if (place) query += '&fq[]=search_s_plaats_van_uitgave:"' + place + '"';
     if (digitalized) query += '&fq[]=search_s_digitized_publication:"Ja"';
     if (startYear && endYear) query += '&fq[]=search_s_jaar:[' + startYear * 10000 + ' TO ' + endYear * 10000 + ']';
 

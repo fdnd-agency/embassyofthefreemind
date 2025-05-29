@@ -1,12 +1,9 @@
 <script>
     import FilterGroup from "./FilterGroup.svelte";
     import FilterButtonAuthor from '$lib/filter-button-author.svelte';
+    import CurrentFilters from "./current-filters.svelte";
 
     let { filter = $bindable(), previewFilters, totalAuthors, authorsPage } = $props();
-
-    function clearAuthor() {
-        filter.author = null;
-    }
 
     let century = $state(null);
 
@@ -14,39 +11,31 @@
         filter.startYear = (century-1) * 100;
         filter.endYear = century * 100;
     }
+
+    function clearCentury() {
+        century = null;
+    }
 </script>
 <div class="big-screen-only">
 
 <aside>
     <p class="summary">Filters</p>
-    {#if filter.author}
-        <noscript>
-            <p class="current-filter">{filter.author}</p>
-        </noscript>
-        <button class="js-only badge btn-primary" onclick={clearAuthor} aria-label="remove author filter">                                
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                class="inline-block h-4 w-4 stroke-current">
-                <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"></path>
-            </svg> Author: 
-            <span class="bold">{author}</span>
-        </button>
-    {/if}
+    <CurrentFilters bind:filter {clearCentury}/>
     <ul>
         <li>
             <details>
                 <summary>Digitalized</summary>
                 <p>Only show digitalized books.</p>
-                <input bind:group={filter.digitalized} value={false} type="radio" name="digitalized" id="digitalized-off">
-                <label for="digitalized-off">All ({previewFilters.digitalized[0].count})</label>
-                <input bind:group={filter.digitalized} value={true} type="radio" name="digitalized" id="digitalized-on">
-                <label for="digitalized-on">Digitalized ({previewFilters.digitalized[1].count})</label>
+                <ul>
+                    <li>
+                        <input bind:group={filter.digitalized} value={false} type="radio" name="digitalized" id="digitalized-off" class="radio">
+                        <label for="digitalized-off">All ({previewFilters.digitalized[0].count})</label>
+                    </li>
+                    <li>
+                        <input bind:group={filter.digitalized} value={true} type="radio" name="digitalized" id="digitalized-on" class="radio">
+                        <label for="digitalized-on">Digitalized ({previewFilters.digitalized[1].count})</label>
+                    </li>
+                </ul>
             </details>
         </li>
         <li>
@@ -55,20 +44,29 @@
                 <ul>
                 {#each previewFilters.centuries as [loopCentury, count]}
                     <li>
-                        <input bind:group={century} onchange={filterByCentury} value={loopCentury} type="radio" name="century" id="century-{loopCentury}">
+                        <input bind:group={century} onchange={filterByCentury} value={loopCentury} type="radio" name="century" id="century-{loopCentury}" class="radio">
                         <label for="century-{loopCentury}">{loopCentury}th century ({count})</label>
                     </li>
                     {/each}
                 </ul>
+                <input onchange={clearCentury} type="number" class="year-input" bind:value={filter.startYear} name="start-year" id="start-year">
+                -
+                <input onchange={clearCentury} type="number" class="year-input" bind:value={filter.endYear} name="end-year" id="end-year">
             </details>
         </li>
         <FilterGroup 
         summary="Author"
-        optionsList={["author1", "author2", "author3"]}
+        name="author"
+        apiName="auteur"
+        bind:value={filter.author}
+        preview={previewFilters.authors}
         />
         <FilterGroup 
         summary="Place of publication"
-        optionsList={["Amsterdam", "The Hague", "Rotterdam"]}
+        name="place"
+        apiName="plaats_van_uitgave"
+        bind:value={filter.place}
+        preview={previewFilters.places}
         />
     </ul>
 </aside>
@@ -92,12 +90,6 @@
 
     p {
         padding: 5px;
-    }
-
-    .current-filter {
-        background-color: var(--primaryColor);
-        color: var(--navigationTextColor);
-        text-align: center;
     }
 
     @media only screen and (max-width: 800px) {
