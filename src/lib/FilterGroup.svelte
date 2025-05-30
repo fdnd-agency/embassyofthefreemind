@@ -7,8 +7,6 @@
         label: `${filter} (${count})`,
         value: filter
     }));
-
-    console.log(previewOptions);
 </script>
   
 <li>

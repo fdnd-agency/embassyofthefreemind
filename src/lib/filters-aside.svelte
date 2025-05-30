@@ -2,6 +2,7 @@
     import FilterGroup from "./FilterGroup.svelte";
     import FilterButtonAuthor from '$lib/filter-button-author.svelte';
     import CurrentFilters from "./current-filters.svelte";
+    import OptionsList from "./OptionsList.svelte";
 
     let { filter = $bindable(), previewFilters, totalAuthors, authorsPage } = $props();
 
@@ -26,32 +27,32 @@
             <details>
                 <summary>Digitalized</summary>
                 <p>Only show digitalized books.</p>
-                <ul>
-                    <li>
-                        <input bind:group={filter.digitalized} value={false} type="radio" name="digitalized" id="digitalized-off" class="radio">
-                        <label for="digitalized-off">All ({previewFilters.digitalized[0].count})</label>
-                    </li>
-                    <li>
-                        <input bind:group={filter.digitalized} value={true} type="radio" name="digitalized" id="digitalized-on" class="radio">
-                        <label for="digitalized-on">Digitalized ({previewFilters.digitalized[1].count})</label>
-                    </li>
-                </ul>
+                <OptionsList bind:value={filter.digitalized} name="digitalized" options={[
+                    {
+                        value: false,
+                        label: `All (${previewFilters.digitalized[0].count})`
+                    },
+                    {
+                        value: true,
+                        label: `Digitalized (${previewFilters.digitalized[1].count})`
+                    }
+                ]}/>
             </details>
         </li>
         <li>
             <details>
                 <summary>Year</summary>
-                <ul>
-                {#each previewFilters.centuries as [loopCentury, count]}
-                    <li>
-                        <input bind:group={century} onchange={filterByCentury} value={loopCentury} type="radio" name="century" id="century-{loopCentury}" class="radio">
-                        <label for="century-{loopCentury}">{loopCentury}th century ({count})</label>
-                    </li>
-                    {/each}
-                </ul>
-                <input onchange={clearCentury} type="number" class="year-input" bind:value={filter.startYear} name="start-year" id="start-year">
+                <OptionsList
+                name="century"
+                onchange={filterByCentury}
+                bind:value={century}
+                options={previewFilters.centuries.map(([century, count]) => ({
+                    value: century,
+                    label: `${century}th century (${count})`
+                }))} />
+                <input onchange={clearCentury} type="number" form="filter-form" class="year-input" bind:value={filter.startYear} name="start-year">
                 -
-                <input onchange={clearCentury} type="number" class="year-input" bind:value={filter.endYear} name="end-year" id="end-year">
+                <input onchange={clearCentury} type="number" form="filter-form" class="year-input" bind:value={filter.endYear} name="end-year">
             </details>
         </li>
         <FilterGroup 

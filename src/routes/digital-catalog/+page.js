@@ -11,13 +11,22 @@ export async function load({ url, fetch }) {
 		resultsPage--
 	}
 
+	let startYear = parseInt(url.searchParams.get('start-year'));
+	let endYear = parseInt(url.searchParams.get('end-year'));
+	if (!startYear && !endYear) {
+		// If start and endYear are unset, try to use century instead
+		const century = parseInt(url.searchParams.get('century'));
+		startYear = (century - 1) * 100;
+		endYear = century * 100;
+	}
+
 	const filter = {
 		searchTerm: url.searchParams.get('q'),
 		author: url.searchParams.get('author'),
-		place: null,
-		digitalized: false,
-		startYear: null,
-		endYear: null
+		place: url.searchParams.get('place'),
+		digitalized: url.searchParams.get('digitalized') === 'true',
+		startYear,
+		endYear
 	}
 
 	const { books, totalResults } = await getBooks(resultsPage, filter, fetch);

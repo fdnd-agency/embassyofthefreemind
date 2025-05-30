@@ -44,7 +44,7 @@
 		span the ages.
 	</p>
 	<form id="filter-form">
-		<!-- All filter inputs and submit buttons should connect to this form using form="main-form" -->
+		<!-- All filter inputs and submit buttons should connect to this form using form="filter-form" -->
 
 	</form>
 	<div class="search-container">

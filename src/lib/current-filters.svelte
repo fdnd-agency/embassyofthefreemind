@@ -1,4 +1,6 @@
 <script>
+    import ClearFilterButton from "./clear-filter-button.svelte";
+
     let { filter = $bindable(), clearCentury } = $props();
 
     function clearDigitalized() {
@@ -10,40 +12,27 @@
         filter.endYear = null;
         clearCentury();
     }
-
-    function clearAuthor() {
-        filter.author = null;
-    }
-
-    function clearPlace() {
-        filter.place = null;
-    }
 </script>
 
+<noscript><a href="?" class='btn'>Clear All</a></noscript>
+
 {#if filter.digitalized}
-    <button onclick={clearDigitalized} class="js-only badge btn-primary" type="button">X Digitalized</button>
+    <ClearFilterButton text="Digitalized" clearFunction={clearDigitalized} />
 {/if}
 
 {#if filter.startYear && filter.endYear}
-    {#if filter.startYear % 100 == 0 && filter.endYear % 100 == 0}
-        <button onclick={clearYear} class="js-only badge btn-primary" type="button">X {filter.endYear / 100}th century</button>
+    <!-- if start year is divisible by 100 and end year is start year + 100, it's a century -->
+    {#if filter.startYear % 100 === 0 && filter.endYear === filter.startYear + 100}
+        <ClearFilterButton text="{filter.endYear / 100}th century" clearFunction={clearYear} />
     {:else}
-        <button onclick={clearYear} class="js-only badge btn-primary" type="button">X {filter.startYear}-{filter.endYear}</button>
+        <ClearFilterButton text="{filter.startYear}-{filter.endYear}" clearFunction={clearYear} />
     {/if}
 {/if}
 
 {#if filter.author}
-    <button onclick={clearAuthor} class="js-only badge btn-primary" type="button">X {filter.author}</button>
+    <ClearFilterButton bind:field={filter.author} />
 {/if}
 
 {#if filter.place}
-    <button onclick={clearPlace} class="js-only badge btn-primary" type="button">X {filter.place}</button>
+    <ClearFilterButton bind:field={filter.place} />
 {/if}
-
-<style>
-    .current-filter {
-        background-color: var(--primaryColor);
-        color: var(--navigationTextColor);
-        text-align: center;
-    }
-</style>
