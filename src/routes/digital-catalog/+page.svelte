@@ -13,6 +13,7 @@
 	/** @type {import('./$types').PageData} */
 	let { data } = $props();
 
+	// The following variables are updated and are therefore declared with $state
 	let resultsPage = $state(data.resultsPage);
 	let totalResults = $state(data.totalResults);
 	let books = $state(data.books);
