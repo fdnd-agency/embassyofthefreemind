@@ -20,7 +20,7 @@
         }
     });
 </script>
-<div>
+<div class="container">
     <input type="checkbox" id="{name}-filter-more" bind:checked={isDropdownOpen}/>
     <label for="{name}-filter-more" class="filter-more-label" aria-label="More filters">More...</label>
     <div class="card card-compact z-[1] w-64 p-2 ">
@@ -60,7 +60,7 @@
         cursor: pointer;
     }
 
-    input:focus + .filter-more-label {
+    .container:has(input:focus) label {
         outline: var(--outline);
     }
 

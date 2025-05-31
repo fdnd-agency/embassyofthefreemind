@@ -7,10 +7,10 @@
         console.log('here')
         if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
             event.preventDefault();
-            event.target.previousElementSibling?.previousElementSibling?.focus(); // skip the label
+            event.target.parentElement?.previousElementSibling?.firstElementChild?.focus();
         } else if (event.key === 'ArrowDown' || event.key === 'ArrowRight') {
             event.preventDefault();
-            event.target.nextElementSibling?.nextElementSibling?.focus(); // skip the label
+            event.target.parentElement?.nextElementSibling?.firstElementChild?.focus();
         }
     }
 </script>

@@ -19,7 +19,7 @@
 </script>
 
 <div class="pagination-form">
-    <input id="{name}-previous-{id}" form="filter-form" class="btn" type="submit" name="{name}-page-action" value="previous" onclick={previousPage} disabled={pageNr <= 1}>
+    <input id="{name}-previous-{id}" form="filter-form" type="submit" name="{name}-page-action" value="previous" onclick={previousPage} disabled={pageNr <= 1}>
     <label for="{name}-previous-{id}" aria-label="previous">
         <enhanced:img src="$lib/static/icon2.svg" alt="previous-{name}-page"/>
     </label>
@@ -28,7 +28,7 @@
         <span>/</span>
         {totalPages}
     </div>
-    <input id="{name}-next-{id}" form="filter-form" class="btn" type="submit" name="{name}-page-action" value="next" onclick={nextPage} disabled={pageNr >= totalPages}>
+    <input id="{name}-next-{id}" form="filter-form" type="submit" name="{name}-page-action" value="next" onclick={nextPage} disabled={pageNr >= totalPages}>
     <label for="{name}-next-{id}" aria-label="next">
         <enhanced:img src="$lib/static/icon.svg" alt="next-{name}-page"/>
     </label>
@@ -45,8 +45,13 @@
     }
 
     input[type="submit"] {
-        display: none;
+        opacity: 0;
+        width: 0;
     }
+
+    input[type="submit"]:focus + label {
+        outline: var(--outline);
+    }    
 
     input:disabled + label {
         opacity: 0.3;
