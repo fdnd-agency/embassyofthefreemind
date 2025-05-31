@@ -29,8 +29,6 @@
 	});
 </script>
 
-<noscript> JAVASCRIPT DISABLED </noscript>
-
 <Headercomponent />
 <main>
 	<Breadcrumbs />
@@ -68,6 +66,7 @@
 			</p>
 			<FilterContainerSmall
 			bind:filter
+			previewFilters={data.previewFilters}
 			authors={data.authors}
 			totalAuthors={data.totalAuthors}
 			authorsPage={data.authorsPage}

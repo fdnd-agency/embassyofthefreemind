@@ -1,7 +1,7 @@
 <script>
     import ClearFilterButton from "./clear-filter-button.svelte";
 
-    let { filter = $bindable(), clearCentury } = $props();
+    let { filter = $bindable() } = $props();
 
     function clearDigitalized() {
         filter.digitalized = false;
@@ -10,7 +10,6 @@
     function clearYear() {
         filter.startYear = null;
         filter.endYear = null;
-        clearCentury();
     }
 </script>
 

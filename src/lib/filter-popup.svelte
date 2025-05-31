@@ -83,11 +83,3 @@
         position: absolute;
     }
 </style>
-
-<noscript>
-    <style>
-        .author-radio:checked + .author-label {
-            color: red;
-        }
-    </style>
-</noscript>

@@ -2,56 +2,27 @@
     import FilterGroup from "./FilterGroup.svelte";
     import CurrentFilters from "./current-filters.svelte";
     import OptionsList from "./OptionsList.svelte";
+    import DigitalizedFilter from "./digitalized-filter.svelte";
+    import YearFilter from "./year-filter.svelte";
 
     let { filter = $bindable(), previewFilters, authorsPage, placesPage, authors, places, totalAuthors, totalPlaces } = $props();
-
-    let century = $state(null);
-
-    function filterByCentury() {
-        filter.startYear = (century-1) * 100;
-        filter.endYear = century * 100;
-    }
-
-    function clearCentury() {
-        century = null;
-    }
 </script>
 <div class="big-screen-only">
 
 <aside>
     <p class="summary">Filters</p>
-    <CurrentFilters bind:filter {clearCentury}/>
+    <CurrentFilters bind:filter/>
     <ul>
         <li>
             <details>
                 <summary>Digitalized</summary>
-                <p>Only show digitalized books.</p>
-                <OptionsList bind:value={filter.digitalized} name="digitalized" options={[
-                    {
-                        value: false,
-                        label: `All (${previewFilters.digitalized[0].count})`
-                    },
-                    {
-                        value: true,
-                        label: `Digitalized (${previewFilters.digitalized[1].count})`
-                    }
-                ]}/>
+                <DigitalizedFilter bind:digitalized={filter.digitalized} preview={previewFilters.digitalized}/>
             </details>
         </li>
         <li>
             <details>
                 <summary>Year</summary>
-                <OptionsList
-                name="century"
-                onchange={filterByCentury}
-                bind:value={century}
-                options={previewFilters.centuries.map(([century, count]) => ({
-                    value: century,
-                    label: `${century}th century (${count})`
-                }))} />
-                <input onchange={clearCentury} type="number" form="filter-form" class="year-input" bind:value={filter.startYear} name="start-year">
-                -
-                <input onchange={clearCentury} type="number" form="filter-form" class="year-input" bind:value={filter.endYear} name="end-year">
+                <YearFilter bind:startYear={filter.startYear} bind:endYear={filter.endYear} preview={previewFilters.centuries} />
             </details>
         </li>
         <FilterGroup 

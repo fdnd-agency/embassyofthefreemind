@@ -50,10 +50,6 @@
         display: none;
     }
 
-    .place-radio:checked + .place-label {
-        color: red;
-    }
-
     .place-label {
         cursor: pointer;
     }

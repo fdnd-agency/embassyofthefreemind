@@ -1,8 +1,12 @@
 <script>
     import AuthorPlaceFilterSmall from '$lib/author-place-filter-small.svelte';
     import CurrentFilters from '$lib/current-filters.svelte';
+    import PopupMobile from '$lib/popup-mobile.svelte';
+    import DigitalizedFilter from './digitalized-filter.svelte';
+    import YearFilter from './year-filter.svelte';
+    import PaginatedView from './paginated-view.svelte';
 
-    let { filter = $bindable(), authors, totalAuthors, authorsPage, places, totalPlaces, placesPage } = $props();
+    let { filter = $bindable(), authors, totalAuthors, authorsPage, places, totalPlaces, placesPage, previewFilters } = $props();
 </script>
 
 <div class="small-screen-only">
@@ -10,18 +14,38 @@
     <p class="summary">Filters</p>
         <ul class="filters-small">
             <li>
-                <label for="filter-digitized" class="btn">Digitized</label>
-                <input type="checkbox" id="filter-digitized">
+                <PopupMobile name="Digitalized">
+                    {#snippet main()}
+                        <DigitalizedFilter bind:digitalized={filter.digitalized} preview={previewFilters.digitalized}/>
+                    {/snippet}
+                </PopupMobile>
             </li>
             <li>
-                <label for="filter-year" class="btn">Year</label>
-                <input type="checkbox" id="filter-year">
+                <PopupMobile name="Year">
+                    {#snippet main()}
+                        <YearFilter bind:startYear={filter.startYear} bind:endYear={filter.endYear} preview={previewFilters.centuries} />
+                    {/snippet}
+                </PopupMobile>
             </li>
             <li>
-                <AuthorPlaceFilterSmall bind:value={filter.author} options={authors} totalOptions={totalAuthors} pageNr={authorsPage} name="author" apiName="auteur"/>
+                <PopupMobile name="Author">
+                    {#snippet header()}
+                        <PaginatedView perPage=66 name="authors" bind:pageNr={authorsPage} totalResults={totalAuthors}/>
+                    {/snippet}
+                    {#snippet main(closeFn)}                        
+                        <AuthorPlaceFilterSmall bind:value={filter.author} options={authors} pageNr={authorsPage} name="author" apiName="auteur" {closeFn}/>
+                    {/snippet}
+                </PopupMobile>
             </li>
             <li>
-                <AuthorPlaceFilterSmall bind:value={filter.place} options={places} totalOptions={totalPlaces} pageNr={placesPage} name="place" apiName="plaats_van_uitgave"/>
+                <PopupMobile name="Place">
+                    {#snippet header()}
+                        <PaginatedView perPage=66 name="places" bind:pageNr={placesPage} totalResults={totalPlaces}/>
+                    {/snippet}
+                    {#snippet main(closeFn)}                        
+                        <AuthorPlaceFilterSmall bind:value={filter.place} options={places} pageNr={placesPage} name="place" apiName="plaats_van_uitgave" {closeFn}/>
+                    {/snippet}
+                </PopupMobile>
             </li>
         </ul>
     </div>
@@ -31,19 +55,6 @@
 <style>
     ul {
         padding-left: 2px;
-    }
-
-    input[type="checkbox"] {
-        width: 0;
-        opacity: 0;
-    }
-
-    label {
-        margin: 2px 0;
-    }
-
-    li:has(input[type="checkbox"]:focus) label {
-        outline: var(--outline);
     }
 
     .small-screen-only {

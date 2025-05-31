@@ -3,6 +3,7 @@
     import { nRows } from '$lib';
     // name must be unique. It is used for the no-js version to ensure that different instances of this component don't conflict.
     let { pageNr = $bindable(), totalResults, name, perPage } = $props();
+    let id = $props.id();
 
     let totalPages = $derived(Math.ceil(totalResults / perPage) || 1); // math.ceil rounds up
 
@@ -18,8 +19,8 @@
 </script>
 
 <div class="pagination-form">
-    <input id="{name}-previous" form="filter-form" class="btn" type="submit" name="{name}-page-action" value="previous" onclick={previousPage} disabled={pageNr <= 1}>
-    <label for="{name}-previous" aria-label="previous">
+    <input id="{name}-previous-{id}" form="filter-form" class="btn" type="submit" name="{name}-page-action" value="previous" onclick={previousPage} disabled={pageNr <= 1}>
+    <label for="{name}-previous-{id}" aria-label="previous">
         <enhanced:img src="$lib/static/icon2.svg" alt="previous-{name}-page">
     </label>
     <div class="pagination-view">
@@ -27,8 +28,8 @@
         <span>/</span>
         {totalPages}
     </div>
-    <input id="{name}-next" form="filter-form" class="btn" type="submit" name="{name}-page-action" value="next" onclick={nextPage} disabled={pageNr >= totalPages}>
-    <label for="{name}-next" aria-label="next">
+    <input id="{name}-next-{id}" form="filter-form" class="btn" type="submit" name="{name}-page-action" value="next" onclick={nextPage} disabled={pageNr >= totalPages}>
+    <label for="{name}-next-{id}" aria-label="next">
         <enhanced:img src="$lib/static/icon.svg" alt="next-{name}-page">
     </label>
 </div>
