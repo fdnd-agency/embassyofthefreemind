@@ -54,19 +54,27 @@
 			<FiltersAside
 			bind:filter
 			previewFilters={data.previewFilters}
-			authorsPage={data.authorsPage}
-			placesPage={data.placesPage}
 			authors={data.authors}
 			totalAuthors={data.totalAuthors}
+			authorsPage={data.authorsPage}
 			places={data.places}
 			totalPlaces={data.totalPlaces}
+			placesPage={data.placesPage}
 			/>
 		</div>
 		<div class="page-container">
 			<p class="results">
 				<span class="total-results">{totalResults}</span>results
 			</p>
-			<FilterContainerSmall bind:filter previewFilters={data.previewFilters} authorsPage={data.authorsPage}/>
+			<FilterContainerSmall
+			bind:filter
+			authors={data.authors}
+			totalAuthors={data.totalAuthors}
+			authorsPage={data.authorsPage}
+			places={data.places}
+			totalPlaces={data.totalPlaces}
+			placesPage={data.placesPage}
+			/>
 			<hr />
 			<BookList {books}/>
 
