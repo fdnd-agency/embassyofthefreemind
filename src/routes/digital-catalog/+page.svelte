@@ -20,7 +20,7 @@
 
 	let filter = $state(data.filter);
 
-	// $effect means this anonymous function will be called every time resultsPage or searchTerm is updated
+	// $effect means this anonymous function will be called every time resultsPage or filter is updated
 	$effect(async () => {
 		// https://svelte.dev/docs/svelte/$effect
 		const res = await getBooks(resultsPage, filter);

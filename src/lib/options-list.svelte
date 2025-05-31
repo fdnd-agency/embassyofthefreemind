@@ -1,5 +1,8 @@
 <script>
-    import Option from "./Option.svelte";       
+    // `options`: List of options with a value and a label
+    // `name`: Input name for server-side version
+    // `onchange`: Function to execute when user clicks an option
+    // `hasButton`: Should this list have a submit button in the server-side version
     let {options, value = $bindable(), name, onchange = null, hasButton = true} = $props();
     let id = $props.id();
 </script>

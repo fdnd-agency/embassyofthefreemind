@@ -4,6 +4,7 @@
 
     // Normally, pressing the arrow keys automatically *choses* an option, but this function makes sure it focusses instead.
     function handleKey(event) {
+        console.log('here')
         if (event.key === 'ArrowUp' || event.key === 'ArrowLeft') {
             event.preventDefault();
             event.target.previousElementSibling?.previousElementSibling?.focus(); // skip the label

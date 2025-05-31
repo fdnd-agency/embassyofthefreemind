@@ -21,7 +21,7 @@
 <div class="pagination-form">
     <input id="{name}-previous-{id}" form="filter-form" class="btn" type="submit" name="{name}-page-action" value="previous" onclick={previousPage} disabled={pageNr <= 1}>
     <label for="{name}-previous-{id}" aria-label="previous">
-        <enhanced:img src="$lib/static/icon2.svg" alt="previous-{name}-page">
+        <enhanced:img src="$lib/static/icon2.svg" alt="previous-{name}-page"/>
     </label>
     <div class="pagination-view">
         <input class="page-nr" form="filter-form" type="number" name="{name}-page" bind:value={pageNr} max={totalPages} aria-label="page number">
@@ -30,7 +30,7 @@
     </div>
     <input id="{name}-next-{id}" form="filter-form" class="btn" type="submit" name="{name}-page-action" value="next" onclick={nextPage} disabled={pageNr >= totalPages}>
     <label for="{name}-next-{id}" aria-label="next">
-        <enhanced:img src="$lib/static/icon.svg" alt="next-{name}-page">
+        <enhanced:img src="$lib/static/icon.svg" alt="next-{name}-page"/>
     </label>
 </div>
 
@@ -53,15 +53,23 @@
     }
 
     .page-nr {
-        field-sizing: content;
-        padding: 0.5em 1em;
+        width: 3.5em;
+        padding: 0.25em 0.5em;
         border: var(--borderSoft);
         border-radius: 2px;
+        -moz-appearance:textfield;
     }
 
     .page-nr::-webkit-outer-spin-button,
     .page-nr::-webkit-inner-spin-button {
         -webkit-appearance: none;
         margin: 0;
+    }
+
+    @supports (field-sizing: content) {
+        .page-nr {
+            field-sizing: content;
+            width: unset;
+        }
     }
 </style>

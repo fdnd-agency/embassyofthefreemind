@@ -1,5 +1,5 @@
 <script>
-    import OptionsList from "./OptionsList.svelte";
+    import OptionsList from "./options-list.svelte";
 
     let { digitalized = $bindable(), preview } = $props();
 </script>

@@ -1,7 +1,7 @@
 <script>
     import AuthorPlaceFilter from "$lib/author-place-filter.svelte";
     import PaginatedView from "$lib/paginated-view.svelte";
-    import OptionsList from "$lib/OptionsList.svelte";
+    import OptionsList from "$lib/options-list.svelte";
     import { getFilterOptions } from "$lib";
 
     /** @type {import('./$types').PageData} */
@@ -14,6 +14,7 @@
 
     $effect(async () => {
         if (parseInt(pageNr)) {
+            // If `pageNr` is updated and it is a valid integer (whole number), load the new options.
             const res = await getFilterOptions(apiName, 66, pageNr)
             options = res.options;
         }

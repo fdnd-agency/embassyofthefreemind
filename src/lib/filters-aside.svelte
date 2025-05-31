@@ -1,7 +1,7 @@
 <script>
-    import FilterGroup from "./FilterGroup.svelte";
+    import FilterGroup from "./filter-group.svelte";
     import CurrentFilters from "./current-filters.svelte";
-    import OptionsList from "./OptionsList.svelte";
+    import OptionsList from "./options-list.svelte";
     import DigitalizedFilter from "./digitalized-filter.svelte";
     import YearFilter from "./year-filter.svelte";
 
@@ -25,26 +25,30 @@
                 <YearFilter bind:startYear={filter.startYear} bind:endYear={filter.endYear} preview={previewFilters.centuries} />
             </details>
         </li>
-        <FilterGroup 
-        summary="Author"
-        name="author"
-        apiName="auteur"
-        bind:value={filter.author}
-        preview={previewFilters.authors}
-        pageNr={authorsPage}
-        options={authors}
-        totalOptions={totalAuthors}
-        />
-        <FilterGroup 
-        summary="Place of publication"
-        name="place"
-        apiName="plaats_van_uitgave"
-        bind:value={filter.place}
-        preview={previewFilters.places}
-        pageNr={placesPage}
-        options={places}
-        totalOptions={totalPlaces}
-        />
+        <li>
+            <FilterGroup
+            summary="Author"
+            name="author"
+            apiName="auteur"
+            bind:value={filter.author}
+            preview={previewFilters.authors}
+            pageNr={authorsPage}
+            options={authors}
+            totalOptions={totalAuthors}
+            />
+        </li>
+        <li>
+            <FilterGroup
+            summary="Place of publication"
+            name="place"
+            apiName="plaats_van_uitgave"
+            bind:value={filter.place}
+            preview={previewFilters.places}
+            pageNr={placesPage}
+            options={places}
+            totalOptions={totalPlaces}
+            />
+        </li>
     </ul>
 </aside>
 </div>

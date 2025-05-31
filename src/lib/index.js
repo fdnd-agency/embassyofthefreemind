@@ -11,11 +11,9 @@ export function arrayToObject(array, keyField, valueField) {
 
 export const nRows = 25;
 
-// The urls now show all the data, not filtered on ditialized books anymore
 export const booksURL = `${PUBLIC_APIURL}/media?apiKey=${PUBLIC_API_KEY}&facetFields%5B%5D=search_s_auteur&facetFields%5B%5D=search_s_plaats_van_uitgave&facetFields%5B%5D=search_s_jaar&facetFields%5B%5D=search_s_digitized_publication&lang=nl&page=1&q=&rows=${nRows}&sort=random%7B1709035870679%7D+asc`;
-export const placesURL = `${PUBLIC_APIURL}/filter/search_s_plaats_van_uitgave?ac=&apiKey=${PUBLIC_API_KEY}&facetFields%5B%5D=search_s_auteur&facetFields%5B%5D=search_s_plaats_van_uitgave&facetFields%5B%5D=search_s_jaar&facetFields%5B%5D=search_s_digitized_publication&facetSort=count&lang=nl&page=1&rows=45`;
-export const authorsURL = `${PUBLIC_APIURL}/filter/search_s_auteur?ac=&apiKey=${PUBLIC_API_KEY}&facetFields[]=search_s_auteur&facetFields[]=search_s_plaats_van_uitgave&facetFields[]=search_s_jaar&facetFields[]=search_s_digitized_publication&facetSort=index&lang=nl&page=1&q=&rows=66`;
 
+// Gets the books with a filter and page number. customFetch is used in +page.js
 export async function getBooks(pageNr, {searchTerm, author, place, digitalized, startYear, endYear}, customFetch = null) {
     let query = booksURL + '&page=' + pageNr;
 
@@ -43,6 +41,7 @@ export async function getBooks(pageNr, {searchTerm, author, place, digitalized, 
     }
 }
 
+// Gets the possible options for a filter, with a sort, page number, and optional customFetch
 export async function getFilterOptions(filterName, nRows, pageNr = 1, customFetch = null, sort = 'index') {
     let query = `${PUBLIC_APIURL}/filter/search_s_${filterName}?apiKey=${PUBLIC_API_KEY}&facetSort=${sort}&lang=nl&rows=${nRows}&page=${pageNr}`;
     const res = await (customFetch ?? fetch)(query);
@@ -53,6 +52,7 @@ export async function getFilterOptions(filterName, nRows, pageNr = 1, customFetc
     }
 }
 
+// Gets the first few options for each filter. CustomFetch required, since this is only used in +page.js
 export async function getPreviewFilters(customFetch) {
     const result = await Promise.all([
         getFilterOptions('auteur', 6, 1, customFetch, 'count'),
@@ -71,17 +71,19 @@ export async function getPreviewFilters(customFetch) {
     }
 }
 
+// Generate a dictionary/map from centuries to books per century, initialized at 0 for each century.
 const centuries = {};
 for (let i = 15; i <= 21; i++) {
     centuries[i] = 0;
 }
 
+// Fill said dictionary. Takes a list of years and number of books released that year and converts it into a list of centuries and books released that century.
 function yearsToCenturies(years) {
     const result = {...centuries}; // copy to prevent overwrite
     for (const {filter: year, count} of years) {
-        const century = Math.floor(parseInt(year) / 100) + 1;
+        const century = Math.floor(parseInt(year) / 100) + 1; // calculate the century that the year belongs to
         if (century >= 15 && century <= 21) {
-            result[century] += count;
+            result[century] += count; // add the number of books for that year to the number of books for that century
         }
     }
     return Object.entries(result);

@@ -1,4 +1,6 @@
 <script>
+    // `main` and `header` are snippets.
+    // `main` is given a function which closes the popup when called.
     let { main, header, name } = $props();
     let id = $props.id();
 

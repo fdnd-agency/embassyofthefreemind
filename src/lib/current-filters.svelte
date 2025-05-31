@@ -13,7 +13,7 @@
     }
 </script>
 
-<noscript><a href="?" class='btn'>Clear All</a></noscript>
+<noscript><a href="/digital-catalog" class='btn'>Clear All</a></noscript>
 
 {#if filter.digitalized}
     <ClearFilterButton text="Digitalized" clearFunction={clearDigitalized} />
