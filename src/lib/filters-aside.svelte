@@ -1,10 +1,9 @@
 <script>
     import FilterGroup from "./FilterGroup.svelte";
-    import FilterButtonAuthor from '$lib/filter-button-author.svelte';
     import CurrentFilters from "./current-filters.svelte";
     import OptionsList from "./OptionsList.svelte";
 
-    let { filter = $bindable(), previewFilters, totalAuthors, authorsPage } = $props();
+    let { filter = $bindable(), previewFilters, authorsPage, placesPage, authors, places, totalAuthors, totalPlaces } = $props();
 
     let century = $state(null);
 
@@ -61,6 +60,9 @@
         apiName="auteur"
         bind:value={filter.author}
         preview={previewFilters.authors}
+        pageNr={authorsPage}
+        options={authors}
+        totalOptions={totalAuthors}
         />
         <FilterGroup 
         summary="Place of publication"
@@ -68,6 +70,9 @@
         apiName="plaats_van_uitgave"
         bind:value={filter.place}
         preview={previewFilters.places}
+        pageNr={placesPage}
+        options={places}
+        totalOptions={totalPlaces}
         />
     </ul>
 </aside>

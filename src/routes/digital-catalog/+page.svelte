@@ -20,8 +20,6 @@
 
 	let filter = $state(data.filter);
 
-	$inspect(filter);
-
 	// $effect means this anonymous function will be called every time resultsPage or searchTerm is updated
 	$effect(async () => {
 		// https://svelte.dev/docs/svelte/$effect
@@ -53,13 +51,22 @@
 	<div class="catalog-container">
 		<!-- bind: allows PaginatedView to update the value of resultsPage -->
 		<div class="big-screen-only">
-			<FiltersAside bind:filter previewFilters={data.previewFilters} authors={data.authors} totalAuthors={data.totalAuthors} authorsPage={data.authorsPage}/>
+			<FiltersAside
+			bind:filter
+			previewFilters={data.previewFilters}
+			authorsPage={data.authorsPage}
+			placesPage={data.placesPage}
+			authors={data.authors}
+			totalAuthors={data.totalAuthors}
+			places={data.places}
+			totalPlaces={data.totalPlaces}
+			/>
 		</div>
 		<div class="page-container">
 			<p class="results">
 				<span class="total-results">{totalResults}</span>results
 			</p>
-			<FilterContainerSmall bind:filter previewFilters={data.previewFilters} authors={data.authors} totalAuthors={data.totalAuthors} authorsPage={data.authorsPage}/>
+			<FilterContainerSmall bind:filter previewFilters={data.previewFilters} authorsPage={data.authorsPage}/>
 			<hr />
 			<BookList {books}/>
 

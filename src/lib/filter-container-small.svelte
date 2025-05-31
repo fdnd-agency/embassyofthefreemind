@@ -1,5 +1,5 @@
 <script>
-    import AuthorsFilter from '$lib/authors-filter.svelte';
+    import AuthorsFilter from '$lib/author-place-filter.svelte';
     import PaginatedView from '$lib/paginated-view.svelte';
 
     let { author = $bindable(), authors, totalAuthors, authorsPage } = $props();

@@ -1,8 +1,5 @@
 <script>
-    import { authorsURL } from "$lib";
-    let { author = $bindable(), authors, totalAuthors, authorsPage, hideFn } = $props();
-
-    let id = $props.id();
+    let { value = $bindable(), options, name, hideFn } = $props();
 
     // Normally, pressing the arrow keys automatically *choses* an option, but this function makes sure it focusses instead.
     function handleKey(event) {
@@ -14,35 +11,27 @@
             event.target.nextElementSibling?.nextElementSibling?.focus(); // skip the label
         }
     }
-
-    $effect(async () => {
-        if (parseInt(authorsPage)) {
-            const resAuthors = await fetch(authorsURL + '&page=' + authorsPage);
-            const dataAuthors = await resAuthors.json();
-            authors = dataAuthors.filter;
-        }
-    });
 </script>
 
 <div id="filter-author-form">
     <div id="author-filter-list">
-        {#each authors as authorOption}
+        {#each options as option}
             <input
                 form="filter-form"
                 class="author-radio"
-                value={authorOption.id}
-                id="author-{authorOption.id}-{id}"
+                value={option.id}
+                id="{name}-{option.id}"
                 type="radio"
-                name="author"
-                bind:group={author}
+                {name}
+                bind:group={value}
                 onchange={hideFn}
                 onkeydown={handleKey}
             />
-            <label class="author-label" for="author-{authorOption.id}-{id}">{authorOption.label} ({authorOption.count})</label>
+            <label class="author-label" for="{name}-{option.id}">{option.label} ({option.count})</label>
         {/each}
     </div>
 
-    <noscript><button class="btn btn-primary" type="submit">Filter</button></noscript>
+    <noscript><button class="btn btn-primary" form="filter-form" type="submit">Filter</button></noscript>
 </div>
 
 <style>

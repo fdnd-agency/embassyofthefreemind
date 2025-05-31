@@ -1,5 +1,5 @@
 /** @type {import('./$types').PageLoad} */
-import { getBooks, getPreviewFilters } from '$lib';
+import { getBooks, getFilterOptions, getPreviewFilters } from '$lib';
 
 export async function load({ url, fetch }) {
 
@@ -39,16 +39,30 @@ export async function load({ url, fetch }) {
 		authorsPage--;
 	}
 
+	let placesPage = parseInt(url.searchParams.get('places-page')) || 1;
+	const placesPageAction = url.searchParams.get('places-page-action');
+	if (placesPageAction === 'next') {
+		placesPage++;
+	} else if (placesPageAction === 'previous') {
+		placesPage--;
+	}
+
+	const {options: authors, total: totalAuthors} = await getFilterOptions('auteur', 66, authorsPage, fetch);
+	const {options: places, total: totalPlaces} = await getFilterOptions('plaats_van_uitgave', 66, placesPage, fetch);
+
 	const previewFilters = await getPreviewFilters(fetch);
 
 	return {
 		books,
 		resultsPage,
 		totalResults,
-        authors: null,
-        totalAuthors: null,
 		authorsPage,
+		placesPage,
 		filter,
-		previewFilters
+		previewFilters,
+		authors,
+		totalAuthors,
+		places,
+		totalPlaces
 	}
 }

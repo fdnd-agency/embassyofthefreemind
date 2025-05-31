@@ -43,21 +43,31 @@ export async function getBooks(pageNr, {searchTerm, author, place, digitalized, 
     }
 }
 
+export async function getFilterOptions(filterName, nRows, pageNr = 1, customFetch = null, sort = 'index') {
+    let query = `${PUBLIC_APIURL}/filter/search_s_${filterName}?apiKey=${PUBLIC_API_KEY}&facetSort=${sort}&lang=nl&rows=${nRows}&page=${pageNr}`;
+    const res = await (customFetch ?? fetch)(query);
+    const data = await res.json();
+    return {
+        options: data.filter,
+        total: data.metadata.pagination.total
+    }
+}
+
 export async function getPreviewFilters(customFetch) {
     const result = await Promise.all([
-        customFetch(`${PUBLIC_APIURL}/filter/search_s_auteur?apiKey=${PUBLIC_API_KEY}&facetSort=count&lang=nl&rows=6`).then(res => res.json()),
-        customFetch(`${PUBLIC_APIURL}/filter/search_s_plaats_van_uitgave?apiKey=${PUBLIC_API_KEY}&facetSort=count&lang=nl&rows=5`).then(res => res.json()),
-        customFetch(`${PUBLIC_APIURL}/filter/search_s_jaar?apiKey=${PUBLIC_API_KEY}&lang=nl&rows=2200`).then(res => res.json()),
-        customFetch(`${PUBLIC_APIURL}/filter/search_s_digitized_publication?apiKey=${PUBLIC_API_KEY}&lang=nl&rows=2`).then(res => res.json()),
+        getFilterOptions('auteur', 6, 1, customFetch, 'count'),
+        getFilterOptions('plaats_van_uitgave', 5, 1, customFetch=customFetch, 'count'),
+        getFilterOptions('jaar', 2200, 1, customFetch=customFetch),
+        getFilterOptions('digitized_publication', 2, 1, customFetch=customFetch)
     ]);
 
-    result[0].filter.shift() // remove anonymous
+    result[0].options.shift() // remove anonymous
 
     return {
-        authors: result[0].filter,
-        places: result[1].filter,
-        centuries: yearsToCenturies(result[2].filter),
-        digitalized: result[3].filter
+        authors: result[0].options,
+        places: result[1].options,
+        centuries: yearsToCenturies(result[2].options),
+        digitalized: result[3].options
     }
 }
 

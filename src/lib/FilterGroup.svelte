@@ -1,7 +1,8 @@
 <script>
     import OptionsList from "./OptionsList.svelte";
+    import FilterPopup from "./filter-popup.svelte";
 
-    let { summary, name, apiName, value = $bindable(), preview } = $props();
+    let { summary, name, apiName, value = $bindable(), preview, pageNr, options, totalOptions } = $props();
 
     const previewOptions = preview.map(({filter, count}) => ({
         label: `${filter} (${count})`,
@@ -17,6 +18,7 @@
         bind:value
         {name}
         />
+        <FilterPopup bind:value {name} {apiName} {pageNr} {options} {totalOptions} />
     </details>
 </li>
 
