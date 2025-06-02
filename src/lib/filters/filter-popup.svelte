@@ -1,7 +1,7 @@
 <script>
-    import AuthorPlaceFilter from "$lib/author-place-filter.svelte";
-    import PaginatedView from "$lib/paginated-view.svelte";
-    import OptionsList from "$lib/options-list.svelte";
+    import AuthorPlaceFilter from "$lib/filters/author-place-filter.svelte";
+    import PaginatedView from "$lib/filters/paginated-view.svelte";
+    import OptionsList from "$lib/filters/options-list.svelte";
     import { getFilterOptions } from "$lib";
 
     /** @type {import('./$types').PageData} */

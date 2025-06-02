@@ -1,5 +1,5 @@
 <script>
-    import ClearFilterButton from "./clear-filter-button.svelte";
+    import ClearFilterButton from "$lib/filters/clear-filter-button.svelte";
 
     let { filter = $bindable() } = $props();
 

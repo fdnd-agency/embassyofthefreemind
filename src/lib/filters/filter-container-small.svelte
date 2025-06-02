@@ -1,10 +1,10 @@
 <script>
-    import AuthorPlaceFilterSmall from '$lib/author-place-filter-small.svelte';
-    import CurrentFilters from '$lib/current-filters.svelte';
+    import AuthorPlaceFilterSmall from '$lib/filters/author-place-filter-small.svelte';
+    import CurrentFilters from '$lib/filters/current-filters.svelte';
     import PopupMobile from '$lib/popup-mobile.svelte';
-    import DigitalizedFilter from './digitalized-filter.svelte';
-    import YearFilter from './year-filter.svelte';
-    import PaginatedView from './paginated-view.svelte';
+    import DigitalizedFilter from '$lib/filters/digitalized-filter.svelte';
+    import YearFilter from '$lib/filters/year-filter.svelte';
+    import PaginatedView from '$lib/filters/paginated-view.svelte';
 
     let { filter = $bindable(), authors, totalAuthors, authorsPage, places, totalPlaces, placesPage, previewFilters } = $props();
 </script>

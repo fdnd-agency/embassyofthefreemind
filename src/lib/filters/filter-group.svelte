@@ -1,6 +1,6 @@
 <script>
-    import OptionsList from "./options-list.svelte";
-    import FilterPopup from "./filter-popup.svelte";
+    import OptionsList from "$lib/filters/options-list.svelte";
+    import FilterPopup from "$lib/filters/filter-popup.svelte";
 
     // name: string. Name for the inputs. Used for server-side version.
     // apiName: string. Name in the api (e.g. plaats_van_uitgave)

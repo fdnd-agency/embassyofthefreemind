@@ -1,9 +1,9 @@
 <script>
-    import FilterGroup from "./filter-group.svelte";
-    import CurrentFilters from "./current-filters.svelte";
-    import OptionsList from "./options-list.svelte";
-    import DigitalizedFilter from "./digitalized-filter.svelte";
-    import YearFilter from "./year-filter.svelte";
+    import FilterGroup from "$lib/filters/filter-group.svelte";
+    import CurrentFilters from "$lib/filters/current-filters.svelte";
+    import OptionsList from "$lib/filters/options-list.svelte";
+    import DigitalizedFilter from "$lib/filters/digitalized-filter.svelte";
+    import YearFilter from "$lib/filters/year-filter.svelte";
 
     let { filter = $bindable(), previewFilters, authorsPage, placesPage, authors, places, totalAuthors, totalPlaces } = $props();
 </script>

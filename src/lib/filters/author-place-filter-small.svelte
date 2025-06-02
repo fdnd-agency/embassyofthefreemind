@@ -1,7 +1,7 @@
 <script>
     import { getFilterOptions } from '$lib';
-    import PaginatedView from '$lib/paginated-view.svelte';
-    import AuthorPlaceFilter from '$lib/author-place-filter.svelte';
+    import PaginatedView from '$lib/filters/paginated-view.svelte';
+    import AuthorPlaceFilter from '$lib/filters/author-place-filter.svelte';
 
     let { value = $bindable(), options, pageNr, name, apiName, closeFn } = $props();
 
