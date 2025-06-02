@@ -1,10 +1,5 @@
-<script>
-    import Nav from './nav.svelte';
-</script>
-
 <header>
     <div class="header-image">
-        <Nav/>
         <enhanced:img class="img-header-catalog" src="$lib/static/header-catalog.jpg" alt="klassiek geschrift logo catalogus">
     </div>
 </header>

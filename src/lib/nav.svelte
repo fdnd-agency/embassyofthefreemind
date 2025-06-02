@@ -1,5 +1,5 @@
 <div class="nav-container">
-    <nav class="navbar bg-base-100">
+    <nav class="menu bg-base-100">
         <div class="hamburger-container">
             <input type="checkbox" id="menu-toggle">
             <label for="menu-toggle" class="btn hamburger-btn">
@@ -12,17 +12,60 @@
         </div>
         <!-- This incorrectly gives a warning due to enhanced:img instead of img -->
         <!-- svelte-ignore a11y_consider_explicit_label -->
-        <a class="logo" href="/" aria-label="home"><enhanced:img class="logo-img" src="$lib/static/logo-efm.png" alt="logo"></a>
-        <div class="menu">
-            <a class="btn btn-ghost text-xl" href="/about-EFM">About EFM</a>
-            <a class="btn btn-ghost text-xl" href="/plan-your-visit">Plan your visit</a>
-            <a class="btn btn-ghost text-xl" href="/digital-catalog">Digital catalog</a>
-            <a class="btn btn-ghost text-xl" href="/research-institute">Research institute</a>
-            <div class="flag-container">
-                <!-- svelte-ignore a11y_consider_explicit_label -->
-                <button aria-label="english"><enhanced:img class="flag" src="$lib/static/united-kingdom.png" alt="English-version"></button>
-                <!-- svelte-ignore a11y_consider_explicit_label -->
-                <button aria-label="nederlands"><enhanced:img class="flag" src="$lib/static/netherlands.png" alt="Dutch-version"></button>
+        <div class="flex-1 px-2 lg:flex-none">
+            <a class="logo" href="/" aria-label="home"><enhanced:img class="logo-img" src="$lib/static/logo-efm.png" alt="logo"></a>
+        </div>
+        <div class="flex flex-1 justify-end px-2">
+            <div class="navbar flex items-stretch">
+                <div class="dropdown">
+                    <div tabindex="0" role="button" class="btn btn-ghost rounded-btn">Plan your visit</div>
+                    <ul class="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                        <li><a href="/digital-catalog">Digital catalog</a></li>
+                        <li><a href="https://embassyofthefreemind.com/nl/collectie/over-de-bibliotheek-2">About the library</a></li>
+                        <li><a href="https://embassyofthefreemind.com/nl/collectie/digitale-collectie1">Contributions to digital collection</a></li>
+                        <li><a href="https://embassyofthefreemind.com/en/library/collecting-areas">Collecting areas</a></li>
+                        <li><a href="a">Glossary</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <div tabindex="0" role="button" class="btn btn-ghost rounded-btn">About us</div>
+                    <ul class="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                        <li><a href="/digital-catalog">Digital catalog</a></li>
+                        <li><a href="https://embassyofthefreemind.com/nl/collectie/over-de-bibliotheek-2">About the library</a></li>
+                        <li><a href="https://embassyofthefreemind.com/nl/collectie/digitale-collectie1">Contributions to digital collection</a></li>
+                        <li><a href="https://embassyofthefreemind.com/en/library/collecting-areas">Collecting areas</a></li>
+                        <li><a href="a">Glossary</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <div tabindex="0" role="button" class="btn btn-ghost rounded-btn">Library</div>
+                    <ul class="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                        <li><a href="/digital-catalog">Digital catalog</a></li>
+                        <li><a href="https://embassyofthefreemind.com/nl/collectie/over-de-bibliotheek-2">About the library</a></li>
+                        <li><a href="https://embassyofthefreemind.com/nl/collectie/digitale-collectie1">Contributions to digital collection</a></li>
+                        <li><a href="https://embassyofthefreemind.com/en/library/collecting-areas">Collecting areas</a></li>
+                        <li><a href="a">Glossary</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <div tabindex="0" role="button" class="btn btn-ghost rounded-btn">Support us</div>
+                    <ul class="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
+                        <li><a href="/digital-catalog">Event venue</a></li>
+                        <li><a href="https://embassyofthefreemind.com/nl/collectie/over-de-bibliotheek-2">About the library</a></li>
+                        <li><a href="https://embassyofthefreemind.com/nl/collectie/digitale-collectie1">Contributions to digital collection</a></li>
+                        <li><a href="https://embassyofthefreemind.com/en/library/collecting-areas">Collecting areas</a></li>
+                        <li><a href="a">Glossary</a></li>
+                    </ul>
+                </div>
+                <a class="btn btn-ghost btn-primary" href="/research-institute">Tickets</a>
+                <a class="btn btn-ghost btn-primary" href="/research-institute">Webshop</a>
+
+                <div class="flag-container">
+                    <!-- svelte-ignore a11y_consider_explicit_label  -->
+                    <button aria-label="english"><enhanced:img class="flag" src="$lib/static/united-kingdom.png" alt="English-version"></button>
+                    <!-- svelte-ignore a11y_consider_explicit_label -->
+                    <button aria-label="nederlands"><enhanced:img class="flag" src="$lib/static/netherlands.png" alt="Dutch-version"></button>
+                </div>
             </div>
         </div>
     </nav>
@@ -40,7 +83,7 @@
 
     nav {
         color: var(--primaryColor);
-        max-height: 2em;
+        max-height: 5em;
         width: 90%;
         margin: auto;
     }
@@ -82,16 +125,23 @@
         border: unset;
     }
 
-    .menu {
+    .navbar {
         display: flex;
         flex-wrap: nowrap;
         flex-direction: row;
         max-width: 80em;
         margin-left: auto;
+        gap: 1em;
     }
 
-    .menu a {
-        padding: 0 0.5em;
+    .navbar ul {
+        inset-inline-start: calc(50% - 6.5rem);
+    }
+
+    .navbar ul a {
+        display: inline;
+        width: 100%;
+        text-align: center;
     }
 
     .hamburger-container {
@@ -101,10 +151,6 @@
     #menu-toggle {
         width: 0;
         opacity: 0;
-    }
-
-    label {
-        z-index: 2;
     }
 
     input:focus + label {
@@ -136,16 +182,8 @@
     }
 
     @media only screen and (max-width: 932px) {
-        .menu {
+        .navbar {
             display: none;
-        }
-
-        .hamburger-container {
-            display: block;
-        }
-
-        .hamburger-container:has(#menu-toggle:checked) ~ .menu {
-            display: flex;
             flex-direction: column;
             justify-content: start;
             background-color: var(--backgroundColor);
@@ -155,6 +193,28 @@
             width: 20em;
             height: calc(100vh - 4rem);
             z-index: 1;
+        }
+
+        .navbar .btn-ghost {
+            width: 100%;
+        }
+
+        .navbar ul {
+            bottom: auto;
+            top: -50%;
+            inset-inline-start: 100%;
+        }
+
+        .hamburger-container {
+            display: block;
+        }
+
+        nav:has(#menu-toggle:checked) .navbar {
+            display: flex;
+        }
+
+        .flag-container {
+            justify-content: center;
         }
     }
 </style>
