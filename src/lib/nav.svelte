@@ -1,4 +1,3 @@
-<div class="nav-container">
     <nav class="menu bg-base-100">
         <div class="hamburger-container">
             <input type="checkbox" id="menu-toggle">
@@ -72,17 +71,8 @@
             </div>
         </div>
     </nav>
-</div>
 
 <style>
-    .nav-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        background-color: var(--backgroundColor);
-        margin-bottom: 4rem;
-    }
 
     nav {
         display: flex;
@@ -90,10 +80,14 @@
         align-items: center;
         justify-content: start;
         color: var(--primaryColor);
-        max-height: 5em;
-        width: 90%;
-        margin: 0 auto;
-        padding: 0;
+        min-height: 4em;
+        padding: 0 5vw;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        background-color: var(--backgroundColor);
+        margin-bottom: 4rem;
     }
 
     .logo {
