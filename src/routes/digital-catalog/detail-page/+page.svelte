@@ -1,14 +1,12 @@
 <script>
-  	import { getBooks } from '$lib';
-	import Headercomponent from '$lib/header.svelte';
-  	import Breadcrumbs from '$lib/breadcrumbs.svelte';
-  	import Search from '$lib/search.svelte';
-	import FiltersAside from '$lib/filters-aside.svelte';
-  	import FilterContainerSmall from '$lib/filter-container-small.svelte';
-  	import BookViewer from "$lib/book-viewer.svelte";
-  	import PaginatedView from '$lib/paginated-view.svelte';
-  	import Footer from '$lib/footer.svelte';
-  	import BookList from "$lib/book-list.svelte";
+	import { getBooks } from "$lib";
+	import Headercomponent from "$lib/header.svelte";
+	import Breadcrumbs from "$lib/breadcrumbs.svelte";
+	import Search from "$lib/search.svelte";
+	import FiltersAside from "$lib/filters-aside.svelte";
+	import BookList from "$lib/book-list.svelte";
+	import PaginatedView from "$lib/paginated-view.svelte";
+	import Footer from "$lib/footer.svelte";
 
 	/** @type {import('./$types').PageData} */
 	let { data } = $props();
@@ -16,56 +14,43 @@
 	let resultsPage = $state(data.resultsPage);
 	let searchTerm = $state(data.searchTerm);
 	let totalResults = $state(data.totalResults);
-	let author = $state(data.author);
-	let books = $state(data.books);
 
 	// $effect means this anonymous function will be called every time resultsPage or searchTerm is updated
 	$effect(async () => {
 		// https://svelte.dev/docs/svelte/$effect
-		const res = await getBooks(resultsPage, searchTerm, author);
-		books = res.books;
+		const res = await getBooks(resultsPage, searchTerm);
 		totalResults = res.totalResults;
 	});
 </script>
 
 <noscript> JAVASCRIPT DISABLED </noscript>
 
-<Headercomponent />
 <main>
-	<Breadcrumbs />
-	<h1>Digital catalog</h1>
-	<p>
-		Discover a unique collection of books and prints full of wisdom,
-		symbolism and free thinking. Browse through the collection, search for
-		authors or place and date of publication and be inspired by ideas that
-		span the ages.
-	</p>
-	<form id="filter-form">
+	<div>
+		<ul>
+			<li class="breadcrumbs text-sm">
+				<Breadcrumbs /><a href="">hello</a>
+			</li>
+		</ul>
+	</div>
+	<form id="main-form">
 		<!-- All filter inputs and submit buttons should connect to this form using form="main-form" -->
-
 	</form>
 	<div class="search-container">
 		<Search bind:searchTerm />
 	</div>
 	<div class="catalog-container">
-		<!-- bind: allows PaginatedView to update the value of resultsPage -->
-		<div class="big-screen-only">
-			<FiltersAside bind:author={author} authors={data.authors} totalAuthors={data.totalAuthors} authorsPage={data.authorsPage}/>
-		</div>
 		<div class="page-container">
 			<p class="results">
 				<span class="total-results">{totalResults}</span>results
 			</p>
-			<FilterContainerSmall bind:author={author} authors={data.authors} totalAuthors={data.totalAuthors} authorsPage={data.authorsPage}/>
 			<hr />
-			<BookList {books}/>
-
+			<BookList booksData={data.books} />
 			<div class="paginated-view">
 				<PaginatedView
 					name="results"
 					bind:pageNr={resultsPage}
 					{totalResults}
-					perPage={25}
 				/>
 			</div>
 		</div>
@@ -77,7 +62,7 @@
 	main {
 		width: 90%;
 		margin: 0 auto;
-		margin-top: 1rem;
+		margin-top: 5rem;
 	}
 
 	.search-container {
