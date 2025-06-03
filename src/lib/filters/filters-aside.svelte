@@ -4,6 +4,7 @@
     import OptionsList from "$lib/filters/options-list.svelte";
     import DigitalizedFilter from "$lib/filters/digitalized-filter.svelte";
     import YearFilter from "$lib/filters/year-filter.svelte";
+    import Info from "$lib/info.svelte";
 
     let { filter = $bindable(), previewFilters, authorsPage, placesPage, authors, places, totalAuthors, totalPlaces } = $props();
 </script>
@@ -15,7 +16,12 @@
     <ul>
         <li>
             <details>
-                <summary>Digitalized</summary>
+                <summary>
+                    Digitalized
+                    <Info>
+                        The core collection of 5,000 old prints and 300 manuscripts from the 15th to the 18th century is being digitized and is already partly available online worldwide. The digitization is made possible by bestselling author Dan Brown and the Prins Bernhard Cultuurfonds.
+                    </Info>
+                </summary>
                 <DigitalizedFilter bind:digitalized={filter.digitalized} preview={previewFilters.digitalized}/>
             </details>
         </li>

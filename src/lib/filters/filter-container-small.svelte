@@ -5,6 +5,7 @@
     import DigitalizedFilter from '$lib/filters/digitalized-filter.svelte';
     import YearFilter from '$lib/filters/year-filter.svelte';
     import PaginatedView from '$lib/filters/paginated-view.svelte';
+  import Info from '$lib/info.svelte';
 
     let { filter = $bindable(), authors, totalAuthors, authorsPage, places, totalPlaces, placesPage, previewFilters } = $props();
 </script>
@@ -15,6 +16,13 @@
         <ul class="filters-small">
             <li>
                 <PopupMobile name="Digitalized">
+                    {#snippet header()}
+                        <div class="digitalized-info">
+                            <Info>
+                                The core collection of 5,000 old prints and 300 manuscripts from the 15th to the 18th century is being digitized and is already partly available online worldwide. The digitization is made possible by bestselling author Dan Brown and the Prins Bernhard Cultuurfonds.
+                            </Info>
+                        </div>
+                    {/snippet}
                     {#snippet main()}
                         <DigitalizedFilter bind:digitalized={filter.digitalized} preview={previewFilters.digitalized}/>
                     {/snippet}
@@ -67,6 +75,12 @@
 		max-width: 90vw;
 		overflow-x: auto;
 	}
+
+    .digitalized-info {
+        margin-left: 0.5rem;
+        margin-right: auto;
+    }
+
     @media only screen and (max-width: 800px) {
 		.small-screen-only {
 			display: initial;

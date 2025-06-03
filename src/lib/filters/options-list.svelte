@@ -10,7 +10,7 @@
 <ul>
     {#each options as option}
         <li>
-            <input {onchange} bind:group={value} type="radio" form="filter-form" {name} id="{id}-{option.value}" value={option.value}>
+            <input {onchange} bind:group={value} type="radio" class="radio" form="filter-form" {name} id="{id}-{option.value}" value={option.value}>
             <label for="{id}-{option.value}">{option.label}</label>
         </li>
     {/each}
@@ -19,3 +19,11 @@
 {#if hasButton}
     <noscript><button form="filter-form" class="btn btn-primary" type="submit">Filter</button></noscript>
 {/if}
+
+<style>
+    li {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+</style>
