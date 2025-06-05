@@ -28,7 +28,7 @@
         font-weight: initial;
     }
 
-    .info:hover .explanation, .info:focus .explanation {
+    .info:hover .explanation, .info:focus-visible .explanation {
         display: block;
     }
 </style>

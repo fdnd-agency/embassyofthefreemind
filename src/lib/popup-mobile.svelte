@@ -40,7 +40,7 @@
 </div>
 
 <style>
-    .popup-container:has(input:focus) label {
+    .popup-container:has(input:focus-visible) label {
         outline: var(--outline);
     }
 

@@ -60,7 +60,7 @@
         cursor: pointer;
     }
 
-    .container:has(input:focus) label {
+    .container:has(input:focus-visible) label {
         outline: var(--outline);
     }
 

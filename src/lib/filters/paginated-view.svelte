@@ -49,7 +49,7 @@
         width: 0;
     }
 
-    input[type="submit"]:focus + label {
+    input[type="submit"]:focus-visible + label {
         outline: var(--outline);
     }    
 
