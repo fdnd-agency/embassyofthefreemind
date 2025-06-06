@@ -142,7 +142,7 @@
         gap: 1em;
     }
 
-    .navbar .btn-ghost:focus {
+    .navbar .btn-ghost:focus-visible {
         outline: var(--outline);
     }
 
@@ -150,7 +150,7 @@
         display: block;
     }
 
-    a.logo:focus {
+    a.logo:focus-visible {
         outline: var(--outline);
     }
 
@@ -174,7 +174,7 @@
         opacity: 0;
     }
 
-    input:focus + label {
+    input:focus-visible + label {
         outline: var(--outline);
     }
 
