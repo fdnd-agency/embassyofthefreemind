@@ -2,10 +2,10 @@
 	import { getBooks } from "$lib";
 	import Headercomponent from "$lib/header.svelte";
 	import Breadcrumbs from "$lib/breadcrumbs.svelte";
-	import Search from "$lib/search.svelte";
-	import FiltersAside from "$lib/filters-aside.svelte";
+	import Search from "$lib/filters/search.svelte";
+	import FiltersAside from "$lib/filters/filters-aside.svelte";
 	import BookList from "$lib/book-list.svelte";
-	import PaginatedView from "$lib/paginated-view.svelte";
+	import PaginatedView from "$lib/filters/paginated-view.svelte";
 	import Footer from "$lib/footer.svelte";
 
 	/** @type {import('./$types').PageData} */

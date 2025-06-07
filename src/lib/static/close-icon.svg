@@ -4,6 +4,7 @@
     viewBox="0 0 24 24"
     class="inline-block h-4 w-4 stroke-current">
     <path
+    stroke="black"
     stroke-linecap="round"
     stroke-linejoin="round"
     stroke-width="2"
