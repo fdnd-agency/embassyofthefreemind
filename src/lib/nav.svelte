@@ -64,9 +64,9 @@
 
                 <div class="flag-container">
                     <!-- svelte-ignore a11y_consider_explicit_label  -->
-                    <button class="language-btn" aria-label="english"><enhanced:img class="flag" src="$lib/static/united-kingdom.png" alt="English-version"></button>
+                    <button>EN</button>
                     <!-- svelte-ignore a11y_consider_explicit_label -->
-                    <button class="language-btn" aria-label="nederlands"><enhanced:img class="flag" src="$lib/static/netherlands.png" alt="Dutch-version"></button>
+                    <button>NL</button>
                 </div>
             </div>
         </div>
@@ -154,14 +154,8 @@
         outline: var(--outline);
     }
 
-    .navbar ul {
-        inset-inline-start: calc(50% - 6.5rem);
-    }
-
     .navbar ul a {
-        display: inline;
         width: 100%;
-        text-align: center;
     }
 
     .hamburger-container {
