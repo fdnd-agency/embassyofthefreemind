@@ -4,7 +4,7 @@
     // name must be unique. It is used for the no-js version to ensure that different instances of this component don't conflict.
     let { pageNr = $bindable(), totalResults, name, perPage } = $props();
     let id = $props.id();
-
+    //$derived makes sure that totalPages is updated whenever perPage or totalResults changes.
     let totalPages = $derived(Math.ceil(totalResults / perPage) || 1); // math.ceil rounds up
 
     function nextPage(event) {
