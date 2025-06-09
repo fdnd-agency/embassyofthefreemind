@@ -26,9 +26,17 @@ options={preview.map(([century, count]) => ({
     value: century,
     label: `${century}th century (${count})`
 }))} />
-<input onchange={clearCentury} type="number" form="filter-form" bind:value={startYear} name="start-year">
+<input 
+onchange={clearCentury} 
+type="number" 
+form="filter-form" bind:value={startYear} 
+name="start-year">
 -
-<input onchange={clearCentury} type="number" form="filter-form" bind:value={endYear} name="end-year">
+<input 
+onchange={clearCentury} 
+type="number" 
+form="filter-form" bind:value={endYear} 
+name="end-year">
 
 <style>
     input {

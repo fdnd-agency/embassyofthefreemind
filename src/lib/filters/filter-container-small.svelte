@@ -5,7 +5,7 @@
     import DigitalizedFilter from '$lib/filters/digitalized-filter.svelte';
     import YearFilter from '$lib/filters/year-filter.svelte';
     import PaginatedView from '$lib/filters/paginated-view.svelte';
-  import Info from '$lib/info.svelte';
+    import Info from '$lib/info.svelte';
 
     let { filter = $bindable(), authors, totalAuthors, authorsPage, places, totalPlaces, placesPage, previewFilters } = $props();
 </script>
