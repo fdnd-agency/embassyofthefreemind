@@ -79,7 +79,7 @@
 
     .card-body {
         max-width: fit-content;
-        width: calc(95vw - 2em);
+        width: calc(95vw - 2rem);
         background-color: var(--secondaryBackgroundColor);
         position: absolute;
     }

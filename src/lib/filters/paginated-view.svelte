@@ -58,8 +58,8 @@
     }
 
     .page-nr {
-        width: 3.5em;
-        padding: 0.25em 0.5em;
+        width: 3.5rem;
+        padding: 0.25rem 0.5rem;
         border: var(--borderSoft);
         border-radius: 2px;
         -moz-appearance:textfield;

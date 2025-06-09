@@ -20,8 +20,8 @@
 <style>
     .search {
         border-radius: 2px;
-        width: 30em;
-        height: 2.5em;
+        width: 30rem;
+        height: 2.5rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -29,13 +29,13 @@
 
     input { /* placeholder */
         outline: none;
-        width: calc(100% - 1em);
+        width: calc(100% - 1rem);
         border-right: var(--borderSoft);
-        padding-right: 0.5em;
-        margin-right: 1em;
+        padding-right: 0.5rem;
+        margin-right: 1rem;
     }
 
     button {
-        width: 1em;
+        width: 1rem;
     }
 </style>

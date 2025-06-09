@@ -61,10 +61,10 @@
 
 <style>
     aside {
-        width: 15em;
+        width: 15rem;
         height: auto;
         background-color: var(--tertiaryBackgroundColor);
-        padding: 1em;
+        padding: 1rem;
     }
 
     li, ul {

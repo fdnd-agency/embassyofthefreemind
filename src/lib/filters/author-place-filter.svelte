@@ -52,7 +52,7 @@
     }
     
     .option {
-        flex-basis: 18em;
+        flex-basis: 18rem;
         flex-grow: 0.5;
     }
 
@@ -61,7 +61,7 @@
     }
 
     #author-filter-list {
-        width: 65em;
-        max-width: calc(95vw - 4em);
+        width: 65rem;
+        max-width: calc(95vw - 4rem);
     }
 </style>

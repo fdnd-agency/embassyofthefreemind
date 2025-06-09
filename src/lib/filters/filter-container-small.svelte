@@ -71,13 +71,13 @@
 
 	.filters-small {
 		display: flex;
-		gap: 1em;
+		gap: 1rem;
 		max-width: 90vw;
 		overflow-x: auto;
 	}
 
     .digitalized-info {
-        margin-left: 0.5rem;
+        margin-left: 0.5rrem;
         margin-right: auto;
     }
 
@@ -86,7 +86,7 @@
 			display: initial;
             display: flex;
             flex-direction: column;
-            gap: 1.5em;
+            gap: 1.5rem;
 		}
     }
 </style>

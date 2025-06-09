@@ -22,7 +22,7 @@
 
 <style>
     .scrollbox {
-        height: calc(80vh - 7em);
+        height: calc(80vh - 7rem);
         overflow-y: auto;
         overscroll-behavior-y: contain;
     }
@@ -31,8 +31,8 @@
 <noscript>
     <style>
         .scrollbox.abc {
-            height: calc(80vh - 10em);
-            margin-bottom: 1em;
+            height: calc(80vh - 10rem);
+            margin-bottom: 1rem;
         }
     </style>
 </noscript>

@@ -32,6 +32,6 @@ options={preview.map(([century, count]) => ({
 
 <style>
     input {
-        width: calc(50% - 1em);
+        width: calc(50% - 1rem);
     }
 </style>
