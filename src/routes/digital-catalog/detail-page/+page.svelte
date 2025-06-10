@@ -26,13 +26,7 @@
 <noscript> JAVASCRIPT DISABLED </noscript>
 
 <main>
-	<div>
-		<ul>
-			<li class="breadcrumbs text-sm">
-				<Breadcrumbs /><a href="">hello</a>
-			</li>
-		</ul>
-	</div>
+	<Breadcrumbs />
 	<form id="main-form">
 		<!-- All filter inputs and submit buttons should connect to this form using form="main-form" -->
 	</form>
