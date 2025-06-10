@@ -1,8 +1,8 @@
 <script>
-	/** @type {import('./$types').PageData} */
+    let {data} = $props()
 </script>
 
-<h1>Home</h1>
+<h1>{data.title}</h1>
 
 <style>
     h1 {

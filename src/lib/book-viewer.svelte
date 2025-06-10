@@ -71,7 +71,7 @@
 					</button>
 				</form>
 
-				<img src={images[currentIndex]?.small} alt="pagina" />
+				<img src={images[currentIndex]?.small} alt="pagina" loading="lazy"/>
 
 				<form method="GET" class="right">
 					<input

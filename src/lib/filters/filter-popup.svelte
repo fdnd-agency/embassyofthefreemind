@@ -1,23 +1,33 @@
 <script>
-    import AuthorsFilter from "$lib/authors-filter.svelte";
-    import PaginatedView from "./paginated-view.svelte";
+    import AuthorPlaceFilter from "$lib/filters/author-place-filter.svelte";
+    import PaginatedView from "$lib/filters/paginated-view.svelte";
+    import OptionsList from "$lib/filters/options-list.svelte";
+    import { getFilterOptions } from "$lib";
 
     /** @type {import('./$types').PageData} */
-    let { author = $bindable(), authors, totalAuthors, authorsPage } = $props();
+    let { value = $bindable(), name, apiName, options, totalOptions, pageNr } = $props();
     let isDropdownOpen = $state(false);
 
     function closeDropdown() {
         isDropdownOpen = false;
     }
+
+    $effect(async () => {
+        if (parseInt(pageNr)) {
+            // If `pageNr` is updated and it is a valid integer (whole number), load the new options.
+            const res = await getFilterOptions(apiName, 66, pageNr)
+            options = res.options;
+        }
+    });
 </script>
-<div>
-    <input type="checkbox" id="author-filter-more" bind:checked={isDropdownOpen}/>
-    <label for="author-filter-more" class="author-filter-more-label" aria-label="More filters">More...</label>
+<div class="container">
+    <input type="checkbox" id="{name}-filter-more" bind:checked={isDropdownOpen}/>
+    <label for="{name}-filter-more" class="filter-more-label" aria-label="More filters">More...</label>
     <div class="card card-compact z-[1] w-64 p-2 ">
         <div class="card-body">
             <div class="filter-header">
-                <PaginatedView name="authors" bind:pageNr={authorsPage} totalResults={totalAuthors} perPage=66/>
-                <label for="author-filter-more" class="btn" aria-label="Close popup">
+                <PaginatedView name="{name}s" bind:pageNr totalResults={totalOptions} perPage=66/>
+                <label for="{name}-filter-more" class="btn" aria-label="Close popup">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -32,12 +42,12 @@
                 </label>
             </div>
 
-            <AuthorsFilter bind:author={author} {authors} {totalAuthors} {authorsPage} hideFn={closeDropdown}/>
+            <AuthorPlaceFilter bind:value {options} {name} hideFn={closeDropdown} />
         </div>
     </div>
 </div>
 <style>
-    #author-filter-more {
+    input {
         width: 0;
         opacity: 0;
     }
@@ -46,19 +56,19 @@
         display: none;
     }
 
-    .author-filter-more-label {
+    .filter-more-label {
         cursor: pointer;
     }
 
-    input:focus + .author-filter-more-label {
+    .container:has(input:focus-visible) label {
         outline: var(--outline);
     }
 
-    .author-filter-more-label:hover {
+    .filter-more-label:hover {
         text-decoration: underline;
     }
 
-    #author-filter-more:checked ~ .card {
+    input:checked ~ .card {
         display: block;
     }
     
@@ -69,16 +79,8 @@
 
     .card-body {
         max-width: fit-content;
-        width: calc(95vw - 2em);
+        width: calc(95vw - 2rem);
         background-color: var(--secondaryBackgroundColor);
         position: absolute;
     }
 </style>
-
-<noscript>
-    <style>
-        .author-radio:checked + .author-label {
-            color: red;
-        }
-    </style>
-</noscript>

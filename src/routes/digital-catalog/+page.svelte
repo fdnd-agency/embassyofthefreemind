@@ -2,33 +2,32 @@
   	import { getBooks } from '$lib';
 	import Headercomponent from '$lib/header.svelte';
   	import Breadcrumbs from '$lib/breadcrumbs.svelte';
-  	import Search from '$lib/search.svelte';
-	import FiltersAside from '$lib/filters-aside.svelte';
-  	import FilterContainerSmall from '$lib/filter-container-small.svelte';
+  	import Search from '$lib/filters/search.svelte';
+	import FiltersAside from '$lib/filters/filters-aside.svelte';
+  	import FilterContainerSmall from '$lib/filters/filter-container-small.svelte';
   	import BookViewer from "$lib/book-viewer.svelte";
-  	import PaginatedView from '$lib/paginated-view.svelte';
+  	import PaginatedView from '$lib/filters/paginated-view.svelte';
   	import Footer from '$lib/footer.svelte';
   	import BookList from "$lib/book-list.svelte";
 
 	/** @type {import('./$types').PageData} */
 	let { data } = $props();
 
+	// The following variables are updated and are therefore declared with $state
 	let resultsPage = $state(data.resultsPage);
-	let searchTerm = $state(data.searchTerm);
 	let totalResults = $state(data.totalResults);
-	let author = $state(data.author);
 	let books = $state(data.books);
 
-	// $effect means this anonymous function will be called every time resultsPage or searchTerm is updated
+	let filter = $state(data.filter);
+
+	// $effect means this anonymous function will be called every time resultsPage or filter is updated
 	$effect(async () => {
 		// https://svelte.dev/docs/svelte/$effect
-		const res = await getBooks(resultsPage, searchTerm, author);
+		const res = await getBooks(resultsPage, filter);
 		books = res.books;
 		totalResults = res.totalResults;
 	});
 </script>
-
-<noscript> JAVASCRIPT DISABLED </noscript>
 
 <Headercomponent />
 <main>
@@ -41,22 +40,40 @@
 		span the ages.
 	</p>
 	<form id="filter-form">
-		<!-- All filter inputs and submit buttons should connect to this form using form="main-form" -->
+		<!-- All filter inputs and submit buttons should connect to this form using form="filter-form" -->
 
 	</form>
 	<div class="search-container">
-		<Search bind:searchTerm />
+		<Search bind:searchTerm={filter.searchTerm} />
 	</div>
 	<div class="catalog-container">
 		<!-- bind: allows PaginatedView to update the value of resultsPage -->
 		<div class="big-screen-only">
-			<FiltersAside bind:author={author} authors={data.authors} totalAuthors={data.totalAuthors} authorsPage={data.authorsPage}/>
+			<FiltersAside
+			bind:filter
+			previewFilters={data.previewFilters}
+			authors={data.authors}
+			totalAuthors={data.totalAuthors}
+			authorsPage={data.authorsPage}
+			places={data.places}
+			totalPlaces={data.totalPlaces}
+			placesPage={data.placesPage}
+			/>
 		</div>
 		<div class="page-container">
 			<p class="results">
 				<span class="total-results">{totalResults}</span>results
 			</p>
-			<FilterContainerSmall bind:author={author} authors={data.authors} totalAuthors={data.totalAuthors} authorsPage={data.authorsPage}/>
+			<FilterContainerSmall
+			bind:filter
+			previewFilters={data.previewFilters}
+			authors={data.authors}
+			totalAuthors={data.totalAuthors}
+			authorsPage={data.authorsPage}
+			places={data.places}
+			totalPlaces={data.totalPlaces}
+			placesPage={data.placesPage}
+			/>
 			<hr />
 			<BookList {books}/>
 
@@ -70,8 +87,9 @@
 			</div>
 		</div>
 	</div>
-	<Footer />
+
 </main>
+<Footer />
 
 <style>
 	main {
@@ -98,6 +116,7 @@
 		display: flex;
 		flex-direction: column;
 		padding-left: 2rem;
+		z-index: -1;
 	}
 
 	.total-results {
