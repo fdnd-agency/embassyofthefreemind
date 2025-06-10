@@ -87,7 +87,7 @@ summary, .summary {
     transform: scale(1.03);
     background-color: var(--primaryColor);
 }
-*:focus {
+*:focus-visible {
    outline: var(--outline);
 }
 
@@ -98,7 +98,7 @@ h1 {
 }
 
 p {
-    max-width: 40em;
+    max-width: 40rem;
 }
 
 a {

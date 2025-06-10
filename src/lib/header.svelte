@@ -1,3 +1,4 @@
+
 <header>
     <div class="header-image">
         <enhanced:img class="img-header-catalog" src="$lib/static/header-catalog.jpg" alt="klassiek geschrift logo catalogus">
