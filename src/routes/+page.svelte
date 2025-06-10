@@ -1,12 +1,1 @@
-<script>
-	/** @type {import('./$types').PageData} */
-</script>
 
-<h1>Home</h1>
-
-<style>
-    h1 {
-        margin-top: 4rem;
-        text-transform: capitalize;
-    }
-</style>

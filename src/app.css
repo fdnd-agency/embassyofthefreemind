@@ -5,7 +5,7 @@
 :root {
     /* Main Colors */
     --primaryColor: #002646; /* Dark blue */
-    --secondaryColor: #C3B083; /* Light brown */ 
+    --secondaryColor: #B59A66; /* Light brown */ 
 
     /* Background Colors */
     --backgroundColor: #ffffff; /* White */
@@ -41,54 +41,12 @@
     /* TODO: Spacing */
 }
 
-h3 {
-    font-size: var(--fontSizeLarge);
-    font-weight: var(--fontWeightBold);
-    color: var(--primaryColor);
-}
-
-.badge {
-    height: fit-content;
-    padding: 0.5rem;
-    border-radius: 0;
-}
-
-.bold {
-    font-weight: var(--fontWeightBold);
-}
-
-summary, .summary {
-    color: var(--primaryColor);
-    font-weight: var(--fontWeightBold);
-    padding: 5px 0px;
-}
- 
-.btn {
-    border-radius: 0;
-    border: 1px solid var(--secondaryBackgroundColor);
-    background-color: var(--backgroundColor);
-    color: var(--primaryColor);
-    font-weight: var(--fontWeightBold);
-}
-
-.btn-primary {
-    background-color: var(--primaryColor);
-    color: var(--secondaryColor);
-    border: none;
-}
-
-.btn:hover, .dropdown .btn:focus {
-    border-radius: 0;
-    background-color: var(--secondaryColor);
-}
-
-.btn-primary:hover {
-    border: none;
-    transform: scale(1.03);
-    background-color: var(--primaryColor);
-}
-*:focus-visible {
+*:focus {
    outline: var(--outline);
+}
+
+.btn {
+	border-radius: 0;
 }
 
 h1 {
@@ -98,7 +56,7 @@ h1 {
 }
 
 p {
-    max-width: 40rem;
+    max-width: 40em;
 }
 
 a {

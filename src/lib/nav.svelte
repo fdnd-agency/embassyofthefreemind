@@ -1,94 +1,48 @@
-<nav class="menu bg-base-100">
-    <div class="hamburger-container">
-        <input type="checkbox" id="menu-toggle">
-        <label for="menu-toggle" class="btn hamburger-btn">
-            <svg viewBox="0 0 8 6" fill="#000" width="32">
-                <path d="M 0.5 0 h 7 a 0.5 0.5 0 0 1 0 1 h -7 a 0.5 0.5 0 0 1 0 -1"/>
-                <path d="M 0.5 2.5 h 7 a 0.5 0.5 0 0 1 0 1 h -7 a 0.5 0.5 0 0 1 0 -1"/>
-                <path d="M 0.5 5 h 7 a 0.5 0.5 0 0 1 0 1 h -7 a 0.5 0.5 0 0 1 0 -1"/>
-            </svg>
-        </label>
-    </div>
-    <!-- This incorrectly gives a warning due to enhanced:img instead of img -->
-    <!-- svelte-ignore a11y_consider_explicit_label -->
-    <div class="px-2 lg:flex-none">
+<div class="nav-container">
+    <nav class="navbar bg-base-100">
+        <div class="hamburger-container">
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="btn">
+                <svg viewBox="0 0 8 6" fill="#000" width="32">
+                    <path d="M 0.5 0 h 7 a 0.5 0.5 0 0 1 0 1 h -7 a 0.5 0.5 0 0 1 0 -1"/>
+                    <path d="M 0.5 2.5 h 7 a 0.5 0.5 0 0 1 0 1 h -7 a 0.5 0.5 0 0 1 0 -1"/>
+                    <path d="M 0.5 5 h 7 a 0.5 0.5 0 0 1 0 1 h -7 a 0.5 0.5 0 0 1 0 -1"/>
+                </svg>
+            </label>
+        </div>
+        <!-- This incorrectly gives a warning due to enhanced:img instead of img -->
+        <!-- svelte-ignore a11y_consider_explicit_label -->
         <a class="logo" href="/" aria-label="home"><enhanced:img class="logo-img" src="$lib/static/logo-efm.png" alt="logo"></a>
-    </div>
-    <div class="flex flex-1 justify-end px-2">
-        <div class="navbar flex items-stretch">
-            <div class="dropdown">
-                <div tabindex="0" role="button" class="btn btn-ghost rounded-btn">Plan your visit</div>
-                <ul class="menu dropdown-content bg-base-100 z-[1] w-52 p-2 shadow">
-                    <li><a href="/blog/about-museum">About the museum</a></li>
-                    <li><a href="/blog/hours-tickets-and-admission">Hours, tickets & admission</a></li>
-                    <li><a href="/blog/agenda">Agenda</a></li>
-                    <li><a href="/blog/virtual-tour">Virtual tour</a></li>
-                    <li><a href="/blog/kids">Kids</a></li>
-                    <li><a href="/blog/house-rules">House rules</a></li>
-                    <li><a href="/blog/route-and-accessibility">Route and accessibility</a></li>
-                </ul>
-            </div>
-            <div class="dropdown">
-                <div tabindex="0" role="button" class="btn btn-ghost rounded-btn">About us</div>
-                <ul class="menu dropdown-content bg-base-100 z-[1] w-52 p-2 shadow">
-                    <li><a href="/blog/about-EFM">About EFM</a></li>
-                    <li><a href="/blog/mission-and-vision">Mission and vision</a></li>
-                    <li><a href="/blog/organisation">Organisation</a></li>
-                    <li><a href="/blog/news">News</a></li>
-                    <li><a href="/blog/partners">Partners</a></li>
-                    <li><a href="/blog/activities-archive">Activities archive</a></li>
-                </ul>
-            </div>
-            <div class="dropdown">
-                <div tabindex="0" role="button" class="btn btn-ghost rounded-btn">Library</div>
-                <ul class="menu dropdown-content bg-base-100 z-[1] w-52 p-2 shadow">
-                    <li><a href="/digital-catalog">Digital catalog</a></li>
-                    <li><a href="/blog/about-the-library">About the library</a></li>
-                    <li><a href="/blog/contributions-to-digital-collection">Contributions to digital collection</a></li>
-                    <li><a href="/blog/collecting-areas">Collecting areas</a></li>
-                    <li><a href="/blog/glossary">Glossary</a></li>
-                </ul>
-            </div>
-            <div class="dropdown">
-                <div tabindex="0" role="button" class="btn btn-ghost rounded-btn">Get involved</div>
-                <ul class="menu dropdown-content bg-base-100 z-[1] w-52 p-2 shadow">
-                    <li><a href="/blog/support-us">Support us</a></li>
-                    <li><a href="/blog/event-venue">Event venue</a></li>
-                    <li><a href="/blog/vacancies">Vacancies</a></li>
-                    <li><a href="/blog/activities-archive">Activities archive</a></li>
-                    <li><a href="/blog/partners">Partners</a></li>
-                </ul>
-            </div>
-            <a class="btn btn-ghost btn-primary" href="/">Tickets</a>
-            <a class="btn btn-ghost btn-primary" href="/">Webshop</a>
-
-            <div class="languages-container">
-                <!-- svelte-ignore a11y_consider_explicit_label  -->
-                <button disabled>EN</button>
+        <div class="menu">
+            <a class="btn btn-ghost text-xl" href="/about-EFM">About EFM</a>
+            <a class="btn btn-ghost text-xl" href="/plan-your-visit">Plan your visit</a>
+            <a class="btn btn-ghost text-xl" href="/digital-catalog">Digital catalog</a>
+            <a class="btn btn-ghost text-xl" href="/research-institute">Research institute</a>
+            <div class="flag-container">
                 <!-- svelte-ignore a11y_consider_explicit_label -->
-                <button disabled>NL</button>
+                <button aria-label="english"><enhanced:img class="flag" src="$lib/static/united-kingdom.png" alt="English-version"></button>
+                <!-- svelte-ignore a11y_consider_explicit_label -->
+                <button aria-label="nederlands"><enhanced:img class="flag" src="$lib/static/netherlands.png" alt="Dutch-version"></button>
             </div>
         </div>
-    </div>
-</nav>
+    </nav>
+</div>
 
 <style>
-
-    nav {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: start;
-        color: var(--primaryColor);
-        min-height: 4em;
-        padding: 0 5vw;
+    .nav-container {
         position: fixed;
         top: 0;
         left: 0;
         width: 100vw;
         background-color: var(--backgroundColor);
         margin-bottom: 4rem;
-        z-index: 2;
+    }
+
+    nav {
+        color: var(--primaryColor);
+        max-height: 2em;
+        width: 90%;
+        margin: auto;
     }
 
     .logo {
@@ -102,58 +56,35 @@
         object-fit: contain;
     }
 
-    .languages-container {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-    }
-
-    .languages-container button {
-        padding: 5px;
+    .flag {
         width: 2em;
         height: 2em;
-        opacity: 50%;
     }
 
-    .hamburger-btn {
-        box-shadow: none;
-    }
-    .hamburger-btn:hover {
-        background-color: var(--backgroundColor);
-    }
-
-    .btn {
-        border: unset;
+    .flag-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
     }
 
-    .navbar {
+    .flag-container button {
+        padding: 5px;
+    }
+
+    .menu {
         display: flex;
         flex-wrap: nowrap;
         flex-direction: row;
-        justify-content: end;
         max-width: 80em;
         margin-left: auto;
-        gap: 1em;
     }
 
-    .navbar .btn-ghost:focus-visible {
-        outline: var(--outline);
-    }
-
-    a.logo {
-        display: block;
-    }
-
-    a.logo:focus-visible {
-        outline: var(--outline);
-    }
-
-    .navbar ul a {
-        width: 100%;
+    .menu a {
+        padding: 0 0.5em;
+        border-right: 2px solid var(--backgroundColor);
     }
 
     .hamburger-container {
-        width: max-content;
         display: none;
     }
 
@@ -162,7 +93,11 @@
         opacity: 0;
     }
 
-    input:focus-visible + label {
+    label {
+        z-index: 2;
+    }
+
+    input:focus + label {
         outline: var(--outline);
     }
 
@@ -191,8 +126,16 @@
     }
 
     @media only screen and (max-width: 932px) {
-        .navbar {
+        .menu {
             display: none;
+        }
+
+        .hamburger-container {
+            display: block;
+        }
+
+        .hamburger-container:has(#menu-toggle:checked) ~ .menu {
+            display: flex;
             flex-direction: column;
             justify-content: start;
             background-color: var(--backgroundColor);
@@ -201,28 +144,7 @@
             top: 4rem;
             width: 20em;
             height: calc(100vh - 4rem);
-        }
-
-        .navbar .btn-ghost {
-            width: 100%;
-        }
-
-        .navbar ul {
-            bottom: auto;
-            top: -50%;
-            inset-inline-start: 100%;
-        }
-
-        .hamburger-container {
-            display: block;
-        }
-
-        nav:has(#menu-toggle:checked) .navbar {
-            display: flex;
-        }
-
-        .languages-container {
-            justify-content: center;
+            z-index: 1;
         }
     }
 </style>

@@ -34,60 +34,62 @@
 	}
 </script>
 
-<div class="book-viewer">
-	<div class="image-container">
-		{#if jsEnabled}
-			<!-- JS version -->
-			<button
-				class="left"
-				on:click={previous}
-				disabled={currentIndex === 0}
-			>
-				&larr;
-			</button>
-
-			{#key currentIndex}
-				<img src={images[currentIndex]?.small} alt="pagina" />
-			{/key}
-
-			<button
-				class="right"
-				on:click={next}
-				disabled={currentIndex === images.length - 1}
-			>
-				&rarr;
-			</button>
-		{:else}
-			<!-- No-JS fallback (URL-based) -->
-			<form method="GET" class="left">
-				<input
-					type="hidden"
-					name={queryKey}
-					value={currentIndex - 1}
-				/>
-				<button type="submit" disabled={currentIndex === 0}>
+{#if images && images.length > 0}
+	<div class="book-viewer">
+		<div class="image-container">
+			{#if jsEnabled}
+				<!-- JS version -->
+				<button
+					class="left"
+					on:click={previous}
+					disabled={currentIndex === 0}
+				>
 					&larr;
 				</button>
-			</form>
 
-			<img src={images[currentIndex]?.small} alt="pagina" loading="lazy"/>
+				{#key currentIndex}
+					<img src={images[currentIndex]?.small} alt="pagina" />
+				{/key}
 
-			<form method="GET" class="right">
-				<input
-					type="hidden"
-					name={queryKey}
-					value={currentIndex + 1}
-				/>
 				<button
-					type="submit"
+					class="right"
+					on:click={next}
 					disabled={currentIndex === images.length - 1}
 				>
 					&rarr;
 				</button>
-			</form>
-		{/if}
+			{:else}
+				<!-- No-JS fallback (URL-based) -->
+				<form method="GET" class="left">
+					<input
+						type="hidden"
+						name={queryKey}
+						value={currentIndex - 1}
+					/>
+					<button type="submit" disabled={currentIndex === 0}>
+						&larr;
+					</button>
+				</form>
+
+				<img src={images[currentIndex]?.small} alt="pagina" />
+
+				<form method="GET" class="right">
+					<input
+						type="hidden"
+						name={queryKey}
+						value={currentIndex + 1}
+					/>
+					<button
+						type="submit"
+						disabled={currentIndex === images.length - 1}
+					>
+						&rarr;
+					</button>
+				</form>
+			{/if}
+		</div>
 	</div>
-</div>
+{/if}
 
 <style>
 	.book-viewer {
@@ -111,6 +113,7 @@
 		position: absolute;
 		top: 50%;
 		transform: translateY(-50%);
+		z-index: 1;
 	}
 
 	.image-container form.left,
