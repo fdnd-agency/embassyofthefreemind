@@ -116,6 +116,7 @@
 		display: flex;
 		flex-direction: column;
 		padding-left: 2rem;
+		z-index: -1;
 	}
 
 	.total-results {
