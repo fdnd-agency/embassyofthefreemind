@@ -9,12 +9,14 @@
     {#each books as book, i}
         <li class="book-card">
             <div class="book-image skeleton">
-                {#if book.bookImages}
+                {#if book.bookImages && book.bookImages.length > 0}
                     <BookViewer
                         images={book.bookImages}
                         queryKey={"boek" + i}
                         title={book.title}
                     />
+                {:else}
+                    <enhanced:img src="$lib/static/not-available.png" alt="not available" />
                 {/if}
             </div>
             <div class="book-info">
