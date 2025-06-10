@@ -2,29 +2,21 @@
     import { getBooks } from "$lib";
     import BookViewer from "$lib/book-viewer.svelte";
     /** @type {import('./$types').PageData} */
-    let { booksData } = $props();
-
-    let books = $state(booksData);
-
-    // $effect means this anonymous function will be called every time resultsPage or searchTerm is updated
-    $effect(async () => {
-        // https://svelte.dev/docs/svelte/$effect
-        const res = await getBooks(resultsPage, searchTerm);
-        books = res.books;
-        totalResults = res.totalResults;
-    });
+    let { books } = $props();
 </script>
 
 <ul class="book-list">
     {#each books as book, i}
         <li class="book-card">
             <div class="book-image skeleton">
-                {#if book.bookImages}
+                {#if book.bookImages && book.bookImages.length > 0}
                     <BookViewer
                         images={book.bookImages}
                         queryKey={"boek" + i}
                         title={book.title}
                     />
+                {:else}
+                    <enhanced:img src="$lib/static/not-available.png" alt="not available" />
                 {/if}
             </div>
             <div class="book-info">
