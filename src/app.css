@@ -5,7 +5,7 @@
 :root {
     /* Main Colors */
     --primaryColor: #002646; /* Dark blue */
-    --secondaryColor: #B59A66; /* Light brown */ 
+    --secondaryColor: #C3B083; /* Light brown */ 
 
     /* Background Colors */
     --backgroundColor: #ffffff; /* White */
@@ -73,20 +73,19 @@ summary, .summary {
 
 .btn-primary {
     background-color: var(--primaryColor);
-    color: var(--navigationTextColor);
+    color: var(--secondaryColor);
     border: none;
 }
 
-.btn:hover {
+.btn:hover, .dropdown .btn:focus {
     border-radius: 0;
-    background-color: var(--primaryColor);
-    color: var(--navigationTextColor);
-    border:1px solid var(--primaryColor);
+    background-color: var(--secondaryColor);
 }
 
 .btn-primary:hover {
     border: none;
     transform: scale(1.03);
+    background-color: var(--primaryColor);
 }
 *:focus-visible {
    outline: var(--outline);
