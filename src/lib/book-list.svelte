@@ -3,7 +3,6 @@
     import BookViewer from "$lib/book-viewer.svelte";
     /** @type {import('./$types').PageData} */
     let { booksData } = $props();
-
     let books = $state(booksData);
 
     // $effect means this anonymous function will be called every time resultsPage or searchTerm is updated
@@ -46,7 +45,7 @@
                         class="value">{book.publicationPlace || "-"}</span
                     >
                 </p>
-                <a href="#">More details</a>
+                 <a href={`/digital-catalog/${book.bookId}`}>More details</a>
             </div>
         </li>
     {/each}
@@ -132,6 +131,10 @@
 
         .book-info a {
             align-self: anchor-center;
+        }
+
+        .book-info a {
+            text-decoration: underline;
         }
     }
 </style>

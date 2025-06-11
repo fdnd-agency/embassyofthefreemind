@@ -62,7 +62,3 @@ p {
 a {
     transition: transform .5s;
 }
-
-a:hover {
-     transform: scale(1.1);
-}

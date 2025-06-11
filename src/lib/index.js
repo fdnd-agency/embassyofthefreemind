@@ -30,7 +30,8 @@ export async function getBooks(pageNr, searchTerm, customFetch = null) {
             author: meta.auteur,
             publicationYear: meta.jaar,
             publicationPlace: meta.plaats_van_uitgave,
-            bookImages: book.asset?.map(asset => asset.thumb) ?? []
+            bookImages: book.asset?.map(asset => asset.thumb) ?? [],
+            bookId: book.id
         }
     });
     return {
