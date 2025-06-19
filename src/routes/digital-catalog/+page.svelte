@@ -115,7 +115,7 @@
 	.page-container {
 		display: flex;
 		flex-direction: column;
-		padding-left: 2rem;
+		padding-left: 0.5rem;
 	}
 
 	.total-results {

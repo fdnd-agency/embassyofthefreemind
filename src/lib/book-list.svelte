@@ -125,5 +125,10 @@
         .book-info a {
             align-self: anchor-center;
         }
+
+        .skeleton{
+            width: 80vw;
+            height: 80vw;
+        }
     }
 </style>

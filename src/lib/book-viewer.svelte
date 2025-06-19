@@ -142,4 +142,16 @@
 		opacity: 0.5;
 		cursor: not-allowed;
 	}
+
+	@media only screen and (max-width: 600px) {
+		.image-container {
+			height: 80vw;
+			width: 80vw;
+		}
+
+		.image-container img {
+			max-height: 80vw;
+			width: 80vw;
+		}
+	}
 </style>
