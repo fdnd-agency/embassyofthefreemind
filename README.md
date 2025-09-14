@@ -4,6 +4,7 @@ Built with the modern and powerful SvelteKit 5, offering a lightning-fast develo
 
 ## Table of contents
 - [About](https://github.com/fdnd-agency/embassyofthefreemind?tab=readme-ov-file#about)
+- [Design Challenge](https://github.com/fdnd-agency/embassyofthefreemind/wiki/Design-Challenge)
 - [Features](https://github.com/fdnd-agency/embassyofthefreemind?tab=readme-ov-file#about)
 - [Tech stack](https://github.com/fdnd-agency/embassyofthefreemind?tab=readme-ov-file#tech-stack)
 - [Installation](https://github.com/fdnd-agency/embassyofthefreemind?tab=readme-ov-file#installation)
