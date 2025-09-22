@@ -33,8 +33,8 @@ https://docs.fdnd.nl/conventies.html
 ## PR template
 ```md
 ## Wat is er veranderd?
-- Benoem hier de issues
-- Benoem wat je gemaakt heb
+- Benoem hier de issues met #
+- Beschrijf wat je gemaakt heb
 
 ## Waar wil ik feedback op?
 - Benoem hier waar je feedback op wil
