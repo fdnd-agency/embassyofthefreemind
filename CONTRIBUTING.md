@@ -33,6 +33,7 @@ https://docs.fdnd.nl/conventies.html
 ---
 
 ## 📌 Team Canvas
+<img width="1133" height="802" alt="image" src="https://github.com/user-attachments/assets/2c332fb6-a5eb-4ddc-82e4-4a4c6ac492ce" />
 
 
 
