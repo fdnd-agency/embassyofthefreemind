@@ -1,7 +1,7 @@
 # 🤝 Afspraken over samenwerking
 
 ## 📢 Communicatie
-- Overleg vindt plaats via **WhatsApp** of **Microsoft Teams**.  
+- Overleg vindt plaats via **Microsoft Teams**.  
 - Iedereen reageert binnen **24 uur**.  
 - Feedback verloopt via **GitHub Issues** (alleen bij hoge urgentie via WhatsApp).  
 
