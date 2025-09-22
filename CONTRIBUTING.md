@@ -30,6 +30,19 @@ https://docs.fdnd.nl/conventies.html
 - Duidelijke commits gekoppeld aan de issues
 - Regelmatig gebruik van code refactoring
 
+## PR template
+```md
+## Wat is er veranderd?
+- Benoem hier de issues
+- Benoem wat je gemaakt heb
+
+## Waar wil ik feedback op?
+- Benoem hier waar je feedback op wil
+
+## Visuals
+- Geef hier een demo
+```
+
 ---
 
 ## 📌 Team Canvas
