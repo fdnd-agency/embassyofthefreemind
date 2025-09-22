@@ -3,7 +3,7 @@
 ## 📢 Communicatie
 - Overleg vindt plaats via **Microsoft Teams**.  
 - Iedereen reageert binnen **24 uur**.  
-- Feedback verloopt via **GitHub Issues** (alleen bij hoge urgentie via WhatsApp).  
+- Feedback verloopt via **GitHub Issues** (alleen bij hoge urgentie via Teams).  
 
 ## 👥 Samenwerking
 - Iedereen is verantwoordelijk voor zijn eigen rol.  
