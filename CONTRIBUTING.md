@@ -23,7 +23,7 @@
 - We respecteren elkaars minder sterke kanten en gaan daar op een constructieve manier mee om.  
 
 ## 🛠 Code Conventies
-https://docs.fdnd.nl/conventies.html
+We houden ons aan de [FDND code conventies](https://docs.fdnd.nl/conventies.html)
 - Bij het aanmaken van nieuwe class names, maken we gebruik van kebab-case
 - Gebruik maken componenten en partials
 - Net gebruik van white space ( max 2 lijnen ) en comments waar nodig
