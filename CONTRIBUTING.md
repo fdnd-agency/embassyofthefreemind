@@ -25,7 +25,7 @@
 ## 🛠 Code Conventies
 We houden ons aan de [FDND code conventies](https://docs.fdnd.nl/conventies.html)
 - Bij het aanmaken van nieuwe class names, maken we gebruik van kebab-case
-- Gebruik maken componenten en partials
+- Maak zoveel mogelijk componenten
 - Net gebruik van white space ( max 2 lijnen ) en comments waar nodig
 - Duidelijke commits gekoppeld aan de issues
 - Regelmatig gebruik van code refactoring
