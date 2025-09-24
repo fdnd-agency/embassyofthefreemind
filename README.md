@@ -1,82 +1,38 @@
-# Embassy of the Free Mind
-A brief, compelling description of your project.
-Built with the modern and powerful SvelteKit 5, offering a lightning-fast developer experience and optimized web performance.
+# sv
 
-[Design Challenge](https://github.com/fdnd-agency/embassyofthefreemind/wiki/Design-Challenge)
+Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
 
-## Table of contents
-- [About](https://github.com/fdnd-agency/embassyofthefreemind?tab=readme-ov-file#about)
-- [Features](https://github.com/fdnd-agency/embassyofthefreemind?tab=readme-ov-file#about)
-- [Tech stack](https://github.com/fdnd-agency/embassyofthefreemind?tab=readme-ov-file#tech-stack)
-- [Installation](https://github.com/fdnd-agency/embassyofthefreemind?tab=readme-ov-file#installation)
-- [Development](https://github.com/fdnd-agency/embassyofthefreemind?tab=readme-ov-file#development)
-- [Building](https://github.com/fdnd-agency/embassyofthefreemind?tab=readme-ov-file#building)
-- [Project structure](https://github.com/fdnd-agency/embassyofthefreemind?tab=readme-ov-file#project-structure)
-- [Documentation](https://github.com/fdnd-agency/embassyofthefreemind?tab=readme-ov-file#documentation)
-- [Liscence](https://github.com/fdnd-agency/embassyofthefreemind?tab=readme-ov-file#liscence)
+## Creating a project
 
-## About
-Embassy of theFree Mind is a museum with a vast collection of valuablebooks. It is a place where you can find wisdom from all over the world, where images and texts will tell you centuries-old stories created by free thinkers. It also is a community where people come to see lectures and discuss the themes of the knowledge of free thinkers. 
-It is a platform where you can discuss life questions with other people, irrespective of religion, culture or age. It is a place where you can encounter history, science, art and spirituality all connected.
-To teach educate and inspire is the goal. EFM has 3 main groups of target audience: young creatives, changemakers and scholars.
+If you're seeing this, you've probably already done this step. Congrats!
 
-The Embassy of the Free Mind offers:
-- a platform for sharing wisdom and creating consciousness.
-- a collection of books spanning 2,000 years of collected wisdom, made available to the public 
-- a network organisation and knowledge centre for international collaboration 
-- study spaces for young and old
+```sh
+# create a new project in the current directory
+npx sv create
 
-And much more.
-
-You can see the rest on their [website](https://embassyofthefreemind.com/en/embassy/about-the-embassy-of-the-free-mind).
-
-## 🚀Features
-- ✅ Built with SvelteKit 5
-
-- ✅ File-based routing
-
-- ✅ SSR (Server-Side Rendering)
-
-- ✅ TailwindCSS
-
-- ✅ API routes
-
-## 🧰Tech stack
-- Frontend: SvelteKit 5, Svelte
-
-- Styling: Tailwind CSS 
-
-- Deployment: Vercel
-
-## Installation
+# create a new project in my-app
+npx sv create my-app
 ```
-git clone https://github.com/fdnd-agency/embassyofthefreemind.git
-cd your-project
-npm install
-```
-## Development
-```
+
+## Developing
+
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+
+```sh
 npm run dev
-```
-## Building
-```
-npm run build
-npm run preview
-```
-## Project structure
-```
-src/
-├── lib/            # Reusable components, stores, utilities
-├── routes/         # Route-based pages
-  └── +layout.svelte  # App layout
-  └── +page.svelte    # Main route
-├── app.html        # HTML template
-├── hooks.server.js # Server hooks (auth, etc.)
-```
-## Documentation
-We use confluence for general project information, ux ui documentation, and progress.
-We use github issues for code related documentation, like features and bugs.
-Our notable changes are documented in changelog.md
 
-## Liscence
-This project is in use under the MIT liscence.
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
+
+## Building
+
+To create a production version of your app:
+
+```sh
+npm run build
+```
+
+You can preview the production build with `npm run preview`.
+
+> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
