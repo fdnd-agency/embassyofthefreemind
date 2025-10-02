@@ -12,6 +12,6 @@
         title="Gewetensvrijheid!"
         subtitle="Denken, geloven en onderzoeken in Europa, 1500-1800"
         dates="28 april t/m 7 september 2025"
-        linkUrl="https://www.example.com/exhibition-details"
+        linkUrl="nog niets"
     />
 </main>

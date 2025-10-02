@@ -115,13 +115,18 @@
         width: 30px;
         height: 30px;
         border-radius: 50%;
-
         display: flex;
         justify-content: center;
         align-items: center;
-
         font-size: 1.2em;
         font-weight: bold;
+        transition:
+            background-color 0.4s ease,
+            background 0.4s ease;
+    }
+
+    .overlay-container:hover .arrow-circle {
+        background: linear-gradient(to right, #d8b66a, #7f6733);
     }
 
     .arrow-circle span {
