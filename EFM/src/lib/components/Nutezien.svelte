@@ -26,8 +26,9 @@
         >
             <div class="date-arrow-row">
                 <span class="dates">{dates}</span>
-                <div class="arrow-circle">&nearr;</div>
+                <div class="arrow-circle"><span>&nearr;</span></div>
             </div>
+
             <div class="text-content">
                 <p class="title"><strong>{title}</strong></p>
                 <p class="subtitle">{subtitle}</p>
@@ -38,14 +39,15 @@
 
 <style>
     .nutezien-card {
-        /* Basic container styling */
         width: 100%;
-        max-width: 95%; /* Example max-width, adjust as needed */
-        font-family: sans-serif; /* Example font */
+        font-family: sans-serif;
         margin: 20px;
-        border: 1px solid #eee; /* Light border for definition */
+        border: 1px solid #eee;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         background: white;
+        @media (min-width: 500px) {
+            max-width: 95%;
+        }
     }
 
     h3 {
@@ -65,38 +67,34 @@
         width: 100%;
         height: auto;
         display: block;
+        min-height: 400px;
+        object-fit: cover;
     }
 
     .overlay-container {
-        /* Position the overlay over the bottom of the image */
+        width: 92%;
         position: absolute;
         bottom: 0;
         left: 0;
         right: 0;
-
-        /* Styling for the semi-transparent background, similar to the image */
-        background: rgba(
-            255,
-            255,
-            255,
-            0.95
-        ); /* Nearly opaque white background */
-        padding: 10px 15px;
-
-        /* Make it a link that's visually distinct but acts as the button/info box */
+        background: rgba(255, 255, 255, 0.87);
+        padding: 20px 25px;
         text-decoration: none;
-        color: inherit; /* Inherit color so text isn't blue by default */
+        color: inherit;
         cursor: pointer;
-        display: block; /* Ensures the whole area is clickable */
+        display: block;
         transition: background-color 0.2s;
 
         @media (width > 600px) {
             width: 400px;
+            left: 5em;
+            border-radius: 5em;
+            bottom: 5em;
         }
     }
 
     .overlay-container:hover {
-        background: rgba(255, 255, 255, 1); /* Slight change on hover */
+        background: rgba(255, 255, 255, 1);
     }
 
     .date-arrow-row {
@@ -112,20 +110,23 @@
     }
 
     .arrow-circle {
-        /* Styling the circle/box for the arrow */
-        background-color: #007bff; /* Example blue color, adjust to match original image */
+        background-color: #002646;
         color: white;
         width: 30px;
         height: 30px;
         border-radius: 50%;
+
         display: flex;
         justify-content: center;
         align-items: center;
+
         font-size: 1.2em;
         font-weight: bold;
-        transform: rotate(
-            45deg
-        ); /* Rotate the arrow to match the image's diagonal direction */
+    }
+
+    .arrow-circle span {
+        transform: translateY(-2.5px);
+        display: block;
     }
 
     .text-content .title {
