@@ -49,4 +49,32 @@ We houden ons aan de [FDND code conventies](https://docs.fdnd.nl/conventies.html
 <img width="1133" height="802" alt="image" src="https://github.com/user-attachments/assets/2c332fb6-a5eb-4ddc-82e4-4a4c6ac492ce" />
 
 
+## Retrospect sprint 14 aantekeningen
 
+(Recep en Sebastiaan)
+
+- Set the stage - Round of admiration (#76)
+sebas over recep - dat je altijd goed werkt aan de leertaken. en mij helpt herrineren aan het documenteren van dingen.
+recep over sebas - verdeeld goed taken en zorgt ervoor dat ik altijd wat te doen heb.
+
+- Gather Data - The good the bad and the uglie (#121)
+post its gebruikt (foto komt)
+
+- Generate insights - Wish grantedn (#50)
+onze wens is dat alle benodigde designs/data/content van IO digital ontvangen zodat we als een speer kunnen werken aan het project
+
+- Decide what to do - Pitch (#73)
+pitch recep- duidelijk taken verdeling + deadlines.
+pitch sebas- meer taken bedenken voor elkaar.
+Pitch van recep gekozen door Dylan & Kerem.
+onze pitches leken redelijk op elkaar.
+
+- Close the retrospective - You and me (#102)
+
+thank you:
+sebas over recep - heeft goed de role van timekeeper gespeeld tijdens de sprint review en ervoor gezorgt dat we niet afdwaalde.
+recep over sebas - goed sprint review gedocumenteerd + alle feedback.
+
+my work:
+recep over recep - meer coderen.
+sebas over sebas - Design verder uitwerken.
