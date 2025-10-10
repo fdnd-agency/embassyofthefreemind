@@ -58,7 +58,9 @@ sebas over recep - dat je altijd goed werkt aan de leertaken. en mij helpt herri
 recep over sebas - verdeeld goed taken en zorgt ervoor dat ik altijd wat te doen heb.
 
 - Gather Data - The good the bad and the uglie (#121)
-post its gebruikt (foto komt)
+post its gebruikt
+![IMG_20251010_143408119](https://github.com/user-attachments/assets/366af328-5e26-4826-83bc-648db19363d2)
+
 
 - Generate insights - Wish grantedn (#50)
 onze wens is dat alle benodigde designs/data/content van IO digital ontvangen zodat we als een speer kunnen werken aan het project
