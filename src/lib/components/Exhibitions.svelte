@@ -9,7 +9,7 @@
 <article class="available-now-card">
 	<header>
 		<h3>Tentoonstellingen</h3>
-		<p>Alle tentoonstellingen bekijken</p>
+		<p>Alle tentoonstellingen bekijken <img src="images/arrow-exhibition.svg" /></p>
 	</header>
 	<section class="image-section">
 		<img src={imageUrl} alt="Alchemistische afbeelding met tekst" class="main-image" />
