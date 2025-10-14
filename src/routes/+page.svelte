@@ -1,2 +1,13 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script>
+	import Exhibitions from '../lib/components/Exhibitions.svelte';
+
+	const myImageUrl = '/images/image37.png';
+</script>
+
+<Exhibitions
+	imageUrl={myImageUrl}
+	title="Gewetensvrijheid!"
+	subtitle="Denken, geloven en onderzoeken in Europa, 1500-1800"
+	dates="28 april t/m 7 september 2025"
+	linkUrl="nog niets"
+/>
