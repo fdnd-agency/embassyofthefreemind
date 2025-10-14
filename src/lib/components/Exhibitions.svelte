@@ -9,8 +9,13 @@
 <article class="available-now-card">
 	<header>
 		<h3>Tentoonstellingen</h3>
-		<a href="/exhibitions.svelte"
-			>Alle tentoonstellingen bekijken <img src="images/arrow-exhibition.svg" /></a
+		<a href="/exhibitions"
+			>Alle tentoonstellingen bekijken <img
+				src="images/arrow-exhibition.svg"
+				height="15"
+				width="15"
+				alt="arrow"
+			/></a
 		>
 	</header>
 	<section class="image-section">
@@ -95,7 +100,7 @@
 		bottom: 0;
 		left: 0;
 		right: 0;
-		background: rgba(255, 255, 255, 0.87);
+		background: rgba(255, 255, 255, 0.89);
 		padding: 25px 30px;
 		text-decoration: none;
 		color: inherit;
