@@ -24,7 +24,10 @@
 		<a href={linkUrl} target="_blank" rel="noopener noreferrer" class="overlay-container">
 			<div class="date-arrow-row">
 				<span class="dates">{dates}</span>
-				<div class="arrow-circle"><span>&nearr;</span></div>
+				<div class="arrow-circle">
+					<span><img src="images/arrow-exhibition-2.svg" height="25" width="25" alt="arrow" /></span
+					>
+				</div>
 			</div>
 
 			<div class="text-content">
@@ -41,6 +44,7 @@
 		font-family: sans-serif;
 		margin-left: 5%;
 		margin-right: 5%;
+
 		border: 1px solid #eee;
 		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 		background: white;
@@ -111,7 +115,7 @@
 		@media (width > 600px) {
 			width: calc(300px + 15vw);
 			left: 5em;
-			border-radius: 5em;
+			border-radius: 2em;
 			bottom: 5em;
 			font-size: clamp(1em, 1.6vw, 1.5em);
 		}
@@ -120,6 +124,7 @@
 	.dates {
 		@media (width > 600px) {
 			margin-bottom: 2vw;
+			margin-left: 0.5em;
 		}
 	}
 	.overlay-container:hover {
@@ -141,8 +146,8 @@
 	.arrow-circle {
 		background-color: #002646;
 		color: white;
-		width: 30px;
-		height: 30px;
+		width: 48px;
+		height: 48px;
 		border-radius: 50%;
 		display: flex;
 		justify-content: center;
@@ -158,8 +163,12 @@
 		background: linear-gradient(to right, #002646, #005dac, #004279);
 	}
 
+	.text-content {
+		padding-left: 0.5em;
+	}
+
 	.arrow-circle span {
-		transform: translateY(-2.5px);
+		transform: translateY(4.5px);
 		display: block;
 	}
 
