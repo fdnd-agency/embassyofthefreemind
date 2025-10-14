@@ -6,8 +6,13 @@
 			Ga op ontdekkingsreis door 2.000 jaar verzamelde wijsheid, geïnspireerd door de afbeeldingen
 			en teksten uit de collectie van de Bibliotheca Philosophica Hermetica.
 		</p>
-		<img src="images/article-1.png" />
-		<p><a href="#">Meer lezen &rarr;</a></p>
+		<div class="media-container">
+			<img src="images/article-1.png" alt="Afbeelding van de bibliotheek" />
+			<a href="#" class="read-more-link">
+				<span class="text-content">Meer lezen</span>
+				<span class="arrow">&rarr;</span>
+			</a>
+		</div>
 	</article>
 
 	<!-- 2. PLAN JE BEZOEK (Plan your visit) -->
@@ -17,16 +22,26 @@
 			Lees op deze pagina praktische informatie over onze openingstijden, tickets/prijzen, adres &
 			route.
 		</p>
-		<img src="images/article-2.png" />
-		<p><a href="#">Meer lezen &rarr;</a></p>
+		<div class="media-container">
+			<img src="images/article-2.png" alt="Afbeelding van illustraties" />
+			<a href="#" class="read-more-link">
+				<span class="text-content">Bekijk info</span>
+				<span class="arrow">&rarr;</span>
+			</a>
+		</div>
 	</article>
 
 	<!-- 3. KIDS -->
 	<article>
 		<h4>Kids</h4>
 		<p>Ontdek hier alle activiteiten speciaal voor kinderen.</p>
-		<img src="images/article-3.png" />
-		<p><a href="#">Meer lezen &rarr;</a></p>
+		<div class="media-container">
+			<img src="images/article-3.png" alt="Afbeelding van een konijn met trompet" />
+			<a href="#" class="read-more-link">
+				<span class="text-content">Ontdek</span>
+				<span class="arrow">&rarr;</span>
+			</a>
+		</div>
 	</article>
 </section>
 
@@ -37,16 +52,26 @@
 		<p>
 			Boek een rondleiding en kom meer te weten over de Embassy of the Free Mind en de collectie!
 		</p>
-		<img src="images/article-4.png" />
-		<p><a href="#">Meer lezen &rarr;</a></p>
+		<div class="media-container">
+			<img src="images/article-4.png" alt="Afbeelding van mythische dieren" />
+			<a href="#" class="read-more-link">
+				<span class="text-content">Boek een Tour</span>
+				<span class="arrow">&rarr;</span>
+			</a>
+		</div>
 	</article>
 
 	<!-- 5. HUISREGELS (House Rules) -->
 	<article>
 		<h4>Huisregels</h4>
 		<p>Huisregels Embassy of the Free Mind.</p>
-		<img src="images/article-5.png" />
-		<p><a href="#">Meer lezen &rarr;</a></p>
+		<div class="media-container">
+			<img src="images/article-5.png" alt="Afbeelding van een oud manuscript" />
+			<a href="#" class="read-more-link">
+				<span class="text-content">Bekijk regels</span>
+				<span class="arrow">&rarr;</span>
+			</a>
+		</div>
 	</article>
 
 	<!-- 6. ZAALVERHUUR (Venue Rental) -->
@@ -56,12 +81,21 @@
 			U kunt onze Grote Seal huren voor bijeenkomsten zoals b.v. vergaderingen en bruiloften en
 			bedrijfsevenementen.
 		</p>
-		<img src="images/article-6.png" />
-		<p><a href="#">Vraag offerte aan &rarr;</a></p>
+		<div class="media-container">
+			<img src="images/article-6.png" alt="Afbeelding van de Grote Seal ruimte" />
+			<a href="#" class="read-more-link">
+				<span class="text-content">Vraag offerte aan</span>
+				<span class="arrow">&rarr;</span>
+			</a>
+		</div>
 	</article>
 </section>
 
 <style>
+	a {
+		text-decoration: none;
+		color: inherit;
+	}
 	section {
 		max-width: 90%;
 		height: auto;
@@ -88,6 +122,8 @@
 			grid-template-rows: repeat(14, calc(1.5vh - 0.25em));
 			gap: 1em;
 			article {
+				margin-left: 0.5em;
+				margin-right: 0.5em;
 				p {
 					font-size: clamp(1em, 2vw, 1.5em);
 				}
@@ -109,5 +145,75 @@
 	section:first-of-type {
 		margin-top: 12%;
 		margin-bottom: calc(1em + 15%);
+	}
+
+	.media-container {
+		position: relative; /* Context for absolute link */
+		width: 100%;
+		margin-top: 1em;
+		overflow: hidden;
+		border-radius: 8px; /* Optional: smooth corners on the media container */
+	}
+
+	.media-container img {
+		width: 100%;
+		display: block;
+	}
+
+	/* Read More Link / Button Styling */
+	.read-more-link {
+		/* Positioning */
+		position: absolute;
+		bottom: 15px;
+		right: 15px;
+
+		/* Initial appearance (Arrow only) */
+		height: 40px;
+		width: 40px; /* Initial width */
+		display: flex;
+		align-items: center;
+		justify-content: flex-end; /* Arrow on the right */
+		padding: 0 10px;
+
+		background-color: white;
+		border-radius: 20px;
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+		/* Animation setup */
+		transition:
+			width 0.3s ease-in-out,
+			background-color 0.3s ease-in-out,
+			opacity 0.3s ease-in-out;
+
+		/* Text setup */
+		font-size: 1em;
+		font-weight: 600;
+		color: #1a202c;
+		white-space: nowrap;
+		overflow: hidden; /* Hides text initially */
+		opacity: 0.9;
+	}
+
+	/* Text wrapper for smooth transition */
+	.read-more-link .text-content {
+		opacity: 0;
+		max-width: 0;
+		transition:
+			opacity 0.2s 0.1s,
+			max-width 0.3s,
+			margin-right 0.3s;
+	}
+
+	/* Hover state: Expand width and show text */
+	.media-container:hover .read-more-link {
+		width: 150px; /* Expanded width to show text (adjust as needed) */
+		justify-content: space-between; /* Space out text and arrow */
+		opacity: 1;
+	}
+
+	.media-container:hover .read-more-link .text-content {
+		opacity: 1;
+		max-width: 100px; /* Max width for text */
+		margin-right: 8px; /* Space between text and arrow */
 	}
 </style>
