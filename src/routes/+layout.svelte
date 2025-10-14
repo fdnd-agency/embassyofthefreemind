@@ -12,3 +12,14 @@
 <NavBar />
 
 {@render children?.()}
+
+<style>
+  :root {
+    --font-body: "Inter", sans-serif;
+    background-color: rgb(200, 200, 200);
+  }
+  :global(body) {
+    margin: 0;
+    padding: 0;
+  }
+</style>
