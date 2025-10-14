@@ -9,7 +9,9 @@
 <article class="available-now-card">
 	<header>
 		<h3>Tentoonstellingen</h3>
-		<a>Alle tentoonstellingen bekijken <img src="images/arrow-exhibition.svg" /></a>
+		<a href="/exhibitions.svelte"
+			>Alle tentoonstellingen bekijken <img src="images/arrow-exhibition.svg" /></a
+		>
 	</header>
 	<section class="image-section">
 		<img src={imageUrl} alt="Alchemistische afbeelding met tekst" class="main-image" />
@@ -63,6 +65,8 @@
 		a {
 			padding-left: 1em;
 			font-size: clamp(1em, 2vw, 1.5em);
+			text-decoration: none;
+			color: inherit;
 		}
 
 		@media (width > 600px) {
