@@ -10,7 +10,9 @@
 			<img src="images/article-1.png" alt="Afbeelding van de bibliotheek" />
 			<a href="#" class="read-more-link">
 				<span class="text-content">Meer lezen</span>
-				<span class="arrow">&rarr;</span>
+				<span class="arrow"
+					><img src="images/arrow-exhibition.svg" height="15" width="15" alt="arrow" /></span
+				>
 			</a>
 		</div>
 	</article>
@@ -26,7 +28,9 @@
 			<img src="images/article-2.png" alt="Afbeelding van illustraties" />
 			<a href="#" class="read-more-link">
 				<span class="text-content">Bekijk info</span>
-				<span class="arrow">&rarr;</span>
+				<span class="arrow"
+					><img src="images/arrow-exhibition.svg" height="15" width="15" alt="arrow" /></span
+				>
 			</a>
 		</div>
 	</article>
@@ -39,7 +43,9 @@
 			<img src="images/article-3.png" alt="Afbeelding van een konijn met trompet" />
 			<a href="#" class="read-more-link">
 				<span class="text-content">Ontdek</span>
-				<span class="arrow">&rarr;</span>
+				<span class="arrow"
+					><img src="images/arrow-exhibition.svg" height="15" width="15" alt="arrow" /></span
+				>
 			</a>
 		</div>
 	</article>
@@ -56,7 +62,9 @@
 			<img src="images/article-4.png" alt="Afbeelding van mythische dieren" />
 			<a href="#" class="read-more-link">
 				<span class="text-content">Boek een Tour</span>
-				<span class="arrow">&rarr;</span>
+				<span class="arrow"
+					><img src="images/arrow-exhibition.svg" height="15" width="15" alt="arrow" /></span
+				>
 			</a>
 		</div>
 	</article>
@@ -69,7 +77,9 @@
 			<img src="images/article-5.png" alt="Afbeelding van een oud manuscript" />
 			<a href="#" class="read-more-link">
 				<span class="text-content">Bekijk regels</span>
-				<span class="arrow">&rarr;</span>
+				<span class="arrow"
+					><img src="images/arrow-exhibition.svg" height="15" width="15" alt="arrow" /></span
+				>
 			</a>
 		</div>
 	</article>
@@ -85,7 +95,9 @@
 			<img src="images/article-6.png" alt="Afbeelding van de Grote Seal ruimte" />
 			<a href="#" class="read-more-link">
 				<span class="text-content">Vraag offerte aan</span>
-				<span class="arrow">&rarr;</span>
+				<span class="arrow"
+					><img src="images/arrow-exhibition.svg" height="15" width="15" alt="arrow" /></span
+				>
 			</a>
 		</div>
 	</article>
@@ -148,11 +160,11 @@
 	}
 
 	.media-container {
-		position: relative; /* Context for absolute link */
+		position: relative;
 		width: 100%;
 		margin-top: 1em;
 		overflow: hidden;
-		border-radius: 8px; /* Optional: smooth corners on the media container */
+		border-radius: 8px;
 	}
 
 	.media-container img {
@@ -160,60 +172,57 @@
 		display: block;
 	}
 
-	/* Read More Link / Button Styling */
 	.read-more-link {
-		/* Positioning */
 		position: absolute;
 		bottom: 15px;
 		right: 15px;
 
-		/* Initial appearance (Arrow only) */
 		height: 40px;
-		width: 40px; /* Initial width */
+		width: 40px;
 		display: flex;
 		align-items: center;
-		justify-content: flex-end; /* Arrow on the right */
-		padding: 0 10px;
+		justify-content: center;
+		padding: 10px 10px;
 
 		background-color: white;
-		border-radius: 20px;
+		border-radius: 4em;
 		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 
-		/* Animation setup */
 		transition:
 			width 0.3s ease-in-out,
 			background-color 0.3s ease-in-out,
 			opacity 0.3s ease-in-out;
 
-		/* Text setup */
-		font-size: 1em;
+		font-size: 1.2em;
 		font-weight: 600;
 		color: #1a202c;
 		white-space: nowrap;
-		overflow: hidden; /* Hides text initially */
+		overflow: hidden;
 		opacity: 0.9;
 	}
 
-	/* Text wrapper for smooth transition */
 	.read-more-link .text-content {
+		color: #002646;
 		opacity: 0;
 		max-width: 0;
+		min-width: 0;
+		flex-basis: 0;
 		transition:
 			opacity 0.2s 0.1s,
 			max-width 0.3s,
 			margin-right 0.3s;
 	}
 
-	/* Hover state: Expand width and show text */
 	.media-container:hover .read-more-link {
-		width: 150px; /* Expanded width to show text (adjust as needed) */
-		justify-content: space-between; /* Space out text and arrow */
+		width: 150px;
+		justify-content: space-between;
 		opacity: 1;
+		padding: 10px 20px;
 	}
 
 	.media-container:hover .read-more-link .text-content {
 		opacity: 1;
-		max-width: 100px; /* Max width for text */
-		margin-right: 8px; /* Space between text and arrow */
+		max-width: 100px;
+		margin-right: 8px;
 	}
 </style>
