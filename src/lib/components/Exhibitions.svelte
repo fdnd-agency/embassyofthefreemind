@@ -9,7 +9,7 @@
 <article class="available-now-card">
 	<header>
 		<h3>Tentoonstellingen</h3>
-		<p>Alle tentoonstellingen bekijken <img src="images/arrow-exhibition.svg" /></p>
+		<a>Alle tentoonstellingen bekijken <img src="images/arrow-exhibition.svg" /></a>
 	</header>
 	<section class="image-section">
 		<img src={imageUrl} alt="Alchemistische afbeelding met tekst" class="main-image" />
@@ -60,13 +60,14 @@
 			margin-bottom: 5px;
 		}
 
-		p {
+		a {
 			padding-left: 1em;
 			font-size: clamp(1em, 2vw, 1.5em);
 		}
+
 		@media (width > 600px) {
 			flex-direction: row;
-			p {
+			a {
 				padding-left: 0;
 			}
 		}
