@@ -97,8 +97,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 3rem;
-    height: 8rem;
+    padding: 1rem clamp(1rem, 3vw, 3rem);
+    height: 5rem;
+    transition: all 0.2s ease-in;
   }
 
   .logo {
@@ -133,14 +134,19 @@
   }
 
   .lang {
+    display: none;
+    cursor: pointer;
     font-size: 21px;
     font-weight: 200;
-    display: flex;
     align-items: center;
   }
 
+  .hamburger {
+    cursor: pointer;
+  }
+
   .search {
-    display: flex;
+    display: none;
     align-items: center;
     gap: 0.5rem;
     position: relative;
@@ -165,9 +171,7 @@
   }
 
   .nav__list {
-    display: inherit;
-    margin: 0;
-    margin-block-end: 0;
+    display: none;
   }
 
   .nav__item {
@@ -195,5 +199,26 @@
   a {
     text-decoration: none;
     color: inherit;
+  }
+
+  @media (min-width: 700px) {
+    .nav__top .search,
+    .nav__top .lang {
+      display: flex;
+    }
+    .header__content {
+      height: 6rem;
+    }
+  }
+
+  @media (min-width: 1000px) {
+    .nav__list {
+      display: flex;
+      margin: 0;
+      margin-block-end: 0;
+    }
+    .header__content {
+      height: 8rem;
+    }
   }
 </style>
