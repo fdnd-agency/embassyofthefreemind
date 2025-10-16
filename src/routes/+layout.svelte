@@ -16,7 +16,7 @@
 <style>
   :root {
     --font-body: "Inter", sans-serif;
-    background-color: rgb(200, 200, 200);
+    background-color: rgb(255, 255, 255);
   }
   :global(body) {
     margin: 0;

@@ -6,7 +6,7 @@
       class="logo"
     />
     <nav class="nav">
-      <section class="nav__content__top">
+      <section class="nav__content nav__top">
         <div class="lang">EN ▼</div>
         <div class="search">
           <svg
@@ -39,7 +39,7 @@
           </svg>
         </div>
       </section>
-      <ul class="nav__list">
+      <ul class="nav__content nav__list">
         <li class="nav__item">
           <a href="#">tickets en evenementen</a>
         </li>
@@ -82,6 +82,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 1rem 3rem;
+    height: 8rem;
   }
 
   .logo {
@@ -98,7 +100,12 @@
     justify-content: space-between;
   }
 
-  .nav__content__top {
+  .nav__content {
+    font-size: 16px;
+    gap: clamp(30px, 4vw, 60px);
+  }
+
+  .nav__top {
     display: inherit;
   }
 
@@ -108,7 +115,27 @@
 
   .nav__list {
     display: inherit;
-    font-size: 16px;
+  }
+
+  .nav__item {
+    display: block;
+    padding-bottom: 0.2rem;
+    position: relative;
+  }
+
+  .nav__item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background-color: white;
+    transition: width 0.3s ease-out;
+  }
+
+  .nav__item:hover::before {
+    width: 100%;
   }
 
   a {
