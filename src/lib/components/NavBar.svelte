@@ -99,7 +99,7 @@
     justify-content: space-between;
     padding: 1rem clamp(1rem, 3vw, 3rem);
     height: 5rem;
-    transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in-out;
   }
 
   .logo {
