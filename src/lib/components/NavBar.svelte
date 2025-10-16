@@ -7,12 +7,25 @@
     />
     <nav class="nav">
       <section class="nav__content nav__top">
-        <div class="lang">EN ▼</div>
+        <div class="lang">
+          EN
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="30"
+            viewBox="0 0 24 24"
+            stroke="white"
+            fill="none"
+            stroke-width="1"
+          >
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </div>
         <div class="search">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
+            width="25"
+            height="25"
             fill="none"
             stroke="white"
             stroke-width="1"
@@ -26,8 +39,8 @@
         <div class="hamburger">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="28"
-            height="28"
+            width="35"
+            height="35"
             viewBox="0 0 24 24"
             stroke="white"
             fill="none"
@@ -107,7 +120,7 @@
   .nav__content {
     font-size: 14px;
     gap: clamp(10px, 4vw, 60px);
-    @media (min-width: 1130px) {
+    @media (min-width: 1200px) {
       font-size: 16px;
       background-image: none;
     }
@@ -115,11 +128,36 @@
 
   .nav__top {
     display: inherit;
+    flex-direction: row;
+    align-items: center;
   }
 
   .lang {
     font-size: 21px;
     font-weight: 200;
+    display: flex;
+    align-items: center;
+  }
+
+  .search {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+  }
+
+  .search input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    color: white;
+    padding: 0.2rem 0.3rem;
+    width: clamp(120px, 12vw, 170px);
+    outline: none;
+  }
+
+  .search input::placeholder {
+    color: rgb(255, 255, 255);
   }
 
   ul {
