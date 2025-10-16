@@ -65,6 +65,8 @@
 
 <style>
   header {
+    position: fixed;
+    width: 100%;
     font-family: var(--font-body);
     font-weight: 300;
     color: white;
@@ -96,17 +98,28 @@
   .nav {
     display: inherit;
     flex-direction: column;
-    align-items: end;
+    align-content: baseline;
+    align-items: flex-end;
     justify-content: space-between;
+    gap: 1.5rem;
   }
 
   .nav__content {
-    font-size: 16px;
-    gap: clamp(30px, 4vw, 60px);
+    font-size: 14px;
+    gap: clamp(10px, 4vw, 60px);
+    @media (min-width: 1130px) {
+      font-size: 16px;
+      background-image: none;
+    }
   }
 
   .nav__top {
     display: inherit;
+  }
+
+  .lang {
+    font-size: 21px;
+    font-weight: 200;
   }
 
   ul {
@@ -115,12 +128,15 @@
 
   .nav__list {
     display: inherit;
+    margin: 0;
+    margin-block-end: 0;
   }
 
   .nav__item {
     display: block;
     padding-bottom: 0.2rem;
     position: relative;
+    text-wrap: nowrap;
   }
 
   .nav__item::before {
