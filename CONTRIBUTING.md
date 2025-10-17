@@ -80,3 +80,7 @@ recep over sebas - goed sprint review gedocumenteerd + alle feedback.
 my work:
 recep over recep - meer coderen.
 sebas over sebas - Design verder uitwerken.
+
+## Sprint 15 refinment DoR & DoD's:
+
+<img width="661" height="879" alt="image" src="https://github.com/user-attachments/assets/5178e189-f13a-4d05-af2a-221b95277565" />
