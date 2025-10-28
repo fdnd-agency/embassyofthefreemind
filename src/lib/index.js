@@ -1,1 +1,2 @@
-// place files you want to import through the `$lib` alias in this folder.
+// @ts-ignore
+export { default as Footer } from './components/Footer.svelte'

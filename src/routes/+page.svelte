@@ -1,5 +1,6 @@
 <script>
 	import Exhibitions from '../lib/components/Exhibitions.svelte';
+	import { Footer } from "$lib";
 
 	const myImageUrl = '/images/image37.png';
 </script>
@@ -11,3 +12,5 @@
 	dates="28 april t/m 7 september 2025"
 	linkUrl="nog niets"
 />
+
+<Footer />
