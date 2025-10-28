@@ -31,4 +31,48 @@
 
 <style>
 
+
+/* === HERO SECTION === */
+.hero {
+	position: relative;
+	width: 100%;
+  height: 80vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	background: url("/images/background.png") center center / cover no-repeat;
+}
+
+.hero::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: hsla(60, 12%, 13%, 0.512); 
+	z-index: 1;
+}
+
+/* === BACKGROUND SLIDES === */
+.hero__slides {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero__slides img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.hero__slides img.active {
+  opacity: 1;
+}
+
 </style>
