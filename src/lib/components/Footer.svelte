@@ -39,3 +39,164 @@
 </footer>
 
 
+<style>
+    footer {
+        height: 40rem;
+        width: 90vw;
+        background-image: url(/images/achtergrond-embassy-1.png);
+        background-color: #002341;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        background-size: cover;
+        background-position: top;
+        padding: 4rem 2rem;
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5rem;
+            max-width: 1200px;
+            width: 100%;
+
+            h3 {
+                margin-bottom: 1rem;
+                font-weight: bold;
+            }
+
+            .footer-newsletter { 
+                text-align: left;
+                align-items: left;
+                padding-left: 1rem;
+                @media (min-width: 1024px) {
+                    h3 {
+                        font-size: 2.25rem;
+                    }
+                    p {
+                        font-size: 1.25rem;
+                    }
+                }
+            }
+
+            .footer-menu {
+                text-align: left;
+                padding-left: 1rem;
+                ul {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+
+                    li {
+                        margin-bottom: 0.5rem;
+                    }
+
+                    a {
+                        text-decoration: none;
+                        color: white;
+                        transition: color 0.3s ease;
+
+                        &:hover {
+                            color: #0057a2;
+                        }
+                    }
+                }
+                @media (min-width: 1024px) { 
+                    h3 {
+                        font-size: 2.25rem;
+                    }
+                    li {
+                        font-size: 1.25rem;
+                    }
+                }
+            }
+
+            .footer-info {
+                text-align: right;
+                padding-right: 1rem;
+                margin-left: 10rem;
+                a{
+                    svg, svg > * {
+                        fill: white;
+                        transition: fill 0.3s ease;
+                    } 
+                    &:hover{
+                        svg, svg > * {
+                            fill: #0057a2;
+                        }    
+                    }
+                }
+                @media (min-width: 1024px) {
+                    margin-left: 0;
+                    h3 {
+                        font-size: 2.25rem;
+                    }
+                    p {
+                        font-size: 1.25rem;
+                    }
+                }
+            
+            }
+
+
+            /* 📱 Tablets (≤1024px) */
+            @media (max-width: 1024px) {
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+
+            /* 📱 Mobile (≤768px) */
+            @media (max-width: 768px) {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                text-align: center;
+
+                .footer-menu {
+                    ul {
+                        display: inline-block;
+                    }
+
+                    li {
+                        margin-bottom: 0.8rem;
+                    }
+                }
+            }
+
+            /* 📱 Extra small (≤480px) */
+            @media (max-width: 480px) {
+                gap: 2rem;
+
+                h3 {
+                    font-size: 1.1rem;
+                }
+
+                .footer-menu {
+                    li {
+                        margin-bottom: 0.4rem;
+                    }
+                }
+            }
+        }
+
+        /* Responsive footer padding adjustments */
+        @media (max-width: 1024px) {
+            padding: 3rem 1.5rem;
+            background-image: none;
+        }
+
+        @media (max-width: 768px) {
+            padding: 3rem 1rem;
+            background-position: center;
+            background-image: none;
+        }
+    }
+
+    .footer-info {
+        svg {
+            font-size: 10px;
+        }
+    }
+
+</style>
