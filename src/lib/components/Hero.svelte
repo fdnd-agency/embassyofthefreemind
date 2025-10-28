@@ -75,4 +75,35 @@
   opacity: 1;
 }
 
+/* === HERO CONTENT === */
+.hero__content {
+  position: relative;
+  z-index: 1;
+  text-align: left;
+  max-width: 80%;
+  margin-inline: auto;
+  padding: 0 1rem;
+}
+
+.hero__content h1,
+.hero__content h2 {
+  font-family: "Night Mango", serif;
+  font-weight: 400;
+  color: white;
+}
+
+.hero__content h1 {
+  font-size: clamp(1.6rem, 6vw, 2.6rem);
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  letter-spacing: 0.01em;
+}
+
+.hero__content h2 {
+  font-size: clamp(1.6rem, 4vw, 3rem);
+  line-height: 1.2;
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
 </style>
