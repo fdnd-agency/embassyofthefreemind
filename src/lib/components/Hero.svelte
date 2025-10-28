@@ -106,4 +106,27 @@
   margin-bottom: 2rem;
 }
 
+/* === CTA BUTTON === */
+.hero__button {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: white;
+  color: var(--color-text-dark, #0f0f0f);
+  border: none;
+  border-radius: 2rem;
+  padding: 0.8rem 1.4rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero__button svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  transition: transform 0.3s ease;
+}
+
 </style>
