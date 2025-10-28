@@ -164,7 +164,7 @@
 		width: 100%;
 		margin-top: 1em;
 		overflow: hidden;
-		border-radius: 8px;
+		/* border-radius: 8px; */
 	}
 
 	.media-container img {
