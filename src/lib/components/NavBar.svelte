@@ -80,12 +80,11 @@
 		font-family: var(--font-body);
 		font-weight: 300;
 		color: white;
-		backdrop-filter: blur(50px);
+		backdrop-filter: blur(10px);
 		background: linear-gradient(
 			180deg,
 			hsla(64, 13%, 13%, 0.95) 0%,
-			hsla(60, 6%, 38%, 0.536) 50%,
-			hsla(60, 6%, 38%, 0.119) 80%,
+			hsla(60, 14%, 7%, 0.491) 50%,
 			hsla(64, 13%, 46%, 0) 100%
 		);
 	}
@@ -94,7 +93,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 1rem clamp(1rem, 3vw, 3rem);
+		padding: 1.2rem clamp(1rem, 3vw, 3rem);
 		height: 5rem;
 		transition: all 0.2s ease-in-out;
 	}
@@ -213,9 +212,6 @@
 			display: flex;
 			margin: 0;
 			margin-block-end: 0;
-		}
-		.header__content {
-			height: 8rem;
 		}
 	}
 </style>
