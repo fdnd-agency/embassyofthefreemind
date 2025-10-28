@@ -7,7 +7,7 @@
 			en teksten uit de collectie van de Bibliotheca Philosophica Hermetica.
 		</p>
 		<div class="media-container">
-			<img src="images/article-1.png" alt="Afbeelding van de bibliotheek" />
+			<img class="grid-image" src="images/article-1.png" alt="Afbeelding van de bibliotheek" />
 			<a href="#" class="read-more-link">
 				<span class="text-content">Meer lezen</span>
 				<span class="arrow"
@@ -25,7 +25,7 @@
 			route.
 		</p>
 		<div class="media-container">
-			<img src="images/article-2.png" alt="Afbeelding van illustraties" />
+			<img class="grid-image" src="images/article-2.png" alt="Afbeelding van illustraties" />
 			<a href="#" class="read-more-link">
 				<span class="text-content">Meer lezen</span>
 				<span class="arrow"
@@ -40,7 +40,11 @@
 		<h4>Kids</h4>
 		<p>Ontdek hier alle activiteiten speciaal voor kinderen.</p>
 		<div class="media-container">
-			<img src="images/article-3.png" alt="Afbeelding van een konijn met trompet" />
+			<img
+				class="grid-image"
+				src="images/article-3.png"
+				alt="Afbeelding van een konijn met trompet"
+			/>
 			<a href="#" class="read-more-link">
 				<span class="text-content">Meer lezen</span>
 				<span class="arrow"
@@ -59,7 +63,7 @@
 			Boek een rondleiding en kom meer te weten over de Embassy of the Free Mind en de collectie!
 		</p>
 		<div class="media-container">
-			<img src="images/article-4.png" alt="Afbeelding van mythische dieren" />
+			<img class="grid-image" src="images/article-4.png" alt="Afbeelding van mythische dieren" />
 			<a href="#" class="read-more-link">
 				<span class="text-content">Meer lezen</span>
 				<span class="arrow"
@@ -74,7 +78,7 @@
 		<h4>Huisregels</h4>
 		<p>Huisregels Embassy of the Free Mind.</p>
 		<div class="media-container">
-			<img src="images/article-5.png" alt="Afbeelding van een oud manuscript" />
+			<img class="grid-image" src="images/article-5.png" alt="Afbeelding van een oud manuscript" />
 			<a href="#" class="read-more-link">
 				<span class="text-content">Meer lezen</span>
 				<span class="arrow"
@@ -92,7 +96,11 @@
 			bedrijfsevenementen.
 		</p>
 		<div class="media-container">
-			<img src="images/article-6.png" alt="Afbeelding van de Grote Seal ruimte" />
+			<img
+				class="grid-image"
+				src="images/article-6.png"
+				alt="Afbeelding van de Grote Seal ruimte"
+			/>
 			<a href="#" class="read-more-link">
 				<span class="text-content">Meer lezen</span>
 				<span class="arrow"
@@ -108,31 +116,31 @@
 		text-decoration: none;
 		color: inherit;
 	}
+	h4 {
+		text-transform: uppercase;
+		font-size: clamp(1em, 2.2vw, 1.7em);
+	}
 	section {
-		max-width: 90%;
+		max-width: 95%;
 		height: auto;
-		margin-left: 5%;
+		margin-left: auto;
+		margin-right: auto;
 		place-items: center;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		h4 {
-			text-transform: uppercase;
-			font-size: clamp(1em, 2.2vw, 1.7em);
+
+		@media (min-width: 700px) and (max-width: 1099px) {
+			max-width: 70%;
 		}
-		img {
-			width: 100%;
-			@media (width > 400px) {
-				position: relative;
-				object-fit: contain;
-			}
-		}
+
 		@media (width > 1100px) {
 			display: grid;
-
+			max-width: 90%;
 			grid-template-columns: 4.6fr 2.4fr 2.4fr;
 			grid-template-rows: repeat(14, calc(1.5vh - 0.25em));
 			gap: 1em;
+
 			article {
 				margin-left: 0.5em;
 				margin-right: 0.5em;
@@ -164,43 +172,50 @@
 		width: 100%;
 		margin-top: 1em;
 		overflow: hidden;
-		/* border-radius: 8px; */
 	}
 
-	.media-container img {
+	.grid-image {
 		width: 100%;
+		object-fit: cover;
 		display: block;
+
+		/* Mobile height (< 700px) */
+		height: 30vh;
+
+		@media (min-width: 700px) and (max-width: 1099px) {
+			height: 40vh;
+		}
+
+		@media (width > 1100px) {
+			height: auto;
+		}
 	}
 
 	.read-more-link {
 		position: absolute;
 		bottom: 15px;
 		right: 15px;
-
 		height: 40px;
 		width: 40px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		padding: 10px 10px;
-
 		background-color: white;
 		border-radius: 4em;
 		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-
 		transition:
 			width 0.3s ease-in-out,
 			background-color 0.3s ease-in-out,
 			opacity 0.3s ease-in-out;
-
 		font-size: 1.2em;
 		font-weight: 600;
 		color: #1a202c;
 		white-space: nowrap;
 		overflow: hidden;
 		opacity: 1;
+		z-index: 2;
 	}
-
 	.read-more-link .text-content {
 		color: #002646;
 		opacity: 0;
@@ -212,14 +227,12 @@
 			max-width 0.3s,
 			margin-right 0.3s;
 	}
-
 	.media-container:hover .read-more-link {
 		width: 150px;
 		justify-content: space-between;
 		opacity: 1;
 		padding: 10px 20px;
 	}
-
 	.media-container:hover .read-more-link .text-content {
 		opacity: 1;
 		max-width: 100px;
