@@ -27,7 +27,7 @@
 		<div class="media-container">
 			<img src="images/article-2.png" alt="Afbeelding van illustraties" />
 			<a href="#" class="read-more-link">
-				<span class="text-content">Bekijk info</span>
+				<span class="text-content">Meer lezen</span>
 				<span class="arrow"
 					><img src="images/arrow-exhibition.svg" height="15" width="15" alt="arrow" /></span
 				>
@@ -42,7 +42,7 @@
 		<div class="media-container">
 			<img src="images/article-3.png" alt="Afbeelding van een konijn met trompet" />
 			<a href="#" class="read-more-link">
-				<span class="text-content">Ontdek</span>
+				<span class="text-content">Meer lezen</span>
 				<span class="arrow"
 					><img src="images/arrow-exhibition.svg" height="15" width="15" alt="arrow" /></span
 				>
@@ -61,7 +61,7 @@
 		<div class="media-container">
 			<img src="images/article-4.png" alt="Afbeelding van mythische dieren" />
 			<a href="#" class="read-more-link">
-				<span class="text-content">Boek een Tour</span>
+				<span class="text-content">Meer lezen</span>
 				<span class="arrow"
 					><img src="images/arrow-exhibition.svg" height="15" width="15" alt="arrow" /></span
 				>
@@ -76,7 +76,7 @@
 		<div class="media-container">
 			<img src="images/article-5.png" alt="Afbeelding van een oud manuscript" />
 			<a href="#" class="read-more-link">
-				<span class="text-content">Bekijk regels</span>
+				<span class="text-content">Meer lezen</span>
 				<span class="arrow"
 					><img src="images/arrow-exhibition.svg" height="15" width="15" alt="arrow" /></span
 				>
@@ -94,7 +94,7 @@
 		<div class="media-container">
 			<img src="images/article-6.png" alt="Afbeelding van de Grote Seal ruimte" />
 			<a href="#" class="read-more-link">
-				<span class="text-content">Vraag offerte aan</span>
+				<span class="text-content">Meer lezen</span>
 				<span class="arrow"
 					><img src="images/arrow-exhibition.svg" height="15" width="15" alt="arrow" /></span
 				>
