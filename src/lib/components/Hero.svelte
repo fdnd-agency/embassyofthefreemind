@@ -129,4 +129,58 @@
   transition: transform 0.3s ease;
 }
 
+/* === SLIDESHOW DOTS === */
+.hero__dots {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.7rem;
+  z-index: 2;
+}
+
+.hero__dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 90%;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* === MEDIAQUERIES === */
+
+@media (min-width: 700px) {
+  .hero {
+    height: 90vh;
+  }
+
+  .hero__content h1 {
+    font-size: clamp(1.8rem, 6vw, 3.5rem);
+  }
+
+  .hero__button {
+    margin: 0 auto;
+  }
+
+}
+
+@media (min-width: 1000px) {
+  .hero {
+    height: 100vh;
+  }
+
+  .hero__content {
+    padding: 0 2rem;
+  }
+
+  .hero__content h1 {
+    font-size: clamp(3rem, 8vw, 8rem);
+    line-height: 1;
+  }
+
+}
+
 </style>
