@@ -198,7 +198,7 @@
 		color: #1a202c;
 		white-space: nowrap;
 		overflow: hidden;
-		opacity: 0.9;
+		opacity: 1;
 	}
 
 	.read-more-link .text-content {
