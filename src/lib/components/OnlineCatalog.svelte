@@ -82,6 +82,23 @@
             }
   
         }
+        @media (min-width: 1040px) {
+            top: 15rem;
+            .cat-title{
+                display: flex;
+                h2 {
+                    font-size: 3rem;
+                    white-space: nowrap;
+                }
+                p {
+                    font-size: 1.25rem;
+                    line-height: 1.6;
+                    width: 35%;
+                    text-align: right;
+                    margin-left: auto;
+                }
+            }
+        }
     }
     
     .cards-container {
@@ -129,6 +146,9 @@
                 bottom: 1rem;
                 right: 1.5rem;
 
+            }
+            @media (min-width: 1040px) {
+                width: 25vw;
             }
         }
     }
