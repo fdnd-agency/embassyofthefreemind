@@ -5,7 +5,7 @@
             <h3>Newsletter</h3>
             <p>Ontvang nieuwe verhalen en highlights uit de collectie.</p>
             <form>
-                <input type="email" placeholder="TEMP PLACEHOLDER" />
+                <input type="email" placeholder="E-mail" />
                 <button type="submit">Subscribe</button>
             </form>
         </section>
@@ -69,6 +69,25 @@
                 text-align: left;
                 align-items: left;
                 padding-left: 1rem;
+                form {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                    input {
+                        background: none;
+                        color: white;
+                        border: none;
+                        border-bottom: 1px solid white;
+                    }
+                    button {
+                        background-color: white;
+                        border: 1px solid;
+                        border-radius: 30px;
+                        width: 200px;
+                        padding: 0.5rem;
+                        cursor: pointer;
+                    }
+                }
                 @media (min-width: 1024px) {
                     h3 {
                         font-size: 2.25rem;
