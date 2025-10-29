@@ -47,3 +47,102 @@
     </section>
 </section>
 
+<style> 
+    .cat-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .online-catalog {
+        padding: 2rem;
+        background-color: #E6EDF2;;
+        border-radius: 30px;
+        width: 80vw;
+        text-align: center;
+        position: relative;
+        top: 5rem;
+        .catalog-link {
+            text-decoration: none;
+            color: #002646;
+            background-color: white;
+            border: 1px solid gray;
+            border-radius: 30px;
+            padding: 1rem;
+            span {
+                position: relative;
+                background-color: #002646;
+                padding: 5px;
+                border-radius: 20px;
+                img {
+                    filter: brightness(0) invert(1);
+                    position: relative;
+                    top: 4px;
+                }
+            }
+  
+        }
+    }
+    
+    .cards-container {
+        display: grid;
+        grid-template-columns: var(--page-margin) [center-start] 1fr [center-end] var(--page-margin);
+    }
+
+    .cards-wrapper {
+        grid-column: center-start / center-end;
+        display: grid;
+        grid-auto-flow: column;
+        gap: 1rem;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 2rem;
+        padding-inline: var(--page-margin);
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: auto;
+
+        .card {
+            position: relative;
+            display: flex;
+            margin: 0;
+            flex-direction: column;
+            text-align: left;
+            background-color: white;
+            width: 72vw;
+            min-width: 13rem;
+            border-radius: 30px;
+            padding: 1rem;
+            p {
+                color: gray;
+                font-size: 18px;
+            }
+            h3 {
+                color: black;
+                font-size: 20px;
+                margin-right: 4rem;
+            }
+            .book-cover {
+                border-radius: 20px;
+            }
+            span {
+                position: absolute;
+                bottom: 1rem;
+                right: 1.5rem;
+
+            }
+        }
+    }
+
+    @supports (scroll-snap-type: x mandatory) {
+        .cards-wrapper {
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+        }
+
+        .cards-wrapper .card {
+            scroll-snap-align: start;
+        }
+    }
+
+    
+</style>
