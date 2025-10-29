@@ -50,22 +50,22 @@
 			</section>
 			<ul class="nav__content nav__list">
 				<li class="nav__item">
-					<a href="#">tickets en evenementen</a>
+					<a href="#">Plan your Visit</a>
 				</li>
 				<li class="nav__item">
-					<a href="#">bezoekersinformatie</a>
+					<a href="#">Collection</a>
 				</li>
 				<li class="nav__item">
-					<a href="#">collectie</a>
+					<a href="#">Stories</a>
 				</li>
 				<li class="nav__item">
-					<a href="#">online catalogus</a>
+					<a href="#">Online catalogue</a>
 				</li>
 				<li class="nav__item">
-					<a href="#">word member</a>
+					<a href="#">About us</a>
 				</li>
 				<li class="nav__item">
-					<a href="#">over ons</a>
+					<a href="#" style="font-weight: bold">Tickets</a>
 				</li>
 			</ul>
 		</nav>

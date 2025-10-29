@@ -19,7 +19,6 @@
     src: url("/fonts/NightMango.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
-    font-display: swap;
   }
 
   :root {
@@ -27,10 +26,11 @@
     --font-body: "Inter", sans-serif;
     background-color: rgb(255, 255, 255);
   }
-  
+
   :global(body) {
     margin: 0;
     padding: 0;
   }
+
 
 </style>

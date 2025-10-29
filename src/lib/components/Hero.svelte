@@ -18,8 +18,26 @@
 		</button>
 	</div>
 
+  <section class="info__line">
+    <div class="info__adress">
+      <p>
+        123, Keizersgracht
+      </p>
+      <p>
+        NL 1015 CJ Amsterdam
+      </p>
+    </div>
+    <div class="info__time">
+      <p>
+        Wed. to Sat. 10.00-17.00h 
+      </p>
+      <p>
+        Sun. 11.00-18.00h
+      </p>
+    </div>
+  </section>
+
   <div class="hero__slides">
-    <img src="/images/background.png" alt="Background 1" class="active" />
   </div>
 
 	<div class="hero__dots">
@@ -127,6 +145,32 @@
   height: 22px;
   stroke: currentColor;
   transition: transform 0.3s ease;
+
+/* === INFORMATION LINE === */
+.info__line {
+  position: absolute;
+  bottom: 2rem;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 20px;
+  padding: 2rem 6rem; 
+  z-index: 2;
+}
+
+.info__line p {
+  margin: 0;
+}
+
+.info__adress,
+.info__time {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 /* === SLIDESHOW DOTS === */
@@ -165,20 +209,29 @@
     margin: 0 auto;
   }
 
+  .info__line {
+    max-width: 80%;
+  }
 }
 
 @media (min-width: 1000px) {
-  .hero {
-    height: 100vh;
-  }
-
   .hero__content {
-    padding: 0 2rem;
+    max-width: 50%;
   }
 
-  .hero__content h1 {
-    font-size: clamp(3rem, 8vw, 8rem);
-    line-height: 1;
+  .hero__button {
+    bottom: clamp(1vh, 4vh, -4vh);
+    left: clamp(24rem, calc(5vw + 28rem), 35rem);
+  }
+
+  .info__line {
+    max-width: 90%;
+  }
+
+  .info__adress,
+  .info__time {
+    gap: 2rem;
+    flex-direction: row;
   }
 
 }
