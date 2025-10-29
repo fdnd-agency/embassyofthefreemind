@@ -1,6 +1,7 @@
 <script>
 	import SectionWithLinks from '../lib/components/SectionWithLinks.svelte';
 	import Exhibitions from '$lib/components/Exhibitions.svelte';
+	import { OnlineCatalog } from "$lib";
 	const myImageUrl = '/images/image37.png';
 </script>
 
@@ -13,3 +14,5 @@
 />
 
 <SectionWithLinks />
+
+<OnlineCatalog />
