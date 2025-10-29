@@ -116,6 +116,8 @@
                 text-align: right;
                 padding-right: 1rem;
                 margin-left: 10rem;
+                position: absolute;
+                bottom: 1%;
                 a{
                     svg, svg > * {
                         fill: white;
@@ -128,6 +130,7 @@
                     }
                 }
                 @media (min-width: 1024px) {
+                    position: relative;
                     margin-left: 0;
                     h3 {
                         font-size: 2.25rem;
