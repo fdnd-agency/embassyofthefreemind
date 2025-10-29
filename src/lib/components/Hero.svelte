@@ -1,20 +1,13 @@
 <section class="hero">
 	<div class="hero__content">
-		<h1>Vier 450 jaar</h1>
+    <h1>Vier 450 jaar</h1>
     <h2>Amsterdam in het huis met de hoofden</h2>
 		<button class="hero__button">
 			Meer lezen
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				width="22"
-				height="22"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="2"
-				viewBox="0 0 24 24"
-			>
-				<path d="M5 12h14M12 5l7 7-7 7" />
-			</svg>
+      <div class="arrow-circle">
+        <span><img src="images/arrow-exhibition-2.svg" height="18" width="18" alt="arrow" /></span
+        >
+      </div>
 		</button>
 	</div>
 
@@ -38,6 +31,7 @@
   </section>
 
   <div class="hero__slides">
+    <img src="/images/background.png" alt="Painting by William Blake titled Jacob's Ladder" class="active" />
   </div>
 
 	<div class="hero__dots">
@@ -49,17 +43,17 @@
 
 <style>
 
-
 /* === HERO SECTION === */
 .hero {
 	position: relative;
-	width: 100%;
-  height: 80vh;
+	min-width: 100vw;
+  min-height: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	color: white;
 	background: url("/images/background.png") center center / cover no-repeat;
+  overflow-x: hidden;
 }
 
 .hero::before {
@@ -97,10 +91,15 @@
 .hero__content {
   position: relative;
   z-index: 1;
-  text-align: left;
-  max-width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  max-width: 100%;
   margin-inline: auto;
-  padding: 0 1rem;
+  margin-bottom: -4rem;
+  padding: 0 2rem;
+  text-align: justify;
 }
 
 .hero__content h1,
@@ -108,43 +107,61 @@
   font-family: "Night Mango", serif;
   font-weight: 400;
   color: white;
+  margin: 0;
+  line-height: 1.2;
 }
 
 .hero__content h1 {
-  font-size: clamp(1.6rem, 6vw, 2.6rem);
-  line-height: 1.2;
-  margin-bottom: 1rem;
-  letter-spacing: 0.01em;
+  font-size: clamp(61px, 6vw, 160px);
 }
 
 .hero__content h2 {
-  font-size: clamp(1.6rem, 4vw, 3rem);
-  line-height: 1.2;
+  font-size: clamp(46px, 4vw, 85px);
   font-weight: 300;
-  margin-bottom: 2rem;
 }
 
 /* === CTA BUTTON === */
+
 .hero__button {
+  position: absolute;
+  bottom: -7vh; 
+  left: 2rem;  
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  justify-content: space-between;
+  gap: 21px;
   background: white;
   color: var(--color-text-dark, #0f0f0f);
   border: none;
   border-radius: 2rem;
-  padding: 0.8rem 1.4rem;
+  height: 56px;
+  min-width: 180px;
+  padding: 6px 7px 6px 1.5rem;
   font-family: var(--font-body);
   font-size: 1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
-.hero__button svg {
-  width: 22px;
-  height: 22px;
-  stroke: currentColor;
-  transition: transform 0.3s ease;
+.arrow-circle {
+		background-color: #002646;
+		color: white;
+		width: 40.78px;
+		height: 42.05px;
+		border-radius: 50%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 1.2em;
+		font-weight: bold;
+		transition:
+			background-color 0.4s ease,
+			background 0.4s ease;
+	}
+
+  .arrow-circle span {
+		transform: translateY(2px);
+		display: block;
+	}
 
 /* === INFORMATION LINE === */
 .info__line {
@@ -173,6 +190,7 @@
   gap: 0.5rem;
 }
 
+
 /* === SLIDESHOW DOTS === */
 .hero__dots {
   position: absolute;
@@ -197,16 +215,25 @@
 /* === MEDIAQUERIES === */
 
 @media (min-width: 700px) {
-  .hero {
-    height: 90vh;
+  .hero__content {
+    max-width: 70%;
+    margin-bottom: 0rem;
+    margin-left: 61px;
+    margin-top: 15rem;
+    padding: 0 2rem;
   }
 
   .hero__content h1 {
-    font-size: clamp(1.8rem, 6vw, 3.5rem);
+    font-size: clamp(75px, 8.5vw, 175px);
+    line-height: 0.9;
+  }
+
+  .hero__content h2{
+    line-height: 1.2;
   }
 
   .hero__button {
-    margin: 0 auto;
+    bottom: -7vh; 
   }
 
   .info__line {
