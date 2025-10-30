@@ -1,7 +1,5 @@
 <script>
-	import Exhibitions from '../lib/components/Exhibitions.svelte';
 	import { Footer } from "$lib";
-
 	import SectionWithLinks from '../lib/components/SectionWithLinks.svelte';
 	import Exhibitions from '$lib/components/Exhibitions.svelte';
 	import Hero from '$lib/components/Hero.svelte'
@@ -19,3 +17,4 @@
 />
 
 <SectionWithLinks />
+<Footer />
