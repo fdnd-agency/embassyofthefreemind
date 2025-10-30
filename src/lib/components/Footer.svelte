@@ -59,6 +59,7 @@
             gap: 5rem;
             max-width: 1200px;
             width: 100%;
+            position: relative;
 
             h3 {
                 margin-bottom: 1rem;
