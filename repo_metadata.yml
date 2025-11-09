@@ -1,0 +1,5 @@
+title: "Embassy of the Free Mind"
+status: "in progress"
+main_link: "https://embassyofthefreemind.agency.fdnd.nl/"
+dev_link: "https://embassyofthefreemind.dev.fdnd.nl/"
+tech_stack: ["SvelteKit", "Directus"]
