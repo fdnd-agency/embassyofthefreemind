@@ -80,15 +80,15 @@
 			grid-template-columns: 4.6fr 2.4fr 2.4fr;
 			grid-template-rows: repeat(14, calc(1.5vh - 0.25em));
 			gap: 1em;
-			article:first-of-type {
+			:global(article:first-of-type) {
 				grid-row-start: 4;
 				grid-row-end: 14;
 			}
-			article:nth-of-type(2) {
+			:global(article:nth-of-type(2)) {
 				grid-row-start: 2;
 				grid-row-end: 10;
 			}
-			article:nth-of-type(3) {
+			:global(article:nth-of-type(3)) {
 				grid-row-start: 6;
 				grid-row-end: 13;
 			}
@@ -100,6 +100,6 @@
 	}
 	section:nth-of-type(3) {
 		margin-top: calc(18% - 1em);
-		margin-bottom: 15%;
+		margin-bottom: 25%;
 	}
 </style>
