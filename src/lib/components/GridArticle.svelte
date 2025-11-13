@@ -6,7 +6,7 @@
 	export let linkUrl = '#';
 </script>
 
-<article>
+<article class="grid_article">
 	<h4>{title}</h4>
 	<p>{description}</p>
 	<div class="media-container">
@@ -21,20 +21,22 @@
 </article>
 
 <style>
-	article {
+	.grid_article {
 		@media (width > 1100px) {
+			display: flex;
+			flex-direction: column;
 			height: 100%;
 			margin-left: 0.5em;
 			margin-right: 0.5em;
 		}
 	}
 
-	h4 {
+	.grid_article h4 {
 		text-transform: uppercase;
 		font-size: clamp(1em, 2.2vw, 1.7em);
 	}
 
-	p {
+	.grid_article p {
 		@media (width > 1100px) {
 			font-size: clamp(1em, 2vw, 1.5em);
 		}
@@ -43,8 +45,13 @@
 	.media-container {
 		position: relative;
 		width: 100%;
-
 		overflow: hidden;
+		margin-top: 1.5em;
+
+		@media (width > 1100px) {
+			flex-grow: 1;
+			min-height: 0;
+		}
 	}
 
 	.grid-image {
@@ -52,17 +59,22 @@
 		object-fit: cover;
 		display: block;
 
+		/* Base (mobile) height, < 700px */
 		height: 30vh;
 
+		/* Tablet height (syncs with parent's 700-1099px) */
 		@media (min-width: 700px) and (max-width: 1099px) {
 			height: 40vh;
 		}
 
+		/* Desktop height (syncs with parent's > 1100px) */
 		@media (width > 1100px) {
-			height: auto;
+			/* This fills the flex container */
+			height: 100%;
 		}
 	}
 
+	/* All other styles (.read-more-link, etc.) are correct */
 	.read-more-link {
 		position: absolute;
 		bottom: 15px;

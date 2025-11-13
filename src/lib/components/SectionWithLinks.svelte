@@ -2,7 +2,7 @@
 	import GridArticle from './GridArticle.svelte';
 </script>
 
-<section>
+<section class="section_grid">
 	<GridArticle
 		title="Over het Museum"
 		description="Ga op ontdekkingsreis door 2.000 jaar verzamelde wijsheid, geïnspireerd door de afbeeldingen en teksten uit de collectie van de Bibliotheca Philosophica Hermetica."
@@ -28,7 +28,7 @@
 	/>
 </section>
 
-<section>
+<section class="section_grid">
 	<GridArticle
 		title="Rondleidingen"
 		description="Boek een rondleiding en kom meer te weten over de Embassy of the Free Mind en de collectie!"
@@ -60,7 +60,20 @@
 		color: inherit;
 	}
 
-	section {
+	.section_grid:nth-of-type(2) {
+		margin-top: 4%;
+		/* margin-bottom: 35vh; */
+		/* margin-bottom: calc(1em + 15%); */
+		@media (width > 1100px) {
+			margin-bottom: 0;
+		}
+	}
+	.section_grid:nth-of-type(3) {
+		@media (width > 1100px) {
+			transform: translateY(-18%);
+		}
+	}
+	.section_grid {
 		max-width: 95%;
 		height: auto;
 		margin-left: auto;
@@ -78,28 +91,21 @@
 			display: grid;
 			max-width: 90%;
 			grid-template-columns: 4.6fr 2.4fr 2.4fr;
-			grid-template-rows: repeat(14, calc(1.5vh - 0.25em));
+			grid-template-rows: repeat(18, calc(3.5vh - 0.25em));
 			gap: 1em;
+			margin-bottom: 0;
 			:global(article:first-of-type) {
-				grid-row-start: 4;
-				grid-row-end: 14;
+				grid-row-start: 2;
+				grid-row-end: 17;
 			}
 			:global(article:nth-of-type(2)) {
-				grid-row-start: 2;
-				grid-row-end: 10;
-			}
-			:global(article:nth-of-type(3)) {
-				grid-row-start: 6;
+				grid-row-start: 1;
 				grid-row-end: 13;
 			}
+			:global(article:nth-of-type(3)) {
+				grid-row-start: 3;
+				grid-row-end: 15;
+			}
 		}
-	}
-	section:first-of-type {
-		margin-top: 14%;
-		margin-bottom: calc(1em + 15%);
-	}
-	section:nth-of-type(3) {
-		margin-top: calc(18% - 1em);
-		margin-bottom: 25%;
 	}
 </style>
