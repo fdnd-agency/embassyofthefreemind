@@ -170,7 +170,7 @@
 	.media-container {
 		position: relative;
 		width: 100%;
-		margin-top: 1em;
+		margin-top: 15em;
 		overflow: hidden;
 	}
 
