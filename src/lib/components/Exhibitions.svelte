@@ -45,6 +45,7 @@
 		margin-left: 5%;
 		margin-right: 5%;
 		margin-top: 3em;
+		padding: 0.75em;
 		border: 1px solid #eee;
 		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 		background: white;
@@ -116,7 +117,7 @@
 
 		@container card (width > 600px) {
 			width: calc(300px + 15cqw);
-			left: 5em;
+			left: 15cqw;
 			border-radius: 2em;
 			bottom: 5em;
 			font-size: clamp(1em, 1.6cqw, 1.5em);
