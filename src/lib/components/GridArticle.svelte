@@ -22,7 +22,7 @@
 
 <style>
 	.grid_article {
-		@media (width > 1100px) {
+		@media (width > 700px) {
 			display: flex;
 			flex-direction: column;
 			height: 100%;
@@ -37,7 +37,7 @@
 	}
 
 	.grid_article p {
-		@media (width > 1100px) {
+		@media (width > 700px) {
 			font-size: clamp(1em, 2vw, 1.5em);
 		}
 	}
@@ -48,7 +48,7 @@
 		overflow: hidden;
 		margin-top: 1.5em;
 
-		@media (width > 1100px) {
+		@media (width > 700px) {
 			flex-grow: 1;
 			min-height: 0;
 		}
@@ -58,23 +58,13 @@
 		width: 100%;
 		object-fit: cover;
 		display: block;
-
-		/* Base (mobile) height, < 700px */
 		height: 30vh;
 
-		/* Tablet height (syncs with parent's 700-1099px) */
-		@media (min-width: 700px) and (max-width: 1099px) {
-			height: 40vh;
-		}
-
-		/* Desktop height (syncs with parent's > 1100px) */
-		@media (width > 1100px) {
-			/* This fills the flex container */
+		@media (width > 700px) {
 			height: 100%;
 		}
 	}
 
-	/* All other styles (.read-more-link, etc.) are correct */
 	.read-more-link {
 		position: absolute;
 		bottom: 15px;
@@ -109,13 +99,13 @@
 		min-width: 0;
 		flex-basis: 0;
 		transition:
-			opacity 0.2s 0.1s,
+			opacity 0s,
 			max-width 0.3s,
 			margin-right 0.3s;
 	}
 
 	.media-container:hover .read-more-link {
-		width: 150px;
+		width: 110px;
 		justify-content: space-between;
 		opacity: 1;
 		padding: 10px 20px;
@@ -123,7 +113,30 @@
 
 	.media-container:hover .read-more-link .text-content {
 		opacity: 1;
-		max-width: 100px;
+		max-width: 70px;
 		margin-right: 8px;
+		transition:
+			opacity 0.2s 0.1s,
+			max-width 0.3s,
+			margin-right 0.3s;
+	}
+
+	@media (700px <= width <= 1100px) {
+		.media-container:hover .read-more-link {
+			max-width: 140px;
+		}
+
+		.media-container:hover .read-more-link .text-content {
+			max-width: 100px;
+		}
+	}
+	@media (width > 1100px) {
+		.media-container:hover .read-more-link {
+			max-width: 150px;
+		}
+
+		.media-container:hover .read-more-link .text-content {
+			max-width: 120px;
+		}
 	}
 </style>
