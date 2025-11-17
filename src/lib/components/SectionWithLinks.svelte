@@ -91,8 +91,8 @@
 			display: grid;
 			max-width: 90%;
 			grid-template-columns: 4.6fr 2.4fr 2.4fr;
-			grid-template-rows: repeat(18, calc(0.8 + 0.65em));
-			gap: 1em;
+			grid-template-rows: repeat(18, calc(1vh + 1.2em));
+			gap: 0.25em;
 			margin-bottom: 0;
 			:global(article:first-of-type) {
 				grid-row-start: 2;
@@ -108,7 +108,8 @@
 			}
 		}
 		@media (width > 1100px) {
-			grid-template-rows: repeat(18, calc(2.6vh + 0.65em));
+			grid-template-rows: repeat(18, calc(2.3vh + 0.65em));
+			gap: 1em;
 		}
 	}
 </style>
