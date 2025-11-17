@@ -70,7 +70,7 @@
 	}
 	.section_grid:nth-of-type(3) {
 		@media (width > 700px) {
-			transform: translateY(calc(-25% + 3em));
+			transform: translateY(calc(-25% + 6em));
 		}
 	}
 	.section_grid {
@@ -91,7 +91,7 @@
 			display: grid;
 			max-width: 90%;
 			grid-template-columns: 4.6fr 2.4fr 2.4fr;
-			grid-template-rows: repeat(18, calc(2.5vh + 0.55em));
+			grid-template-rows: repeat(18, calc(0.8 + 0.65em));
 			gap: 1em;
 			margin-bottom: 0;
 			:global(article:first-of-type) {
@@ -106,6 +106,9 @@
 				grid-row-start: 3;
 				grid-row-end: 15;
 			}
+		}
+		@media (width > 1100px) {
+			grid-template-rows: repeat(18, calc(2.5vh + 0.55em));
 		}
 	}
 </style>
