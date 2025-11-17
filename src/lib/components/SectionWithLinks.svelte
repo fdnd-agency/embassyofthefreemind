@@ -6,7 +6,7 @@
 	<GridArticle
 		title="Over het Museum"
 		description="Ga op ontdekkingsreis door 2.000 jaar verzamelde wijsheid, geïnspireerd door de afbeeldingen en teksten uit de collectie van de Bibliotheca Philosophica Hermetica."
-		imageUrl="images/article-1.png"
+		imageUrl="images/article-1.jpg"
 		altText="Afbeelding van de bibliotheek"
 		linkUrl="#"
 	/>
@@ -14,7 +14,7 @@
 	<GridArticle
 		title="Plan je Bezoek"
 		description="Lees op deze pagina praktische informatie over onze openingstijden, tickets/prijzen, adres & route."
-		imageUrl="images/article-2.png"
+		imageUrl="images/article-2.jpg"
 		altText="Afbeelding van illustraties"
 		linkUrl="#"
 	/>
@@ -22,7 +22,7 @@
 	<GridArticle
 		title="Kids"
 		description="Ontdek hier alle activiteiten speciaal voor kinderen."
-		imageUrl="images/article-3.png"
+		imageUrl="images/article-3.jpg"
 		altText="Afbeelding van een konijn met trompet"
 		linkUrl="#"
 	/>
@@ -32,7 +32,7 @@
 	<GridArticle
 		title="Rondleidingen"
 		description="Boek een rondleiding en kom meer te weten over de Embassy of the Free Mind en de collectie!"
-		imageUrl="images/article-4.png"
+		imageUrl="images/article-4.jpg"
 		altText="Afbeelding van mythische dieren"
 		linkUrl="#"
 	/>
@@ -40,7 +40,7 @@
 	<GridArticle
 		title="Huisregels"
 		description="Huisregels Embassy of the Free Mind."
-		imageUrl="images/article-5.png"
+		imageUrl="images/article-5.jpg"
 		altText="Afbeelding van een oud manuscript"
 		linkUrl="#"
 	/>
@@ -48,7 +48,7 @@
 	<GridArticle
 		title="Zaalverhuur"
 		description="U kunt onze Grote Seal huren voor bijeenkomsten zoals b.v. vergaderingen en bruiloften en bedrijfsevenementen."
-		imageUrl="images/article-6.png"
+		imageUrl="images/article-6.jpg"
 		altText="Afbeelding van de Grote Seal ruimte"
 		linkUrl="#"
 	/>
@@ -108,7 +108,7 @@
 			}
 		}
 		@media (width > 1100px) {
-			grid-template-rows: repeat(18, calc(2.5vh + 0.55em));
+			grid-template-rows: repeat(18, calc(2.6vh + 0.65em));
 		}
 	}
 </style>

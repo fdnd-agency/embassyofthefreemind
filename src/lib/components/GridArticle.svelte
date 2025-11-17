@@ -2,6 +2,8 @@
 	export let title = 'Standaard Titel';
 	export let description = 'Standaard beschrijving...';
 	export let imageUrl = 'images/default.png';
+	/** @type {string | null} */
+	export let imageUrlMobile = null;
 	export let altText = 'Standaard alt-tekst';
 	export let linkUrl = '#';
 </script>
@@ -10,7 +12,9 @@
 	<h4>{title}</h4>
 	<p>{description}</p>
 	<div class="media-container">
-		<img class="grid-image" src={imageUrl} alt={altText} />
+		<picture>
+			<img class="grid-image" src={imageUrl} alt={altText} loading="lazy" decoding="async" />
+		</picture>
 		<a href={linkUrl} class="read-more-link">
 			<span class="text-content">Meer lezen</span>
 			<span class="arrow">
