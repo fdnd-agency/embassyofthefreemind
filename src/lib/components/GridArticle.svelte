@@ -132,7 +132,7 @@
 	}
 	@media (width > 1100px) {
 		.media-container:hover .read-more-link {
-			max-width: 150px;
+			width: 150px;
 		}
 
 		.media-container:hover .read-more-link .text-content {
