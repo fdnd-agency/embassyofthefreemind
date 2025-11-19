@@ -1,38 +1,28 @@
 <header class="header">
-	<div class="header__content">
-		<img src="/logo/logo_white.svg" alt="Embassy of the Free Mind" class="logo" />
-		<nav class="nav">
-			<section class="nav__content nav__top">
-				<div class="lang">
-					EN
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="24"
-						height="30"
-						viewBox="0 0 24 24"
-						stroke="white"
-						fill="none"
-						stroke-width="1"
-					>
-						<polyline points="6 9 12 15 18 9" />
-					</svg>
-				</div>
-				<div class="search">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="25"
-						height="25"
-						fill="none"
-						stroke="white"
-						stroke-width="1"
-						viewBox="0 0 24 24"
-					>
-						<circle cx="11" cy="11" r="8" />
-						<line x1="21" y1="21" x2="16.65" y2="16.65" />
-					</svg>
-					<input type="text" placeholder="zoeken . . ." />
-				</div>
-				<div class="hamburger">
+	<section class="header__content">
+		<div class="header__logo">
+			<img src="/logo/logo_white.svg" alt="Embassy of the Free Mind" class="logo" />
+		</div>
+
+		<nav class="header__center">
+			<ul class="nav__pages">
+				<li class="nav__item"><a href="#" style="font-weight:bold;">Bezoek en tickets</a></li>
+				<li class="nav__item"><a href="#">Collectie</a></li>
+				<li class="nav__item"><a href="#">Verhalen</a></li>
+				<li class="nav__item"><a href="#">Online catalogus</a></li>
+				<li class="nav__item"><a href="#">Over ons</a></li>
+			</ul>
+		</nav>
+
+		<section class="header__right">
+			<div class="lang">
+				EN
+				<svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" stroke="white" fill="none" stroke-width="1">
+					<polyline points="6 9 12 15 18 9" />
+				</svg>
+			</div>
+
+			<div class="hamburger">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						width="35"
@@ -46,30 +36,9 @@
 						<line x1="3" y1="12" x2="21" y2="12" />
 						<line x1="3" y1="18" x2="21" y2="18" />
 					</svg>
-				</div>
-			</section>
-			<ul class="nav__content nav__list">
-				<li class="nav__item">
-					<a href="#">Plan your Visit</a>
-				</li>
-				<li class="nav__item">
-					<a href="#">Collection</a>
-				</li>
-				<li class="nav__item">
-					<a href="#">Stories</a>
-				</li>
-				<li class="nav__item">
-					<a href="#">Online catalogue</a>
-				</li>
-				<li class="nav__item">
-					<a href="#">About us</a>
-				</li>
-				<li class="nav__item">
-					<a href="#" style="font-weight: bold">Tickets</a>
-				</li>
-			</ul>
-		</nav>
-	</div>
+			</div>
+		</section>
+	</section>
 </header>
 
 <style>
@@ -80,28 +49,28 @@
 		font-family: var(--font-body);
 		font-weight: 300;
 		color: white;
-		backdrop-filter: blur(10px);
-		background: linear-gradient(
-			180deg,
-			hsla(64, 13%, 13%, 0.95) 0%,
-			hsla(60, 14%, 7%, 0.491) 50%,
-			hsla(64, 13%, 46%, 0) 100%
-		);
+		background-color: #0b0c0e;
 	}
 
 	.header__content {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 1.2rem clamp(1rem, 3vw, 3rem);
-		height: 5rem;
+		padding-inline: clamp(0.5rem, 3vw, 2.5rem);
+		padding-block: 0.75rem;
 		transition: all 0.2s ease-in-out;
 	}
 
-	.logo {
-		width: clamp(110px, 10vw, 165px);
+	.header__logo {
+		flex: 1;
+		width: clamp(90px, 10vw, 105px);
 		height: auto;
 		display: block;
+		object-fit: contain;
+	}
+
+	.logo {
+		width: clamp(90px, 10vw, 105px);
 		object-fit: contain;
 	}
 
@@ -114,27 +83,67 @@
 		gap: 1.5rem;
 	}
 
-	.nav__content {
-		font-size: 14px;
+	.header__center {
+		flex: 2;
+		display: none;
+		justify-content: center;
+	}
+
+	.nav__pages {
+		display: flex;
 		gap: clamp(10px, 4vw, 60px);
+		list-style: none;
+	}
+
+	.nav__item a {
+		color: white;
+		text-decoration: none;
+	}
+
+	.nav__item {
+		font-size: 14px;
+		display: block;
+		padding-bottom: 0.2rem;
+		position: relative;
+		text-wrap: nowrap;
 		@media (min-width: 1200px) {
 			font-size: 16px;
-			background-image: none;
 		}
 	}
 
-	.nav__top {
-		display: inherit;
-		flex-direction: row;
+	.nav__item::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 0;
+		height: 1px;
+		background-color: white;
+		transition: width 0.3s ease-out;
+	}
+
+	.nav__item:hover::before {
+		width: 100%;
+	}
+
+	.header__right {
+		flex: 1;
+		display: flex;
 		align-items: center;
+		justify-content: flex-end;
+		gap: 1.75rem;
+		/* kleine optische correctie: */
+		position: relative;
+		top: 1px;      /* speel met 1–2px naar smaak */
 	}
 
 	.lang {
-		display: none;
-		cursor: pointer;
-		font-size: 21px;
-		font-weight: 200;
+		display: flex;
 		align-items: center;
+		gap: 0.35rem;
+		font-size: 18px;
+		line-height: 1;     /* heel belangrijk voor centrering */
+		cursor: pointer;
 	}
 
 	.hamburger {
@@ -162,52 +171,16 @@
 		color: rgb(255, 255, 255);
 	}
 
-	ul {
-		list-style: none;
-	}
-
-	.nav__list {
-		display: none;
-	}
-
-	.nav__item {
-		display: block;
-		padding-bottom: 0.2rem;
-		position: relative;
-		text-wrap: nowrap;
-	}
-
-	.nav__item::before {
-		content: '';
-		position: absolute;
-		left: 0;
-		bottom: 0;
-		width: 0;
-		height: 1px;
-		background-color: white;
-		transition: width 0.3s ease-out;
-	}
-
-	.nav__item:hover::before {
-		width: 100%;
-	}
-
-	a {
-		text-decoration: none;
-		color: inherit;
-	}
-
 	@media (min-width: 700px) {
-		.nav__top .search,
-		.nav__top .lang {
-			display: flex;
-		}
-		.header__content {
-			height: 6rem;
-		}
+
 	}
 
 	@media (min-width: 1000px) {
+
+		.header__center {
+			display: flex;
+		}
+
 		.nav__list {
 			display: flex;
 			margin: 0;
