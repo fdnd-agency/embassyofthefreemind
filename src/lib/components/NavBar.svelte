@@ -310,13 +310,18 @@
 		height: 100vh;
 		width: 100vw;
 		background: #0b0c0e;
-		transform: translateX(100%);
-		transition: transform 0.4s ease;
+		filter: drop-shadow(-6px 1px 20px #141414cc);
+		transform: translateX(120%);
+		opacity: 0; 
+		transition: transform 0.4s ease-out, opacity 0.4s ease-in;
 		z-index: 100;
+		pointer-events: none;
 	}
 
 	.nav__toggle:checked ~ .sidepanel {
 		transform: translateX(0%);
+    opacity: 1;                
+    pointer-events: auto;
 	}
 
 	.sidepanel__inner {
@@ -324,8 +329,14 @@
 		flex-direction: column;
 		height: 100%;
 		padding: 2rem;
+		opacity: 0; 
+		transition: opacity 0.7s ease-in;
 		color: white;
 		overflow-y: auto;
+	}
+
+	.nav__toggle:checked ~ .sidepanel .sidepanel__inner {
+			opacity: 1;
 	}
 
 	/* Search */
