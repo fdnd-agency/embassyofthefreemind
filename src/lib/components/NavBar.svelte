@@ -30,21 +30,47 @@
 				</ul>
 			</div>
 
-			<div class="hamburger">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="35"
-						height="35"
-						viewBox="0 0 24 24"
-						stroke="white"
-						fill="none"
-						stroke-width="1"
-					>
-						<line x1="3" y1="6" x2="21" y2="6" />
-						<line x1="3" y1="12" x2="21" y2="12" />
-						<line x1="3" y1="18" x2="21" y2="18" />
-					</svg>
-			</div>
+			<input type="checkbox" id="nav__toggle" class="nav__toggle" />
+
+			<label for="nav__toggle" class="hamburger__btn">
+				<span></span>
+			</label>
+
+			<aside class="sidepanel">
+				<div class="sidepanel__inner">
+					<div class="sidepanel__search">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" stroke="white" fill="none" stroke-width="1.5">
+							<circle cx="9" cy="9" r="7" />
+							<line x1="15" y1="15" x2="19" y2="19" />
+						</svg>
+						<input type="text" placeholder="Search . . ." />
+					</div>
+
+					<nav class="sidepanel__nav">
+						<ul>
+							<li><a href="#">Over ons</a></li>
+							<li><a href="#"><strong>Bezoek en tickets</strong></a></li>
+							<li><a href="#">Support de EFM</a></li>
+							<li><a href="#">Agenda</a></li>
+							<li class="submenu">
+								<a href="#">Collectie</a>
+								<span class="submenu__caret">⌄</span>
+							</li>
+							<li><a href="#">Research</a></li>
+							<li class="submenu">
+								<a href="#">Academy</a>
+								<span class="submenu__caret">⌄</span>
+							</li>
+						</ul>
+					</nav>
+
+					<div class="sidepanel__footer">
+						<p>Wed. to Sat. 10.00-17.00h<br>Sun. 11.00-18.00h</p>
+						<p>123, Keizersgracht<br>NL 1015 CJ Amsterdam</p>
+					</div>
+
+				</div>
+			</aside>
 		</section>
 	</section>
 </header>
@@ -140,8 +166,6 @@
 		align-items: center;
 		justify-content: flex-end;
 		gap: 1.75rem;
-		position: relative;
-		top: 1px;     
 	}
 
 	.lang,
@@ -212,41 +236,168 @@
 		transform: rotate(180deg);
 	}
 
-	.hamburger {
-		cursor: pointer;
+	.nav__toggle {
+		opacity: 0;
+		width: 0;
+		height: 0;
+		position: absolute;
 	}
 
-	.search {
-		display: none;
+	/* ---------- HAMBURGER BUTTON ---------- */
+
+	.hamburger__btn {
+			width: 32px;
+			height: 28px;           
+			display: flex;
+			align-items: center;   
+			justify-content: center;
+			cursor: pointer;
+			position: relative;
+			z-index: 102;
+	}
+
+	.hamburger__btn span {
+			position: relative;
+			width: 100%;
+			height: 2px;
+			background: white;
+			transition: all 0.35s ease;
+	}
+
+	.hamburger__btn span::before,
+	.hamburger__btn span::after {
+			content: "";
+			position: absolute;
+			left: 0;
+			width: 100%;
+			height: 1.5px;
+			background: white;
+			transition: all 0.35s ease;
+	}
+
+	/* TOP LINE */
+	.hamburger__btn span::before {
+			top: -9px; 
+	}
+
+	/* BOTTOM LINE */
+	.hamburger__btn span::after {
+			top: 10px;
+	}
+
+	/* ---------- ANIMATION TO "X" ---------- */
+
+	.nav__toggle:checked + .hamburger__btn span {
+			background: transparent;
+	}
+
+	.nav__toggle:checked + .hamburger__btn span::before {
+			transform: rotate(45deg);
+			top: 0;
+	}
+
+	.nav__toggle:checked + .hamburger__btn span::after {
+			transform: rotate(-45deg);
+			top: 0;
+	}
+
+	/* ---------- SIDEPANEL ---------- */
+
+	.sidepanel {
+		position: fixed;
+		top: 0;
+		right: 0;
+		height: 100vh;
+		width: 100vw;
+		background: #0b0c0e;
+		transform: translateX(100%);
+		transition: transform 0.4s ease;
+		z-index: 100;
+	}
+
+	.nav__toggle:checked ~ .sidepanel {
+		transform: translateX(0%);
+	}
+
+	.sidepanel__inner {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		padding: 2rem;
+		color: white;
+		overflow-y: auto;
+	}
+
+	/* Search */
+	.sidepanel__search {
+		display: flex;
 		align-items: center;
-		gap: 0.5rem;
-		position: relative;
+		gap: 0.75rem;
+		margin-bottom: 2rem;
+		border-bottom: 1px solid rgba(255,255,255,0.3);
+		padding-bottom: .5rem;
 	}
 
-	.search input {
+	.sidepanel__search input {
+		width: 100%;
 		background: transparent;
 		border: none;
-		border-bottom: 1px solid white;
-		color: white;
-		padding: 0.2rem 0.3rem;
-		width: clamp(120px, 12vw, 170px);
 		outline: none;
+		color: white;
+		font-size: 1rem;
 	}
 
-	.search input::placeholder {
-		color: rgb(255, 255, 255);
+	/* Menu */
+	.sidepanel__nav ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
 	}
 
-	@media (min-width: 700px) {
-
+	.sidepanel__nav a {
+		color: white;
+		text-decoration: none;
+		font-size: 1.15rem;
 	}
 
-	@media (min-width: 1000px) {
+	.submenu {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
 
+	/* Caret */
+	.submenu__caret {
+		opacity: 0.7;
+		font-size: 1.2rem;
+		cursor: pointer;
+		user-select: none;
+	}
+
+	/* Footer */
+	.sidepanel__footer {
+		margin-top: auto;
+		font-size: 0.9rem;
+		opacity: 0.85;
+		line-height: 1.4;
+	}
+
+	@media (min-width: 650px) {
+		.sidepanel {
+			width: min(400px, 85vw);
+		}
+	}
+
+	@media (min-width: 900px) {
 		.header__center {
 			display: flex;
 		}
+	}
 
+	@media (min-width: 1000px) {
 		.nav__list {
 			display: flex;
 			margin: 0;
