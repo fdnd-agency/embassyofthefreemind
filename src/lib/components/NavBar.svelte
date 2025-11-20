@@ -19,7 +19,7 @@
 				<input type="checkbox" id="lang-toggle" class="lang__toggle" />
 				<label for="lang-toggle" class="lang__label">
 					<span>EN</span>
-					<svg class="lang__caret" xmlns="http://www.w3.org/2000/svg" width="18" height="18" stroke="white" fill="none" stroke-width="1.5">
+					<svg class="lang__caret caret" xmlns="http://www.w3.org/2000/svg" width="18" height="18" stroke="white" fill="none" stroke-width="1.5">
 						<polyline points="4 6 9 12 14 6" />
 					</svg>
 				</label>
@@ -54,12 +54,16 @@
 							<li><a href="#">Agenda</a></li>
 							<li class="submenu">
 								<a href="#">Collectie</a>
-								<span class="submenu__caret">⌄</span>
+								<svg class="submenu_caret caret" xmlns="http://www.w3.org/2000/svg" width="18" height="18" stroke="white" fill="none" stroke-width="1.5">
+								<polyline points="4 6 9 12 14 6" />
+								</svg>
 							</li>
 							<li><a href="#">Research</a></li>
 							<li class="submenu">
 								<a href="#">Academy</a>
-								<span class="submenu__caret">⌄</span>
+									<svg class="submenu_caret caret" xmlns="http://www.w3.org/2000/svg" width="18" height="18" stroke="white" fill="none" stroke-width="1.5">
+								<polyline points="4 6 9 12 14 6" />
+								</svg>
 							</li>
 						</ul>
 					</nav>
@@ -227,11 +231,19 @@
 		display: block;
 	}
 
-	.lang__caret {
-		transition: transform 0.3s ease;
-		transform-origin: center;
+	.caret {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    transform-origin: center;
+    font-size: 1.2rem;
+    opacity: 0.8;
+    cursor: pointer;
 	}
 
+	.caret--rotate {
+			transform: rotate(180deg);
+	}
+	
 	.lang__toggle:checked + .lang__label .lang__caret {
 		transform: rotate(180deg);
 	}
@@ -328,7 +340,7 @@
 		display: flex;
 		flex-direction: column;
 		height: 100%;
-		padding: 2rem;
+		padding: 5rem 2rem 2rem;
 		opacity: 0; 
 		transition: opacity 0.7s ease-in;
 		color: white;
@@ -343,6 +355,7 @@
 	.sidepanel__search {
 		display: flex;
 		align-items: center;
+		width: 60%;
 		gap: 0.75rem;
 		margin-bottom: 2rem;
 		border-bottom: 1px solid rgba(255,255,255,0.3);
@@ -365,13 +378,13 @@
 		margin: 0;
 		display: flex;
 		flex-direction: column;
-		gap: 1.5rem;
+		gap: 2.5rem;
 	}
 
 	.sidepanel__nav a {
 		color: white;
 		text-decoration: none;
-		font-size: 1.15rem;
+		font-size: 16px;
 	}
 
 	.submenu {
@@ -390,10 +403,12 @@
 
 	/* Footer */
 	.sidepanel__footer {
-		margin-top: auto;
-		font-size: 0.9rem;
-		opacity: 0.85;
-		line-height: 1.4;
+		color: #bbbbbb;
+		position: sticky;
+		bottom: 0;
+		text-align: right;
+		padding-top: 10rem;
+		padding-bottom: 2rem;
 	}
 
 	@media (min-width: 650px) {
