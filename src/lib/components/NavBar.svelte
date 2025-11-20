@@ -16,10 +16,18 @@
 
 		<section class="header__right">
 			<div class="lang">
-				EN
-				<svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" stroke="white" fill="none" stroke-width="1">
-					<polyline points="6 9 12 15 18 9" />
-				</svg>
+				<input type="checkbox" id="lang-toggle" class="lang__toggle" />
+				<label for="lang-toggle" class="lang__label">
+					<span>EN</span>
+					<svg class="lang__caret" xmlns="http://www.w3.org/2000/svg" width="18" height="18" stroke="white" fill="none" stroke-width="1.5">
+						<polyline points="4 6 9 12 14 6" />
+					</svg>
+				</label>
+
+				<ul class="lang__menu">
+					<li><a href="?lang=en">EN</a></li>
+					<li><a href="?lang=nl">NL</a></li>
+				</ul>
 			</div>
 
 			<div class="hamburger">
@@ -132,18 +140,76 @@
 		align-items: center;
 		justify-content: flex-end;
 		gap: 1.75rem;
-		/* kleine optische correctie: */
 		position: relative;
-		top: 1px;      /* speel met 1–2px naar smaak */
+		top: 1px;     
+	}
+
+	.lang,
+	.lang__label,
+	.lang__menu,
+	.lang__menu li,
+	.hamburger__button {
+		user-select: none;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+	}
+
+	.lang__toggle {
+		opacity: 0;
+		width: 0;
+		height: 0;
+		position: absolute;
 	}
 
 	.lang {
+		position: relative;
+		cursor: pointer;
+	}
+
+	.lang__label {
 		display: flex;
 		align-items: center;
-		gap: 0.35rem;
-		font-size: 18px;
-		line-height: 1;     /* heel belangrijk voor centrering */
-		cursor: pointer;
+		gap: .3rem;
+	}
+
+	.lang__menu {
+		position: absolute;
+		top: 100%;
+		right: 0;
+		margin-top: .5rem;
+		background: #0b0c0e;
+		padding: .5rem 0;
+		display: none;
+	}
+
+	.lang__menu li {
+		list-style: none;
+	}
+
+	.lang__menu a {
+		display: block;
+		padding: .5rem 1rem;
+		color: white;
+		text-decoration: none;
+		font-size: .9rem;
+	}
+
+	.lang__menu a:hover {
+		background: rgba(255,255,255,.1);
+	}
+
+	.lang__toggle:checked + .lang__label + .lang__menu {
+		display: block;
+	}
+
+	.lang__caret {
+		transition: transform 0.3s ease;
+		transform-origin: center;
+	}
+
+	.lang__toggle:checked + .lang__label .lang__caret {
+		transform: rotate(180deg);
 	}
 
 	.hamburger {
