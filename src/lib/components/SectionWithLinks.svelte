@@ -1,114 +1,57 @@
-<section>
-	<!-- 1. OVER HET MUSEUM (About the museum) -->
-	<article>
-		<h4>Over het Museum</h4>
-		<p>
-			Ga op ontdekkingsreis door 2.000 jaar verzamelde wijsheid, geïnspireerd door de afbeeldingen
-			en teksten uit de collectie van de Bibliotheca Philosophica Hermetica.
-		</p>
-		<div class="media-container">
-			<img class="grid-image" src="images/article-1.png" alt="Afbeelding van de bibliotheek" />
-			<a href="#" class="read-more-link">
-				<span class="text-content">Meer lezen</span>
-				<span class="arrow"
-					><img src="images/arrow-exhibition.svg" height="15" width="15" alt="arrow" /></span
-				>
-			</a>
-		</div>
-	</article>
+<script>
+	import GridArticle from './GridArticle.svelte';
+</script>
 
-	<!-- 2. PLAN JE BEZOEK (Plan your visit) -->
-	<article>
-		<h4>Plan je Bezoek</h4>
-		<p>
-			Lees op deze pagina praktische informatie over onze openingstijden, tickets/prijzen, adres &
-			route.
-		</p>
-		<div class="media-container">
-			<img class="grid-image" src="images/article-2.png" alt="Afbeelding van illustraties" />
-			<a href="#" class="read-more-link">
-				<span class="text-content">Meer lezen</span>
-				<span class="arrow"
-					><img src="images/arrow-exhibition.svg" height="15" width="15" alt="arrow" /></span
-				>
-			</a>
-		</div>
-	</article>
+<section class="section_grid">
+	<GridArticle
+		title="Over het Museum"
+		description="Ga op ontdekkingsreis door 2.000 jaar verzamelde wijsheid, geïnspireerd door de afbeeldingen en teksten uit de collectie van de Bibliotheca Philosophica Hermetica."
+		imageUrl="images/article-1.jpg"
+		altText="Afbeelding van de bibliotheek"
+		linkUrl="#"
+	/>
 
-	<!-- 3. KIDS -->
-	<article>
-		<h4>Kids</h4>
-		<p>Ontdek hier alle activiteiten speciaal voor kinderen.</p>
-		<div class="media-container">
-			<img
-				class="grid-image"
-				src="images/article-3.png"
-				alt="Afbeelding van een konijn met trompet"
-			/>
-			<a href="#" class="read-more-link">
-				<span class="text-content">Meer lezen</span>
-				<span class="arrow"
-					><img src="images/arrow-exhibition.svg" height="15" width="15" alt="arrow" /></span
-				>
-			</a>
-		</div>
-	</article>
+	<GridArticle
+		title="Plan je Bezoek"
+		description="Lees op deze pagina praktische informatie over onze openingstijden, tickets/prijzen, adres & route."
+		imageUrl="images/article-2.jpg"
+		altText="Afbeelding van illustraties"
+		linkUrl="#"
+	/>
+
+	<GridArticle
+		title="Kids"
+		description="Ontdek hier alle activiteiten speciaal voor kinderen."
+		imageUrl="images/article-3.jpg"
+		altText="Afbeelding van een konijn met trompet"
+		linkUrl="#"
+	/>
 </section>
 
-<section>
-	<!-- 4. RONDLEIDINGEN (Tours) -->
-	<article>
-		<h4>Rondleidingen</h4>
-		<p>
-			Boek een rondleiding en kom meer te weten over de Embassy of the Free Mind en de collectie!
-		</p>
-		<div class="media-container">
-			<img class="grid-image" src="images/article-4.png" alt="Afbeelding van mythische dieren" />
-			<a href="#" class="read-more-link">
-				<span class="text-content">Meer lezen</span>
-				<span class="arrow"
-					><img src="images/arrow-exhibition.svg" height="15" width="15" alt="arrow" /></span
-				>
-			</a>
-		</div>
-	</article>
+<section class="section_grid">
+	<GridArticle
+		title="Rondleidingen"
+		description="Boek een rondleiding en kom meer te weten over de Embassy of the Free Mind en de collectie!"
+		imageUrl="images/article-4.jpg"
+		altText="Afbeelding van mythische dieren"
+		linkUrl="#"
+	/>
 
-	<!-- 5. HUISREGELS (House Rules) -->
-	<article>
-		<h4>Huisregels</h4>
-		<p>Huisregels Embassy of the Free Mind.</p>
-		<div class="media-container">
-			<img class="grid-image" src="images/article-5.png" alt="Afbeelding van een oud manuscript" />
-			<a href="#" class="read-more-link">
-				<span class="text-content">Meer lezen</span>
-				<span class="arrow"
-					><img src="images/arrow-exhibition.svg" height="15" width="15" alt="arrow" /></span
-				>
-			</a>
-		</div>
-	</article>
+	<GridArticle
+		title="Huisregels"
+		description="Huisregels Embassy of the Free Mind."
+		imageUrl="images/article-5.jpg"
+		altText="Afbeelding van een oud manuscript"
+		linkUrl="#"
+	/>
 
-	<!-- 6. ZAALVERHUUR (Venue Rental) -->
-	<article>
-		<h4>Zaalverhuur</h4>
-		<p>
-			U kunt onze Grote Seal huren voor bijeenkomsten zoals b.v. vergaderingen en bruiloften en
-			bedrijfsevenementen.
-		</p>
-		<div class="media-container">
-			<img
-				class="grid-image"
-				src="images/article-6.png"
-				alt="Afbeelding van de Grote Seal ruimte"
-			/>
-			<a href="#" class="read-more-link">
-				<span class="text-content">Meer lezen</span>
-				<span class="arrow"
-					><img src="images/arrow-exhibition.svg" height="15" width="15" alt="arrow" /></span
-				>
-			</a>
-		</div>
-	</article>
+	<GridArticle
+		title="Zaalverhuur"
+		description="U kunt onze Grote Seal huren voor bijeenkomsten zoals b.v. vergaderingen en bruiloften en bedrijfsevenementen."
+		imageUrl="images/article-6.jpg"
+		altText="Afbeelding van de Grote Seal ruimte"
+		linkUrl="#"
+	/>
 </section>
 
 <style>
@@ -116,11 +59,21 @@
 		text-decoration: none;
 		color: inherit;
 	}
-	h4 {
-		text-transform: uppercase;
-		font-size: clamp(1em, 2.2vw, 1.7em);
+
+	.section_grid:nth-of-type(2) {
+		margin-top: 4%;
+		/* margin-bottom: 35vh; */
+		/* margin-bottom: calc(1em + 15%); */
+		@media (width > 700px) {
+			margin-bottom: 0;
+		}
 	}
-	section {
+	.section_grid:nth-of-type(3) {
+		@media (width > 700px) {
+			transform: translateY(calc(-25% + 6em));
+		}
+	}
+	.section_grid {
 		max-width: 95%;
 		height: auto;
 		margin-left: auto;
@@ -130,112 +83,33 @@
 		flex-direction: column;
 		justify-content: center;
 
-		@media (min-width: 700px) and (max-width: 1099px) {
+		@media (min-width: 700px) {
 			max-width: 70%;
 		}
 
-		@media (width > 1100px) {
+		@media (width > 700px) {
 			display: grid;
 			max-width: 90%;
 			grid-template-columns: 4.6fr 2.4fr 2.4fr;
-			grid-template-rows: repeat(14, calc(1.5vh - 0.25em));
-			gap: 1em;
-
-			article {
-				margin-left: 0.5em;
-				margin-right: 0.5em;
-				p {
-					font-size: clamp(1em, 2vw, 1.5em);
-				}
-			}
-			article:first-of-type {
-				grid-row-start: 4;
-				grid-row-end: 14;
-			}
-			article:nth-of-type(2) {
+			grid-template-rows: repeat(18, calc(1vh + 1.2em));
+			gap: 0.25em;
+			margin-bottom: 0;
+			:global(article:first-of-type) {
 				grid-row-start: 2;
-				grid-row-end: 10;
+				grid-row-end: 17;
 			}
-			article:nth-of-type(3) {
-				grid-row-start: 6;
+			:global(article:nth-of-type(2)) {
+				grid-row-start: 1;
 				grid-row-end: 13;
 			}
+			:global(article:nth-of-type(3)) {
+				grid-row-start: 3;
+				grid-row-end: 15;
+			}
 		}
-	}
-	section:first-of-type {
-		margin-top: 12%;
-		margin-bottom: calc(1em + 15%);
-	}
-
-	.media-container {
-		position: relative;
-		width: 100%;
-		margin-top: 1em;
-		overflow: hidden;
-	}
-
-	.grid-image {
-		width: 100%;
-		object-fit: cover;
-		display: block;
-
-		/* Mobile height (< 700px) */
-		height: 30vh;
-
-		@media (min-width: 700px) and (max-width: 1099px) {
-			height: 40vh;
-		}
-
 		@media (width > 1100px) {
-			height: auto;
+			grid-template-rows: repeat(18, calc(2.3vh + 0.65em));
+			gap: 1em;
 		}
-	}
-
-	.read-more-link {
-		position: absolute;
-		bottom: 15px;
-		right: 15px;
-		height: 40px;
-		width: 40px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 10px 10px;
-		background-color: white;
-		border-radius: 4em;
-		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-		transition:
-			width 0.3s ease-in-out,
-			background-color 0.3s ease-in-out,
-			opacity 0.3s ease-in-out;
-		font-size: 1.2em;
-		font-weight: 600;
-		color: #1a202c;
-		white-space: nowrap;
-		overflow: hidden;
-		opacity: 1;
-		z-index: 2;
-	}
-	.read-more-link .text-content {
-		color: #002646;
-		opacity: 0;
-		max-width: 0;
-		min-width: 0;
-		flex-basis: 0;
-		transition:
-			opacity 0.2s 0.1s,
-			max-width 0.3s,
-			margin-right 0.3s;
-	}
-	.media-container:hover .read-more-link {
-		width: 150px;
-		justify-content: space-between;
-		opacity: 1;
-		padding: 10px 20px;
-	}
-	.media-container:hover .read-more-link .text-content {
-		opacity: 1;
-		max-width: 100px;
-		margin-right: 8px;
 	}
 </style>
