@@ -52,6 +52,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        padding: 1rem;
     }
 
     .online-catalog {
@@ -60,8 +61,6 @@
         border-radius: 30px;
         width: 80vw;
         text-align: center;
-        position: relative;
-        top: 5rem;
         .catalog-link {
             text-decoration: none;
             color: #002646;
