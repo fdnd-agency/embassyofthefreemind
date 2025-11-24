@@ -44,11 +44,14 @@
 		font-family: sans-serif;
 		margin-left: 5%;
 		margin-right: 5%;
-
+		margin-top: 3em;
+		padding: 0.75em;
 		border: 1px solid #eee;
 		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 		background: white;
 		place-content: center;
+		container-type: inline-size;
+		container-name: card;
 		@media (min-width: 500px) {
 			max-width: 100%;
 		}
@@ -63,7 +66,7 @@
 
 		h3 {
 			text-transform: uppercase;
-			font-size: clamp(1em, 2.7vw, 2em);
+			font-size: clamp(1em, 2.7cqw, 2em);
 			font-weight: bold;
 			color: #333;
 			padding: 10px 15px 0;
@@ -73,12 +76,12 @@
 
 		a {
 			padding-left: 1em;
-			font-size: clamp(1em, 2vw, 1.5em);
+			font-size: clamp(1em, 2cqw, 1.5em);
 			text-decoration: none;
 			color: inherit;
 		}
 
-		@media (width > 600px) {
+		@container card (width > 600px) {
 			flex-direction: row;
 			a {
 				padding-left: 0;
@@ -99,7 +102,7 @@
 	}
 
 	.overlay-container {
-		width: 95%;
+		/* width: 95%; */
 		position: absolute;
 		bottom: 0;
 		left: 0;
@@ -112,17 +115,17 @@
 		display: block;
 		transition: background-color 0.2s;
 
-		@media (width > 600px) {
-			width: calc(300px + 15vw);
-			left: 5em;
+		@container card (width > 600px) {
+			width: calc(300px + 15cqw);
+			left: 15cqw;
 			border-radius: 2em;
 			bottom: 5em;
-			font-size: clamp(1em, 1.6vw, 1.5em);
+			font-size: clamp(1em, 1.6cqw, 1.5em);
 		}
 	}
 
 	.dates {
-		@media (width > 600px) {
+		@container card (width > 600px) {
 			margin-bottom: 2vw;
 			margin-left: 0.5em;
 		}

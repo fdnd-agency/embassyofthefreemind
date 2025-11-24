@@ -1,9 +1,13 @@
 <script>
+	import { Footer } from '$lib';
 	import SectionWithLinks from '../lib/components/SectionWithLinks.svelte';
 	import Exhibitions from '$lib/components/Exhibitions.svelte';
 	import { OnlineCatalog } from "$lib";
-	const myImageUrl = '/images/image37.png';
+	import Hero from '$lib/components/Hero.svelte';
+	const myImageUrl = '/images/image37.jpg';
 </script>
+
+<Hero />
 
 <Exhibitions
 	imageUrl={myImageUrl}
@@ -16,3 +20,5 @@
 <SectionWithLinks />
 
 <OnlineCatalog />
+
+<Footer />
