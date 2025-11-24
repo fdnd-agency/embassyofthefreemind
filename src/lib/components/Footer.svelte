@@ -152,7 +152,7 @@
                 margin-left: 2rem;
                 position: absolute;
                 bottom: 1%;
-                @media (min-width: 810px) {
+                @media (min-width: 768px) {
                     position: relative;
                 }
                 svg {
