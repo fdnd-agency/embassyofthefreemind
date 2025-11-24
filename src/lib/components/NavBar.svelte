@@ -201,6 +201,9 @@
 		gap: .3rem;
 	}
 
+	.lang__label:hover span,	
+	.lang__label:hover .caret { opacity: .7; }
+
 	.lang__menu {
 		position: absolute;
 		top: 100%;
