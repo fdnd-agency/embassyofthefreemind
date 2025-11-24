@@ -325,6 +325,7 @@
 		height: 100vh;
 		width: 100%;
 		overflow-x: hidden;
+		overflow-y: hidden;
 		background: #0b0c0e;
 		filter: drop-shadow(-6px 1px 20px #141414cc);
 		transform: translateX(120%);
@@ -341,6 +342,7 @@
 	}
 
 	.sidepanel-inner {
+		overflow-y: hidden;
 		display: flex;
 		flex-direction: column;
 		height: 100%;
