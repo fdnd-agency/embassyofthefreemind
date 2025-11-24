@@ -1,44 +1,44 @@
 <header class="header">
-	<section class="header__content">
-		<div class="header__logo">
+	<section class="header-content">
+		<div class="header-logo">
 			<img src="/logo/logo_white.svg" alt="Embassy of the Free Mind" class="logo" />
 		</div>
 
-		<nav class="header__center">
-			<ul class="nav__pages">
-				<li class="nav__item"><a href="#" style="font-weight:bold;">Bezoek en tickets</a></li>
-				<li class="nav__item"><a href="#">Collectie</a></li>
-				<li class="nav__item"><a href="#">Verhalen</a></li>
-				<li class="nav__item"><a href="#">Online catalogus</a></li>
-				<li class="nav__item"><a href="#">Over ons</a></li>
+		<nav class="header-center">
+			<ul class="nav-pages">
+				<li class="nav-item"><a href="#" style="font-weight:bold;">Bezoek en tickets</a></li>
+				<li class="nav-item"><a href="#">Collectie</a></li>
+				<li class="nav-item"><a href="#">Verhalen</a></li>
+				<li class="nav-item"><a href="#">Online catalogus</a></li>
+				<li class="nav-item"><a href="#">Over ons</a></li>
 			</ul>
 		</nav>
 
-		<section class="header__right">
+		<section class="header-right">
 			<div class="lang">
-				<input type="checkbox" id="lang-toggle" class="lang__toggle" />
-				<label for="lang-toggle" class="lang__label">
+				<input type="checkbox" id="lang-toggle" class="lang-toggle" />
+				<label for="lang-toggle" class="lang-label" tabindex="0">
 					<span>EN</span>
-					<svg class="lang__caret caret" xmlns="http://www.w3.org/2000/svg" width="18" height="18" stroke="white" fill="none" stroke-width="1.5">
+					<svg class="lang-caret caret" xmlns="http://www.w3.org/2000/svg" width="18" height="18" stroke="white" fill="none" stroke-width="1.5">
 						<polyline points="4 6 9 12 14 6" />
 					</svg>
 				</label>
 
-				<ul class="lang__menu">
+				<ul class="lang-menu">
 					<li><a href="?lang=en">EN</a></li>
 					<li><a href="?lang=nl">NL</a></li>
 				</ul>
 			</div>
 
-			<input type="checkbox" id="nav__toggle" class="nav__toggle" />
+			<input type="checkbox" id="nav-toggle" class="nav-toggle" tabindex="0"/>
 
-			<label for="nav__toggle" class="hamburger__btn">
+			<label for="nav-toggle" class="hamburger-btn" tabindex="0">
 				<span></span>
 			</label>
 
 			<aside class="sidepanel">
-				<div class="sidepanel__inner">
-					<div class="sidepanel__search">
+				<div class="sidepanel-inner">
+					<div class="sidepanel-search">
 						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" stroke="white" fill="none" stroke-width="1.5">
 							<circle cx="9" cy="9" r="7" />
 							<line x1="15" y1="15" x2="19" y2="19" />
@@ -46,7 +46,7 @@
 						<input type="text" placeholder="Search . . ." />
 					</div>
 
-					<nav class="sidepanel__nav">
+					<nav class="sidepanel-nav">
 						<ul>
 							<li><a href="#">Over ons</a></li>
 							<li><a href="#"><strong>Bezoek en tickets</strong></a></li>
@@ -54,21 +54,21 @@
 							<li><a href="#">Agenda</a></li>
 							<li class="submenu">
 								<a href="#">Collectie</a>
-								<svg class="submenu_caret caret" xmlns="http://www.w3.org/2000/svg" width="18" height="18" stroke="white" fill="none" stroke-width="1.5">
+								<svg class="submenu-caret caret" xmlns="http://www.w3.org/2000/svg" width="18" height="18" stroke="white" fill="none" stroke-width="1.5">
 								<polyline points="4 6 9 12 14 6" />
 								</svg>
 							</li>
 							<li><a href="#">Research</a></li>
 							<li class="submenu">
 								<a href="#">Academy</a>
-									<svg class="submenu_caret caret" xmlns="http://www.w3.org/2000/svg" width="18" height="18" stroke="white" fill="none" stroke-width="1.5">
+									<svg class="submenu-caret caret" xmlns="http://www.w3.org/2000/svg" width="18" height="18" stroke="white" fill="none" stroke-width="1.5">
 								<polyline points="4 6 9 12 14 6" />
 								</svg>
 							</li>
 						</ul>
 					</nav>
 
-					<div class="sidepanel__footer">
+					<div class="sidepanel-footer">
 						<p>Wed. to Sat. 10.00-17.00h<br>Sun. 11.00-18.00h</p>
 						<p>123, Keizersgracht<br>NL 1015 CJ Amsterdam</p>
 					</div>
@@ -90,7 +90,7 @@
 		background-color: #0b0c0e;
 	}
 
-	.header__content {
+	.header-content {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -99,7 +99,7 @@
 		transition: all 0.2s ease-in-out;
 	}
 
-	.header__logo {
+	.header-logo {
 		flex: 1;
 		width: clamp(90px, 10vw, 105px);
 		height: auto;
@@ -121,24 +121,24 @@
 		gap: 1.5rem;
 	}
 
-	.header__center {
+	.header-center {
 		flex: 2;
 		display: none;
 		justify-content: center;
 	}
 
-	.nav__pages {
+	.nav-pages {
 		display: flex;
 		gap: clamp(10px, 4vw, 60px);
 		list-style: none;
 	}
 
-	.nav__item a {
+	.nav-item a {
 		color: white;
 		text-decoration: none;
 	}
 
-	.nav__item {
+	.nav-item {
 		font-size: 14px;
 		display: block;
 		padding-bottom: 0.2rem;
@@ -149,7 +149,7 @@
 		}
 	}
 
-	.nav__item::before {
+	.nav-item::before {
 		content: '';
 		position: absolute;
 		left: 0;
@@ -160,11 +160,11 @@
 		transition: width 0.3s ease-out;
 	}
 
-	.nav__item:hover::before {
+	.nav-item:hover::before {
 		width: 100%;
 	}
 
-	.header__right {
+	.header-right {
 		flex: 1;
 		display: flex;
 		align-items: center;
@@ -173,17 +173,17 @@
 	}
 
 	.lang,
-	.lang__label,
-	.lang__menu,
-	.lang__menu li,
-	.hamburger__button {
+	.lang-label,
+	.lang-menu,
+	.lang-menu li,
+	.hamburger-button {
 		user-select: none;
 		-webkit-user-select: none;
 		-moz-user-select: none;
 		-ms-user-select: none;
 	}
 
-	.lang__toggle {
+	.lang-toggle {
 		opacity: 0;
 		width: 0;
 		height: 0;
@@ -195,16 +195,16 @@
 		cursor: pointer;
 	}
 
-	.lang__label {
+	.lang-label {
 		display: flex;
 		align-items: center;
 		gap: .3rem;
 	}
 
-	.lang__label:hover span,	
-	.lang__label:hover .caret { opacity: .7; }
+	.lang-label:hover span,	
+	.lang-label:hover .caret { opacity: .7; }
 
-	.lang__menu {
+	.lang-menu {
 		position: absolute;
 		top: 100%;
 		right: 0;
@@ -214,11 +214,11 @@
 		display: none;
 	}
 
-	.lang__menu li {
+	.lang-menu li {
 		list-style: none;
 	}
 
-	.lang__menu a {
+	.lang-menu a {
 		display: block;
 		padding: .5rem 1rem;
 		color: white;
@@ -226,11 +226,11 @@
 		font-size: .9rem;
 	}
 
-	.lang__menu a:hover {
+	.lang-menu a:hover {
 		background: rgba(255,255,255,.1);
 	}
 
-	.lang__toggle:checked + .lang__label + .lang__menu {
+	.lang-toggle:checked + .lang-label + .lang-menu {
 		display: block;
 	}
 
@@ -247,11 +247,11 @@
 			transform: rotate(180deg);
 	}
 	
-	.lang__toggle:checked + .lang__label .lang__caret {
+	.lang-toggle:checked + .lang-label .lang-caret {
 		transform: rotate(180deg);
 	}
 
-	.nav__toggle {
+	.nav-toggle {
 		opacity: 0;
 		width: 0;
 		height: 0;
@@ -260,7 +260,7 @@
 
 	/* ---------- HAMBURGER BUTTON ---------- */
 
-	.hamburger__btn {
+	.hamburger-btn {
 			width: 32px;
 			height: 28px;           
 			display: flex;
@@ -271,7 +271,7 @@
 			z-index: 102;
 	}
 
-	.hamburger__btn span {
+	.hamburger-btn span {
 			position: relative;
 			width: 100%;
 			height: 2px;
@@ -279,8 +279,8 @@
 			transition: all 0.35s ease;
 	}
 
-	.hamburger__btn span::before,
-	.hamburger__btn span::after {
+	.hamburger-btn span::before,
+	.hamburger-btn span::after {
 			content: "";
 			position: absolute;
 			left: 0;
@@ -291,27 +291,27 @@
 	}
 
 	/* TOP LINE */
-	.hamburger__btn span::before {
+	.hamburger-btn span::before {
 			top: -9px; 
 	}
 
 	/* BOTTOM LINE */
-	.hamburger__btn span::after {
+	.hamburger-btn span::after {
 			top: 10px;
 	}
 
 	/* ---------- ANIMATION TO "X" ---------- */
 
-	.nav__toggle:checked + .hamburger__btn span {
+	.nav-toggle:checked + .hamburger-btn span {
 			background: transparent;
 	}
 
-	.nav__toggle:checked + .hamburger__btn span::before {
+	.nav-toggle:checked + .hamburger-btn span::before {
 			transform: rotate(45deg);
 			top: 0;
 	}
 
-	.nav__toggle:checked + .hamburger__btn span::after {
+	.nav-toggle:checked + .hamburger-btn span::after {
 			transform: rotate(-45deg);
 			top: 0;
 	}
@@ -334,13 +334,13 @@
 		pointer-events: none;
 	}
 
-	.nav__toggle:checked ~ .sidepanel {
+	.nav-toggle:checked ~ .sidepanel {
 		transform: translateX(0%);
     opacity: 1;                
     pointer-events: auto;
 	}
 
-	.sidepanel__inner {
+	.sidepanel-inner {
 		display: flex;
 		flex-direction: column;
 		height: 100%;
@@ -351,12 +351,12 @@
 		overflow-y: auto;
 	}
 
-	.nav__toggle:checked ~ .sidepanel .sidepanel__inner {
+	.nav-toggle:checked ~ .sidepanel .sidepanel-inner {
 			opacity: 1;
 	}
 
 	/* Search */
-	.sidepanel__search {
+	.sidepanel-search {
 		display: flex;
 		align-items: center;
 		width: 60%;
@@ -366,7 +366,7 @@
 		padding-bottom: .5rem;
 	}
 
-	.sidepanel__search input {
+	.sidepanel-search input {
 		width: 100%;
 		background: transparent;
 		border: none;
@@ -376,7 +376,7 @@
 	}
 
 	/* Menu */
-	.sidepanel__nav ul {
+	.sidepanel-nav ul {
 		list-style: none;
 		padding: 0;
 		margin: 0;
@@ -385,7 +385,7 @@
 		gap: 2.5rem;
 	}
 
-	.sidepanel__nav a {
+	.sidepanel-nav a {
 		color: white;
 		text-decoration: none;
 		font-size: 16px;
@@ -398,7 +398,7 @@
 	}
 
 	/* Caret */
-	.submenu__caret {
+	.submenu-caret {
 		opacity: 0.7;
 		font-size: 1.2rem;
 		cursor: pointer;
@@ -406,7 +406,7 @@
 	}
 
 	/* Footer */
-	.sidepanel__footer {
+	.sidepanel-footer {
 		color: #bbbbbb;
 		position: sticky;
 		bottom: 0;
@@ -422,13 +422,13 @@
 	}
 
 	@media (min-width: 900px) {
-		.header__center {
+		.header-center {
 			display: flex;
 		}
 	}
 
 	@media (min-width: 1000px) {
-		.nav__list {
+		.nav-list {
 			display: flex;
 			margin: 0;
 			margin-block-end: 0;
