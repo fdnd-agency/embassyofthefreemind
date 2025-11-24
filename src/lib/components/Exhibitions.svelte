@@ -102,7 +102,7 @@
 	}
 
 	.overlay-container {
-		width: 95%;
+		/* width: 95%; */
 		position: absolute;
 		bottom: 0;
 		left: 0;
