@@ -320,7 +320,8 @@
 		top: 0;
 		right: 0;
 		height: 100vh;
-		width: 100vw;
+		width: 100%;
+		overflow-x: hidden;
 		background: #0b0c0e;
 		filter: drop-shadow(-6px 1px 20px #141414cc);
 		transform: translateX(120%);
