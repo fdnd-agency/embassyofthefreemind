@@ -134,9 +134,12 @@
             .footer-info {
                 text-align: right;
                 padding-right: 1rem;
-                margin-left: 10rem;
+                margin-left: 2rem;
                 position: absolute;
                 bottom: 1%;
+                @media (min-width: 810px) {
+                    position: relative;
+                }
                 svg {
                     background-color: white;
                     border: 1px solid white;
@@ -155,7 +158,7 @@
                 }
                 .adress {
                     margin-left: 10rem;
-                    text-align: left;
+                    text-align: right;
                 }
                 @media (min-width: 1024px) {
                     position: relative;
