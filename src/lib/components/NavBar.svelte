@@ -350,7 +350,7 @@
 		opacity: 0; 
 		transition: opacity 0.7s ease-in;
 		color: white;
-		overflow-y: auto;
+		overflow-y: hidden;
 	}
 
 	.nav-toggle:checked ~ .sidepanel .sidepanel-inner {
@@ -379,6 +379,7 @@
 
 	/* Menu */
 	.sidepanel-nav ul {
+		overflow-y: hidden;
 		list-style: none;
 		padding: 0;
 		margin: 0;
