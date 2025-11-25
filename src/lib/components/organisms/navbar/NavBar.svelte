@@ -7,7 +7,7 @@
 		<nav class="header__center">
 			<ul class="nav__pages">
 				<li class="nav__item"><a href="#" style="font-weight:bold;">Bezoek en tickets</a></li>
-				<li class="nav__item"><a href="#">Collectie</a></li>
+				<li class="nav__item"><a href="/exhibitions">Collectie</a></li>
 				<li class="nav__item"><a href="#">Verhalen</a></li>
 				<li class="nav__item"><a href="#">Online catalogus</a></li>
 				<li class="nav__item"><a href="#">Over ons</a></li>
