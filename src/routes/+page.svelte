@@ -1,5 +1,5 @@
 <script>
-	import { Footer, SectionWithLinks, Exhibitions, Hero } from '$lib';
+	import { SectionWithLinks, Exhibitions, Hero, OnlineCatalog} from '$lib';
 	const myImageUrl = '/images/image37.jpg';
 </script>
 
@@ -15,4 +15,4 @@
 
 <SectionWithLinks />
 
-<Footer />
+<OnlineCatalog />

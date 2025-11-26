@@ -1,6 +1,6 @@
 <script>
 	import favicon from '$lib/assets/favicon.svg';
-	import NavBar from '$lib/components/organisms/navbar/NavBar.svelte';
+	import { NavBar, Footer } from '$lib';
 
 	let { children } = $props();
 </script>
@@ -12,6 +12,8 @@
 <NavBar />
 
 {@render children?.()}
+
+<Footer />
 
 <style>
 	@font-face {
