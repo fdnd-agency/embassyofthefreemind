@@ -56,7 +56,6 @@
 <style>
     footer {
         height: 40rem;
-        width: 90vw;
         background-image: url(/images/achtergrond-embassy-1.png);
         background-color: #002341;
         color: white;

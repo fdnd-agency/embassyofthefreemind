@@ -42,20 +42,15 @@
 
 <style>
 	.available-now-card {
-		width: 90%;
+		width: 100%;
 		font-family: sans-serif;
-		margin-left: 5%;
-		margin-right: 5%;
-		margin-top: 3em;
-		padding: 0.75em;
-		border: 1px solid #eee;
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		margin: 0 auto;
 		background: white;
 		place-content: center;
 		container-type: inline-size;
 		container-name: card;
-		@media (min-width: 500px) {
-			max-width: 100%;
+		@media (min-width: 600px) {
+			max-width: 85%;
 		}
 	}
 
