@@ -1,3 +1,23 @@
+<script>
+  let isLangOpen = false;
+	let isSidepanelOpen = false;
+
+  function toggleLang() {
+    isLangOpen = !isLangOpen;
+  }
+
+  function toggleSidepanel() {
+    isSidepanelOpen = !isSidepanelOpen;
+  }
+
+	function closeAll() {
+    isLangOpen = false;
+    isSidepanelOpen = false;
+  }
+</script>
+
+<svelte:window on:click={closeAll} />
+
 <header class="header">
 	<section class="header-content">
 		<div class="header-logo">
@@ -6,18 +26,15 @@
 
 		<nav class="header-center">
 			<ul class="nav-pages">
-				<li class="nav-item"><a href="#" style="font-weight:bold;">Bezoek en tickets</a></li>
 				<li class="nav-item"><a href="#">Collectie</a></li>
 				<li class="nav-item"><a href="#">Verhalen</a></li>
 				<li class="nav-item"><a href="#">Online catalogus</a></li>
 				<li class="nav-item"><a href="#">Over ons</a></li>
+				<li class="nav-item"><a href="#" style="font-weight:bold;">Tickets kopen</a></li>
 			</ul>
 		</nav>
 
 		<section class="header-right">
-			<div class="lang">
-				<input type="checkbox" id="lang-toggle" class="lang-toggle" />
-				<label for="lang-toggle" class="lang-label" tabindex="0">
 					<span>EN</span>
 					<svg class="lang-caret caret" xmlns="http://www.w3.org/2000/svg" width="18" height="18" stroke="white" fill="none" stroke-width="1.5">
 						<polyline points="4 6 9 12 14 6" />
