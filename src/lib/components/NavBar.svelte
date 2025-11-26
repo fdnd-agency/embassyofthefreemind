@@ -114,3 +114,327 @@
 </header>
 
 <style>
+header {
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: white;
+  background-color: #0b0c0e;
+}
+
+/* ---------------- HEADER LAYOUT ---------------- */
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: clamp(0.5rem, 3vw, 2.5rem);
+  padding-block: 0.75rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.header-logo {
+  flex: 1;
+  width: clamp(90px, 10vw, 105px);
+}
+
+.logo {
+  width: clamp(90px, 10vw, 105px);
+  object-fit: contain;
+}
+
+.header-center {
+  flex: 2;
+  display: none;
+  justify-content: center;
+}
+
+.nav-pages {
+  display: flex;
+  gap: clamp(10px, 4vw, 60px);
+  list-style: none;
+}
+
+.nav-item {
+  font-size: 14px;
+  padding-bottom: 0.2rem;
+  position: relative;
+  text-wrap: nowrap;
+}
+
+@media (min-width: 1200px) {
+  .nav-item {
+    font-size: 16px;
+  }
+}
+
+.nav-item a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background-color: white;
+  transition: width 0.3s ease-out;
+}
+
+.nav-item:hover::before {
+  width: 100%;
+}
+
+.header-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.75rem;
+}
+
+/* ---------------- LANGUAGE MENU ---------------- */
+
+.lang,
+.lang-menu,
+.lang-menu li {
+  user-select: none;
+}
+
+.lang {
+  position: relative;
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+}
+
+.lang-btn:hover span,
+.lang-btn:hover .caret {
+  opacity: 0.7;
+}
+
+.lang-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: .5rem;
+  background: #0b0c0e;
+  padding: .5rem 0;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.lang-menu[hidden] {
+  display: none;
+}
+
+.lang-menu li {
+  list-style: none;
+}
+
+.lang-menu a {
+  display: block;
+  padding: .5rem 1rem;
+  color: white;
+  text-decoration: none;
+  font-size: .9rem;
+}
+
+.lang-menu a:hover {
+  background: rgba(255,255,255,.1);
+}
+
+.caret {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  transform-origin: center;
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+
+.lang-btn[aria-expanded="true"] .caret {
+  transform: rotate(180deg);
+}
+
+/* ---------------- HAMBURGER BUTTON ---------------- */
+
+.hamburger-btn {
+  width: 38px;
+  height: 27px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 102;
+  background: none;
+  border: none;
+  color: inherit;
+}
+
+.hamburger-btn span {
+  position: relative;
+  width: 100%;
+  height: 1.5px;
+  background: white;
+  transition: all 0.35s ease;
+}
+
+.hamburger-btn span::before,
+.hamburger-btn span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: white;
+  transition: all 0.35s ease;
+}
+
+.hamburger-btn span::before {
+  top: -9px;
+}
+
+.hamburger-btn span::after {
+  top: 10px;
+}
+
+.hamburger-btn[aria-expanded="true"] span {
+  background: transparent;
+}
+
+.hamburger-btn[aria-expanded="true"] span::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.hamburger-btn[aria-expanded="true"] span::after {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+/* ---------------- SIDEPANEL ---------------- */
+
+.sidepanel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+	overflow-y: auto;
+  background: #0b0c0e;
+  filter: drop-shadow(-6px 1px 20px #141414cc);
+  transform: translateX(120%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s ease-out, opacity 0.4s ease-in;
+}
+
+.sidepanel[hidden] {
+  display: block; 
+  transform: translateX(120%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sidepanel.open {
+  transform: translateX(0%);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sidepanel-inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 5rem 2rem 2rem;
+  opacity: 0;
+	transform: translateY(50%);
+  color: white;
+	transition: transform 250ms ease-out, opacity 0.9s ease-in;
+	transition-delay: 250ms;
+}
+
+.sidepanel.open .sidepanel-inner {
+	transform: translateX(0%);
+  opacity: 1;
+}
+
+/* ---------------- SEARCH ---------------- */
+
+.sidepanel-search {
+  display: flex;
+  align-items: center;
+  width: 60%;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  padding-bottom: .5rem;
+}
+
+.sidepanel-search input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 1rem;
+}
+
+.sidepanel-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.sidepanel-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.submenu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.submenu-caret {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.sidepanel-footer {
+  color: #bbbbbb;
+  margin-top: auto;      
+  padding-bottom: 5rem;  
+  text-align: right;
+}
+
+@media (min-width: 650px) {
+  .sidepanel {
+    width: min(400px, 85vw);
+  }
+}
+
+@media (min-width: 900px) {
+  .header-center {
+    display: flex;
+  }
+}
+</style>
