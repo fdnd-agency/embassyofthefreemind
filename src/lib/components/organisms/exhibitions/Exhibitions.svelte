@@ -1,9 +1,11 @@
 <script>
-	export let imageUrl = './assets/image37.png';
-	export let title = 'Gewetensvrijheid!';
-	export let subtitle = 'Denken, geloven en onderzoeken in Europa, 1500-1800';
-	export let dates = '28 april t/m 7 september 2025';
-	export let linkUrl = '#';
+	let {
+		imageUrl = './assets/image37.png',
+		title = 'Gewetensvrijheid!',
+		subtitle = 'Denken, geloven en onderzoeken in Europa, 1500-1800',
+		dates = '28 april t/m 7 september 2025',
+		linkUrl = '#'
+	} = $props();
 </script>
 
 <article class="available-now-card">

@@ -1,52 +1,67 @@
 <header class="header">
-	<section class="header-content">
-		<div class="header-logo">
+	<section class="header__content">
+		<div class="header__logo">
 			<img src="/logo/logo_white.svg" alt="Embassy of the Free Mind" class="logo" />
 		</div>
 
-		<nav class="header-center">
-			<ul class="nav-pages">
-				<li class="nav-item"><a href="#" style="font-weight:bold;">Bezoek en tickets</a></li>
-				<li class="nav-item"><a href="#">Collectie</a></li>
-				<li class="nav-item"><a href="#">Verhalen</a></li>
-				<li class="nav-item"><a href="#">Online catalogus</a></li>
-				<li class="nav-item"><a href="#">Over ons</a></li>
+		<nav class="header__center">
+			<ul class="nav__pages">
+				<li class="nav__item"><a href="#" style="font-weight:bold;">Bezoek en tickets</a></li>
+				<li class="nav__item"><a href="/exhibitions">Collectie</a></li>
+				<li class="nav__item"><a href="#">Verhalen</a></li>
+				<li class="nav__item"><a href="#">Online catalogus</a></li>
+				<li class="nav__item"><a href="#">Over ons</a></li>
 			</ul>
 		</nav>
 
-		<section class="header-right">
+		<section class="header__right">
 			<div class="lang">
-				<input type="checkbox" id="lang-toggle" class="lang-toggle" />
-				<label for="lang-toggle" class="lang-label" tabindex="0">
+				<input type="checkbox" id="lang-toggle" class="lang__toggle" />
+				<label for="lang-toggle" class="lang__label">
 					<span>EN</span>
-					<svg class="lang-caret caret" xmlns="http://www.w3.org/2000/svg" width="18" height="18" stroke="white" fill="none" stroke-width="1.5">
+					<svg
+						class="lang__caret caret"
+						xmlns="http://www.w3.org/2000/svg"
+						width="18"
+						height="18"
+						stroke="white"
+						fill="none"
+						stroke-width="1.5"
+					>
 						<polyline points="4 6 9 12 14 6" />
 					</svg>
 				</label>
 
-				<ul class="lang-menu">
+				<ul class="lang__menu">
 					<li><a href="?lang=en">EN</a></li>
 					<li><a href="?lang=nl">NL</a></li>
 				</ul>
 			</div>
 
-			<input type="checkbox" id="nav-toggle" class="nav-toggle" tabindex="0"/>
+			<input type="checkbox" id="nav__toggle" class="nav__toggle" />
 
-			<label for="nav-toggle" class="hamburger-btn" tabindex="0">
+			<label for="nav__toggle" class="hamburger__btn">
 				<span></span>
 			</label>
 
 			<aside class="sidepanel">
-				<div class="sidepanel-inner">
-					<div class="sidepanel-search">
-						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" stroke="white" fill="none" stroke-width="1.5">
+				<div class="sidepanel__inner">
+					<div class="sidepanel__search">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="20"
+							height="20"
+							stroke="white"
+							fill="none"
+							stroke-width="1.5"
+						>
 							<circle cx="9" cy="9" r="7" />
 							<line x1="15" y1="15" x2="19" y2="19" />
 						</svg>
 						<input type="text" placeholder="Search . . ." />
 					</div>
 
-					<nav class="sidepanel-nav">
+					<nav class="sidepanel__nav">
 						<ul>
 							<li><a href="#">Over ons</a></li>
 							<li><a href="#"><strong>Bezoek en tickets</strong></a></li>
@@ -54,25 +69,40 @@
 							<li><a href="#">Agenda</a></li>
 							<li class="submenu">
 								<a href="#">Collectie</a>
-								<svg class="submenu-caret caret" xmlns="http://www.w3.org/2000/svg" width="18" height="18" stroke="white" fill="none" stroke-width="1.5">
-								<polyline points="4 6 9 12 14 6" />
+								<svg
+									class="submenu_caret caret"
+									xmlns="http://www.w3.org/2000/svg"
+									width="18"
+									height="18"
+									stroke="white"
+									fill="none"
+									stroke-width="1.5"
+								>
+									<polyline points="4 6 9 12 14 6" />
 								</svg>
 							</li>
 							<li><a href="#">Research</a></li>
 							<li class="submenu">
 								<a href="#">Academy</a>
-									<svg class="submenu-caret caret" xmlns="http://www.w3.org/2000/svg" width="18" height="18" stroke="white" fill="none" stroke-width="1.5">
-								<polyline points="4 6 9 12 14 6" />
+								<svg
+									class="submenu_caret caret"
+									xmlns="http://www.w3.org/2000/svg"
+									width="18"
+									height="18"
+									stroke="white"
+									fill="none"
+									stroke-width="1.5"
+								>
+									<polyline points="4 6 9 12 14 6" />
 								</svg>
 							</li>
 						</ul>
 					</nav>
 
-					<div class="sidepanel-footer">
-						<p>Wed. to Sat. 10.00-17.00h<br>Sun. 11.00-18.00h</p>
-						<p>123, Keizersgracht<br>NL 1015 CJ Amsterdam</p>
+					<div class="sidepanel__footer">
+						<p>Wed. to Sat. 10.00-17.00h<br />Sun. 11.00-18.00h</p>
+						<p>123, Keizersgracht<br />NL 1015 CJ Amsterdam</p>
 					</div>
-
 				</div>
 			</aside>
 		</section>
@@ -90,7 +120,7 @@
 		background-color: #0b0c0e;
 	}
 
-	.header-content {
+	.header__content {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -99,7 +129,7 @@
 		transition: all 0.2s ease-in-out;
 	}
 
-	.header-logo {
+	.header__logo {
 		flex: 1;
 		width: clamp(90px, 10vw, 105px);
 		height: auto;
@@ -121,24 +151,24 @@
 		gap: 1.5rem;
 	}
 
-	.header-center {
+	.header__center {
 		flex: 2;
 		display: none;
 		justify-content: center;
 	}
 
-	.nav-pages {
+	.nav__pages {
 		display: flex;
 		gap: clamp(10px, 4vw, 60px);
 		list-style: none;
 	}
 
-	.nav-item a {
+	.nav__item a {
 		color: white;
 		text-decoration: none;
 	}
 
-	.nav-item {
+	.nav__item {
 		font-size: 14px;
 		display: block;
 		padding-bottom: 0.2rem;
@@ -149,7 +179,7 @@
 		}
 	}
 
-	.nav-item::before {
+	.nav__item::before {
 		content: '';
 		position: absolute;
 		left: 0;
@@ -160,11 +190,11 @@
 		transition: width 0.3s ease-out;
 	}
 
-	.nav-item:hover::before {
+	.nav__item:hover::before {
 		width: 100%;
 	}
 
-	.header-right {
+	.header__right {
 		flex: 1;
 		display: flex;
 		align-items: center;
@@ -173,17 +203,17 @@
 	}
 
 	.lang,
-	.lang-label,
-	.lang-menu,
-	.lang-menu li,
-	.hamburger-button {
+	.lang__label,
+	.lang__menu,
+	.lang__menu li,
+	.hamburger__button {
 		user-select: none;
 		-webkit-user-select: none;
 		-moz-user-select: none;
 		-ms-user-select: none;
 	}
 
-	.lang-toggle {
+	.lang__toggle {
 		opacity: 0;
 		width: 0;
 		height: 0;
@@ -195,63 +225,60 @@
 		cursor: pointer;
 	}
 
-	.lang-label {
+	.lang__label {
 		display: flex;
 		align-items: center;
-		gap: .3rem;
+		gap: 0.3rem;
 	}
 
-	.lang-label:hover span,	
-	.lang-label:hover .caret { opacity: .7; }
-
-	.lang-menu {
+	.lang__menu {
 		position: absolute;
 		top: 100%;
 		right: 0;
-		margin-top: .5rem;
+		margin-top: 0.5rem;
 		background: #0b0c0e;
-		padding: .5rem 0;
+		padding: 0.5rem 0;
 		display: none;
 	}
 
-	.lang-menu li {
+	.lang__menu li {
 		list-style: none;
 	}
 
-	.lang-menu a {
+	.lang__menu a {
 		display: block;
-		padding: .5rem 1rem;
+		padding: 0.5rem 1rem;
 		color: white;
 		text-decoration: none;
-		font-size: .9rem;
+		font-size: 0.9rem;
 	}
 
-	.lang-menu a:hover {
-		background: rgba(255,255,255,.1);
+	.lang__menu a:hover {
+		background: rgba(255, 255, 255, 0.1);
 	}
 
-	.lang-toggle:checked + .lang-label + .lang-menu {
+	.lang__toggle:checked + .lang__label + .lang__menu {
 		display: block;
 	}
 
 	.caret {
-    display: inline-block;
-    transition: transform 0.3s ease;
-    transform-origin: center;
-    font-size: 1.2rem;
-    opacity: 0.8;
-    cursor: pointer;
+		display: inline-block;
+		transition: transform 0.3s ease;
+		transform-origin: center;
+		font-size: 1.2rem;
+		opacity: 0.8;
+		cursor: pointer;
 	}
 
 	.caret--rotate {
-			transform: rotate(180deg);
-	}
-	
-	.lang-toggle:checked + .lang-label .lang-caret {
 		transform: rotate(180deg);
 	}
 
-	.nav-toggle {
+	.lang__toggle:checked + .lang__label .lang__caret {
+		transform: rotate(180deg);
+	}
+
+	.nav__toggle {
 		opacity: 0;
 		width: 0;
 		height: 0;
@@ -260,60 +287,60 @@
 
 	/* ---------- HAMBURGER BUTTON ---------- */
 
-	.hamburger-btn {
-			width: 32px;
-			height: 28px;           
-			display: flex;
-			align-items: center;   
-			justify-content: center;
-			cursor: pointer;
-			position: relative;
-			z-index: 102;
+	.hamburger__btn {
+		width: 32px;
+		height: 28px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		position: relative;
+		z-index: 102;
 	}
 
-	.hamburger-btn span {
-			position: relative;
-			width: 100%;
-			height: 2px;
-			background: white;
-			transition: all 0.35s ease;
+	.hamburger__btn span {
+		position: relative;
+		width: 100%;
+		height: 2px;
+		background: white;
+		transition: all 0.35s ease;
 	}
 
-	.hamburger-btn span::before,
-	.hamburger-btn span::after {
-			content: "";
-			position: absolute;
-			left: 0;
-			width: 100%;
-			height: 1.5px;
-			background: white;
-			transition: all 0.35s ease;
+	.hamburger__btn span::before,
+	.hamburger__btn span::after {
+		content: '';
+		position: absolute;
+		left: 0;
+		width: 100%;
+		height: 1.5px;
+		background: white;
+		transition: all 0.35s ease;
 	}
 
 	/* TOP LINE */
-	.hamburger-btn span::before {
-			top: -9px; 
+	.hamburger__btn span::before {
+		top: -9px;
 	}
 
 	/* BOTTOM LINE */
-	.hamburger-btn span::after {
-			top: 10px;
+	.hamburger__btn span::after {
+		top: 10px;
 	}
 
 	/* ---------- ANIMATION TO "X" ---------- */
 
-	.nav-toggle:checked + .hamburger-btn span {
-			background: transparent;
+	.nav__toggle:checked + .hamburger__btn span {
+		background: transparent;
 	}
 
-	.nav-toggle:checked + .hamburger-btn span::before {
-			transform: rotate(45deg);
-			top: 0;
+	.nav__toggle:checked + .hamburger__btn span::before {
+		transform: rotate(45deg);
+		top: 0;
 	}
 
-	.nav-toggle:checked + .hamburger-btn span::after {
-			transform: rotate(-45deg);
-			top: 0;
+	.nav__toggle:checked + .hamburger__btn span::after {
+		transform: rotate(-45deg);
+		top: 0;
 	}
 
 	/* ---------- SIDEPANEL ---------- */
@@ -323,50 +350,51 @@
 		top: 0;
 		right: 0;
 		height: 100vh;
-		width: 100%;
-		overflow-x: hidden;
+		width: 100vw;
 		background: #0b0c0e;
 		filter: drop-shadow(-6px 1px 20px #141414cc);
 		transform: translateX(120%);
-		opacity: 0; 
-		transition: transform 0.4s ease-out, opacity 0.4s ease-in;
+		opacity: 0;
+		transition:
+			transform 0.4s ease-out,
+			opacity 0.4s ease-in;
 		z-index: 100;
 		pointer-events: none;
 	}
 
-	.nav-toggle:checked ~ .sidepanel {
+	.nav__toggle:checked ~ .sidepanel {
 		transform: translateX(0%);
-    opacity: 1;                
-    pointer-events: auto;
+		opacity: 1;
+		pointer-events: auto;
 	}
 
-	.sidepanel-inner {
+	.sidepanel__inner {
 		display: flex;
 		flex-direction: column;
 		height: 100%;
 		padding: 5rem 2rem 2rem;
-		opacity: 0; 
+		opacity: 0;
 		transition: opacity 0.7s ease-in;
 		color: white;
 		overflow-y: auto;
 	}
 
-	.nav-toggle:checked ~ .sidepanel .sidepanel-inner {
-			opacity: 1;
+	.nav__toggle:checked ~ .sidepanel .sidepanel__inner {
+		opacity: 1;
 	}
 
 	/* Search */
-	.sidepanel-search {
+	.sidepanel__search {
 		display: flex;
 		align-items: center;
 		width: 60%;
 		gap: 0.75rem;
 		margin-bottom: 2rem;
-		border-bottom: 1px solid rgba(255,255,255,0.3);
-		padding-bottom: .5rem;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+		padding-bottom: 0.5rem;
 	}
 
-	.sidepanel-search input {
+	.sidepanel__search input {
 		width: 100%;
 		background: transparent;
 		border: none;
@@ -376,7 +404,7 @@
 	}
 
 	/* Menu */
-	.sidepanel-nav ul {
+	.sidepanel__nav ul {
 		list-style: none;
 		padding: 0;
 		margin: 0;
@@ -385,7 +413,7 @@
 		gap: 2.5rem;
 	}
 
-	.sidepanel-nav a {
+	.sidepanel__nav a {
 		color: white;
 		text-decoration: none;
 		font-size: 16px;
@@ -398,7 +426,7 @@
 	}
 
 	/* Caret */
-	.submenu-caret {
+	.submenu__caret {
 		opacity: 0.7;
 		font-size: 1.2rem;
 		cursor: pointer;
@@ -406,7 +434,7 @@
 	}
 
 	/* Footer */
-	.sidepanel-footer {
+	.sidepanel__footer {
 		color: #bbbbbb;
 		position: sticky;
 		bottom: 0;
@@ -422,13 +450,13 @@
 	}
 
 	@media (min-width: 900px) {
-		.header-center {
+		.header__center {
 			display: flex;
 		}
 	}
 
 	@media (min-width: 1000px) {
-		.nav-list {
+		.nav__list {
 			display: flex;
 			margin: 0;
 			margin-block-end: 0;
