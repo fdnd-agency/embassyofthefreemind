@@ -56,7 +56,6 @@
 <style>
     footer {
         height: 40rem;
-        width: 90vw;
         background-image: url(/images/achtergrond-embassy-1.png);
         background-color: #002341;
         color: white;
@@ -152,7 +151,7 @@
                 margin-left: 2rem;
                 position: absolute;
                 bottom: 1%;
-                @media (min-width: 810px) {
+                @media (min-width: 768px) {
                     position: relative;
                 }
                 svg {

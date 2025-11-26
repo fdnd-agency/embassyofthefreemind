@@ -1,11 +1,13 @@
 <script>
-	export let title = 'Standaard Titel';
-	export let description = 'Standaard beschrijving...';
-	export let imageUrl = 'images/default.png';
-	/** @type {string | null} */
-	export let imageUrlMobile = null;
-	export let altText = 'Standaard alt-tekst';
-	export let linkUrl = '#';
+	let {
+		title = 'Standaard Titel',
+		description = 'Standaard beschrijving...',
+		imageUrl = 'images/default.png',
+		/** @type {string | null} */
+		imageUrlMobile = null,
+		altText = 'Standaard alt-tekst',
+		linkUrl = '#'
+	} = $props();
 </script>
 
 <article class="grid_article">

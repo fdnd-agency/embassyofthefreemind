@@ -1,9 +1,11 @@
 <script>
-	export let imageUrl = './assets/image37.png';
-	export let title = 'Gewetensvrijheid!';
-	export let subtitle = 'Denken, geloven en onderzoeken in Europa, 1500-1800';
-	export let dates = '28 april t/m 7 september 2025';
-	export let linkUrl = '#';
+	let {
+		imageUrl = './assets/image37.png',
+		title = 'Gewetensvrijheid!',
+		subtitle = 'Denken, geloven en onderzoeken in Europa, 1500-1800',
+		dates = '28 april t/m 7 september 2025',
+		linkUrl = '#'
+	} = $props();
 </script>
 
 <article class="available-now-card">
@@ -40,20 +42,15 @@
 
 <style>
 	.available-now-card {
-		width: 90%;
+		width: 100%;
 		font-family: sans-serif;
-		margin-left: 5%;
-		margin-right: 5%;
-		margin-top: 3em;
-		padding: 0.75em;
-		border: 1px solid #eee;
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		margin: 0 auto;
 		background: white;
 		place-content: center;
 		container-type: inline-size;
 		container-name: card;
-		@media (min-width: 500px) {
-			max-width: 100%;
+		@media (min-width: 600px) {
+			max-width: 85%;
 		}
 	}
 
@@ -61,22 +58,25 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
+		align-items: baseline;
+		padding-top: 3.5rem;
 		padding-bottom: 1em;
 		padding-right: 1em;
 
 		h3 {
 			text-transform: uppercase;
-			font-size: clamp(1em, 2.7cqw, 2em);
-			font-weight: bold;
+			font-size: clamp(2rem, 3cqw, 3.2rem);
+			font-weight: 400;
 			color: #333;
 			padding: 10px 15px 0;
 			margin-top: 0;
-			margin-bottom: 5px;
+			margin-bottom: 1rem;
 		}
 
 		a {
 			padding-left: 1em;
-			font-size: clamp(1em, 2cqw, 1.5em);
+			gap: 1em;
+			font-size: 18px;
 			text-decoration: none;
 			color: inherit;
 		}
@@ -86,28 +86,34 @@
 			a {
 				padding-left: 0;
 			}
+			padding-bottom: 0.3em;
 		}
 	}
 
 	.image-section {
 		position: relative;
+		border-radius: none;
+		overflow: hidden;
+		@media (min-width: 600px) {
+			border-radius: 30px;
+		}
 	}
 
 	.main-image {
 		width: 100%;
 		height: auto;
 		display: block;
-		min-height: 400px;
+		min-height: 550px;
+		max-height: 650px;
 		object-fit: cover;
 	}
 
 	.overlay-container {
-		/* width: 95%; */
 		position: absolute;
 		bottom: 0;
 		left: 0;
 		right: 0;
-		background: rgba(255, 255, 255, 0.89);
+		background: rgba(255, 255, 255, 0.925);
 		padding: 25px 30px;
 		text-decoration: none;
 		color: inherit;
@@ -116,10 +122,11 @@
 		transition: background-color 0.2s;
 
 		@container card (width > 600px) {
+			margin-top: 0;
 			width: calc(300px + 15cqw);
-			left: 15cqw;
-			border-radius: 2em;
-			bottom: 5em;
+			left: clamp(2rem, 10cqw, 4rem);
+			bottom: clamp(2rem, 5cqw, 3.5rem);
+			border-radius: 30px;
 			font-size: clamp(1em, 1.6cqw, 1.5em);
 		}
 	}

@@ -93,7 +93,7 @@
 		margin-inline: auto;
 		margin-bottom: -4rem;
 		padding: 0 2rem;
-		text-align: justify;
+		text-wrap: balance;
 	}
 
 	.hero__content h1,
