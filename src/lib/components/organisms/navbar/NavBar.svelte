@@ -1,465 +1,443 @@
+<script>
+  let isLangOpen = false;
+  let isSidepanelOpen = false;
+
+  function toggleLang() {
+    isLangOpen = !isLangOpen;
+  }
+
+  function toggleSidepanel() {
+    isSidepanelOpen = !isSidepanelOpen;
+  }
+
+  function closeAll() {
+    isLangOpen = false;
+    isSidepanelOpen = false;
+  }
+</script>
+
+<svelte:window on:click={closeAll} />
+
 <header class="header">
-	<section class="header__content">
-		<div class="header__logo">
-			<img src="/logo/logo_white.svg" alt="Embassy of the Free Mind" class="logo" />
-		</div>
+  <section class="header-content">
+    <div class="header-logo">
+      <img src="/logo/logo_white.svg" alt="Embassy of the Free Mind" class="logo" />
+    </div>
 
-		<nav class="header__center">
-			<ul class="nav__pages">
-				<li class="nav__item"><a href="#" style="font-weight:bold;">Bezoek en tickets</a></li>
-				<li class="nav__item"><a href="/exhibitions">Collectie</a></li>
-				<li class="nav__item"><a href="#">Verhalen</a></li>
-				<li class="nav__item"><a href="#">Online catalogus</a></li>
-				<li class="nav__item"><a href="#">Over ons</a></li>
-			</ul>
-		</nav>
+    <nav class="header-center">
+      <ul class="nav-pages">
+        <li class="nav-item"><a href="#">Collectie</a></li>
+        <li class="nav-item"><a href="#">Verhalen</a></li>
+        <li class="nav-item"><a href="#">Online catalogus</a></li>
+        <li class="nav-item"><a href="#">Over ons</a></li>
+        <li class="nav-item"><a href="#" style="font-weight:bold;">Tickets kopen</a></li>
+      </ul>
+    </nav>
 
-		<section class="header__right">
-			<div class="lang">
-				<input type="checkbox" id="lang-toggle" class="lang__toggle" />
-				<label for="lang-toggle" class="lang__label">
-					<span>EN</span>
-					<svg
-						class="lang__caret caret"
-						xmlns="http://www.w3.org/2000/svg"
-						width="18"
-						height="18"
-						stroke="white"
-						fill="none"
-						stroke-width="1.5"
-					>
-						<polyline points="4 6 9 12 14 6" />
-					</svg>
-				</label>
+    <section class="header-right">
+      <div class="lang" on:click|stopPropagation>
+        <button
+          class="lang-btn"
+          aria-expanded={isLangOpen}
+          aria-controls="lang-menu"
+          on:click={toggleLang}
+        >
+          <span>EN</span>
+          <svg class="lang-caret caret" xmlns="http://www.w3.org/2000/svg" width="18" height="18" stroke="white" fill="none" stroke-width="1.5">
+            <polyline points="4 6 9 12 14 6" />
+          </svg>
+        </button>
 
-				<ul class="lang__menu">
-					<li><a href="?lang=en">EN</a></li>
-					<li><a href="?lang=nl">NL</a></li>
-				</ul>
-			</div>
+        <ul id="lang-menu" class="lang-menu" hidden={!isLangOpen}>
+          <li><a href="?lang=en">EN</a></li>
+          <li><a href="?lang=nl">NL</a></li>
+        </ul>
+      </div>
 
-			<input type="checkbox" id="nav__toggle" class="nav__toggle" />
+      <button
+        class="hamburger-btn"
+        aria-expanded={isSidepanelOpen}
+        aria-controls="sidepanel"
+        on:click|stopPropagation={toggleSidepanel}
+      >
+        <span></span>
+      </button>
 
-			<label for="nav__toggle" class="hamburger__btn">
-				<span></span>
-			</label>
+      <aside
+        id="sidepanel"
+        class="sidepanel"
+        class:open={isSidepanelOpen}
+        hidden={!isSidepanelOpen}
+        on:click|stopPropagation
+      >
+        <div class="sidepanel-inner">
 
-			<aside class="sidepanel">
-				<div class="sidepanel__inner">
-					<div class="sidepanel__search">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="20"
-							height="20"
-							stroke="white"
-							fill="none"
-							stroke-width="1.5"
-						>
-							<circle cx="9" cy="9" r="7" />
-							<line x1="15" y1="15" x2="19" y2="19" />
-						</svg>
-						<input type="text" placeholder="Search . . ." />
-					</div>
+          <div class="sidepanel-search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" stroke="white" fill="none" stroke-width="1.5">
+              <circle cx="9" cy="9" r="7" />
+              <line x1="15" y1="15" x2="19" y2="19" />
+            </svg>
+            <input type="text" placeholder="Search . . ." />
+          </div>
 
-					<nav class="sidepanel__nav">
-						<ul>
-							<li><a href="#">Over ons</a></li>
-							<li><a href="#"><strong>Bezoek en tickets</strong></a></li>
-							<li><a href="#">Support de EFM</a></li>
-							<li><a href="#">Agenda</a></li>
-							<li class="submenu">
-								<a href="#">Collectie</a>
-								<svg
-									class="submenu_caret caret"
-									xmlns="http://www.w3.org/2000/svg"
-									width="18"
-									height="18"
-									stroke="white"
-									fill="none"
-									stroke-width="1.5"
-								>
-									<polyline points="4 6 9 12 14 6" />
-								</svg>
-							</li>
-							<li><a href="#">Research</a></li>
-							<li class="submenu">
-								<a href="#">Academy</a>
-								<svg
-									class="submenu_caret caret"
-									xmlns="http://www.w3.org/2000/svg"
-									width="18"
-									height="18"
-									stroke="white"
-									fill="none"
-									stroke-width="1.5"
-								>
-									<polyline points="4 6 9 12 14 6" />
-								</svg>
-							</li>
-						</ul>
-					</nav>
+          <nav class="sidepanel-nav">
+            <ul>
+              <li><a href="#">Over ons</a></li>
+              <li><a href="#"><strong>Bezoek en tickets</strong></a></li>
+              <li><a href="#">Support de EFM</a></li>
+              <li><a href="#">Agenda</a></li>
+              <li class="submenu">
+                <a href="#">Collectie</a>
+                <svg class="submenu-caret caret" xmlns="http://www.w3.org/2000/svg" width="18" height="18" stroke="white" fill="none" stroke-width="1.5">
+                <polyline points="4 6 9 12 14 6" />
+                </svg>
+              </li>
+              <li><a href="#">Research</a></li>
+              <li class="submenu">
+                <a href="#">Academy</a>
+                  <svg class="submenu-caret caret" xmlns="http://www.w3.org/2000/svg" width="18" height="18" stroke="white" fill="none" stroke-width="1.5">
+                <polyline points="4 6 9 12 14 6" />
+                </svg>
+              </li>
+            </ul>
+          </nav>
 
-					<div class="sidepanel__footer">
-						<p>Wed. to Sat. 10.00-17.00h<br />Sun. 11.00-18.00h</p>
-						<p>123, Keizersgracht<br />NL 1015 CJ Amsterdam</p>
-					</div>
-				</div>
-			</aside>
-		</section>
-	</section>
+          <div class="sidepanel-footer">
+            <p>Wed. to Sat. 10.00-17.00h<br>Sun. 11.00-18.00h</p>
+            <p>123, Keizersgracht<br>NL 1015 CJ Amsterdam</p>
+          </div>
+
+        </div>
+      </aside>
+    </section>
+  </section>
 </header>
 
 <style>
-	header {
-		position: fixed;
-		z-index: 10;
-		width: 100%;
-		font-family: var(--font-body);
-		font-weight: 300;
-		color: white;
-		background-color: #0b0c0e;
-	}
+header {
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: white;
+  background-color: #0b0c0e;
+}
 
-	.header__content {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding-inline: clamp(0.5rem, 3vw, 2.5rem);
-		padding-block: 0.75rem;
-		transition: all 0.2s ease-in-out;
-	}
+/* ---------------- HEADER LAYOUT ---------------- */
 
-	.header__logo {
-		flex: 1;
-		width: clamp(90px, 10vw, 105px);
-		height: auto;
-		display: block;
-		object-fit: contain;
-	}
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: clamp(0.5rem, 3vw, 2.5rem);
+  padding-block: 0.75rem;
+  transition: all 0.2s ease-in-out;
+}
 
-	.logo {
-		width: clamp(90px, 10vw, 105px);
-		object-fit: contain;
-	}
+.header-logo {
+  flex: 1;
+  width: clamp(90px, 10vw, 105px);
+}
 
-	.nav {
-		display: inherit;
-		flex-direction: column;
-		align-content: baseline;
-		align-items: flex-end;
-		justify-content: space-between;
-		gap: 1.5rem;
-	}
+.logo {
+  width: clamp(90px, 10vw, 105px);
+  object-fit: contain;
+}
 
-	.header__center {
-		flex: 2;
-		display: none;
-		justify-content: center;
-	}
+.header-center {
+  flex: 2;
+  display: none;
+  justify-content: center;
+}
 
-	.nav__pages {
-		display: flex;
-		gap: clamp(10px, 4vw, 60px);
-		list-style: none;
-	}
+.nav-pages {
+  display: flex;
+  gap: clamp(10px, 4vw, 60px);
+  list-style: none;
+}
 
-	.nav__item a {
-		color: white;
-		text-decoration: none;
-	}
+.nav-item {
+  font-size: 14px;
+  padding-bottom: 0.2rem;
+  position: relative;
+  text-wrap: nowrap;
+}
 
-	.nav__item {
-		font-size: 14px;
-		display: block;
-		padding-bottom: 0.2rem;
-		position: relative;
-		text-wrap: nowrap;
-		@media (min-width: 1200px) {
-			font-size: 16px;
-		}
-	}
+@media (min-width: 1200px) {
+  .nav-item {
+    font-size: 16px;
+  }
+}
 
-	.nav__item::before {
-		content: '';
-		position: absolute;
-		left: 0;
-		bottom: 0;
-		width: 0;
-		height: 1px;
-		background-color: white;
-		transition: width 0.3s ease-out;
-	}
+.nav-item a {
+  color: white;
+  text-decoration: none;
+}
 
-	.nav__item:hover::before {
-		width: 100%;
-	}
+.nav-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background-color: white;
+  transition: width 0.3s ease-out;
+}
 
-	.header__right {
-		flex: 1;
-		display: flex;
-		align-items: center;
-		justify-content: flex-end;
-		gap: 1.75rem;
-	}
+.nav-item:hover::before {
+  width: 100%;
+}
 
-	.lang,
-	.lang__label,
-	.lang__menu,
-	.lang__menu li,
-	.hamburger__button {
-		user-select: none;
-		-webkit-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
-	}
+.header-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.75rem;
+}
 
-	.lang__toggle {
-		opacity: 0;
-		width: 0;
-		height: 0;
-		position: absolute;
-	}
+/* ---------------- LANGUAGE MENU ---------------- */
 
-	.lang {
-		position: relative;
-		cursor: pointer;
-	}
+.lang,
+.lang-menu,
+.lang-menu li {
+  user-select: none;
+}
 
-	.lang__label {
-		display: flex;
-		align-items: center;
-		gap: 0.3rem;
-	}
+.lang {
+  position: relative;
+}
 
-	.lang__menu {
-		position: absolute;
-		top: 100%;
-		right: 0;
-		margin-top: 0.5rem;
-		background: #0b0c0e;
-		padding: 0.5rem 0;
-		display: none;
-	}
+.lang-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+}
 
-	.lang__menu li {
-		list-style: none;
-	}
+.lang-btn:hover span,
+.lang-btn:hover .caret {
+  opacity: 0.7;
+}
 
-	.lang__menu a {
-		display: block;
-		padding: 0.5rem 1rem;
-		color: white;
-		text-decoration: none;
-		font-size: 0.9rem;
-	}
+.lang-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: .5rem;
+  background: #0b0c0e;
+  padding: .5rem 0;
+  border: 1px solid rgba(255,255,255,0.15);
+}
 
-	.lang__menu a:hover {
-		background: rgba(255, 255, 255, 0.1);
-	}
+.lang-menu[hidden] {
+  display: none;
+}
 
-	.lang__toggle:checked + .lang__label + .lang__menu {
-		display: block;
-	}
+.lang-menu li {
+  list-style: none;
+}
 
-	.caret {
-		display: inline-block;
-		transition: transform 0.3s ease;
-		transform-origin: center;
-		font-size: 1.2rem;
-		opacity: 0.8;
-		cursor: pointer;
-	}
+.lang-menu a {
+  display: block;
+  padding: .5rem 1rem;
+  color: white;
+  text-decoration: none;
+  font-size: .9rem;
+}
 
-	.caret--rotate {
-		transform: rotate(180deg);
-	}
+.lang-menu a:hover {
+  background: rgba(255,255,255,.1);
+}
 
-	.lang__toggle:checked + .lang__label .lang__caret {
-		transform: rotate(180deg);
-	}
+.caret {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  transform-origin: center;
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
 
-	.nav__toggle {
-		opacity: 0;
-		width: 0;
-		height: 0;
-		position: absolute;
-	}
+/* draai pijltje */
+.lang-btn[aria-expanded="true"] .caret {
+  transform: rotate(180deg);
+}
 
-	/* ---------- HAMBURGER BUTTON ---------- */
+/* ---------------- HAMBURGER BUTTON ---------------- */
 
-	.hamburger__btn {
-		width: 32px;
-		height: 28px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		cursor: pointer;
-		position: relative;
-		z-index: 102;
-	}
+.hamburger-btn {
+  width: 38px;
+  height: 27px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 102;
+  background: none;
+  border: none;
+  color: inherit;
+}
 
-	.hamburger__btn span {
-		position: relative;
-		width: 100%;
-		height: 2px;
-		background: white;
-		transition: all 0.35s ease;
-	}
+.hamburger-btn span {
+  position: relative;
+  width: 100%;
+  height: 1.5px;
+  background: white;
+  transition: all 0.35s ease;
+}
 
-	.hamburger__btn span::before,
-	.hamburger__btn span::after {
-		content: '';
-		position: absolute;
-		left: 0;
-		width: 100%;
-		height: 1.5px;
-		background: white;
-		transition: all 0.35s ease;
-	}
+.hamburger-btn span::before,
+.hamburger-btn span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: white;
+  transition: all 0.35s ease;
+}
 
-	/* TOP LINE */
-	.hamburger__btn span::before {
-		top: -9px;
-	}
+.hamburger-btn span::before {
+  top: -9px;
+}
 
-	/* BOTTOM LINE */
-	.hamburger__btn span::after {
-		top: 10px;
-	}
+.hamburger-btn span::after {
+  top: 10px;
+}
 
-	/* ---------- ANIMATION TO "X" ---------- */
+/* maak X wanneer open */
 
-	.nav__toggle:checked + .hamburger__btn span {
-		background: transparent;
-	}
+.hamburger-btn[aria-expanded="true"] span {
+  background: transparent;
+}
 
-	.nav__toggle:checked + .hamburger__btn span::before {
-		transform: rotate(45deg);
-		top: 0;
-	}
+.hamburger-btn[aria-expanded="true"] span::before {
+  transform: rotate(45deg);
+  top: 0;
+}
 
-	.nav__toggle:checked + .hamburger__btn span::after {
-		transform: rotate(-45deg);
-		top: 0;
-	}
+.hamburger-btn[aria-expanded="true"] span::after {
+  transform: rotate(-45deg);
+  top: 0;
+}
 
-	/* ---------- SIDEPANEL ---------- */
+/* ---------------- SIDEPANEL ---------------- */
 
-	.sidepanel {
-		position: fixed;
-		top: 0;
-		right: 0;
-		height: 100vh;
-		width: 100vw;
-		background: #0b0c0e;
-		filter: drop-shadow(-6px 1px 20px #141414cc);
-		transform: translateX(120%);
-		opacity: 0;
-		transition:
-			transform 0.4s ease-out,
-			opacity 0.4s ease-in;
-		z-index: 100;
-		pointer-events: none;
-	}
+.sidepanel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #0b0c0e;
+  filter: drop-shadow(-6px 1px 20px #141414cc);
+  transform: translateX(120%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s ease-out, opacity 0.4s ease-in;
+}
 
-	.nav__toggle:checked ~ .sidepanel {
-		transform: translateX(0%);
-		opacity: 1;
-		pointer-events: auto;
-	}
+.sidepanel[hidden] {
+  display: block; /* zodat we kunnen animeren */
+  transform: translateX(120%);
+  opacity: 0;
+  pointer-events: none;
+}
 
-	.sidepanel__inner {
-		display: flex;
-		flex-direction: column;
-		height: 100%;
-		padding: 5rem 2rem 2rem;
-		opacity: 0;
-		transition: opacity 0.7s ease-in;
-		color: white;
-		overflow-y: auto;
-	}
+.sidepanel.open {
+  transform: translateX(0%);
+  opacity: 1;
+  pointer-events: auto;
+}
 
-	.nav__toggle:checked ~ .sidepanel .sidepanel__inner {
-		opacity: 1;
-	}
+.sidepanel-inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 5rem 2rem 2rem;
+  opacity: 0;
+  transform: translateY(50%);
+  color: white;
+  transition: transform 250ms ease-out, opacity 0.9s ease-in;
+  transition-delay: 250ms;
+}
 
-	/* Search */
-	.sidepanel__search {
-		display: flex;
-		align-items: center;
-		width: 60%;
-		gap: 0.75rem;
-		margin-bottom: 2rem;
-		border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-		padding-bottom: 0.5rem;
-	}
+.sidepanel.open .sidepanel-inner {
+  transform: translateX(0%);
+  opacity: 1;
+}
 
-	.sidepanel__search input {
-		width: 100%;
-		background: transparent;
-		border: none;
-		outline: none;
-		color: white;
-		font-size: 1rem;
-	}
+/* Search */
+.sidepanel-search {
+  display: flex;
+  align-items: center;
+  width: 60%;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  padding-bottom: .5rem;
+}
 
-	/* Menu */
-	.sidepanel__nav ul {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-		display: flex;
-		flex-direction: column;
-		gap: 2.5rem;
-	}
+.sidepanel-search input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 1rem;
+}
 
-	.sidepanel__nav a {
-		color: white;
-		text-decoration: none;
-		font-size: 16px;
-	}
+/* Menu */
+.sidepanel-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
 
-	.submenu {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
+.sidepanel-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
 
-	/* Caret */
-	.submenu__caret {
-		opacity: 0.7;
-		font-size: 1.2rem;
-		cursor: pointer;
-		user-select: none;
-	}
+.submenu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-	/* Footer */
-	.sidepanel__footer {
-		color: #bbbbbb;
-		position: sticky;
-		bottom: 0;
-		text-align: right;
-		padding-top: 10rem;
-		padding-bottom: 2rem;
-	}
+.submenu-caret {
+  opacity: 0.7;
+  cursor: pointer;
+}
 
-	@media (min-width: 650px) {
-		.sidepanel {
-			width: min(400px, 85vw);
-		}
-	}
+.sidepanel-footer {
+  color: #bbbbbb;
+  margin-top: auto;      
+  padding-bottom: 5rem;  
+  text-align: right;
+}
 
-	@media (min-width: 900px) {
-		.header__center {
-			display: flex;
-		}
-	}
+@media (min-width: 650px) {
+  .sidepanel {
+    width: min(400px, 85vw);
+  }
+}
 
-	@media (min-width: 1000px) {
-		.nav__list {
-			display: flex;
-			margin: 0;
-			margin-block-end: 0;
-		}
-	}
+@media (min-width: 900px) {
+  .header-center {
+    display: flex;
+  }
+}
 </style>
