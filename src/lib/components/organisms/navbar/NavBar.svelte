@@ -1,6 +1,8 @@
 <script>
   let isLangOpen = false;
   let isSidepanelOpen = false;
+	let isCollectieOpen = false;
+  let isAcademyOpen = false;
 
   function toggleLang() {
     isLangOpen = !isLangOpen;
@@ -10,9 +12,20 @@
     isSidepanelOpen = !isSidepanelOpen;
   }
 
+	function toggleCollectie() {
+    isCollectieOpen = !isCollectieOpen;
+  }
+
+  function toggleAcademy() {
+    isAcademyOpen = !isAcademyOpen;
+  }
+
+
   function closeAll() {
     isLangOpen = false;
     isSidepanelOpen = false;
+		isCollectieOpen = false;
+    isAcademyOpen = false;
   }
 </script>
 
@@ -87,18 +100,67 @@
               <li><a href="#">Support de EFM</a></li>
               <li><a href="#">Agenda</a></li>
               <li class="submenu">
-                <a href="#">Collectie</a>
-                <svg class="submenu-caret caret" xmlns="http://www.w3.org/2000/svg" width="18" height="18" stroke="white" fill="none" stroke-width="1.5">
-                <polyline points="4 6 9 12 14 6" />
-                </svg>
-              </li>
+								<button
+									type="button"
+									class="submenu-toggle"
+									aria-expanded={isCollectieOpen}
+									aria-controls="submenu-collectie"
+									on:click|stopPropagation={toggleCollectie}
+								>
+									<span>Collectie</span>
+									<svg
+										class="submenu-caret caret"
+										xmlns="http://www.w3.org/2000/svg"
+										width="18"
+										height="18"
+										stroke="white"
+										fill="none"
+										stroke-width="1.5"
+									>
+										<polyline points="4 6 9 12 14 6" />
+									</svg>
+								</button>
+								<ul
+									id="submenu-collectie"
+									class="submenu-menu"
+									hidden={!isCollectieOpen}
+								>
+								<li><a href="#">Tentoonstellingen</a></li>
+								<li><a href="#">Collectiestukken</a></li>
+							</ul>
+							</li>
               <li><a href="#">Research</a></li>
-              <li class="submenu">
-                <a href="#">Academy</a>
-                  <svg class="submenu-caret caret" xmlns="http://www.w3.org/2000/svg" width="18" height="18" stroke="white" fill="none" stroke-width="1.5">
-                <polyline points="4 6 9 12 14 6" />
-                </svg>
-              </li>
+							<li class="submenu">
+								<button
+									type="button"
+									class="submenu-toggle"
+									aria-expanded={isAcademyOpen}
+									aria-controls="submenu-academy"
+									on:click|stopPropagation={toggleAcademy}
+								>
+									<span>Academy</span>
+									<svg
+										class="submenu-caret caret"
+										xmlns="http://www.w3.org/2000/svg"
+										width="18"
+										height="18"
+										stroke="white"
+										fill="none"
+										stroke-width="1.5"
+									>
+										<polyline points="4 6 9 12 14 6" />
+									</svg>
+								</button>
+
+								<ul
+									id="submenu-academy"
+									class="submenu-menu"
+									hidden={!isAcademyOpen}
+								>
+									<li><a href="#">Programma</a></li>
+									<li><a href="#">Events</a></li>
+								</ul>
+							</li>
             </ul>
           </nav>
 
@@ -402,25 +464,60 @@ header {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 3rem;
 }
 
 .sidepanel-nav a {
   color: white;
   text-decoration: none;
   font-size: 16px;
+	font-weight: 400;
 }
 
 .submenu {
+  display: block;
+}
+
+.submenu-toggle {
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+	gap: 1rem;
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+	font-size: 16px;
+	font-weight: lighter;
 }
 
 .submenu-caret {
   opacity: 0.7;
   cursor: pointer;
 }
+
+.submenu-toggle[aria-expanded="true"] .submenu-caret {
+  transform: rotate(180deg);
+}
+
+.submenu-toggle[aria-expanded="true"] {
+	margin-bottom: 2rem;
+}
+
+.submenu-menu {
+  list-style: none;
+  padding: 0 0 0 0.5rem;
+	margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.submenu-menu[hidden] {
+  display: none;
+}
+
 
 .sidepanel-footer {
   color: #bbbbbb;
