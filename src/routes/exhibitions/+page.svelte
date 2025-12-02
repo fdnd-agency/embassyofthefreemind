@@ -5,6 +5,14 @@
 	import Scene from '../../lib/components/Scene.svelte';
 </script>
 
-<Canvas>
-	<Scene />
-</Canvas>
+<div>
+	<Canvas>
+		<Scene />
+	</Canvas>
+</div>
+
+<style>
+	div {
+		height: 100%;
+	}
+</style>
