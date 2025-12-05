@@ -6,6 +6,22 @@
   let isSidepanelOpen = false;
 	let isCollectieOpen = false;
   let isAcademyOpen = false;
+	
+	// animation items
+	let leftTop;
+  let leftCross;
+  let rightBottom;
+	let frameEl;
+	let topBow;
+	let bottomDecor;
+	let ladyLeft;
+	let ladyRight;
+	let navEl;
+	let footerEl;
+
+
+	let crossTl;
+	let ornamentsTl;
 
   function toggleLang() {
     isLangOpen = !isLangOpen;
@@ -29,6 +45,38 @@
     isSidepanelOpen = false;
 		isCollectieOpen = false;
     isAcademyOpen = false;
+  }
+
+	onMount(() => {
+    if (!leftCross) return;
+
+		gsap.set(leftCross, {
+			transformOrigin: '50% 0%',
+			rotation: -20
+		});
+  });
+
+  $: if (isSidepanelOpen && leftCross) {
+    if (!crossTl) {
+      crossTl = gsap.fromTo(leftCross,
+			{ rotation: -20 },
+      {
+        rotation: 20,
+        duration: 0.8,
+        ease: 'sine.inOut',
+        yoyo: true,
+        repeat: -1,
+        transformOrigin: '50% 0%'
+      }
+    );
+    }  else {
+    crossTl.restart(); 
+		}
+	} else if (crossTl && leftCross) {
+		crossTl.pause();
+		gsap.set(leftCross, { rotation: 0 });
+	}
+
   }
 </script>
 
