@@ -77,6 +77,112 @@
 		gsap.set(leftCross, { rotation: 0 });
 	}
 
+	$: if (isSidepanelOpen && leftTop && leftCross && rightBottom && frameEl && bottomDecor && topBow && ladyLeft && ladyRight && navEl && footerEl) {
+    if (!ornamentsTl) {
+      ornamentsTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+      ornamentsTl.from([leftTop, leftCross], {
+        y: -80,           
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.05,
+        delay: 0.5,       
+      });
+
+      ornamentsTl.from(
+        rightBottom,
+        {
+          y: 80,          
+          opacity: 0,
+          duration: 0.8
+        },
+        '-=0.5'         
+      );
+			
+			ornamentsTl.from(
+      frameEl,
+      {
+        y: 60,
+        scale: 0.7,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power3.out'
+      },
+      '-=0.47'
+    	);
+
+			ornamentsTl.from(
+      topBow,
+      {
+        y: -40,
+        opacity: 0,
+        duration: 0.6,
+        ease: 'power2.out'
+      },
+      '-=0.3' 
+    );
+    
+    ornamentsTl.from(
+      bottomDecor,
+      {
+        scaleX: 0,
+        opacity: 0,
+        duration: 0.6,
+        transformOrigin: '50% 50%', 
+        ease: 'power2.out'
+      },
+      '-=0.5'
+    );
+
+		ornamentsTl.from(
+			ladyLeft,
+			{
+				x: 40,      
+				opacity: 0,   
+				duration: 0.8,
+				ease: 'power2.out'
+			},
+			'-=0.2'
+		);
+
+		ornamentsTl.from(
+			ladyRight,
+			{
+				x: -40,       
+				opacity: 0,
+				duration: 0.8,
+				ease: 'power2.out'
+			},
+			'-=0.75'        
+		);
+
+		ornamentsTl.from(
+      navEl,
+      {
+        y: 20,
+        opacity: 0,
+        duration: 0.6,
+        ease: 'power2.out'
+      },
+      '-=0.1' 
+    );
+
+    ornamentsTl.from(
+      footerEl,
+      {
+        y: 20,
+        opacity: 0,
+        duration: 0.7,
+        ease: 'power2.out'
+      },
+      '>-0.1' 
+    );
+
+    } else {
+      ornamentsTl.restart();
+    }
+  } else if (ornamentsTl) {
+    ornamentsTl.pause(0);
   }
 </script>
 
