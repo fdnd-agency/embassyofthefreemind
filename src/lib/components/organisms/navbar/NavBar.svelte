@@ -1,4 +1,7 @@
 <script>
+	import { onMount } from 'svelte';
+  import { gsap } from 'gsap';
+
   let isLangOpen = false;
   let isSidepanelOpen = false;
 	let isCollectieOpen = false;
