@@ -127,13 +127,13 @@
 	}
 
 	h1.glitch-text {
-		font-size: 3rem;
+		font-size: clamp(2rem, calc(10vw+2.5rem), 3rem);
 		letter-spacing: 5px;
 		/* Increased glow for better readability against space */
 		text-shadow:
-			0 0 10px #bd00ff,
-			0 0 20px #bd00ff,
-			0 0 40px #bd00ff;
+			0 0 10px #ffffff,
+			0 0 20px #acacac,
+			0 0 40px #a5a5a5;
 		position: relative;
 		display: inline-block;
 	}
@@ -201,7 +201,7 @@
 	button {
 		background: rgba(0, 0, 0, 0.6);
 		border: 1px solid #bd00ff;
-		color: #bd00ff;
+		color: #ffffff;
 		padding: 1rem 2rem;
 		font-family: inherit;
 		text-transform: uppercase;
@@ -217,31 +217,87 @@
 	}
 	button.secondary {
 		border-color: #00f0ff;
-		color: #00f0ff;
+		color: #ffffff;
 	}
 	button.secondary:hover {
 		background: #00f0ff;
+		color: #000;
 		box-shadow: 0 0 20px #00f0ff;
 	}
 
 	/* === GRID LOGIC === */
+	/* === THE DYNAMIC GRID BRAIN === */
 	.card-grid {
 		display: grid;
-		gap: 4rem;
-		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-		transition: 0.5s ease;
+		gap: 5rem;
+		transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 		padding-bottom: 50px;
+
+		/* DEFAULT STATE (Fallback) */
+		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+		max-width: 1400px;
+		margin-inline: auto;
 	}
 
+	/* --- SCENARIO 1: THE SINGULARITY (1 Card) --- */
+	/* Huge, centered, passes --hero: true flag */
 	.card-grid:has(> :global(:nth-child(1):last-child)) {
 		grid-template-columns: 1fr;
 		max-width: 1000px;
-		margin-inline: auto;
 		--hero: true;
 	}
 
+	/* --- SCENARIO 2: THE DUEL (Exactly 2 Cards) --- */
+	/* Divisible by 2. Side-by-side, tall pillars. */
+	.card-grid:has(> :global(:nth-child(2):last-child)) {
+		grid-template-columns: 1fr 1fr;
+		max-width: 1200px;
+		align-items: stretch; /* Make them same height */
+	}
+
+	/* --- SCENARIO 3: THE PYRAMID (Exactly 3 Cards) --- */
+	/* Not divisible by 2. 
+   Layout: 1 Huge Card on top (spanning full width), 2 standard below. 
+*/
+	.card-grid:has(> :global(:nth-child(3):last-child)) {
+		grid-template-columns: 1fr 1fr;
+		max-width: 900px;
+	}
+	/* Target the 1st card in a set of 3 */
+	.card-grid:has(> :global(:nth-child(3):last-child)) > :global(:first-child) {
+		grid-column: span 2;
+		/* Optional: Pass hero flag if you want the top one to be wide */
+		--hero: true;
+	}
+
+	/* --- SCENARIO 4: THE SQUAD (Exactly 4 Cards) --- */
+	/* Divisible by 2. A perfect 2x2 Square. */
+	.card-grid:has(> :global(:nth-child(4):last-child)) {
+		grid-template-columns: 1fr 1fr; /* Force 2 columns */
+		max-width: 1000px; /* Keep the group tight */
+		gap: 2rem;
+	}
+
+	/* --- SCENARIO 5+: THE BENTO (5 or more Cards) --- */
+	/* The layout you had before: 1st card takes 2x2 slot */
+	.card-grid:has(> :global(:nth-child(5))) {
+		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+	}
 	.card-grid:has(> :global(:nth-child(5))) > :global(:first-child) {
 		grid-column: span 2;
 		grid-row: span 2;
+	}
+
+	/* --- MOBILE OVERRIDE --- */
+	/* Crush everything to 1 column on phones */
+	@media (max-width: 768px) {
+		.card-grid:has(> :global(*)) {
+			grid-template-columns: 1fr !important;
+		}
+		/* Reset spans */
+		.card-grid > :global(*) {
+			grid-column: auto !important;
+			grid-row: auto !important;
+		}
 	}
 </style>

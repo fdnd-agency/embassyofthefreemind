@@ -1,21 +1,40 @@
 <script>
 	import PokemonStats from './PokemonStats.svelte';
 
-	let { data, index = 0 } = $props();
+	let { data, index = 0, isHero = false } = $props();
+
 	let isFlipped = $state(false);
 	let totalStats = $derived(data.stats.reduce((a, c) => a + c.base_stat, 0));
+
+	// Create a unique anchor name for CSS to target
+	// We use the ID to ensure every card is unique
+	let anchorName = $derived(`--entity-${data.id}`);
 </script>
 
-<div class="card-scene" style:--i={index} on:click={() => (isFlipped = !isFlipped)}>
+<div
+	class="card-scene"
+	class:hero-mode={isHero}
+	style:--i={index}
+	on:click={() => (isFlipped = !isFlipped)}
+>
 	<div class="card-inner" class:flipped={isFlipped}>
 		<div class="card-face card-front">
-			<div class="hologram-overlay"></div>
+			<div class="card-bg"></div>
 
+			<div class="hologram-overlay"></div>
 			<div class="content">
 				<img
 					src={data.sprites.other.dream_world.front_default || data.sprites.front_default}
 					alt={data.name}
+					style:anchor-name={anchorName}
 				/>
+
+				<div class="bio-scan" style:position-anchor={anchorName}>
+					<div class="scan-line"></div>
+					<p>HGT: {(data.height / 10).toFixed(1)}m</p>
+					<p>WGT: {(data.weight / 10).toFixed(1)}kg</p>
+					<p>TYPE: {data.types.map((t) => t.type.name).join('/')}</p>
+				</div>
 
 				<div class="stats-wrapper">
 					<h3>{data.name}</h3>
@@ -25,6 +44,10 @@
 		</div>
 
 		<div class="card-face card-back" style:--total-stats={totalStats}>
+			<div
+				class="card-bg"
+				style="background-image: url('/texture-back.jpg'); background-size: cover;"
+			></div>
 			<div class="back-content">
 				<h2>{data.types[0].type.name.toUpperCase()}</h2>
 				<strong class="stat-number">{totalStats}</strong>
@@ -35,6 +58,87 @@
 </div>
 
 <style>
+	.bio-scan {
+		position: absolute;
+
+		/* Anchor Positioning Logic */
+		left: anchor(right);
+		top: anchor(center);
+		/* Try to flip to left if space is tight */
+		position-try-options: flip-inline;
+
+		/* Positioning adjustments */
+		margin-left: 15px;
+		transform-origin: left center;
+		translate: 0 -50%;
+
+		/* Visuals */
+		width: max-content;
+		color: #00f0ff;
+		font-family: 'Courier New', monospace;
+		font-size: 0.75rem;
+		background: rgba(0, 5, 20, 0.95);
+		border: 1px solid #00f0ff;
+		padding: 1rem;
+		border-radius: 4px;
+		box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+		z-index: 100;
+		pointer-events: none;
+		z-index: 3;
+		/* Visibility State */
+		opacity: 0;
+		scale: 0.8;
+		transition:
+			opacity 0.3s ease,
+			scale 0.3s ease;
+	}
+
+	img:hover + .bio-scan {
+		opacity: 1;
+		scale: 1;
+	}
+
+	/* DECORATION: A connecting line */
+	.bio-scan::before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: -20px; /* Reach back towards the image */
+		width: 20px;
+		height: 1px;
+		background: #00f0ff;
+		box-shadow: 0 0 5px #00f0ff;
+	}
+
+	/* Decoration: Scanner line animation */
+	.scan-line {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 2px;
+		background: rgba(255, 255, 255, 0.8);
+		box-shadow: 0 0 10px white;
+		animation: scan-vertical 2s linear infinite;
+		opacity: 0.5;
+	}
+
+	@keyframes scan-vertical {
+		0% {
+			top: 0%;
+			opacity: 0;
+		}
+		10% {
+			opacity: 1;
+		}
+		90% {
+			opacity: 1;
+		}
+		100% {
+			top: 100%;
+			opacity: 0;
+		}
+	}
 	/* === 1. CONTAINER SETUP === */
 	.card-scene {
 		height: 100%;
@@ -94,14 +198,15 @@
 		width: 100%;
 		height: 100%;
 		backface-visibility: hidden;
-		border-radius: 16px;
-		border: 1px solid rgba(255, 255, 255, 0.2);
-		overflow: hidden;
-		background: rgba(10, 10, 20, 0.6);
-		backdrop-filter: blur(12px);
-		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 
-		/* Default: Vertical Flex */
+		/* CRITICAL CHANGE: Allow tooltip to hang out */
+		overflow: visible;
+		border-radius: 16px;
+		/* Remove background/border from here, move to .card-bg */
+		background: transparent;
+		border: none;
+		box-shadow: none;
+
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -109,6 +214,18 @@
 		padding: 3rem;
 		gap: 1.5rem;
 		text-align: center;
+	}
+
+	.card-bg {
+		position: absolute;
+		inset: 0;
+		border-radius: 16px;
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		background: rgba(10, 10, 20, 0.6);
+		/* backdrop-filter: blur(12px); */
+		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+		overflow: hidden; /* Clips the internal content (like hologram) but NOT the tooltip */
+		z-index: -1; /* Sit behind content */
 	}
 
 	/* === 3. HERO LAYOUT (Horizontal) === */
@@ -128,7 +245,7 @@
 			height: 550px !important;
 			margin-bottom: 0 !important;
 			/* Add a cool float effect specifically for Hero mode */
-			filter: drop-shadow(0 0 30px rgba(189, 0, 255, 0.6)) !important;
+			filter: drop-shadow(0 0 30px rgba(168, 168, 168, 0.6)) !important;
 		}
 
 		/* Move the text/stats to the right side */
