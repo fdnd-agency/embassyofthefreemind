@@ -1,127 +1,238 @@
 <script>
 	import PokemonStats from './PokemonStats.svelte';
 
-	let { data, index = 0 } = $props(); // Default index to 0
+	let { data, index = 0 } = $props();
 	let isFlipped = $state(false);
-
-	let totalStats = $derived(data.stats.reduce((acc, curr) => acc + curr.base_stat, 0));
-	let primaryType = $derived(data.types[0].type.name);
+	let totalStats = $derived(data.stats.reduce((a, c) => a + c.base_stat, 0));
 </script>
 
 <div class="card-scene" style:--i={index} on:click={() => (isFlipped = !isFlipped)}>
 	<div class="card-inner" class:flipped={isFlipped}>
 		<div class="card-face card-front">
-			<div class="header">
-				<img src={data.sprites.front_default} alt={data.name} />
-				<h3>{data.name}</h3>
+			<div class="hologram-overlay"></div>
+
+			<div class="content">
+				<img
+					src={data.sprites.other.dream_world.front_default || data.sprites.front_default}
+					alt={data.name}
+				/>
+
+				<div class="stats-wrapper">
+					<h3>{data.name}</h3>
+					<PokemonStats stats={data.stats} />
+				</div>
 			</div>
-			<PokemonStats stats={data.stats} />
-			<p class="hint">Tap to flip</p>
 		</div>
 
 		<div class="card-face card-back" style:--total-stats={totalStats}>
 			<div class="back-content">
-				<h2>{primaryType.toUpperCase()}</h2>
-				<div class="stat-box">
-					<span>BST</span>
-					<strong>{totalStats}</strong>
-				</div>
+				<h2>{data.types[0].type.name.toUpperCase()}</h2>
+				<strong class="stat-number">{totalStats}</strong>
+				<span class="stat-label">ENERGY SIGNATURE</span>
 			</div>
 		</div>
 	</div>
 </div>
 
 <style>
-	/* === ENTRY ANIMATION WITH @starting-style === */
+	/* === 1. CONTAINER SETUP === */
 	.card-scene {
-		/* REMOVE THIS: height: 420px; */
-
-		/* ADD THIS: */
-		height: 100%; /* Fill the grid cell */
-		min-height: 420px; /* But never get smaller than this */
+		height: 100%;
+		min-height: 400px; /* Made slightly taller */
 		width: 100%;
-
 		cursor: pointer;
-		/* 1. Define the Final State */
+		perspective: 1000px;
+
+		/* Enable Container Queries on THIS element */
+		container-type: inline-size;
+		container-name: card-component;
+
+		/* Animations */
 		opacity: 1;
 		scale: 1;
 		translate: 0 0;
-
-		/* 2. Transition settings */
-		/* We calculate delay based on index: 0ms, 100ms, 200ms... */
 		transition:
-			opacity 0.6s ease-out,
-			scale 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
-			translate 0.6s ease-out;
-
+			opacity 0.6s,
+			scale 0.6s,
+			translate 0.6s;
 		transition-delay: calc(var(--i) * 100ms);
+		animation: float 6s ease-in-out infinite;
+		animation-delay: calc(var(--i) * -0.5s);
 	}
 
-	/* 3. Define the Initial State (Before it appears) */
 	@starting-style {
 		.card-scene {
 			opacity: 0;
 			scale: 0.8;
-			translate: 0 50px; /* Slide up from bottom */
+			translate: 0 50px;
+		}
+	}
+	@keyframes float {
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-15px);
 		}
 	}
 
-	/* === REST OF CARD STYLES === */
 	.card-inner {
 		position: relative;
 		width: 100%;
 		height: 100%;
-		text-align: center;
-		transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 		transform-style: preserve-3d;
+		transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1.2);
 	}
-
 	.card-inner.flipped {
 		transform: rotateY(180deg);
 	}
 
+	/* === 2. STANDARD CARD FACE (Vertical) === */
 	.card-face {
 		position: absolute;
 		width: 100%;
 		height: 100%;
 		backface-visibility: hidden;
-		-webkit-backface-visibility: hidden;
 		border-radius: 16px;
-		box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.2);
-		background: white;
-		padding: 1.5rem;
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		overflow: hidden;
+		background: rgba(10, 10, 20, 0.6);
+		backdrop-filter: blur(12px);
+		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+
+		/* Default: Vertical Flex */
 		display: flex;
 		flex-direction: column;
-		overflow: hidden;
+		align-items: center;
+		justify-content: center;
+		padding: 3rem;
+		gap: 1.5rem;
+		text-align: center;
 	}
 
-	/* Front Specifics */
+	/* === 3. HERO LAYOUT (Horizontal) === */
+	/* TRIGGER: When the card is wider than 600px (i.e., Single Card Mode) */
+	@container card-component (min-width: 600px) and style(--hero: true) {
+		.card-front {
+			flex-direction: row; /* Switch to Horizontal */
+			align-items: center;
+			justify-content: space-between;
+			text-align: left;
+			padding: 4rem; /* More breathing room */
+		}
+
+		/* Make the image huge on the left */
+		.content img {
+			width: 550px !important;
+			height: 550px !important;
+			margin-bottom: 0 !important;
+			/* Add a cool float effect specifically for Hero mode */
+			filter: drop-shadow(0 0 30px rgba(189, 0, 255, 0.6)) !important;
+		}
+
+		/* Move the text/stats to the right side */
+		.content {
+			display: flex;
+			flex-direction: row;
+			width: 100%;
+			gap: 3rem;
+			align-items: center;
+		}
+
+		/* Wrap the stats in a nice box on the right */
+		.stats-wrapper {
+			flex: 1;
+			background: rgba(0, 0, 0, 0.3);
+			padding: 5rem;
+			border-radius: 12px;
+			border: 1px solid rgba(255, 255, 255, 0.1);
+		}
+
+		h3 {
+			font-size: 5rem; /* Giant Name */
+			margin-bottom: 0.5rem;
+		}
+	}
+
+	@container card-component (min-width: 600px) {
+		.content img {
+			width: 550px !important;
+			height: 550px !important;
+		}
+	}
+
+	/* === 4. INTERNAL STYLING === */
 	.card-front {
 		z-index: 2;
-	}
-	.header {
-		display: flex;
-		align-items: center;
-		gap: 1rem;
-		margin-bottom: 1rem;
-		text-transform: capitalize;
-	}
-	.header img {
-		width: 70px;
-		height: 70px;
-	}
-	.hint {
-		margin-top: auto;
-		font-size: 0.75rem;
-		color: #aaa;
-		letter-spacing: 1px;
+		color: white;
 	}
 
-	/* Back Specifics */
+	/* We need a wrapper div for text to flex properly in Hero mode */
+	.content {
+		width: 100%;
+	}
+
+	.content img {
+		width: 140px;
+		height: 140px;
+		filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4));
+		margin-bottom: 1.5rem;
+		transition: all 0.5s ease;
+	}
+
+	h3 {
+		margin: 0 0 1.5rem 0;
+		text-transform: uppercase;
+		letter-spacing: 4px;
+		font-size: 1.5rem;
+		text-shadow: 0 0 10px #bd00ff;
+	}
+
+	.hologram-overlay {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(
+			125deg,
+			transparent 30%,
+			rgba(255, 255, 255, 0.1) 40%,
+			transparent 50%
+		);
+		z-index: -1;
+		pointer-events: none;
+	}
+
+	/* === 5. BACK FACE === */
 	.card-back {
 		transform: rotateY(180deg);
+		background-image: url('/images/texture-back.jpg');
+		background-size: cover;
 		container-name: back-card;
-		color: white;
+	}
+
+	.back-content {
+		background: rgba(0, 0, 0, 0.8);
+		padding: 3rem;
+		border-radius: 50%;
+		text-align: center;
+		border: 2px solid rgba(255, 255, 255, 0.1);
+		aspect-ratio: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		backdrop-filter: blur(10px);
+	}
+
+	.stat-number {
+		font-size: 4rem;
+		display: block;
+		line-height: 1;
+	}
+	.stat-label {
+		font-size: 0.8rem;
+		color: #aaa;
+		letter-spacing: 2px;
+		margin-top: 0.5rem;
 	}
 
 	@property --total-stats {
@@ -130,46 +241,24 @@
 		initial-value: 0;
 	}
 
-	.back-content {
-		height: 100%;
-		border-radius: 12px;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		gap: 1rem;
-		background: linear-gradient(135deg, #667eea, #764ba2); /* Default */
-	}
-
-	.stat-box {
-		background: rgba(255, 255, 255, 0.2);
-		padding: 1rem 2rem;
-		border-radius: 8px;
-		backdrop-filter: blur(5px);
-	}
-	.stat-box strong {
-		display: block;
-		font-size: 2.5rem;
-		line-height: 1;
-	}
-
-	/* Tier Logic */
-	@container back-card style(--total-stats < 350) {
-		.back-content {
-			background: linear-gradient(135deg, #8b4513, #a0522d);
-			border: 4px solid #cd7f32;
-		}
-	}
-	@container back-card style(--total-stats >= 350) and style(--total-stats < 500) {
-		.back-content {
-			background: linear-gradient(135deg, #bdc3c7, #2c3e50);
-			border: 4px solid silver;
-		}
-	}
 	@container back-card style(--total-stats >= 500) {
 		.back-content {
-			background: linear-gradient(135deg, #f2994a, #f2c94c);
-			border: 4px solid gold;
+			box-shadow: 0 0 60px #bd00ff;
+			border-color: #bd00ff;
+		}
+		.stat-number {
+			color: #bd00ff;
+			text-shadow: 0 0 20px #bd00ff;
+		}
+	}
+	@container back-card style(--total-stats < 500) {
+		.back-content {
+			box-shadow: 0 0 40px #00f0ff;
+			border-color: #00f0ff;
+		}
+		.stat-number {
+			color: #00f0ff;
+			text-shadow: 0 0 20px #00f0ff;
 		}
 	}
 </style>

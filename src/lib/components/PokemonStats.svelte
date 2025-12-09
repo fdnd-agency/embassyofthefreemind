@@ -23,9 +23,14 @@
 		container-name: stat-row;
 		display: flex;
 		align-items: center;
-		gap: 1rem;
-		margin-bottom: 0.5rem;
+		gap: 0.8rem;
+		margin-bottom: 0.6rem;
+		font-size: 0.75rem;
+		color: rgba(255, 255, 255, 0.8);
+		font-family: 'Courier New', monospace;
+		letter-spacing: 1px;
 
+		/* Register variable for Range Queries */
 		@property --stat {
 			syntax: '<number>';
 			inherits: true;
@@ -33,13 +38,30 @@
 		}
 	}
 
+	.label {
+		width: 30%;
+		text-align: right;
+		font-size: 0.7rem;
+		text-transform: uppercase;
+		color: #a5f3fc; /* Light cyan text */
+	}
+
+	.number {
+		width: 30px;
+		text-align: right;
+		font-weight: bold;
+		color: #fff;
+	}
+
 	/* 2. Base Bar Styles */
 	.bar-track {
 		flex: 1;
-		background: #eee;
-		height: 10px;
-		border-radius: 5px;
+		/* Dark glass track */
+		background: rgba(255, 255, 255, 0.1);
+		height: 6px;
+		border-radius: 2px;
 		overflow: hidden;
+		box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
 	}
 
 	.bar-fill {
@@ -47,33 +69,46 @@
 		/* Math logic handled in CSS */
 		width: calc((var(--stat) / 255) * 100%);
 		transition:
-			width 0.4s ease,
+			width 1s cubic-bezier(0.22, 1, 0.36, 1),
 			background-color 0.4s;
-		background-color: #ccc; /* Default */
+
+		/* Default fallback */
+		background-color: #555;
 	}
 
-	/* 3. The Logic (Range Queries) */
-	/* Note: Scoped styles work perfectly here */
+	/* 3. The Logic (Range Queries) - NEON EDITION */
 
+	/* WEAK STATS (Low Energy) - Dim Red/Orange */
 	@container stat-row style(--stat < 50) {
 		.bar-fill {
 			background-color: #ef4444;
-		} /* Red */
+			box-shadow: 0 0 5px #ef4444;
+		}
 	}
 
-	@container stat-row style(--stat >= 50) and style(--stat < 100) {
+	/* AVERAGE STATS - Neon Cyan */
+	@container stat-row style(--stat >= 50) and style(--stat < 90) {
 		.bar-fill {
-			background-color: #eab308;
-		} /* Yellow */
+			background-color: #00f0ff;
+			box-shadow: 0 0 8px #00f0ffaa;
+		}
 	}
 
-	@container stat-row style(--stat >= 100) {
+	/* STRONG STATS - Neon Purple/Pink */
+	@container stat-row style(--stat >= 90) and style(--stat < 120) {
 		.bar-fill {
-			background-color: #22c55e;
-		} /* Green */
-		/* Add a glow for high stats */
+			background-color: #bd00ff;
+			box-shadow: 0 0 12px #bd00ff;
+		}
+	}
+
+	/* GOD TIER - White Hot Core */
+	@container stat-row style(--stat >= 120) {
 		.bar-fill {
-			box-shadow: 0 0 8px #22c55e88;
+			background: linear-gradient(90deg, #bd00ff, #fff);
+			box-shadow:
+				0 0 15px #ffffff,
+				0 0 30px #bd00ff;
 		}
 	}
 </style>

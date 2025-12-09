@@ -1,137 +1,246 @@
 <script>
 	import PokemonCard from '$lib/components/PokemonCard.svelte';
+
 	let pokemonList = $state([]);
 	let isLoading = $state(false);
 
 	const getRandomId = () => Math.floor(Math.random() * 1025) + 1;
 
-	async function getPokemonData(id) {
-		try {
-			const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-			if (!res.ok) throw new Error('Failed');
-			return await res.json();
-		} catch (e) {
-			console.error(e);
-			return null;
-		}
-	}
-
 	async function loadBatch(count) {
 		if (isLoading) return;
 		isLoading = true;
-		const promises = Array.from({ length: count }, () => getPokemonData(getRandomId()));
-		const results = await Promise.all(promises);
-		const validResults = results.filter((p) => p !== null);
 
-		// Add new cards to the END of the list
-		pokemonList = [...pokemonList, ...validResults];
+		const promises = Array.from({ length: count }, async () => {
+			try {
+				const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${getRandomId()}`);
+				return res.ok ? await res.json() : null;
+			} catch {
+				return null;
+			}
+		});
+
+		const results = await Promise.all(promises);
+		pokemonList = [...pokemonList, ...results.filter((p) => p)];
 		isLoading = false;
 	}
 
 	function handleReset() {
 		pokemonList = [];
-		loadBatch(6);
+		loadBatch(1); // Start with 1 to immediately see the Black Hole effect
 	}
 
 	$effect(() => {
-		if (pokemonList.length === 0) loadBatch(1); // Start with 3 for dramatic layout demo
+		if (pokemonList.length === 0) loadBatch(1);
 	});
 </script>
 
 <main class="container">
 	<header>
-		<h1>Dynamic Layouts & Entry</h1>
+		<h1 class="glitch-text" data-text="space psychedelia gravatitational image gallery + cardflip">
+			space psychedelia gravatitational image gallery + cardflip
+		</h1>
 		<div class="controls">
-			<button on:click={() => loadBatch(1)} disabled={isLoading}>+ Add 1</button>
-			<button class="secondary" on:click={handleReset} disabled={isLoading}>Reset</button>
+			<button on:click={() => loadBatch(1)} disabled={isLoading}>SUMMON ENTITY</button>
+			<button class="secondary" on:click={handleReset} disabled={isLoading}>PURGE & RESET</button>
 		</div>
 	</header>
 
 	<div class="card-grid">
 		{#each pokemonList as poke, i (poke.id + Math.random())}
-			<PokemonCard data={poke} index={i % 10} />
+			<PokemonCard data={poke} index={i} />
 		{/each}
 	</div>
 </main>
 
+<div class="cosmic-bg"></div>
+<div class="vignette"></div>
+
 <style>
+	/* === 1. GLOBAL ATMOSPHERE === */
+	:global(html) {
+		/* Ensure html takes full height so body can stretch */
+		height: 100%;
+	}
+
+	:global(body) {
+		/* FIX: Made transparent so we see the layer behind it */
+		background: transparent;
+		color: #e0f2fe;
+		font-family: 'Courier New', monospace;
+		margin: 0;
+		/* Ensure body takes full screen to allow scrolling */
+		min-height: 100vh;
+		overflow-x: hidden;
+	}
+
+	.cosmic-bg {
+		position: fixed;
+		inset: 0;
+		z-index: -2;
+		/* FIX: Apply the dark color HERE as a fallback/base */
+		background-color: #050505;
+		background-image: url('images/bg-space.jpg');
+		background-size: cover;
+		background-position: center;
+		transition:
+			transform 3s ease,
+			filter 3s ease;
+	}
+
+	/* Dark overlay to make text readable */
+	.vignette {
+		position: fixed;
+		inset: 0;
+		z-index: -1;
+		background: radial-gradient(circle at center, transparent 0%, #000 90%);
+		pointer-events: none;
+	}
+
+	/* === 2. THE BLACK HOLE TRIGGER === */
+	.container:has(.card-grid > :global(:nth-child(1):last-child)) ~ .cosmic-bg {
+		background-image: url('/images/bg-blackhole.jpg');
+		animation: gravity-spin 60s linear infinite;
+		transform: scale(1.2);
+	}
+
+	@keyframes gravity-spin {
+		from {
+			transform: scale(1.7) rotate(0deg);
+		}
+		to {
+			transform: scale(1.7) rotate(360deg);
+		}
+	}
+
+	/* === 3. LAYOUT === */
 	.container {
-		max-width: 1200px;
+		max-width: 1400px;
 		margin: 0 auto;
 		padding: 2rem;
-		font-family: system-ui, sans-serif;
+		position: relative;
 	}
 
 	header {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		margin-bottom: 2rem;
-		gap: 1rem;
+		text-align: center;
+		margin-bottom: 3rem;
 	}
+
+	h1.glitch-text {
+		font-size: 3rem;
+		letter-spacing: 5px;
+		/* Increased glow for better readability against space */
+		text-shadow:
+			0 0 10px #bd00ff,
+			0 0 20px #bd00ff,
+			0 0 40px #bd00ff;
+		position: relative;
+		display: inline-block;
+	}
+
+	::target-text {
+		background-color: #bd00ff;
+		color: #050505;
+		font-weight: bold;
+		box-shadow: 0 0 15px #bd00ff;
+	}
+
+	/* FIX: Improved Glitch Visibility */
+	h1.glitch-text::before {
+		content: attr(data-text);
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		text-shadow: -2px 0 #00f0ff;
+		background: transparent; /* Changed from black to see through */
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		animation: glitch-anim 4s infinite linear alternate-reverse;
+	}
+
+	/* FIX: New 'Bursty' Animation (Mostly static, sudden jumps) */
+	@keyframes glitch-anim {
+		0% {
+			clip: rect(0, 0, 0, 0);
+			transform: translate(0);
+		}
+		90% {
+			clip: rect(0, 0, 0, 0);
+			transform: translate(0);
+		} /* Stay readable 90% of time */
+		92% {
+			clip: rect(10px, 9999px, 80px, 0);
+			transform: translate(-2px, 2px);
+		}
+		94% {
+			clip: rect(0, 0, 0, 0);
+			transform: translate(0);
+		}
+		96% {
+			clip: rect(44px, 9999px, 56px, 0);
+			transform: translate(2px, -2px);
+		}
+		98% {
+			clip: rect(0, 0, 0, 0);
+			transform: translate(0);
+		}
+		100% {
+			clip: rect(0, 0, 0, 0);
+			transform: translate(0);
+		}
+	}
+
 	.controls {
 		display: flex;
 		gap: 1rem;
+		justify-content: center;
 	}
+
 	button {
-		padding: 0.8rem 1.5rem;
-		border: none;
-		border-radius: 8px;
-		background: #2563eb;
-		color: white;
+		background: rgba(0, 0, 0, 0.6);
+		border: 1px solid #bd00ff;
+		color: #bd00ff;
+		padding: 1rem 2rem;
+		font-family: inherit;
+		text-transform: uppercase;
+		letter-spacing: 2px;
 		cursor: pointer;
-		transition: scale 0.1s;
+		transition: all 0.3s;
+		backdrop-filter: blur(5px);
 	}
-	button:active {
-		scale: 0.95;
+	button:hover {
+		background: #bd00ff;
+		color: #000;
+		box-shadow: 0 0 20px #bd00ff;
 	}
 	button.secondary {
-		background: #4b5563;
+		border-color: #00f0ff;
+		color: #00f0ff;
+	}
+	button.secondary:hover {
+		background: #00f0ff;
+		box-shadow: 0 0 20px #00f0ff;
 	}
 
-	/* --- DYNAMIC LAYOUT ENGINE (Fixed for Svelte) --- */
-
+	/* === GRID LOGIC === */
 	.card-grid {
 		display: grid;
-		gap: 2rem;
-		transition: all 0.5s ease;
-		/* Default: Standard Auto-Fill Grid */
+		gap: 4rem;
 		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-		max-width: 100%;
+		transition: 0.5s ease;
+		padding-bottom: 50px;
 	}
 
-	/* FIX: We use :global(...) around the child selectors.
-	   This tells Svelte: "Check if the grid HAS a global element that is the 1st child"
-	*/
-
-	/* CASE 1: Exactly 1 Card */
 	.card-grid:has(> :global(:nth-child(1):last-child)) {
 		grid-template-columns: 1fr;
-		max-width: 500px;
+		max-width: 1000px;
 		margin-inline: auto;
+		--hero: true;
 	}
 
-	/* CASE 2: Exactly 2 Cards */
-	.card-grid:has(> :global(:nth-child(2):last-child)) {
-		grid-template-columns: 1fr 1fr;
-		max-width: 800px;
-		margin-inline: auto;
-	}
-
-	/* CASE 3: Bento Box (5+ Cards) */
-	/* Logic: If the grid HAS a 5th child...
-	   Then target the FIRST child and make it span 2x2.
-	*/
 	.card-grid:has(> :global(:nth-child(5))) > :global(:first-child) {
 		grid-column: span 2;
 		grid-row: span 2;
-	}
-
-	/* Mobile Reset */
-	@media (max-width: 700px) {
-		.card-grid:has(> :global(:nth-child(5))) > :global(:first-child) {
-			grid-column: span 1;
-			grid-row: span 1;
-		}
 	}
 </style>
