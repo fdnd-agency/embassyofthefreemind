@@ -26,7 +26,7 @@
 
 	function handleReset() {
 		pokemonList = [];
-		loadBatch(1); // Start with 1 to immediately see the Black Hole effect
+		loadBatch(1);
 	}
 
 	$effect(() => {
@@ -46,8 +46,14 @@
 	</header>
 
 	<div class="card-grid">
+		<!-- had eerst meer container fuckery gecombineerd met properties om de eerste image te stylen maar het werd onnodig complex en zorgte voor dubbele code -->
 		{#each pokemonList as poke, i (poke.id + Math.random())}
-			<PokemonCard data={poke} index={i} />
+			<PokemonCard
+				data={poke}
+				index={i}
+				isHero={i === 0 && (pokemonList.length === 1 || pokemonList.length >= 5)}
+				isSingle={pokemonList.length === 1}
+			/>
 		{/each}
 	</div>
 </main>
@@ -56,39 +62,31 @@
 <div class="vignette"></div>
 
 <style>
-	/* === 1. GLOBAL ATMOSPHERE === */
 	:global(html) {
-		/* Ensure html takes full height so body can stretch */
 		height: 100%;
 	}
-
 	:global(body) {
-		/* FIX: Made transparent so we see the layer behind it */
 		background: transparent;
 		color: #e0f2fe;
 		font-family: 'Courier New', monospace;
 		margin: 0;
-		/* Ensure body takes full screen to allow scrolling */
 		min-height: 100vh;
 		overflow-x: hidden;
-		cursor: url('images/star-cursor.svg'), auto;
+		cursor: url('/images/star-cursor.svg'), auto;
 	}
 
 	.cosmic-bg {
 		position: fixed;
 		inset: 0;
 		z-index: -2;
-		/* FIX: Apply the dark color HERE as a fallback/base */
 		background-color: #050505;
-		background-image: url('images/bg-space.jpg');
+		background-image: url('/images/bg-space.jpg');
 		background-size: cover;
 		background-position: center;
 		transition:
 			transform 3s ease,
 			filter 3s ease;
 	}
-
-	/* Dark overlay to make text readable */
 	.vignette {
 		position: fixed;
 		inset: 0;
@@ -97,13 +95,11 @@
 		pointer-events: none;
 	}
 
-	/* === 2. THE BLACK HOLE TRIGGER === */
 	.container:has(.card-grid > :global(:nth-child(1):last-child)) ~ .cosmic-bg {
 		background-image: url('/images/bg-blackhole.jpg');
 		animation: gravity-spin 60s linear infinite;
 		transform: scale(1.2);
 	}
-
 	@keyframes gravity-spin {
 		from {
 			transform: scale(1.7) rotate(0deg);
@@ -113,14 +109,12 @@
 		}
 	}
 
-	/* === 3. LAYOUT === */
 	.container {
 		max-width: 1400px;
 		margin: 0 auto;
 		padding: 2rem;
 		position: relative;
 	}
-
 	header {
 		text-align: center;
 		margin-bottom: 3rem;
@@ -129,23 +123,12 @@
 	h1.glitch-text {
 		font-size: clamp(2rem, calc(10vw+2.5rem), 3rem);
 		letter-spacing: 5px;
-		/* Increased glow for better readability against space */
 		text-shadow:
 			0 0 10px #ffffff,
-			0 0 20px #acacac,
-			0 0 40px #a5a5a5;
+			0 0 20px #acacac;
 		position: relative;
 		display: inline-block;
 	}
-
-	::target-text {
-		background-color: #bd00ff;
-		color: #050505;
-		font-weight: bold;
-		box-shadow: 0 0 15px #bd00ff;
-	}
-
-	/* FIX: Improved Glitch Visibility */
 	h1.glitch-text::before {
 		content: attr(data-text);
 		position: absolute;
@@ -154,37 +137,24 @@
 		width: 100%;
 		height: 100%;
 		text-shadow: -2px 0 #00f0ff;
-		background: transparent; /* Changed from black to see through */
+		background: transparent;
 		overflow: hidden;
 		clip: rect(0, 0, 0, 0);
 		animation: glitch-anim 4s infinite linear alternate-reverse;
 	}
-
-	/* FIX: New 'Bursty' Animation (Mostly static, sudden jumps) */
 	@keyframes glitch-anim {
-		0% {
-			clip: rect(0, 0, 0, 0);
-			transform: translate(0);
-		}
+		0%,
 		90% {
 			clip: rect(0, 0, 0, 0);
 			transform: translate(0);
-		} /* Stay readable 90% of time */
+		}
 		92% {
 			clip: rect(10px, 9999px, 80px, 0);
 			transform: translate(-2px, 2px);
 		}
-		94% {
-			clip: rect(0, 0, 0, 0);
-			transform: translate(0);
-		}
 		96% {
 			clip: rect(44px, 9999px, 56px, 0);
 			transform: translate(2px, -2px);
-		}
-		98% {
-			clip: rect(0, 0, 0, 0);
-			transform: translate(0);
 		}
 		100% {
 			clip: rect(0, 0, 0, 0);
@@ -197,104 +167,76 @@
 		gap: 1rem;
 		justify-content: center;
 	}
-
 	button {
 		background: rgba(0, 0, 0, 0.6);
 		border: 1px solid #bd00ff;
-		color: #ffffff;
+		color: white;
 		padding: 1rem 2rem;
-		font-family: inherit;
-		text-transform: uppercase;
-		letter-spacing: 2px;
 		cursor: pointer;
 		transition: all 0.3s;
 		backdrop-filter: blur(5px);
+		font-family: inherit;
 	}
 	button:hover {
 		background: #bd00ff;
-		color: #000;
+		color: black;
 		box-shadow: 0 0 20px #bd00ff;
 	}
 	button.secondary {
 		border-color: #00f0ff;
-		color: #ffffff;
 	}
 	button.secondary:hover {
 		background: #00f0ff;
-		color: #000;
 		box-shadow: 0 0 20px #00f0ff;
 	}
 
 	/* === GRID LOGIC === */
-	/* === THE DYNAMIC GRID BRAIN === */
 	.card-grid {
 		display: grid;
 		gap: 5rem;
-		transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+		transition: all 0.5s ease;
 		padding-bottom: 50px;
-
-		/* DEFAULT STATE (Fallback) */
 		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 		max-width: 1400px;
 		margin-inline: auto;
 	}
 
-	/* --- SCENARIO 1: THE SINGULARITY (1 Card) --- */
-	/* Huge, centered, passes --hero: true flag */
+	/* 1 Card */
 	.card-grid:has(> :global(:nth-child(1):last-child)) {
 		grid-template-columns: 1fr;
 		max-width: 1000px;
 		--hero: true;
 	}
-
-	/* --- SCENARIO 2: THE DUEL (Exactly 2 Cards) --- */
-	/* Divisible by 2. Side-by-side, tall pillars. */
+	/* 2 Cards */
 	.card-grid:has(> :global(:nth-child(2):last-child)) {
 		grid-template-columns: 1fr 1fr;
 		max-width: 1200px;
-		align-items: stretch; /* Make them same height */
 	}
-
-	/* --- SCENARIO 3: THE PYRAMID (Exactly 3 Cards) --- */
-	/* Not divisible by 2. 
-   Layout: 1 Huge Card on top (spanning full width), 2 standard below. 
-*/
+	/* 3 Cards */
 	.card-grid:has(> :global(:nth-child(3):last-child)) {
 		grid-template-columns: 1fr 1fr;
 		max-width: 900px;
 	}
-	/* Target the 1st card in a set of 3 */
 	.card-grid:has(> :global(:nth-child(3):last-child)) > :global(:first-child) {
 		grid-column: span 2;
-		/* Optional: Pass hero flag if you want the top one to be wide */
-		--hero: true;
 	}
-
-	/* --- SCENARIO 4: THE SQUAD (Exactly 4 Cards) --- */
-	/* Divisible by 2. A perfect 2x2 Square. */
+	/* 4 Cards */
 	.card-grid:has(> :global(:nth-child(4):last-child)) {
-		grid-template-columns: 1fr 1fr; /* Force 2 columns */
-		max-width: 1000px; /* Keep the group tight */
-		gap: 2rem;
+		grid-template-columns: 1fr 1fr;
+		max-width: 1000px;
+		/* gap: 2rem; */
 	}
-
-	/* --- SCENARIO 5+: THE BENTO (5 or more Cards) --- */
-	/* The layout you had before: 1st card takes 2x2 slot */
-	.card-grid:has(> :global(:nth-child(5))) {
-		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-	}
+	/* 5+ Cards */
 	.card-grid:has(> :global(:nth-child(5))) > :global(:first-child) {
 		grid-column: span 2;
 		grid-row: span 2;
 	}
 
-	/* --- MOBILE OVERRIDE --- */
-	/* Crush everything to 1 column on phones */
+	/* update sometime */
 	@media (max-width: 768px) {
 		.card-grid:has(> :global(*)) {
 			grid-template-columns: 1fr !important;
 		}
-		/* Reset spans */
 		.card-grid > :global(*) {
 			grid-column: auto !important;
 			grid-row: auto !important;
