@@ -71,6 +71,7 @@
 		/* Ensure body takes full screen to allow scrolling */
 		min-height: 100vh;
 		overflow-x: hidden;
+		cursor: url('images/star-cursor.svg'), auto;
 	}
 
 	.cosmic-bg {
