@@ -1,6 +1,6 @@
 <script>
 	import favicon from '$lib/assets/favicon.svg';
-	import { NavBar, Footer } from '$lib';
+	// import { NavBar, Footer } from '$lib';
 
 	let { children } = $props();
 </script>
@@ -9,11 +9,11 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<NavBar />
+<!-- <NavBar /> -->
 
 {@render children?.()}
 
-<Footer />
+<!-- <Footer /> -->
 
 <style>
 	@font-face {
