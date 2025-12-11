@@ -62,11 +62,18 @@
 	.bar-fill {
 		height: 100%;
 		width: calc((var(--stat) / 255) * 100%);
+
 		transition:
 			width 1s cubic-bezier(0.22, 1, 0.36, 1),
 			background-color 0.4s;
 
 		background-color: #555;
+	}
+
+	@starting-style {
+		.bar-fill {
+			width: 0%;
+		}
 	}
 
 	@container stat-row style(--stat < 50) {
