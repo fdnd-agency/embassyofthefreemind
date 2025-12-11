@@ -275,8 +275,8 @@
 		background: rgba(0, 0, 0, 0.4);
 		padding: 2rem;
 		border-radius: 16px;
-		border: 1px solid rgba(189, 0, 255, 0.3);
-		box-shadow: 0 0 30px rgba(189, 0, 255, 0.2);
+		border: 1px solid rgba(204, 204, 204, 0.3);
+		box-shadow: 0 0 30px rgba(119, 119, 119, 0.2);
 	}
 	.hero-mode h3 {
 		font-size: 3.5rem;
@@ -334,8 +334,9 @@
 		margin: 0 0 1.5rem 0;
 		text-transform: uppercase;
 		letter-spacing: 4px;
-		font-size: 1.8rem;
-		text-shadow: 0 0 10px #bd00ff;
+		font-size: 1.7rem;
+		text-shadow: 0 0 5px #7f72ac;
+		font-weight: 500;
 	}
 
 	.hologram-overlay {

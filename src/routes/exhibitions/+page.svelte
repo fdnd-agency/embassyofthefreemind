@@ -142,10 +142,11 @@
 		font-size: clamp(2rem, calc(10vw+2.5rem), 3rem);
 		letter-spacing: 5px;
 		text-shadow:
-			0 0 10px #ffffff,
-			0 0 20px #acacac;
+			0 0 5px #ffffff,
+			0 0 10px #acacac;
 		position: relative;
 		display: inline-block;
+		font-weight: 520;
 	}
 	h1.glitch-text::before {
 		content: attr(data-text);
