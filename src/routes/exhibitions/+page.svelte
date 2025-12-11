@@ -24,9 +24,26 @@
 		isLoading = false;
 	}
 
+	function handleClearAndLoad() {
+		pokemonList = [];
+		loadBatch(6);
+	}
+
 	function handleReset() {
 		pokemonList = [];
 		loadBatch(1);
+	}
+
+	async function handleReroll(index) {
+		try {
+			const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${getRandomId()}`);
+			if (res.ok) {
+				const newData = await res.json();
+				pokemonList[index] = newData;
+			}
+		} catch (e) {
+			console.error('Reroll failed', e);
+		}
 	}
 
 	$effect(() => {
@@ -41,18 +58,19 @@
 		</h1>
 		<div class="controls">
 			<button on:click={() => loadBatch(1)} disabled={isLoading}>SUMMON ENTITY</button>
+			<button on:click={handleClearAndLoad} disabled={isLoading}>SUMMON SQUAD (6)</button>
 			<button class="secondary" on:click={handleReset} disabled={isLoading}>PURGE & RESET</button>
 		</div>
 	</header>
 
 	<div class="card-grid">
-		<!-- had eerst meer container fuckery gecombineerd met properties om de eerste image te stylen maar het werd onnodig complex en zorgte voor dubbele code -->
 		{#each pokemonList as poke, i (poke.id + Math.random())}
 			<PokemonCard
 				data={poke}
 				index={i}
 				isHero={i === 0 && (pokemonList.length === 1 || pokemonList.length >= 5)}
 				isSingle={pokemonList.length === 1}
+				onReroll={() => handleReroll(i)}
 			/>
 		{/each}
 	</div>
@@ -190,7 +208,6 @@
 		box-shadow: 0 0 20px #00f0ff;
 	}
 
-	/* === GRID LOGIC === */
 	.card-grid {
 		display: grid;
 		gap: 5rem;
