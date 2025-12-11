@@ -1,27 +1,34 @@
 <script>
 	import PokemonStats from './PokemonStats.svelte';
 
-	// Props
-	let { data, index = 0, isHero = false, isSingle = false } = $props();
+	let { data, index = 0, isHero = false, isSingle = false, onReroll } = $props();
 
 	let isFlipped = $state(false);
 	let totalStats = $derived(data.stats.reduce((a, c) => a + c.base_stat, 0));
 	let anchorName = $derived(`--entity-${data.id}`);
+
+	function handleRerollClick(e) {
+		e.stopPropagation();
+		onReroll?.();
+	}
 </script>
 
-<!-- svelte doesn't like this -->
 <div
 	class="card-scene"
 	class:hero-mode={isHero}
 	class:single-mode={isSingle}
 	style:--i={index}
-	on:click={() => (isFlipped = !isFlipped)}
+	onclick={() => (isFlipped = !isFlipped)}
+	role="button"
+	tabindex="0"
+	onkeydown={(e) => e.key === 'Enter' && (isFlipped = !isFlipped)}
 >
+	<button class="reroll-btn" onclick={handleRerollClick} aria-label="Reroll Card"> ↻ </button>
+
 	<div class="card-inner" class:flipped={isFlipped}>
 		<div class="card-face card-front">
 			<div class="card-bg"></div>
 			<div class="hologram-overlay"></div>
-
 			<div class="content">
 				<img
 					src={data.sprites.other.dream_world.front_default || data.sprites.front_default}
@@ -55,6 +62,60 @@
 </div>
 
 <style>
+	.reroll-btn {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		z-index: 20;
+		width: 32px;
+		height: 32px;
+		border-radius: 50%;
+		background: rgba(0, 0, 0, 0.6);
+		border: 1px solid #00f0ff;
+		color: #00f0ff;
+		font-size: 1.2rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+		opacity: 0;
+		transition: all 0.2s ease;
+	}
+	.card-scene:hover .reroll-btn {
+		opacity: 1;
+	}
+	.reroll-btn:hover {
+		background: #00f0ff;
+		color: black;
+		box-shadow: 0 0 10px #00f0ff;
+		transform: rotate(180deg);
+	}
+
+	.card-scene {
+		transition:
+			opacity 0.6s,
+			scale 0.6s,
+			translate 0.6s,
+			z-index 0s,
+			transform 0.3s ease;
+	}
+	.card-scene:hover {
+		transform: translateY(-10px);
+		z-index: 100;
+	}
+
+	.card-inner {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		transform-style: preserve-3d;
+		transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1.2);
+		transform-origin: center center;
+	}
+	.card-inner.flipped {
+		transform: rotateY(180deg);
+	}
+
 	.card-scene {
 		height: 100%;
 		min-height: 400px;
@@ -73,11 +134,17 @@
 			opacity 0.6s,
 			scale 0.6s,
 			translate 0.6s,
-			z-index 0s;
+			z-index 0s,
+			transform 0.3s ease;
 		transition-delay: calc(var(--i) * 100ms);
 		animation: float 6s ease-in-out infinite;
 		animation-delay: calc(var(--i) * -0.5s);
 	}
+	.card-scene:hover {
+		transform: translateY(-10px);
+		z-index: 100;
+	}
+
 	@starting-style {
 		.card-scene {
 			opacity: 0;
@@ -93,17 +160,6 @@
 		50% {
 			transform: translateY(-15px);
 		}
-	}
-
-	.card-inner {
-		position: relative;
-		width: 100%;
-		height: 100%;
-		transform-style: preserve-3d;
-		transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1.2);
-	}
-	.card-inner.flipped {
-		transform: rotateY(180deg);
 	}
 
 	.card-face {
@@ -152,7 +208,7 @@
 		width: max-content;
 		color: #00f0ff;
 		font-family: 'Courier New', monospace;
-		font-size: 0.9rem;
+		font-size: 0.7rem;
 		background: rgba(0, 5, 20, 0.95);
 		border: 1px solid #00f0ff;
 		padding: 1rem;
@@ -208,6 +264,25 @@
 		}
 	}
 
+	.hero-mode .content img {
+		width: 350px !important;
+		height: 350px !important;
+		filter: drop-shadow(0 0 40px rgba(119, 119, 119, 0.7)) !important;
+	}
+	.hero-mode .stats-wrapper {
+		flex: 1;
+		width: 100%;
+		background: rgba(0, 0, 0, 0.4);
+		padding: 2rem;
+		border-radius: 16px;
+		border: 1px solid rgba(189, 0, 255, 0.3);
+		box-shadow: 0 0 30px rgba(189, 0, 255, 0.2);
+	}
+	.hero-mode h3 {
+		font-size: 3.5rem;
+		margin-bottom: 1rem;
+	}
+
 	.hero-mode .card-front {
 		flex-direction: column;
 		justify-content: center;
@@ -220,26 +295,8 @@
 		gap: 3rem;
 		align-items: center;
 	}
-
 	.hero-mode .content img {
-		width: 350px !important;
-		height: 350px !important;
-		filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.7)) !important;
-		margin-bottom: 2rem !important;
-	}
-
-	.hero-mode .stats-wrapper {
-		flex: 1;
-		background: rgba(0, 0, 0, 0.4);
-		padding: 2rem;
-		width: 100%;
-		border-radius: 16px;
-		border: 1px solid rgba(255, 255, 255, 0.3);
-		box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-	}
-	.hero-mode h3 {
-		font-size: 3.5rem;
-		margin-bottom: 1rem;
+		margin-bottom: 1rem !important;
 	}
 
 	.hero-mode.single-mode .card-front {
@@ -247,6 +304,7 @@
 		align-items: center;
 		justify-content: space-between;
 		text-align: left;
+		padding: 4rem;
 	}
 	.hero-mode.single-mode .content {
 		flex-direction: row;
@@ -277,7 +335,7 @@
 		text-transform: uppercase;
 		letter-spacing: 4px;
 		font-size: 1.8rem;
-		text-shadow: 0 0 10px #636363;
+		text-shadow: 0 0 10px #bd00ff;
 	}
 
 	.hologram-overlay {
@@ -328,7 +386,6 @@
 		initial-value: 0;
 	}
 
-	/* === TIER LOGIC === */
 	@container back-card style(--total-stats < 400) {
 		.card-bg {
 			background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000&auto=format&fit=crop');
