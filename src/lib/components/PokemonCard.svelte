@@ -273,7 +273,7 @@
 		flex: 1;
 		width: 100%;
 		background: rgba(0, 0, 0, 0.4);
-		padding: 2rem;
+		padding: 1rem;
 		border-radius: 16px;
 		border: 1px solid rgba(204, 204, 204, 0.3);
 		box-shadow: 0 0 30px rgba(119, 119, 119, 0.2);
