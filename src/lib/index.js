@@ -5,3 +5,5 @@ export { default as SectionWithLinks } from './components/organisms/sectionwithl
 export { default as Exhibitions } from './components/organisms/exhibitions/Exhibitions.svelte';
 export { default as Hero } from './components/organisms/hero/Hero.svelte';
 export { default as NavBar } from './components/organisms/navbar/NavBar.svelte';
+export { default as MinimalistSection } from './components/organisms/minimalist/MinimalistSection.svelte';
+
