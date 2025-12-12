@@ -176,7 +176,7 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		padding: 3rem;
+		padding: 1rem;
 		gap: 1.5rem;
 		text-align: center;
 	}
@@ -286,7 +286,7 @@
 	.hero-mode .card-front {
 		flex-direction: column;
 		justify-content: center;
-		padding: 4rem;
+		padding: 2rem;
 	}
 	.hero-mode .content {
 		display: flex;
@@ -304,7 +304,7 @@
 		align-items: center;
 		justify-content: space-between;
 		text-align: left;
-		padding: 4rem;
+		padding: 2rem;
 	}
 	.hero-mode.single-mode .content {
 		flex-direction: row;

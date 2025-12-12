@@ -123,7 +123,7 @@
 			transform: scale(1.7) rotate(0deg);
 		}
 		to {
-			transform: scale(1.7) rotate(360deg);
+			transform: scale(1.9) rotate(360deg);
 		}
 	}
 
@@ -222,7 +222,7 @@
 	/* 1 Card */
 	.card-grid:has(> :global(:nth-child(1):last-child)) {
 		grid-template-columns: 1fr;
-		max-width: 1000px;
+		max-width: 800px;
 		--hero: true;
 	}
 	/* 2 Cards */
