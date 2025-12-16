@@ -62,7 +62,7 @@
 		place-content: center;
 		container-type: inline-size;
 		container-name: card;
-		@media (min-width: 600px) {
+		@media (min-width: 1800px) {
 			max-width: 85%;
 		}
 	}
