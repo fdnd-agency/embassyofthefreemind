@@ -5,6 +5,8 @@
 
 <Hero />
 
+<SectionWithLinks />
+
 <Exhibitions
 	imageUrl={myImageUrl}
 	title="Off planets perspective"
@@ -12,7 +14,5 @@
 	dates="30 october t/m 28 december, 2025"
 	linkUrl="nog niets"
 />
-
-<SectionWithLinks />
 
 <OnlineCatalog />

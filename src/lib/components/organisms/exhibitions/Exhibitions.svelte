@@ -57,7 +57,7 @@
 		width: 100%;
 		font-family: sans-serif;
 		margin: 0 auto;
-		aspect-ratio: 19/10;
+		aspect-ratio: 16/10;
 		/* background: white; */
 		place-content: center;
 		container-type: inline-size;
@@ -72,7 +72,7 @@
 		flex-direction: column;
 		justify-content: space-between;
 		align-items: baseline;
-		padding-top: 3.5rem;
+		padding-top: 0.5rem;
 		padding-bottom: 1em;
 		padding-right: 1em;
 

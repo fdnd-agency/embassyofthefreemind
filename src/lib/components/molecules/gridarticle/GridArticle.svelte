@@ -3,14 +3,12 @@
 		title = 'Standaard Titel',
 		description = 'Standaard beschrijving...',
 		imageUrl = 'images/default.png',
-		/** @type {string | null} */
-		imageUrlMobile = null,
 		altText = 'Standaard alt-tekst',
 		linkUrl = '#'
 	} = $props();
 </script>
 
-<article class="grid_article">
+<article class="grid-article">
 	<h4>{title}</h4>
 	<p>{description}</p>
 	<div class="media-container">
@@ -27,24 +25,28 @@
 </article>
 
 <style>
-	.grid_article {
+	.grid-article {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		margin-top: 0.5em;
 		@media (width > 700px) {
-			display: flex;
-			flex-direction: column;
-			height: 100%;
 			margin-left: 0.5em;
 			margin-right: 0.5em;
 		}
 	}
 
-	.grid_article h4 {
+	.grid-article h4 {
+		font-weight: 400;
 		text-transform: uppercase;
-		font-size: clamp(1em, 2.2vw, 1.7em);
+		font-size: clamp(1.8em, 2.6vw, 2.7em);
+		margin: 0.2em 0;
 	}
 
-	.grid_article p {
+	.grid-article p {
+		margin-bottom: 1.5rem;
 		@media (width > 700px) {
-			font-size: clamp(1em, 2vw, 1.5em);
+			font-size: clamp(1.25em, 1.1vw, 2.5em);
 		}
 	}
 
@@ -52,12 +54,6 @@
 		position: relative;
 		width: 100%;
 		overflow: hidden;
-		margin-top: 1.5em;
-
-		@media (width > 700px) {
-			flex-grow: 1;
-			min-height: 0;
-		}
 	}
 
 	.grid-image {
@@ -66,11 +62,12 @@
 		display: block;
 		height: 30vh;
 
-		@media (width > 700px) {
-			height: 100%;
+		@media (width > 1100px) {
+			height: auto;
+			width: 100%;
+			aspect-ratio: var(--aspect-ratio, auto);
 		}
 	}
-
 	.read-more-link {
 		position: absolute;
 		bottom: 15px;
@@ -131,7 +128,6 @@
 		.media-container:hover .read-more-link {
 			max-width: 140px;
 		}
-
 		.media-container:hover .read-more-link .text-content {
 			max-width: 100px;
 		}
@@ -140,7 +136,6 @@
 		.media-container:hover .read-more-link {
 			width: 150px;
 		}
-
 		.media-container:hover .read-more-link .text-content {
 			max-width: 120px;
 		}
