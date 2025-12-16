@@ -57,7 +57,6 @@
         --aspect-ratio: 16/9;
     }
 
-
     .grid-item:nth-child(2) {
         grid-column: span 1;
         --aspect-ratio: 4/5;
@@ -67,7 +66,6 @@
         grid-column: span 1;
         --aspect-ratio: 1/1;
     }
-
 
     .grid-item:nth-child(6) {
         grid-column: span 2;
@@ -85,7 +83,6 @@
     }
 }
 
-
 @keyframes Unblur {
     0% {
         opacity: 0;
@@ -102,9 +99,7 @@
     }
 }
 
-
 .grid-item {
-
     opacity: 0;
     animation: Unblur linear both;
     animation-timeline: view();
