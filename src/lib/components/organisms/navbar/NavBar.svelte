@@ -43,7 +43,7 @@
         <li class="nav-item"><a href="#">Verhalen</a></li>
         <li class="nav-item"><a href="#">Online catalogus</a></li>
         <li class="nav-item"><a href="#">Over ons</a></li>
-        <li class="nav-item"><a href="#" style="font-weight:bold;">Tickets kopen</a></li>
+        <li class="nav-item"><a href="/exhibitions" style="font-weight:bold;">Tickets kopen</a></li>
       </ul>
     </nav>
 
