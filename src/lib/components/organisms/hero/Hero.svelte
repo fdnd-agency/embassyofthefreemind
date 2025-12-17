@@ -28,6 +28,12 @@
   let current = 0;
   const total = slides.length;
   let intervalId;
+
+	let heroContentEl;
+  let infoLineEl;
+  let heroArrowsEl;
+  let heroTl;
+
   function nextSlide() {
     current = (current + 1) % total;
   }
@@ -55,8 +61,39 @@
   onMount(() => {
     intervalId = setInterval(nextSlide, SLIDE_DURATION);
 
+    heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+    heroTl
+      .from(heroContentEl, {
+        y: 40,
+        opacity: 0,
+        duration: 0.9
+      })
+
+      .from(
+        heroArrowsEl,
+        {
+          y: 20,
+          opacity: 0,
+          duration: 0.6
+        },
+        '-=0.5' 
+      )
+			
+      .from(
+        infoLineEl,
+        {
+          y: 40,
+          opacity: 0,
+          duration: 0.9
+        },
+        '-=0.3'
+      );
+  });
+
   onDestroy(() => {
     clearInterval(intervalId);
+		if (heroTl) heroTl.kill();
   });
 </script>
 
