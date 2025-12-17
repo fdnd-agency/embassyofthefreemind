@@ -402,11 +402,12 @@ header {
   transform: translateX(120%);
   opacity: 0;
   pointer-events: none;
-  transition: transform 0.3s ease-out, opacity 0.4s ease-in;
+	transition: transform 0.35s ease-out, opacity 0.35s ease-out;
+	z-index: 20;
 }
 
 .sidepanel[hidden] {
-  display: block; /* zodat we kunnen animeren */
+  display: block;
   transform: translateX(120%);
   opacity: 0;
   pointer-events: none;
@@ -418,8 +419,10 @@ header {
   pointer-events: auto;
 }
 
+/* SIDEPANEL CONTENT */
+
 .sidepanel-inner {
-  height: 100%;
+	position: relative;
   display: flex;
   flex-direction: column;
   padding: 5rem 2rem 2rem;
@@ -516,11 +519,12 @@ header {
   display: none;
 }
 
-
 .sidepanel-footer {
-  color: #bbbbbb;
-  margin-top: auto;      
-  padding-bottom: 5rem;  
+	position: absolute;
+	bottom: -200px;
+	right: 2rem;
+  flex-direction: column;
+  gap: 0.75rem;
   text-align: right;
 }
 
