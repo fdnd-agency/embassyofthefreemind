@@ -1,18 +1,18 @@
 <script>
-	import { SectionWithLinks, Exhibitions, Hero, OnlineCatalog} from '$lib';
-	const myImageUrl = '/images/image37.jpg';
+	import { SectionWithLinks, Exhibitions, Hero, OnlineCatalog } from '$lib';
+	const myImageUrl = '/images/image61.jpg';
 </script>
 
 <Hero />
 
+<SectionWithLinks />
+
 <Exhibitions
 	imageUrl={myImageUrl}
-	title="Gewetensvrijheid!"
-	subtitle="Denken, geloven en onderzoeken in Europa, 1500-1800"
-	dates="28 april t/m 7 september 2025"
+	title="Off planets perspective"
+	subtitle="Drawings by Joost Effers"
+	dates="30 october t/m 28 december, 2025"
 	linkUrl="nog niets"
 />
-
-<SectionWithLinks />
 
 <OnlineCatalog />

@@ -13,6 +13,7 @@
 		<h3>Tentoonstellingen</h3>
 		<a href="/exhibitions"
 			>Alle tentoonstellingen bekijken <img
+				class="arrow-exhibition"
 				src="images/arrow-exhibition.svg"
 				height="15"
 				width="15"
@@ -26,15 +27,26 @@
 		<a href={linkUrl} target="_blank" rel="noopener noreferrer" class="overlay-container">
 			<div class="date-arrow-row">
 				<span class="dates">{dates}</span>
-				<div class="arrow-circle">
-					<span><img src="images/arrow-exhibition-2.svg" height="25" width="25" alt="arrow" /></span
-					>
-				</div>
 			</div>
 
 			<div class="text-content">
 				<p class="title"><strong>{title}</strong></p>
 				<p class="subtitle">{subtitle}</p>
+
+				<div class="date-arrow-row">
+					<p class="ticket-text">Boek ticket</p>
+					<div class="arrow-circle">
+						<span
+							><img
+								class="arrow-ticket"
+								src="images/arrow-exhibition-2.svg"
+								height="12"
+								width="12"
+								alt="arrow"
+							/></span
+						>
+					</div>
+				</div>
 			</div>
 		</a>
 	</section>
@@ -45,11 +57,12 @@
 		width: 100%;
 		font-family: sans-serif;
 		margin: 0 auto;
-		background: white;
+		aspect-ratio: 16/10;
+		/* background: white; */
 		place-content: center;
 		container-type: inline-size;
 		container-name: card;
-		@media (min-width: 600px) {
+		@media (min-width: 1800px) {
 			max-width: 85%;
 		}
 	}
@@ -59,9 +72,13 @@
 		flex-direction: column;
 		justify-content: space-between;
 		align-items: baseline;
-		padding-top: 3.5rem;
+		padding-top: 0.5rem;
 		padding-bottom: 1em;
 		padding-right: 1em;
+		@media (min-width: 700px) {
+			max-width: 90%;
+			margin-left: 5%;
+		}
 
 		h3 {
 			text-transform: uppercase;
@@ -95,8 +112,20 @@
 		border-radius: none;
 		overflow: hidden;
 		@media (min-width: 600px) {
-			border-radius: 30px;
+			/* border-radius: 30px; */
 		}
+	}
+	.image-section::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 30%, rgba(85, 85, 85, 0.8) 100%);
+		z-index: 1;
+		pointer-events: none;
+		border-radius: inherit;
 	}
 
 	.main-image {
@@ -109,11 +138,12 @@
 	}
 
 	.overlay-container {
+		z-index: 2;
 		position: absolute;
 		bottom: 0;
 		left: 0;
 		right: 0;
-		background: rgba(255, 255, 255, 0.925);
+		/* background: rgba(255, 255, 255, 0.925); */
 		padding: 25px 30px;
 		text-decoration: none;
 		color: inherit;
@@ -123,7 +153,7 @@
 
 		@container card (width > 600px) {
 			margin-top: 0;
-			width: calc(300px + 15cqw);
+			width: calc(400px + 15cqw);
 			left: clamp(2rem, 10cqw, 4rem);
 			bottom: clamp(2rem, 5cqw, 3.5rem);
 			border-radius: 30px;
@@ -132,32 +162,40 @@
 	}
 
 	.dates {
+		margin-bottom: 0.4vw;
 		@container card (width > 600px) {
-			margin-bottom: 2vw;
 			margin-left: 0.5em;
 		}
 	}
 	.overlay-container:hover {
-		background: rgba(255, 255, 255, 1);
+		/* background: rgba(255, 255, 255, 1); */
+	}
+
+	.arrow-ticket {
+		z-index: 4;
+		filter: brightness(0);
+		transition: filter 0.4s ease;
 	}
 
 	.date-arrow-row {
 		display: flex;
-		justify-content: space-between;
+		flex-direction: row;
+		/* justify-content: space-between; */
 		align-items: center;
-		margin-bottom: 5px;
+		/* margin-bottom: 5px; */
 	}
 
 	.dates {
 		font-size: 0.9em;
-		color: #555;
+		color: white;
 	}
 
 	.arrow-circle {
-		background-color: #002646;
-		color: white;
-		width: 48px;
-		height: 48px;
+		margin-left: 1rem;
+		background-color: #ffffff;
+		color: rgb(0, 0, 0);
+		width: 32px;
+		height: 32px;
 		border-radius: 50%;
 		display: flex;
 		justify-content: center;
@@ -168,9 +206,8 @@
 			background-color 0.4s ease,
 			background 0.4s ease;
 	}
-
 	.overlay-container:hover .arrow-circle {
-		background: linear-gradient(to right, #002646, #005dac, #004279);
+		/* filter: brightness(0) invert(1); */
 	}
 
 	.text-content {
@@ -178,19 +215,28 @@
 	}
 
 	.arrow-circle span {
-		transform: translateY(4.5px);
 		display: block;
+		transform: none;
+		line-height: 0;
+	}
+
+	.arrow-exhibition {
+		margin-left: 1rem;
 	}
 
 	.text-content .title {
-		font-size: 1.2em;
+		font-size: clamp(1.3rem, 1.386rem + 2.905vw, 3rem);
 		margin: 0;
-		color: #000;
+		color: #ffffff;
+	}
+
+	.ticket-text {
+		color: white;
 	}
 
 	.text-content .subtitle {
-		font-size: 0.9em;
+		font-size: clamp(1.1rem, 1.143rem + 1.952vw, 2.2rem);
 		margin: 5px 0 0;
-		color: #444;
+		color: #ffffff;
 	}
 </style>
