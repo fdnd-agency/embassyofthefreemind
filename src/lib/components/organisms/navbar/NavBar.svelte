@@ -183,7 +183,8 @@ header {
   font-family: var(--font-body);
   font-weight: 300;
   color: white;
-  background-color: #0b0c0e;
+  background: hsla(0, 0%, 0%, 0.406);
+  backdrop-filter: blur(18px);
 }
 
 /* ---------------- HEADER LAYOUT ---------------- */
@@ -198,7 +199,6 @@ header {
 }
 
 .header-logo {
-  flex: 1;
   width: clamp(90px, 10vw, 105px);
 }
 
@@ -325,7 +325,6 @@ header {
   opacity: 0.8;
 }
 
-/* draai pijltje */
 .lang-btn[aria-expanded="true"] .caret {
   transform: rotate(180deg);
 }
@@ -373,8 +372,6 @@ header {
   top: 10px;
 }
 
-/* maak X wanneer open */
-
 .hamburger-btn[aria-expanded="true"] span {
   background: transparent;
 }
@@ -399,7 +396,8 @@ header {
   width: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  background: #0b0c0e;
+  background: hsl(0, 0%, 3%);
+  backdrop-filter: blur(20px);
   filter: drop-shadow(-6px 1px 20px #141414cc);
   transform: translateX(120%);
   opacity: 0;
