@@ -75,6 +75,10 @@
 		padding-top: 0.5rem;
 		padding-bottom: 1em;
 		padding-right: 1em;
+		@media (min-width: 700px) {
+			max-width: 90%;
+			margin-left: 5%;
+		}
 
 		h3 {
 			text-transform: uppercase;
