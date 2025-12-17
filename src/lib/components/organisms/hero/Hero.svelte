@@ -1,39 +1,125 @@
+<script>
+  import { onMount, onDestroy } from 'svelte';
+  import { gsap } from 'gsap';
+
+  const SLIDE_DURATION = 5000; 
+
+  const slides = [
+    {
+      title: 'Vier 450 jaar',
+      subtitle: 'Amsterdam in het huis met de hoofden',
+      image: '/images/background-1.png',
+      alt: "Painting by William Blake titled Jacob's Ladder"
+    },
+    {
+      title: 'Off planets perspective',
+      subtitle: 'drawings by Joost Elffers',
+      image: '/images/background-2.png',
+      alt: 'Off planets perspective – drawings by Joost Elffers'
+    },
+    {
+      title: 'Hidden knowledge',
+      subtitle: 'mystieke boeken en symbolen',
+      image: '/images/background-3.png',
+      alt: 'Hidden knowledge exhibition'
+    }
+  ];
+
+  let current = 0;
+  const total = slides.length;
+  let intervalId;
+  function nextSlide() {
+    current = (current + 1) % total;
+  }
+
+  function goToSlide(index) {
+    current = index;
+    resetInterval();
+  }
+
+	function goNext() {
+  current = (current + 1) % total;
+  resetInterval();
+}
+
+	function goPrev() {
+		current = (current - 1 + total) % total;
+		resetInterval();
+	}
+
+  function resetInterval() {
+    clearInterval(intervalId);
+    intervalId = setInterval(nextSlide, SLIDE_DURATION);
+  }
+
+  onMount(() => {
+    intervalId = setInterval(nextSlide, SLIDE_DURATION);
+
+  onDestroy(() => {
+    clearInterval(intervalId);
+  });
+</script>
+
+
 <section class="hero">
-	<div class="hero__content">
-		<h1>Vier 450 jaar</h1>
-		<h2>Amsterdam in het huis met de hoofden</h2>
-		<button class="hero__button">
-			Meer lezen
-			<div class="arrow-circle">
-				<span><img src="images/arrow-exhibition-2.svg" height="18" width="18" alt="arrow" /></span>
+  <div class="hero-slides">
+    {#each slides as slide, index}
+      <img
+        src={slide.image}
+        alt={slide.alt}
+        class:active={index === current}
+      />
+    {/each}
+  </div>
+
+  <div class="hero-overlay"></div>
+
+	<div class="hero-content" bind:this={heroContentEl}>
+		<p>hoogtepunten</p>
+
+		<h1>{slides[current].title}</h1>
+		<h2>{slides[current].subtitle}</h2>
+
+		<div class="hero-arrows" bind:this={heroArrowsEl}>
+			<button class="arrow-btn" on:click={() => goPrev()} aria-label="Vorige slide">
+				<svg width="20" height="20" fill="none" stroke="white" stroke-width="1.5">
+					<polyline points="12 4 7 10 12 16" />
+				</svg>
+			</button>
+
+			<div class="hero-counter">
+				{current + 1} <span>|</span> {total}
 			</div>
-		</button>
-	</div>
 
-	<section class="info__line">
-		<div class="info__adress">
-			<p>123, Keizersgracht</p>
-			<p>NL 1015 CJ Amsterdam</p>
+			<button class="arrow-btn" on:click={() => goNext()} aria-label="Volgende slide">
+				<svg width="20" height="20" fill="none" stroke="white" stroke-width="1.5">
+					<polyline points="8 4 13 10 8 16" />
+				</svg>
+			</button>
 		</div>
-		<div class="info__time">
-			<p>Wed. to Sat. 10.00-17.00h</p>
-			<p>Sun. 11.00-18.00h</p>
-		</div>
-	</section>
-
-	<div class="hero__slides">
-		<img
-			src="/images/background.png"
-			alt="Painting by William Blake titled Jacob's Ladder"
-			class="active"
-		/>
 	</div>
 
-	<div class="hero__dots">
-		<button></button>
-		<button></button>
-		<button></button>
-	</div>
+
+  <section class="info-line" bind:this={infoLineEl}>
+		<button class="hero-button">
+      Tickets kopen
+      <div class="arrow-circle">
+        <span>
+          <img
+            src="images/arrow-exhibition-2.svg"
+            height="18"
+            width="18"
+            alt="arrow"
+          />
+        </span>
+      </div>
+    </button>
+    <div class="info-time">
+      <p>Wed. to Sat. 10.00-17.00h</p>
+      <p>Sun. 11.00-18.00h</p>
+    </div>
+  </section>
+
 </section>
 
 <style>
