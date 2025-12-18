@@ -122,7 +122,11 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 30%, rgba(85, 85, 85, 0.8) 100%);
+		background: linear-gradient(
+			to bottom,
+			rgba(117, 117, 117, 0) 60%,
+			rgba(114, 114, 114, 0.8) 100%
+		);
 		z-index: 1;
 		pointer-events: none;
 		border-radius: inherit;
@@ -144,7 +148,7 @@
 		left: 0;
 		right: 0;
 		/* background: rgba(255, 255, 255, 0.925); */
-		padding: 25px 30px;
+		padding: 5px 10px;
 		text-decoration: none;
 		color: inherit;
 		cursor: pointer;
@@ -154,8 +158,8 @@
 		@container card (width > 600px) {
 			margin-top: 0;
 			width: calc(400px + 15cqw);
-			left: clamp(2rem, 10cqw, 4rem);
-			bottom: clamp(2rem, 5cqw, 3.5rem);
+			left: clamp(6rem, 14cqw, 9rem);
+			bottom: clamp(0.5rem, 1cqw, 1rem);
 			border-radius: 30px;
 			font-size: clamp(1em, 1.6cqw, 1.5em);
 		}
