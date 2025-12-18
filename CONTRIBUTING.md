@@ -85,5 +85,5 @@ sebas over sebas - Design verder uitwerken.
 
 <img width="661" height="879" alt="image" src="https://github.com/user-attachments/assets/5178e189-f13a-4d05-af2a-221b95277565" />
 
-leertaak scrum sprint 16. post mortem
+leertaak scrum sprint 17. post mortem
 <img width="1168" height="879" alt="image" src="https://github.com/user-attachments/assets/da7afe75-97e9-4e2b-833a-08e8ce8b9068" />
