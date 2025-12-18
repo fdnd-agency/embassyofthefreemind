@@ -1,44 +1,170 @@
+<script>
+  import { onMount, onDestroy } from 'svelte';
+  import { gsap } from 'gsap';
+
+  const SLIDE_DURATION = 5000; 
+
+  const slides = [
+    {
+      title: 'Vier 450 jaar',
+      subtitle: 'Amsterdam in het huis met de hoofden',
+      image: '/images/background-1.png',
+      alt: "Painting by William Blake titled Jacob's Ladder"
+    },
+    {
+      title: 'Off planets perspective',
+      subtitle: 'drawings by Joost Elffers',
+      image: '/images/background-2.png',
+      alt: 'Off planets perspective – drawings by Joost Elffers'
+    },
+    {
+      title: 'Hidden knowledge',
+      subtitle: 'mystieke boeken en symbolen',
+      image: '/images/background-3.png',
+      alt: 'Hidden knowledge exhibition'
+    }
+  ];
+
+  let current = 0;
+  const total = slides.length;
+  let intervalId;
+
+	let heroContentEl;
+  let infoLineEl;
+  let heroArrowsEl;
+  let heroTl;
+
+  function nextSlide() {
+    current = (current + 1) % total;
+  }
+
+  function goToSlide(index) {
+    current = index;
+    resetInterval();
+  }
+
+	function goNext() {
+  current = (current + 1) % total;
+  resetInterval();
+}
+
+	function goPrev() {
+		current = (current - 1 + total) % total;
+		resetInterval();
+	}
+
+  function resetInterval() {
+    clearInterval(intervalId);
+    intervalId = setInterval(nextSlide, SLIDE_DURATION);
+  }
+
+  onMount(() => {
+    intervalId = setInterval(nextSlide, SLIDE_DURATION);
+
+    heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+    heroTl
+      .from(heroContentEl, {
+        y: 40,
+        opacity: 0,
+        duration: 0.9
+      })
+
+      .from(
+        heroArrowsEl,
+        {
+          y: 20,
+          opacity: 0,
+          duration: 0.6
+        },
+        '-=0.5' 
+      )
+			
+      .from(
+        infoLineEl,
+        {
+          y: 40,
+          opacity: 0,
+          duration: 0.9
+        },
+        '-=0.3'
+      );
+  });
+
+  onDestroy(() => {
+    clearInterval(intervalId);
+		if (heroTl) heroTl.kill();
+  });
+</script>
+
+
 <section class="hero">
-	<div class="hero__content">
-		<h1>Vier 450 jaar</h1>
-		<h2>Amsterdam in het huis met de hoofden</h2>
-		<button class="hero__button">
-			Meer lezen
-			<div class="arrow-circle">
-				<span><img src="images/arrow-exhibition-2.svg" height="18" width="18" alt="arrow" /></span>
+  <div class="hero-slides">
+    {#each slides as slide, index}
+      <img
+        src={slide.image}
+        alt={slide.alt}
+        class:active={index === current}
+      />
+    {/each}
+  </div>
+
+  <div class="hero-overlay"></div>
+
+	<div class="hero-content" bind:this={heroContentEl}>
+		<p>hoogtepunten</p>
+
+		<h1>{slides[current].title}</h1>
+		<h2>{slides[current].subtitle}</h2>
+
+		<div class="hero-arrows" bind:this={heroArrowsEl}>
+			<button class="arrow-btn" on:click={() => goPrev()} aria-label="Vorige slide">
+				<svg width="20" height="20" fill="none" stroke="white" stroke-width="1.5">
+					<polyline points="12 4 7 10 12 16" />
+				</svg>
+			</button>
+
+			<div class="hero-counter">
+				{current + 1} <span>|</span> {total}
 			</div>
-		</button>
-	</div>
 
-	<section class="info__line">
-		<div class="info__adress">
-			<p>123, Keizersgracht</p>
-			<p>NL 1015 CJ Amsterdam</p>
+			<button class="arrow-btn" on:click={() => goNext()} aria-label="Volgende slide">
+				<svg width="20" height="20" fill="none" stroke="white" stroke-width="1.5">
+					<polyline points="8 4 13 10 8 16" />
+				</svg>
+			</button>
 		</div>
-		<div class="info__time">
-			<p>Wed. to Sat. 10.00-17.00h</p>
-			<p>Sun. 11.00-18.00h</p>
-		</div>
-	</section>
-
-	<div class="hero__slides">
-		<img
-			src="/images/background.png"
-			alt="Painting by William Blake titled Jacob's Ladder"
-			class="active"
-		/>
 	</div>
 
-	<div class="hero__dots">
-		<button></button>
-		<button></button>
-		<button></button>
-	</div>
+
+  <section class="info-line" bind:this={infoLineEl}>
+		<button class="hero-button">
+      Tickets kopen
+      <div class="arrow-circle">
+        <span>
+          <img
+            src="images/arrow-exhibition-2.svg"
+            height="18"
+            width="18"
+            alt="arrow"
+          />
+        </span>
+      </div>
+    </button>
+    <div class="info-time">
+      <p>Wed. to Sat. 10.00-17.00h</p>
+      <p>Sun. 11.00-18.00h</p>
+    </div>
+  </section>
+
 </section>
 
+
 <style>
-	/* === HERO SECTION === */
+	/* HERO SECTION */
 	.hero {
+		font-family: var(--font-body);
+		font-weight: 100;
 		position: relative;
 		width: 100%;
 		min-height: 100vh;
@@ -46,7 +172,6 @@
 		align-items: center;
 		justify-content: center;
 		color: white;
-		background: url('/images/background.png') center center / cover no-repeat;
 		overflow-x: hidden;
 	}
 
@@ -54,12 +179,12 @@
 		content: '';
 		position: absolute;
 		inset: 0;
-		background: hsla(60, 12%, 13%, 0.512);
+		background: hsla(0, 0%, 0%, 0.512);
 		z-index: 1;
 	}
 
-	/* === BACKGROUND SLIDES === */
-	.hero__slides {
+	/* BACKGROUND SLIDES */
+	.hero-slides {
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -68,7 +193,7 @@
 		z-index: 0;
 	}
 
-	.hero__slides img {
+	.hero-slides img {
 		position: absolute;
 		width: 100%;
 		height: 100%;
@@ -77,27 +202,27 @@
 		transition: opacity 1s ease-in-out;
 	}
 
-	.hero__slides img.active {
+	.hero-slides img.active {
 		opacity: 1;
 	}
 
-	/* === HERO CONTENT === */
-	.hero__content {
-		position: relative;
+	/* HERO CONTENT */
+	.hero-content {
 		z-index: 1;
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		justify-content: center;
+		justify-content: left;
 		max-width: 100%;
 		margin-inline: auto;
-		margin-bottom: -4rem;
 		padding: 0 2rem;
+		padding-bottom: 6rem;
 		text-wrap: balance;
+		gap: 1rem;
 	}
 
-	.hero__content h1,
-	.hero__content h2 {
+	.hero-content h1,
+	.hero-content h2 {
 		font-family: 'Night Mango', serif;
 		font-weight: 400;
 		color: white;
@@ -105,21 +230,42 @@
 		line-height: 1.2;
 	}
 
-	.hero__content h1 {
+	.hero-content h1 {
 		font-size: clamp(61px, 6vw, 160px);
 	}
 
-	.hero__content h2 {
+	.hero-content h2 {
 		font-size: clamp(46px, 4vw, 85px);
 		font-weight: 300;
 	}
 
-	/* === CTA BUTTON === */
+	/* INFORMATION LINE */
+	.info-line {
+		display: flex;
+		flex-direction: column;
+		color: white;
+		font-family: var(--font-body);
+		font-weight: 100;
+		font-size: 20px;
+		margin-top: 20rem;
+    padding: 4rem 5rem 1rem 1rem;
+		z-index: 2;
+		gap: 3rem;
+	}
 
-	.hero__button {
-		position: absolute;
-		bottom: -7vh;
-		left: 2rem;
+	.info-line p {
+		margin: 0;
+	}
+
+	.info-time {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	/* BUTTON */
+
+	.hero-button {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -128,8 +274,9 @@
 		color: var(--color-text-dark, #0f0f0f);
 		border: none;
 		border-radius: 2rem;
-		height: 56px;
+		height: 50px;
 		min-width: 180px;
+		white-space: nowrap;
 		padding: 6px 7px 6px 1.5rem;
 		font-family: var(--font-body);
 		font-size: 1rem;
@@ -157,58 +304,63 @@
 		display: block;
 	}
 
-	/* === INFORMATION LINE === */
-	.info__line {
+	.hero-overlay {
 		position: absolute;
-		bottom: 2rem;
-		width: 90%;
+		inset: 0;
+		background: hsla(60, 12%, 13%, 0.512);
+		z-index: 1;
+	}
+
+	.hero-content,
+	.info-line,
+	.hero-navigation {
+		position: relative;
+		z-index: 2;
+	}
+
+	.hero-navigation {
 		display: flex;
-		justify-content: space-between;
 		align-items: center;
-		color: white;
+		gap: 1.5rem;
+	}
+
+	.hero-arrows {
+		position: relative;
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+		z-index: 3;
 		font-family: var(--font-body);
-		font-weight: 300;
-		font-size: 20px;
-		padding: 2rem 6rem;
-		z-index: 2;
+		font-weight: 100;
+		color: white;
 	}
 
-	.info__line p {
-		margin: 0;
-	}
-
-	.info__adress,
-	.info__time {
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-	}
-
-	/* === SLIDESHOW DOTS === */
-	.hero__dots {
-		position: absolute;
-		bottom: 2rem;
-		left: 50%;
-		transform: translateX(-50%);
-		display: flex;
-		gap: 0.7rem;
-		z-index: 2;
-	}
-
-	.hero__dots button {
-		width: 10px;
-		height: 10px;
-		border-radius: 90%;
+	.arrow-btn {
+		background: none;
 		border: none;
-		background-color: rgba(255, 255, 255, 0.6);
+		color: white;
+		font-size: 1.6rem;
 		cursor: pointer;
-		transition: background-color 0.3s ease;
+		opacity: 0.8;
+		transition: opacity 0.3s ease;
+	}
+
+	.arrow-btn:hover {
+		opacity: 1;
+	}
+
+	.hero-counter {
+		font-size: 1.1rem;
+		display: flex;
+		gap: 0.3rem;
+		align-items: center;
+		letter-spacing: 0.05em;
 	}
 
 	/* === MEDIAQUERIES === */
 
 	@media (min-width: 700px) {
-		.hero__content {
+		.hero-content {
 			max-width: 70%;
 			margin-bottom: 0rem;
 			margin-left: 61px;
@@ -216,42 +368,32 @@
 			padding: 0 2rem;
 		}
 
-		.hero__content h1 {
+		.hero-content h1 {
 			font-size: clamp(75px, 8.5vw, 175px);
 			line-height: 0.9;
 		}
 
-		.hero__content h2 {
+		.hero-content h2 {
 			line-height: 1.2;
 		}
 
-		.hero__button {
+		.hero-button {
 			bottom: -7vh;
 		}
 
-		.info__line {
-			max-width: 80%;
-		}
 	}
 
 	@media (min-width: 1000px) {
-		.hero__content {
-			max-width: 50%;
+		.hero-content {
+			max-width: 60%;
 		}
 
-		.hero__button {
+		.hero-button {
 			bottom: clamp(1vh, 4vh, -4vh);
 			left: clamp(24rem, calc(5vw + 28rem), 35rem);
 		}
 
-		.info__line {
-			max-width: 90%;
-		}
 
-		.info__adress,
-		.info__time {
-			gap: 2rem;
-			flex-direction: row;
-		}
 	}
+
 </style>
