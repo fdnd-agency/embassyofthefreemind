@@ -22,7 +22,7 @@
 - Iedereen krijgt de kans om actief bij te dragen.  
 - We respecteren elkaars minder sterke kanten en gaan daar op een constructieve manier mee om.  
 
-## 🛠 Code Conventies
+# Code Conventies
 We houden ons aan de [FDND code conventies](https://docs.fdnd.nl/conventies.html)
 - Bij het aanmaken van nieuwe class names, maken we gebruik van kebab-case
 - Maak zoveel mogelijk componenten
