@@ -27,8 +27,55 @@ We houden ons aan de [FDND code conventies](https://docs.fdnd.nl/conventies.html
 - Bij het aanmaken van nieuwe class names, maken we gebruik van kebab-case
 - Maak zoveel mogelijk componenten
 - Net gebruik van white space ( max 2 lijnen ) en comments waar nodig
-- Duidelijke commits gekoppeld aan de issues
-- Regelmatig gebruik van code refactoring
+- Duidelijke commits gekoppeld aan de issues, hou zich aan conventional commits conventies:
+https://www.conventionalcommits.org/en/v1.0.0/
+
+## Conventional Commits 
+
+### Structuur
+
+Gebruik dit format voor elke commit:
+
+`<type>(<scope>)!: <korte beschrijving>`
+
+scope is optioneel (tussen haakjes), bv. `feat(api): ...`
+
+Met `refs` (start na 1 lege regel na body) linken naar bijhorende issue in projectboard, bv. 'refs: #123, #223'
+
+* **body:** extra uitleg (start na 1 lege regel)
+
+* **footer(s):** metadata / links / refs (start na 1 lege regel na body)
+
+### Verplichte types
+
+`feat:` = nieuwe feature
+
+`fix:` = bugfix
+
+`style:` = styling (css)
+
+#### Aanbevolen extra types
+`docs:`, `chore:`, `refactor:`, `test:`, `ci:`, `build:`, `perf:`, `revert:`
+
+### Breaking changes
+Markeer breaking changes op één van deze manieren:
+
+met ! in de header: `feat(api)!: ...`
+
+of met footer:
+`BREAKING CHANGE: <uitleg wat er breekt en wat er verandert>`
+
+### Voorbeelden
+
+`docs: typo in README fixen`
+
+`feat(blog): filter toevoegen`
+
+`fix(api): null check toevoegen`
+
+`chore!: node 6 support droppen + BREAKING CHANGE: ...`
+
+---
 
 ## PR template
 ```md
