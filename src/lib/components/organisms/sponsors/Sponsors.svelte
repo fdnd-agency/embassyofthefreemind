@@ -97,7 +97,7 @@
 		}
 
 		img {
-			height: 80px;
+			height: 90px;
 			max-width: none;
 		}
 	}
