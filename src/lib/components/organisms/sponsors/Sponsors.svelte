@@ -53,6 +53,7 @@
 		align-items: center;
 		justify-content: center;
 		width: 100%;
+		margin-right: 0;
 	}
 
 	img {
@@ -73,7 +74,6 @@
 		transform: scale(1.1);
 	}
 
-	/* Hide duplicates on mobile */
 	.desktop-only-group {
 		display: none;
 	}
@@ -81,9 +81,8 @@
 	@media (min-width: 768px) {
 		.marquee-track {
 			display: flex;
-
 			width: max-content;
-			gap: 2rem;
+			gap: 0;
 			animation: scroll 40s linear infinite;
 		}
 
@@ -93,7 +92,11 @@
 
 		.desktop-only-group {
 			display: flex;
-			gap: 2rem;
+			gap: 0;
+		}
+
+		.sponsor-item {
+			margin-right: 2rem;
 		}
 
 		img {
