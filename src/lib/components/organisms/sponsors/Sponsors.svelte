@@ -66,7 +66,7 @@
 		transition:
 			transform 0.3s ease,
 			filter 0.3s ease;
-		cursor: pointer;
+		/* cursor: pointer; */
 	}
 
 	img:hover {
