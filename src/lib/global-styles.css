@@ -9,6 +9,7 @@
 /* -------------------------------------------------------------------------- */
 /* -------------------------------- Reset  ---------------------------------- */
 /* -------------------------------------------------------------------------- */
+
 @layer reset {
 	*,
 	*::before,
@@ -50,6 +51,7 @@
 @layer base {
 	:root {
 		/* ------------------------------ Layout / spacing ------------------------------ */
+
 		--container-max: 1200px;
 
 		--space-1: 0.25rem;
@@ -63,16 +65,19 @@
 		--space-12: 3rem;
 
 		/* ------------------------------ Radius ------------------------------ */
+
 		--radius-sm: 10px;
 		--radius-md: 16px;
 		--radius-lg: 30px;
 		--radius-pill: 999px;
 
 		/* ------------------------------ Shadows ------------------------------ */
+
 		--shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.08);
 		--shadow-float: 0 4px 10px rgba(0, 0, 0, 0.2);
 
 		/* ------------------------------ Motion ------------------------------ */
+
 		--ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 		--ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
 		--dur-1: 150ms;
@@ -97,4 +102,80 @@
 		color: inherit;
 		text-decoration: none;
 	}
+}
+
+/* -------------------------------------------------------------------------- */
+/* --------------------------- Typography ----------------------------------- */
+/* -------------------------------------------------------------------------- */
+
+@layer typography {
+
+	/* ------------------------------ Font Faces ------------------------------ */
+
+	@font-face {
+		font-family: "Night Mango";
+		src: url("/fonts/NightMango.ttf") format("truetype");
+		font-weight: 400;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	:root {
+
+		/* ------------------------------ Font families ------------------------------ */
+
+		--font-display: "Night Mango", serif;
+		--font-body: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+		/* ------------------------------ Font size ---------------------------------- */
+
+		--h1: clamp(3.8rem, 6vw, 10rem);
+		--h2: clamp(2.8rem, 4vw, 5.3rem);
+		--h3: clamp(2rem, 3vw, 3.2rem);
+		--h4: clamp(1.8rem, 2.6vw, 2.7rem);
+
+		--p-lg: clamp(1.05rem, 1.1vw, 1.25rem);
+		--p: 1rem;
+		--p-sm: 0.95rem;
+
+		--caps-track: 0.08em;
+	}
+
+	h1,
+	h2 {
+		font-family: var(--font-display);
+		font-weight: 400;
+		line-height: 1.05;
+		margin: 0;
+	}
+
+	h3,
+	h4 {
+		font-family: var(--font-body);
+		font-weight: 400;
+		line-height: 1.15;
+		margin: 0;
+	}
+
+	h1 {
+		font-size: var(--h1);
+	}
+
+	h2 {
+		font-size: var(--h2);
+	}
+
+	h3 {
+		font-size: var(--h3);
+	}
+
+	h4 {
+		font-size: var(--h4);
+	}
+
+	p {
+		margin: 0;
+		font-size: var(--p);
+	}
+
 }
