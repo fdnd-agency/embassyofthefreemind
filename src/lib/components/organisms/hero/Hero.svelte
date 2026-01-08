@@ -161,7 +161,7 @@
 
 
 <style>
-	/* HERO SECTION */
+
 	.hero {
 		font-family: var(--font-body);
 		font-weight: 100;
@@ -223,7 +223,7 @@
 
 	.hero-content h1,
 	.hero-content h2 {
-		font-family: 'Night Mango', serif;
+		font-family: var(--font-display);
 		font-weight: 400;
 		color: white;
 		margin: 0;
@@ -307,7 +307,7 @@
 	.hero-overlay {
 		position: absolute;
 		inset: 0;
-		background: hsla(60, 12%, 13%, 0.512);
+		background: var(--overlay-warm);
 		z-index: 1;
 	}
 

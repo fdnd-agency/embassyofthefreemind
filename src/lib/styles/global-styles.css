@@ -134,9 +134,7 @@
 		--h3: clamp(2rem, 3vw, 3.2rem);
 		--h4: clamp(1.8rem, 2.6vw, 2.7rem);
 
-		--p-lg: clamp(1.05rem, 1.1vw, 1.25rem);
-		--p: 1rem;
-		--p-sm: 0.95rem;
+		--p: clamp(1rem, 1.2vw, 1.125rem);
 
 		--caps-track: 0.08em;
 	}
@@ -178,4 +176,75 @@
 		font-size: var(--p);
 	}
 
+}
+
+/* -------------------------------------------------------------------------- */
+/* ------------------ Colors (according to our styleguide ------------------- */
+/* -------------------------------------------------------------------------- */
+
+@layer colors {
+	:root {
+		/* ------------------------------ Primary ------------------------------ */
+		/* Headings, paragraph text, borders, background */
+		--color-white: #ffffff;
+		--color-black: #000000;
+		--color-border: #d7d7d7;
+
+		/* ------------------------------ Accents ------------------------------ */
+		/* Buttons, icons, small details, footer */
+		--color-accent-gold: #d8b66a;
+		--color-accent-gold-dark: #7f6733;
+
+		/* ------------------------------ Neutral accents ------------------------------ */
+		/* Navigation, forms, backgrounds, sections, buttons, links */
+		--color-navy: #002646;
+		--color-navy-muted: #19252e;
+
+		/* This is the BLUE gradient start color from the styleguide */
+		--color-blue-accent: #005dac;
+
+		--color-blue-muted: #5983a6;
+		--color-blue-200: #bdcddb;
+
+		--color-ice-300: #d2ebff;
+		--color-ice-100: #eff8ff;
+
+		--color-surface-200: #e7edf1;
+		--color-surface-100: #f5f8fa;
+
+		/* ------------------------------ Gradients ------------------------------ */
+		/* Button icons (styleguide) */
+		--gradient-gold: linear-gradient(135deg, var(--color-accent-gold), var(--color-accent-gold-dark));
+		--gradient-blue: linear-gradient(135deg, var(--color-blue-accent), var(--color-navy));
+
+
+		/* ------------------------------ Semantic tokens ------------------------------ */
+		--color-background: var(--color-white);
+		--color-surface: var(--color-surface-100);
+
+		--color-text: var(--color-black);
+		--color-text-inverse: var(--color-white);
+
+		--color-link: var(--color-navy);
+		--color-link-hover: color-mix(in srgb, var(--color-navy) 80%, var(--color-blue-muted));
+
+		/* Navbar glass */
+		--nav-glass-bg: hsla(0, 0%, 0%, 0.4);
+		--nav-glass-blur: 18px;
+
+		/* Hero overlays */
+		--overlay-hero: hsla(0, 0%, 0%, 0.5);
+		--overlay-warm: hsla(60, 12%, 13%, 0.5);
+
+		--focus-ring: var(--color-accent-gold);
+	}
+
+	a:hover {
+		color: var(--color-link-hover);
+	}
+
+	:focus-visible {
+		outline: 3px solid var(--focus-ring);
+		outline-offset: 3px;
+	}
 }
