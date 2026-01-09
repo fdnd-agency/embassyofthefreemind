@@ -43,7 +43,6 @@
 	}
 }
 
-
 /* -------------------------------------------------------------------------- */
 /* -------------------------------- Base  ----------------------------------- */
 /* -------------------------------------------------------------------------- */
@@ -122,12 +121,12 @@
 
 	:root {
 
-		/* ------------------------------ Font families ------------------------------ */
+		/* ------------------------- Font families ------------------------------ */
 
 		--font-display: "Night Mango", serif;
 		--font-body: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 
-		/* ------------------------------ Font size ---------------------------------- */
+		/* --------------------------- Font size -------------------------------- */
 
 		--h1: clamp(3.8rem, 6vw, 10rem);
 		--h2: clamp(2.8rem, 4vw, 5.3rem);
@@ -184,23 +183,28 @@
 
 @layer colors {
 	:root {
+
 		/* ------------------------------ Primary ------------------------------ */
 		/* Headings, paragraph text, borders, background */
+
 		--color-white: #ffffff;
 		--color-black: #000000;
 		--color-border: #d7d7d7;
 
 		/* ------------------------------ Accents ------------------------------ */
 		/* Buttons, icons, small details, footer */
+
 		--color-accent-gold: #d8b66a;
 		--color-accent-gold-dark: #7f6733;
 
 		/* ------------------------------ Neutral accents ------------------------------ */
 		/* Navigation, forms, backgrounds, sections, buttons, links */
+
 		--color-navy: #002646;
 		--color-navy-muted: #19252e;
 
 		/* This is the BLUE gradient start color from the styleguide */
+
 		--color-blue-accent: #005dac;
 
 		--color-blue-muted: #5983a6;
@@ -214,11 +218,13 @@
 
 		/* ------------------------------ Gradients ------------------------------ */
 		/* Button icons (styleguide) */
+
 		--gradient-gold: linear-gradient(135deg, var(--color-accent-gold), var(--color-accent-gold-dark));
 		--gradient-blue: linear-gradient(135deg, var(--color-blue-accent), var(--color-navy));
 
 
 		/* ------------------------------ Semantic tokens ------------------------------ */
+
 		--color-background: var(--color-white);
 		--color-surface: var(--color-surface-100);
 
@@ -229,10 +235,12 @@
 		--color-link-hover: color-mix(in srgb, var(--color-navy) 80%, var(--color-blue-muted));
 
 		/* Navbar glass */
+
 		--nav-glass-bg: hsla(0, 0%, 0%, 0.4);
 		--nav-glass-blur: 18px;
 
 		/* Hero overlays */
+
 		--overlay-hero: hsla(0, 0%, 0%, 0.5);
 		--overlay-warm: hsla(60, 12%, 13%, 0.5);
 
@@ -247,4 +255,125 @@
 		outline: 3px solid var(--focus-ring);
 		outline-offset: 3px;
 	}
+}
+
+/* -------------------------------------------------------------------------- */
+/* -------------------------- Components ------------------------------------ */
+/* -------------------------------------------------------------------------- */
+
+@layer components {
+	:root {
+
+		/* ---------------------------------------------------------------------- */
+		/* -------------------------- Buttons (styleguide) ---------------------- */
+		/* ---------------------------------------------------------------------- */
+
+		--btn-font-size: clamp(1rem, 2vw, 1.125rem);
+		--btn-font-family: var(--font-body);
+		--btn-font-weight: 500;
+
+		/* Type 1 */
+		--btn-height: 60px;
+		--btn-width: clamp(13rem, 40vw, 14.5rem);
+		--btn-padding: 6px 7px 6px 1.5rem;
+		--btn-gap: clamp(1.2rem, 4vw, 2.6rem);
+
+		--btn-t1-icon-size: 47px;
+		--btn-t1-icon-svg: 20px;
+
+		/* Type 2 */
+		--btn-t2-icon-size: 60px;
+		--btn-t2-icon-svg: 20px;
+
+		/* Type 3 */
+		--btn-t3-icon-size: 16px;
+	}
+
+
+	/* ------------------------------ Base button ------------------------------ */
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: var(--btn-t1-gap);
+		cursor: pointer;
+		border: none;
+		background: transparent;
+
+		font-family: var(--btn-font-family);
+		font-weight: var(--btn-font-weight);
+		font-size: var(--btn-font-size);
+		color: var(--color-text);
+
+		transition: transform var(--dur-1) var(--ease-out), opacity var(--dur-2) var(--ease-out),
+			box-shadow var(--dur-2) var(--ease-out);
+	}
+
+	/* ====================================================================== */
+	/* ------------- Type 1 — pill button with icon circle ------------------ */
+	/* ====================================================================== */
+
+	.btn--type1 {
+		height: var(--btn-t1-height);
+		width: var(--btn-t1-width);
+		padding: var(--btn-t1-padding);
+
+		border-radius: 999px;
+		background: var(--color-white);
+		color: var(--color-black);
+
+		box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
+		justify-content: space-between;
+		white-space: nowrap;
+	}
+
+	.btn--type1:hover {
+		opacity: 0.95;
+	}
+
+	.btn--type1:active {
+		box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(0, 0, 0, 0.12);
+	}
+
+	/* icon circle */
+	.btn__icon {
+		width: var(--btn-t1-icon-size);
+		height: var(--btn-t1-icon-size);
+		border-radius: 999px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		color: var(--color-white);
+		background: var(--color-navy);
+
+		/* hover gradient animation */
+		background-size: 200% 200%;
+		background-position: 0% 50%;
+		transition: background-position var(--dur-3) var(--ease-out), filter var(--dur-2) var(--ease-out);
+	}
+
+	.btn__icon svg,
+	.btn__icon img {
+		width: var(--btn-t1-icon-svg);
+		height: var(--btn-t1-icon-svg);
+		display: block;
+	}
+
+	/* hover: animate gradient in icon */
+
+	/* blue variant */
+	.btn--type1:hover .btn__icon {
+		background-image: var(--gradient-blue);
+		background-position: 100% 50%;
+	}
+
+	/* gold variant */
+	.btn--gold .btn__icon {
+		background-image: var(--gradient-gold);
+	}
+
+	.btn--gold:hover .btn__icon {
+		background-position: 100% 50%;
+	}
+
 }
