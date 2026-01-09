@@ -403,4 +403,38 @@
 		gap: var(--btn-t1-gap);
 	}
 
+	/* ====================================================================== */
+	/* ----------------------------- Type 3 --------------------------------- */
+	/* ====================================================================== */
+
+	.btn--type3 {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.75rem;
+		background: transparent;
+		padding: 0.25rem 0;
+		border-radius: 0;
+	}
+
+	.btn--type3 .btn__label {
+		position: relative;
+	}
+
+	.btn--type3:hover .btn__label::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: -6px;
+		height: 1px;
+		background: currentColor;
+		opacity: 0.75;
+	}
+
+	.btn--type3 .btn__arrow svg,
+	.btn--type3 .btn__arrow img {
+		width: var(--btn-t3-icon);
+		height: var(--btn-t3-icon);
+	}
+
 }
