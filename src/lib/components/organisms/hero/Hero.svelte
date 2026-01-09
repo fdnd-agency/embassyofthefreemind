@@ -138,19 +138,12 @@
 
 
   <section class="info-line" bind:this={infoLineEl}>
-		<button class="hero-button">
-      Tickets kopen
-      <div class="arrow-circle">
-        <span>
-          <img
-            src="images/arrow-exhibition-2.svg"
-            height="18"
-            width="18"
-            alt="arrow"
-          />
-        </span>
-      </div>
-    </button>
+	<button class="btn btn--type1">
+		Tickets kopen
+		<span class="btn__icon">
+			<img src="/images/arrow-exhibition-2.svg" height="18" width="18" alt="arrow" />
+		</span>
+	</button>
     <div class="info-time">
       <p>Wed. to Sat. 10.00-17.00h</p>
       <p>Sun. 11.00-18.00h</p>
@@ -179,7 +172,7 @@
 		content: '';
 		position: absolute;
 		inset: 0;
-		background: hsla(0, 0%, 0%, 0.512);
+		background: var(--overlay-hero);
 		z-index: 1;
 	}
 
@@ -231,11 +224,11 @@
 	}
 
 	.hero-content h1 {
-		font-size: clamp(61px, 6vw, 160px);
+		font-size: var(--h1);
 	}
 
 	.hero-content h2 {
-		font-size: clamp(46px, 4vw, 85px);
+		font-size: var(--h2);
 		font-weight: 300;
 	}
 

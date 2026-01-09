@@ -314,9 +314,9 @@
 	/* ====================================================================== */
 
 	.btn--type1 {
-		height: var(--btn-t1-height);
-		width: var(--btn-t1-width);
-		padding: var(--btn-t1-padding);
+		height: var(--btn-height);
+		width: var(--btn-width);
+		padding: var(--btn-padding);
 
 		border-radius: 999px;
 		background: var(--color-white);
