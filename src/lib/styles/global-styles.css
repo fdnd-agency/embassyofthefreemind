@@ -376,4 +376,31 @@
 		background-position: 100% 50%;
 	}
 
+	/* ====================================================================== */
+	/* -------------------------- Type 2 — icon-only ------------------------ */
+	/* ====================================================================== */
+
+	.btn--type2 {
+		width: var(--btn-t2-size);
+		height: var(--btn-t2-size);
+		border-radius: 999px;
+		background: var(--color-white);
+		box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
+		padding: 0;
+	}
+
+	.btn--type2 svg,
+	.btn--type2 img {
+		width: var(--btn-t2-icon);
+		height: var(--btn-t2-icon);
+	}
+
+	.btn--type2.is-expanded {
+		width: var(--btn-t1-width);
+		height: var(--btn-t1-height);
+		padding: var(--btn-t1-padding);
+		justify-content: space-between;
+		gap: var(--btn-t1-gap);
+	}
+
 }
