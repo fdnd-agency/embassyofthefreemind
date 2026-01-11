@@ -138,16 +138,16 @@
 
 
   <section class="info-line" bind:this={infoLineEl}>
-	<button class="btn btn--type1">
-		Tickets kopen
-		<span class="btn__icon">
-			<img src="/images/arrow-exhibition-2.svg" height="18" width="18" alt="arrow" />
-		</span>
-	</button>
-    <div class="info-time">
-      <p>Wed. to Sat. 10.00-17.00h</p>
-      <p>Sun. 11.00-18.00h</p>
-    </div>
+		<button class="btn btn--type1 btn--blue">
+			Tickets kopen
+			<span class="btn_icon">
+				<img src="/images/arrow-exhibition-2.svg" height="18" width="18" alt="arrow" />
+			</span>
+		</button>
+		<div class="info-time">
+			<p>Wed. to Sat. 10.00-17.00h</p>
+			<p>Sun. 11.00-18.00h</p>
+		</div>
   </section>
 
 </section>
@@ -254,47 +254,6 @@
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
-	}
-
-	/* BUTTON */
-
-	.hero-button {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 21px;
-		background: white;
-		color: var(--color-text-dark, #0f0f0f);
-		border: none;
-		border-radius: 2rem;
-		height: 50px;
-		min-width: 180px;
-		white-space: nowrap;
-		padding: 6px 7px 6px 1.5rem;
-		font-family: var(--font-body);
-		font-size: 1rem;
-		cursor: pointer;
-	}
-
-	.arrow-circle {
-		background-color: #002646;
-		color: white;
-		width: 40.78px;
-		height: 42.05px;
-		border-radius: 50%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		font-size: 1.2em;
-		font-weight: bold;
-		transition:
-			background-color 0.4s ease,
-			background 0.4s ease;
-	}
-
-	.arrow-circle span {
-		transform: translateY(2px);
-		display: block;
 	}
 
 	.hero-overlay {

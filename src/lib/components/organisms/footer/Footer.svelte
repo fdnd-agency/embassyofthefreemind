@@ -5,7 +5,12 @@
 			<p>Ontvang nieuwe verhalen en highlights uit de collectie.</p>
 			<form>
 				<input type="email" placeholder="E-mail" />
-				<button type="submit">Subscribe</button>
+			    <button type="submit" class="btn btn--type1 btn--gold">
+                    Subscribe
+                	<span class="btn_icon">
+			        <img src="/images/arrow-exhibition-2.svg" height="18" width="18" alt="arrow" />
+			        </span>
+                </button>
 			</form>
 		</section>
 
