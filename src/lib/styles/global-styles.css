@@ -426,7 +426,24 @@
 		border-radius: 999px;
 		background: var(--color-white);
 		box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
+	.btn--type2{
+		width: var(--btn-t2-icon-size);
+		height: var(--btn-t2-icon-size);
 		padding: 0;
+		border-radius: var(--radius-pill);
+		background: var(--color-white);
+
+		/* To avoid the layout shift */
+		position: absolute;
+		right: 0;          
+		left: auto;        
+		box-sizing: border-box;
+
+		justify-content: center;
+		gap: 0; 
+		overflow: hidden;
+		white-space: nowrap;
+
 	}
 
 	.btn--type2 svg,
@@ -435,12 +452,26 @@
 		height: var(--btn-t2-icon);
 	}
 
-	.btn--type2.is-expanded {
-		width: var(--btn-t1-width);
-		height: var(--btn-t1-height);
-		padding: var(--btn-t1-padding);
+	.btn--type2:hover{
 		justify-content: space-between;
-		gap: var(--btn-t1-gap);
+		gap: var(--btn-gap);
+		width: var(--btn-width);
+		height: var(--btn-height);
+		padding: var(--btn-padding);
+	}
+
+	.btn--type2:hover .btn_label{ 
+		opacity: 1;
+		visibility: visible;
+		pointer-events: auto;
+		transform: translateX(0%);
+		max-width: 12ch;
+	}
+
+	.btn--type2:active {
+		box-shadow: inset 3px 3px 7px rgba(0, 0, 0, 0.192);
+	}
+
 	}
 
 	/* ====================================================================== */

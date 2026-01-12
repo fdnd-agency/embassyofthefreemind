@@ -15,16 +15,10 @@
 		<picture>
 			<img class="grid-image" src={imageUrl} alt={altText} loading="lazy" decoding="async" />
 		</picture>
-		<button class="btn btn--type2">
+		<a href={linkUrl} class="btn btn--type2 read-more-button">
 			<span class="btn_label">Meer lezen</span>
-			<span class="btn_icon">
-				<img src="/images/arrow-exhibition.svg" alt="arrow" />
-			</span>
-		</button>
-		<a href={linkUrl} class="read-more-link">
-			<span class="text-content">Meer lezen</span>
-			<span class="arrow">
-				<img src="images/arrow-exhibition.svg" height="15" width="15" alt="arrow" />
+			<span class="btn_icon" aria-hidden="true">
+				<img src="images/arrow-exhibition.svg" height="15" width="15" alt="" />
 			</span>
 		</a>
 	</div>
@@ -74,6 +68,15 @@
 			aspect-ratio: var(--aspect-ratio, auto);
 		}
 	}
+
+	.read-more-button{
+    bottom: 15px;
+    right: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,.2);
+    z-index: 2;
+  }
+
+
 	.read-more-link {
 		position: absolute;
 		bottom: 15px;
