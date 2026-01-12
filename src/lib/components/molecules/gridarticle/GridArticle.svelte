@@ -15,6 +15,12 @@
 		<picture>
 			<img class="grid-image" src={imageUrl} alt={altText} loading="lazy" decoding="async" />
 		</picture>
+		<button class="btn btn--type2">
+			<span class="btn_label">Meer lezen</span>
+			<span class="btn_icon">
+				<img src="/images/arrow-exhibition.svg" alt="arrow" />
+			</span>
+		</button>
 		<a href={linkUrl} class="read-more-link">
 			<span class="text-content">Meer lezen</span>
 			<span class="arrow">

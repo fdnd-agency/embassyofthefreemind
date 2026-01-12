@@ -290,7 +290,7 @@
 
 		--btn-font-size: clamp(1rem, 2vw, 1.125rem);
 		--btn-font-family: var(--font-body);
-		--btn-font-weight: 500;
+		--btn-font-weight: 400;
 
 		/* Type 1 */
 		--btn-height: 60px;
@@ -319,7 +319,7 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		gap: var(--btn-t1-gap);
+		gap: var(--btn-gap);
 		cursor: pointer;
 		border: none;
 		background: transparent;
@@ -343,7 +343,7 @@
 		height: var(--btn-height);
 		width: var(--btn-width);
 		padding: var(--btn-padding);
-
+		gap: var(--btn-gap);
 		border-radius: var(--radius-pill);
 		background: var(--color-white);
 		color: var(--color-black);
@@ -352,12 +352,18 @@
 		white-space: nowrap;
 	}
 
+	.btn--type1:hover {
+		font-weight: 500;
+	}
+
 	.btn--type1:active {
 		box-shadow: inset 3px 3px 7px rgba(0, 0, 0, 0.192);
 	}
 
 	/* icon circle */
 	.btn_icon {
+		flex: 0 0 var(--btn-t1-icon-size); 
+		margin-left: auto;
 		width: var(--btn-t1-icon-size);
 		height: var(--btn-t1-icon-size);
 		border-radius: var(--radius-pill);
@@ -376,6 +382,11 @@
 		width: var(--btn-t1-icon-svg);
 		height: var(--btn-t1-icon-svg);
 		display: block;
+	}
+
+	.btn_label {
+		flex: 1 1 auto;
+		min-width: 0;
 	}
 
 	/* Button Type 1 Color Variants */

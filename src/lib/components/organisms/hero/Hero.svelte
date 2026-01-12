@@ -139,9 +139,9 @@
 
   <section class="info-line" bind:this={infoLineEl}>
 		<button class="btn btn--type1 btn--blue">
-			Tickets kopen
+			<span class="btn_label">Tickets kopen</span>
 			<span class="btn_icon">
-				<img src="/images/arrow-exhibition-2.svg" height="18" width="18" alt="arrow" />
+				<img src="/images/arrow-exhibition-2.svg" alt="arrow" />
 			</span>
 		</button>
 		<div class="info-time">
