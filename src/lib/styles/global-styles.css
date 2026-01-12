@@ -420,12 +420,6 @@
 	/* -------------------------- Type 2 — icon-only ------------------------ */
 	/* ====================================================================== */
 
-	.btn--type2 {
-		width: var(--btn-t2-size);
-		height: var(--btn-t2-size);
-		border-radius: 999px;
-		background: var(--color-white);
-		box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
 	.btn--type2{
 		width: var(--btn-t2-icon-size);
 		height: var(--btn-t2-icon-size);
@@ -444,12 +438,19 @@
 		overflow: hidden;
 		white-space: nowrap;
 
+		transition:
+			width var(--dur-2) var(--ease-out),
+			padding var(--dur-2) var(--ease-out);
 	}
 
-	.btn--type2 svg,
-	.btn--type2 img {
-		width: var(--btn-t2-icon);
-		height: var(--btn-t2-icon);
+	.btn--type2 .btn_label { 
+		opacity: 0;   
+		max-width: 0;            
+  	visibility: hidden;       
+  	pointer-events: none;
+		transform: translateX(50%);
+		transition: transform 250ms ease-out, opacity 0.5s ease-in;
+		transition-delay: opacity 250ms;
 	}
 
 	.btn--type2:hover{
@@ -472,7 +473,20 @@
 		box-shadow: inset 3px 3px 7px rgba(0, 0, 0, 0.192);
 	}
 
+	.btn--type2 .btn_icon {
+		margin-left: 0;
+		flex: 0 0 var(--btn-t2-icon-size);
+		width: var(--btn-t2-icon-size);
+		height: var(--btn-t2-icon-size);
+		background: transparent;
 	}
+
+	.btn--type2 .btn_icon svg{
+		width: var(--btn-t2-icon-svg);
+		height: var(--btn-t2-icon-svg);
+		display: block;
+	}
+
 
 	/* ====================================================================== */
 	/* ----------------------------- Type 3 --------------------------------- */
