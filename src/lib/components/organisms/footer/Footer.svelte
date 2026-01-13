@@ -195,7 +195,6 @@
 				}
 			}
 
-			/* 📱 Tablets (≤1024px) */
 			@media (max-width: 1024px) {
 				grid-template-columns: repeat(3, 1fr);
 				gap: 2rem;
@@ -213,7 +212,6 @@
 				}
 			}
 
-			/* 📱 Mobile (≤768px) */
 			@media (max-width: 768px) {
 				grid-template-columns: 1fr 1fr;
 				gap: 1rem;
@@ -252,7 +250,6 @@
 				}
 			}
 
-			/* 📱 Extra small (≤480px) */
 			@media (max-width: 480px) {
 				gap: 2rem;
 
@@ -272,7 +269,6 @@
 			background-size: 80% 100%;
 		}
 
-		/* Responsive footer padding adjustments */
 		@media (max-width: 1024px) {
 			padding: 3rem 1.5rem;
 			background-image: none;
