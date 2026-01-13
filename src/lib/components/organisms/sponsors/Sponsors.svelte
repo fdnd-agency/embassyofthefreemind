@@ -11,18 +11,27 @@
 	});
 </script>
 
-<section class="sponsors-container">
+<section class="sponsors-container" aria-label="Our Sponsors">
 	<div class="marquee-track">
-		{#each sponsors as sponsor (sponsor.id)}
-			<div class="sponsor-item">
-				<img src={sponsor.src} alt={sponsor.alt} loading="lazy" width="150" height="80" />
-			</div>
-		{/each}
+		<div class="marquee-group">
+			{#each sponsors as sponsor (sponsor.id)}
+				<div class="sponsor-item">
+					<img
+						src={sponsor.src}
+						alt={sponsor.alt}
+						loading="lazy"
+						decoding="async"
+						width="150"
+						height="80"
+					/>
+				</div>
+			{/each}
+		</div>
 
 		<div class="desktop-only-group">
 			{#each sponsors as sponsor (sponsor.id + '_dup')}
 				<div class="sponsor-item">
-					<img src={sponsor.src} alt={sponsor.alt} aria-hidden="true" width="150" height="80" />
+					<img src={sponsor.src} alt="" loading="lazy" decoding="async" width="150" height="80" />
 				</div>
 			{/each}
 		</div>
@@ -31,6 +40,10 @@
 
 <style>
 	.sponsors-container {
+		--animation-speed: 40s;
+		--item-gap: 1rem;
+		--item-width: 150px;
+
 		width: auto;
 		max-width: 100%;
 		box-sizing: border-box;
@@ -41,25 +54,33 @@
 	}
 
 	.marquee-track {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		gap: 2rem;
-		width: 100%;
-		justify-items: center;
+		display: flex;
+		width: max-content;
+		gap: var(--item-gap);
+		animation: scroll var(--animation-speed) linear infinite;
+	}
+
+	.marquee-group {
+		display: flex;
+		gap: var(--item-gap);
+	}
+
+	.marquee-track:hover,
+	.marquee-track:focus-within {
+		animation-play-state: paused;
 	}
 
 	.sponsor-item {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 100%;
+		width: var(--item-width);
 		margin-right: 0;
 	}
 
 	img {
-		height: 60px;
+		height: 80px;
 		width: 100%;
-		max-width: 100px;
 		object-fit: contain;
 
 		filter: grayscale(100%) opacity(0.6);
@@ -75,28 +96,18 @@
 	}
 
 	.desktop-only-group {
-		display: none;
+		display: flex;
+		gap: var(--item-gap);
 	}
 
 	@media (min-width: 768px) {
-		.marquee-track {
+		.sponsors-container {
+			--item-gap: 2rem;
+		}
+
+		.marquee-group {
 			display: flex;
-			width: max-content;
-			gap: 0;
-			animation: scroll 40s linear infinite;
-		}
-
-		.marquee-track:hover {
-			animation-play-state: paused;
-		}
-
-		.desktop-only-group {
-			display: flex;
-			gap: 0;
-		}
-
-		.sponsor-item {
-			margin-right: 2rem;
+			gap: var(--item-gap);
 		}
 
 		img {
@@ -105,12 +116,36 @@
 		}
 	}
 
+	@media (prefers-reduced-motion: reduce) {
+		.marquee-track {
+			animation: none;
+			flex-wrap: wrap;
+			justify-content: center;
+			width: 100%;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		.marquee-group {
+			flex-wrap: wrap;
+			justify-content: center;
+		}
+
+		.sponsor-item {
+			margin-right: 0;
+		}
+
+		.desktop-only-group {
+			display: none;
+		}
+	}
+
 	@keyframes scroll {
 		0% {
 			transform: translateX(0);
 		}
 		100% {
-			transform: translateX(-50%);
+			transform: translateX(calc(-50% - (var(--item-gap) / 2)));
 		}
 	}
 </style>
