@@ -1,5 +1,5 @@
 <script>
-	import { SectionWithLinks, Exhibitions, Hero, OnlineCatalog, Sponsors } from '$lib';
+	import { SectionWithLinks, Exhibitions, Hero, OnlineCatalog } from '$lib';
 	const myImageUrl = '/images/image61.jpg';
 </script>
 
@@ -16,5 +16,3 @@
 />
 
 <OnlineCatalog />
-
-<Sponsors />
