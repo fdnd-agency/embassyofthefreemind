@@ -11,15 +11,12 @@
 <article class="available-now-card">
 	<header>
 		<h3>Tentoonstellingen</h3>
-		<a href="/exhibitions"
-			>Alle tentoonstellingen bekijken <img
-				class="arrow-exhibition"
-				src="images/arrow-exhibition.svg"
-				height="15"
-				width="15"
-				alt="arrow"
-			/></a
-		>
+		<button type="button" class="btn btn--type3">
+			<span class="btn_label">Alle tentoonstellingen bekijken</span>
+			<span class="btn_arrow" aria-hidden="true">
+				<img src="images/arrow-exhibition.svg" alt="" />
+			</span>
+		</button>
 	</header>
 	<section class="image-section">
 		<img src={imageUrl} alt="Alchemistische afbeelding met tekst" class="main-image" />
@@ -33,20 +30,12 @@
 				<p class="title"><strong>{title}</strong></p>
 				<p class="subtitle">{subtitle}</p>
 
-				<div class="date-arrow-row">
-					<p class="ticket-text">Boek ticket</p>
-					<div class="arrow-circle">
-						<span
-							><img
-								class="arrow-ticket"
-								src="images/arrow-exhibition-2.svg"
-								height="12"
-								width="12"
-								alt="arrow"
-							/></span
-						>
-					</div>
-				</div>
+				<button type="button" class="btn btn--type3 btn--type3-white" on:click={goExhibitions}>
+					<span class="btn_label">Boek ticket</span>
+					<span class="btn_arrow" aria-hidden="true">
+						<img src="images/arrow-exhibition-2.svg" alt="" />
+					</span>
+				</button>
 			</div>
 		</a>
 	</section>
@@ -224,9 +213,6 @@
 		line-height: 0;
 	}
 
-	.arrow-exhibition {
-		margin-left: 1rem;
-	}
 
 	.text-content .title {
 		font-size: clamp(1.3rem, 1.386rem + 2.905vw, 3rem);

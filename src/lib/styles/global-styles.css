@@ -11,11 +11,6 @@
 /* -------------------------------------------------------------------------- */
 
 @layer reset {
-	*,
-	*::before,
-	*::after {
-		box-sizing: border-box;
-	}
 
 	html:focus-within {
 		scroll-behavior: smooth;
@@ -24,15 +19,6 @@
 	body {
 		margin: 0;
 		padding: 0;
-	}
-
-	img,
-	picture,
-	video,
-	canvas,
-	svg {
-		display: block;
-		max-width: 100%;
 	}
 
 	input,
@@ -294,9 +280,9 @@
 
 		/* Type 1 */
 		--btn-height: 60px;
-		--btn-width: clamp(13rem, 40vw, 14.5rem);
+		--btn-width: clamp(10rem, 35vw, 14rem);
 		--btn-padding: 6px 7px 6px 1.5rem;
-		--btn-gap: clamp(1.2rem, 4vw, 2.6rem);
+		--btn-gap: clamp(1rem, 2vw, 1.5rem);
 
 		--btn-t1-icon-size: 47px;
 		--btn-t1-icon-svg: 20px;
@@ -341,7 +327,7 @@
 
 	.btn--type1 {
 		height: var(--btn-height);
-		width: var(--btn-width);
+		min-width: var(--btn-width);
 		padding: var(--btn-padding);
 		gap: var(--btn-gap);
 		border-radius: var(--radius-pill);
@@ -421,13 +407,12 @@
 	/* ====================================================================== */
 
 	.btn--type2{
-		width: var(--btn-t2-icon-size);
+		min-width: var(--btn-t2-icon-size);
 		height: var(--btn-t2-icon-size);
 		padding: 0;
 		border-radius: var(--radius-pill);
 		background: var(--color-white);
 
-		/* To avoid the layout shift */
 		position: absolute;
 		right: 0;          
 		left: auto;        
@@ -492,17 +477,18 @@
 	/* ----------------------------- Type 3 --------------------------------- */
 	/* ====================================================================== */
 
-	.btn--type3 {
+	.btn--type3{
+		position: relative;
 		display: inline-flex;
-		align-items: center;
-		gap: 0.75rem;
-		background: transparent;
-		padding: 0.25rem 0;
-		border-radius: 0;
+		align-items: baseline;
+		gap: var(--btn-gap);
+		padding: 0;
+		text-decoration: none;
 	}
 
-	.btn--type3 .btn__label {
+	.btn--type3 .btn_label {
 		position: relative;
+		display: inline-block;
 	}
 
 	.btn--type3:hover .btn__label::after {

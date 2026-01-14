@@ -4,12 +4,14 @@
             <h2>Onze Collectie</h2>
             <p>Een gedeelte van boeken uit onze collectie is al gedigitaliseerd. Met uw steun kunnen we de rest van onze collectie ook digitaliseren. Blader door objecten die het verhaal van onze geschiedenis vertellen. Elk object is voorzien van context, herkomst en datering.</p>
         </div>
-        <a class="catalog-link" href="/">
-            Catalogus Bekijken
-            <span>
-                <img src="images/arrow-exhibition.svg" height="15" width="15" alt="arrow" />
-            </span>
-        </a>
+        
+        <button type="button" class="btn btn--type1 btn--blue">
+			<span class="btn_label">Catalogus Bekijken</span>
+			<span class="btn_icon">
+				<img src="images/arrow-exhibition-2.svg" height="15" width="15" alt="arrow" />
+			</span>
+		</button>
+
         <div class="card-container">
             <div class="cards-wrapper">
                 <div class="card">

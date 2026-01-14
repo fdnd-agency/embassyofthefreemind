@@ -99,14 +99,6 @@
                         border: none;
                         border-bottom: 1px solid white;
                     }
-                    button {
-                        background-color: white;
-                        border: 1px solid;
-                        border-radius: 30px;
-                        width: 200px;
-                        padding: 0.5rem;
-                        cursor: pointer;
-                    }
                 }
                 @media (min-width: 1024px) {
                     h3 {
