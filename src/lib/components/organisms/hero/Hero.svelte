@@ -114,8 +114,10 @@
 	<div class="hero-content" bind:this={heroContentEl}>
 		<p>hoogtepunten</p>
 
-		<h1>{slides[current].title}</h1>
-		<h2>{slides[current].subtitle}</h2>
+		<div class="hero-title">
+			<h1>{slides[current].title}</h1>
+			<h2>{slides[current].subtitle}</h2>
+		</div>
 
 		<div class="hero-arrows" bind:this={heroArrowsEl}>
 			<button class="arrow-btn" on:click={() => goPrev()} aria-label="Vorige slide">
@@ -169,8 +171,9 @@
 		width: 100%;
 		min-height: 100vh;
 		display: flex;
-		align-items: center;
-		justify-content: center;
+		flex-direction: column;
+		align-items: flex-end;
+    justify-content: space-evenly;
 		color: white;
 		overflow-x: hidden;
 	}
@@ -208,34 +211,54 @@
 
 	/* HERO CONTENT */
 	.hero-content {
-		z-index: 1;
+		z-index: 2;
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		justify-content: left;
-		max-width: 100%;
-		margin-inline: auto;
-		padding: 0 2rem;
-		padding-bottom: 6rem;
+		align-self: flex-start;
+		justify-content: space-between;
+		max-width: 30rem;
+		margin-inline: 1rem;
 		text-wrap: balance;
 		gap: 1rem;
+		height: clamp(20rem, 50vh, 50rem);
+		padding: 1rem 1rem 0rem;
+		margin-top: 4rem;
+		padding-right: 3rem;
+		margin-inline: 1rem;
 	}
 
-	.hero-content h1,
-	.hero-content h2 {
-		font-family: 'Night Mango', serif;
+	.hero-content > p {
+		flex: 0 0 auto;
+		margin: 0;
+	}
+
+	.hero-title {
+		flex: 1 1 auto;
+		min-height: 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 0;
+	}
+
+	.hero-title h1,
+	.hero-title h2 {
+		overflow: visible;
+		text-overflow: clip; 
+		font-family: var(--font-display);
 		font-weight: 400;
 		color: white;
 		margin: 0;
-		line-height: 1.2;
+		line-height: 1;
 	}
 
-	.hero-content h1 {
-		font-size: clamp(61px, 6vw, 160px);
+	.hero-title h1 {
+		font-size: var(--h1);
 	}
 
-	.hero-content h2 {
-		font-size: clamp(46px, 4vw, 85px);
+	.hero-title h2 {
+		font-size: var(--h2);
 		font-weight: 300;
 	}
 
@@ -247,10 +270,9 @@
 		font-family: var(--font-body);
 		font-weight: 100;
 		font-size: 20px;
-		margin-top: 20rem;
-    padding: 4rem 5rem 1rem 1rem;
+    padding-right: 1rem;
 		z-index: 2;
-		gap: 3rem;
+		gap: 1rem;
 	}
 
 	.info-line p {
@@ -333,8 +355,9 @@
 		font-family: var(--font-body);
 		font-weight: 100;
 		color: white;
+		flex: 0 0 auto;
 	}
-
+	
 	.arrow-btn {
 		background: none;
 		border: none;
@@ -360,17 +383,26 @@
 	/* === MEDIAQUERIES === */
 
 	@media (min-width: 700px) {
+		.hero {
+			flex-direction: row;
+			align-items: flex-start;
+			justify-content: center;
+			gap: min(0.5rem, 4vw);
+		}
+
 		.hero-content {
-			max-width: 70%;
-			margin-bottom: 0rem;
-			margin-left: 61px;
-			margin-top: 15rem;
-			padding: 0 2rem;
+			align-self: center;
+			max-width: 60%;
+			margin-left: 3vw;
+			margin-top: 17rem;
+			margin-bottom: 1rem;
+			padding: 0 1rem;
+			height: 60vh;
 		}
 
 		.hero-content h1 {
 			font-size: clamp(75px, 8.5vw, 175px);
-			line-height: 0.9;
+			line-height: 1;
 		}
 
 		.hero-content h2 {
@@ -381,18 +413,44 @@
 			bottom: -7vh;
 		}
 
+		.info-line {
+			gap: 3rem;
+			margin-top: 30rem;
+			padding: 2rem;
+		}
+
+	}
+
+	@media (min-height: 1000px) and (min-width: 700px){
+		.hero {
+			min-height: 100vh;
+		}
+
+		.hero-content {
+			height: 45vh;
+			margin-top: 20rem;
+		}
+
+		.info-line {
+			margin-top: 40rem;
+		}
 	}
 
 	@media (min-width: 1000px) {
+
+		.info-line {
+			padding: 4rem 5rem 1rem 1rem;
+		}
+
 		.hero-content {
-			max-width: 60%;
+			max-width: 50%;
+			height: 55vh;
 		}
 
 		.hero-button {
 			bottom: clamp(1vh, 4vh, -4vh);
 			left: clamp(24rem, calc(5vw + 28rem), 35rem);
 		}
-
 
 	}
 
