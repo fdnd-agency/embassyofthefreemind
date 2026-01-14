@@ -491,21 +491,43 @@
 		display: inline-block;
 	}
 
-	.btn--type3:hover .btn__label::after {
-		content: "";
+	.btn--type3::after{
+		content:"";
 		position: absolute;
 		left: 0;
 		right: 0;
-		bottom: -6px;
+		bottom: -2px;
 		height: 1px;
 		background: currentColor;
-		opacity: 0.75;
+
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform var(--dur-3) var(--ease-out);
 	}
 
-	.btn--type3 .btn__arrow svg,
-	.btn--type3 .btn__arrow img {
-		width: var(--btn-t3-icon);
-		height: var(--btn-t3-icon);
+	/* Animation */
+	.btn--type3:hover::after,
+	.btn--type3:focus-visible::after{
+		transform: scaleX(1);
+	}
+
+	.btn--type3 .btn_arrow {
+		display: inline-flex;
+		align-items: center;
+		line-height: 0;
+		top: -5px;
+	}
+
+	.btn--type3 .btn_arrow img,
+	.btn--type3 .btn_arrow svg {
+		width: var(--btn-t3-icon-size); 
+		height: var(--btn-t3-icon-size);
+		display: block;
+	}
+
+	/* White variant (for dark backgrounds) */
+	.btn--type3-white {
+		color: var(--color-text-inverse);
 	}
 
 }
