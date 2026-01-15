@@ -37,29 +37,27 @@
 	:root {
 		/* ------------------------------ Layout / spacing ------------------------------ */
 
-		--container-max: 1200px;
+		--container-max: 75rem;
 
-		--space-1: 0.25rem;
-		--space-2: 0.5rem;
-		--space-3: 0.75rem;
-		--space-4: 1rem;
-		--space-5: 1.25rem;
-		--space-6: 1.5rem;
-		--space-8: 2rem;
-		--space-10: 2.5rem;
-		--space-12: 3rem;
+		--space-2xs: 0.25rem;
+		--space-xs: 0.5rem;
+		--space-sm: 0.75rem;
+		--space-md: 1rem;
+		--space-lg: 1.5rem;
+		--space-xl: 2rem;
+		--space-2xl: 3rem;
 
 		/* ------------------------------ Radius ------------------------------ */
 
-		--radius-sm: 10px;
-		--radius-md: 16px;
-		--radius-lg: 30px;
-		--radius-pill: 999px;
+		--radius-sm: 0.625rem;  
+		--radius-md: 1rem;    
+		--radius-lg: 1.875rem; 
+		--radius-pill: 999rem;
 
 		/* ------------------------------ Shadows ------------------------------ */
 
-		--shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.08);
-		--shadow-float: 0 4px 10px rgba(0, 0, 0, 0.2);
+		--shadow-soft: 0 0.5rem 1.5rem hsl(0 0% 0% / 0.08);
+		--shadow-float: 0 0.25rem 0.625rem hsl(0 0% 0% / 0.2);
 
 		/* ------------------------------ Motion ------------------------------ */
 
@@ -68,6 +66,11 @@
 		--dur-1: 150ms;
 		--dur-2: 250ms;
 		--dur-3: 350ms;
+
+		/* ------------------------------ Borders ------------------------------ */
+
+		--border-1: 0.0625rem; 
+		--border-2: 0.125rem; 
 	}
 
 	html {
@@ -80,7 +83,7 @@
 		color: var(--color-text);
 		font-family: var(--font-body);
 		font-weight: 300;
-		line-height: 1.55;
+		line-height: 1.5;
 	}
 
 	a {
@@ -114,12 +117,11 @@
 
 		/* --------------------------- Font size -------------------------------- */
 
-		--h1: clamp(3.8rem, 6vw, 10rem);
-		--h2: clamp(2.8rem, 4vw, 5.3rem);
-		--h3: clamp(2rem, 3vw, 3.2rem);
-		--h4: clamp(1.8rem, 2.6vw, 2.7rem);
-
-		--p: clamp(1rem, 1.2vw, 1.125rem);
+		--font-size-2xl: clamp(3.8rem, 6vw, 10rem);
+		--font-size-xl: clamp(2.8rem, 4vw, 5.3rem);
+		--font-size-l: clamp(2rem, 3vw, 3.2rem);
+		--font-size-m: clamp(1.8rem, 2.6vw, 2.7rem);
+		--font-size-s: clamp(1rem, 1.2vw, 1.125rem);
 
 		--caps-track: 0.08em;
 	}
@@ -140,25 +142,17 @@
 		margin: 0;
 	}
 
-	h1 {
-		font-size: var(--h1);
-	}
+	h1 { font-size: var(--font-size-2xl); }
 
-	h2 {
-		font-size: var(--h2);
-	}
+	h2 { font-size: var(--font-size-xl); }
 
-	h3 {
-		font-size: var(--h3);
-	}
+	h3 { font-size: var(--font-size-l);}
 
-	h4 {
-		font-size: var(--h4);
-	}
+	h4 { font-size: var(--font-size-m); }
 
 	p {
 		margin: 0;
-		font-size: var(--p);
+		font-size: var(--font-size-s);
 	}
 
 }
