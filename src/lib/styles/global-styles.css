@@ -163,96 +163,127 @@
 
 @layer colors {
 	:root {
-		/* Primary */
-		--color-white: #ffffff;
-		--color-black: #000000;
-		--color-border: #d7d7d7;
+		/* Base HSL (choose your hues) */
+		--primary-h: 210;  /* navy-ish */
+		--primary-s: 100%;
 
-		/* Accents */
-		--color-accent-gold: #d8b66a;
-		--color-accent-gold-dark: #7f6733;
+		--accent-h: 41;    /* gold-ish */
+		--accent-s: 55%;
 
-		/* Neutral accents */
-		--color-navy: #002646;
-		--color-navy-muted: #19252e;
+		--neutral-h: 210;
+		--neutral-s: 20%;
 
-		--color-blue-accent: #005dac;
-		--color-blue-muted: #5983a6;
-		--color-blue-200: #bdcddb;
+		/* Lightness steps */
+		--l-0: 0%;
+		--l-10: 10%;
+		--l-15: 15%;
+		--l-25: 25%;
+		--l-35: 35%;
+		--l-50: 50%;
+		--l-70: 70%;
+		--l-85: 85%;
+		--l-95: 95%;
+		--l-100: 100%;
 
-		--color-ice-300: #d2ebff;
-		--color-ice-100: #eff8ff;
+		/* Neutrals */
+		--neutral-0: hsl(var(--neutral-h) var(--neutral-s) var(--l-0));
+		--neutral-10: hsl(var(--neutral-h) var(--neutral-s) var(--l-10));
+		--neutral-15: hsl(var(--neutral-h) var(--neutral-s) var(--l-15));
+		--neutral-85: hsl(var(--neutral-h) var(--neutral-s) var(--l-85));
+		--neutral-95: hsl(var(--neutral-h) var(--neutral-s) var(--l-95));
+		--neutral-100: hsl(var(--neutral-h) 0% var(--l-100)); /* “white” */
 
-		--color-surface-200: #e7edf1;
-		--color-surface-100: #f5f8fa;
+		/* Primary variations */
+		--primary-darkest: hsl(var(--primary-h) var(--primary-s) var(--l-15));
+		--primary-dark: hsl(var(--primary-h) var(--primary-s) var(--l-25));
+		--primary-neutral: hsl(var(--primary-h) var(--primary-s) var(--l-35));
+		--primary-light: hsl(var(--primary-h) 55% var(--l-70));
+		--primary-lightest: hsl(var(--primary-h) 55% var(--l-95));
+
+		/* Accent variations */
+		--accent-darkest: hsl(var(--accent-h) var(--accent-s) var(--l-25));
+		--accent-dark: hsl(var(--accent-h) var(--accent-s) var(--l-35));
+		--accent-neutral: hsl(var(--accent-h) var(--accent-s) var(--l-50));
+		--accent-light: hsl(var(--accent-h) 65% var(--l-70));
+		--accent-lightest: hsl(var(--accent-h) 65% var(--l-95));
 
 		/* Semantic */
-		--color-background: var(--color-white);
-		--color-surface: var(--color-surface-100);
+		--color-background: var(--neutral-100);
+		--color-surface: var(--neutral-95);
+		--color-text: var(--neutral-0);
+		--color-text-inverse: var(--neutral-100);
 
-		--color-text: var(--color-black);
-		--color-text-inverse: var(--color-white);
+		--color-border: hsl(var(--neutral-h) 10% 85%);
+		--color-link: var(--primary-darkest);
+		--color-link-hover: color-mix(in hsl, var(--primary-darkest) 70%, var(--primary-light));
 
-		--color-link: var(--color-navy);
-		--color-link-hover: color-mix(in srgb, var(--color-navy) 80%, var(--color-blue-muted));
+		/* Glass / overlays */
+		--nav-glass-bg: hsl(0 0% 0% / 0.4);
+		--nav-glass-blur: 1.125rem; /* 18px */
 
-		/* Navbar glass */
-		--nav-glass-bg: hsla(0, 0%, 0%, 0.4);
-		--nav-glass-blur: 18px;
-
-		/* Hero overlays */
-		--overlay-hero: hsla(0, 0%, 0%, 0.5);
-		--overlay-warm: hsla(60, 12%, 13%, 0.5);
+		--overlay-hero: hsl(0 0% 0% / 0.5);
+		--overlay-warm: hsl(60 12% 13% / 0.5);
 
 		/* Focus */
-		--focus-ring: var(--color-accent-gold);
+		--focus-ring: var(--accent-neutral);
+
 
 /* ------------------------------------------------------------------ */
 /* ---------------- Gradient animation colors ----------------------- */
 /* ------------------------------------------------------------------ */
 
-		/* Colors layer */
+		--gold-stop-01: hsl(var(--accent-h) 68% 67%); 
+		--gold-stop-02: hsl(var(--accent-h) 71% 68%);
+		--gold-stop-03: hsl(var(--accent-h) 59% 63%); 
+		--gold-stop-04: hsl(var(--accent-h) 40% 54%); 
+		--gold-stop-05: hsl(var(--accent-h) 35% 46%); 
+		--gold-stop-06: hsl(var(--accent-h) 35% 42%); 
+		--gold-stop-07: hsl(var(--accent-h) 35% 50%);
+
+
+		--blue-stop-01: hsl(207 100% 14%); /* #002646 */
+		--blue-stop-02: hsl(207 100% 24%); /* #004279 */
+		--blue-stop-03: hsl(208 100% 34%); /* #005dac */
+		--blue-stop-04: hsl(208 100% 43%); /* #0074d9 */
+
+
+	/* Colors layer */
 		--gradient-gold-anim: linear-gradient(
 			50deg,
-			#e4c070,
-			#e7c272,
-			#d8b66a,
-			#d8b66a,
-			#d8b66a,
-			#b99b5a,
-			#9f854d,
-			#917946,
-			#ab8f52,
-			#f2cb78,
-			#d8b66a,
-			#d8b66a,
-			#d8b66a
+			var(--gold-stop-01),
+			var(--gold-stop-02),
+			var(--gold-stop-03),
+			var(--gold-stop-03),
+			var(--gold-stop-03),
+			var(--gold-stop-04),
+			var(--gold-stop-05),
+			var(--gold-stop-06),
+			var(--gold-stop-07),
+			var(--gold-stop-08),
+			var(--gold-stop-03),
+			var(--gold-stop-03),
+			var(--gold-stop-03)
 		);
 
 		--gradient-blue-anim: linear-gradient(
 			50deg,
-			#002646,
-			#002646,
-			#002646,
-			#002646,
-			#004279,
-			#005dac,
-			#0074d9,
-			#005dac,
-			#004279,
-			#002646,
-			#002646,
-			#002646,
-			#002646
+			var(--blue-stop-01),
+			var(--blue-stop-01),
+			var(--blue-stop-01),
+			var(--blue-stop-01),
+			var(--blue-stop-02),
+			var(--blue-stop-03),
+			var(--blue-stop-04),
+			var(--blue-stop-03),
+			var(--blue-stop-02),
+			var(--blue-stop-01),
+			var(--blue-stop-01),
+			var(--blue-stop-01),
+			var(--blue-stop-01)
 		);
 
 		a:hover {
 			color: var(--color-link-hover);
-		}
-
-		:focus-visible {
-			outline: 3px solid var(--focus-ring);
-			outline-offset: 3px;
 		}
 	}
 }
