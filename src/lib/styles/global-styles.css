@@ -63,9 +63,9 @@
 
 		--ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 		--ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-		--dur-1: 150ms;
-		--dur-2: 250ms;
-		--dur-3: 350ms;
+		--duration-1: 150ms;
+		--duration-2: 250ms;
+		--duration-3: 350ms;
 
 		/* ------------------------------ Borders ------------------------------ */
 
@@ -174,38 +174,38 @@
 		--neutral-s: 20%;
 
 		/* Lightness steps */
-		--l-0: 0%;
-		--l-10: 10%;
-		--l-15: 15%;
-		--l-25: 25%;
-		--l-35: 35%;
-		--l-50: 50%;
-		--l-70: 70%;
-		--l-85: 85%;
-		--l-95: 95%;
-		--l-100: 100%;
+		--lightness-0: 0%;
+		--lightness-10: 10%;
+		--lightness-15: 15%;
+		--lightness-25: 25%;
+		--lightness-35: 35%;
+		--lightness-50: 50%;
+		--lightness-70: 70%;
+		--lightness-85: 85%;
+		--lightness-95: 95%;
+		--lightness-100: 100%;
 
 		/* Neutrals */
-		--neutral-0: hsl(var(--neutral-h) var(--neutral-s) var(--l-0)); /* total black */
-		--neutral-10: hsl(var(--neutral-h) var(--neutral-s) var(--l-10));
-		--neutral-15: hsl(var(--neutral-h) var(--neutral-s) var(--l-15));
-		--neutral-85: hsl(var(--neutral-h) var(--neutral-s) var(--l-85));
-		--neutral-95: hsl(var(--neutral-h) var(--neutral-s) var(--l-95));
-		--neutral-100: hsl(var(--neutral-h) 0% var(--l-100)); /* total white */
+		--neutral-0: hsl(var(--neutral-h) var(--neutral-s) var(--lightness-0)); /* total black */
+		--neutral-10: hsl(var(--neutral-h) var(--neutral-s) var(--lightness-10));
+		--neutral-15: hsl(var(--neutral-h) var(--neutral-s) var(--lightness-15));
+		--neutral-85: hsl(var(--neutral-h) var(--neutral-s) var(--lightness-85));
+		--neutral-95: hsl(var(--neutral-h) var(--neutral-s) var(--lightness-95));
+		--neutral-100: hsl(var(--neutral-h) 0% var(--lightness-100)); /* total white */
 
 		/* Primary variations */
-		--primary-darkest: hsl(var(--primary-h) var(--primary-s) var(--l-15));
-		--primary-dark: hsl(var(--primary-h) var(--primary-s) var(--l-25));
-		--primary-neutral: hsl(var(--primary-h) var(--primary-s) var(--l-35));
-		--primary-light: hsl(var(--primary-h) 55% var(--l-70));
-		--primary-lightest: hsl(var(--primary-h) 55% var(--l-95));
+		--primary-darkest: hsl(var(--primary-h) var(--primary-s) var(--lightness-15));
+		--primary-dark: hsl(var(--primary-h) var(--primary-s) var(--lightness-25));
+		--primary-neutral: hsl(var(--primary-h) var(--primary-s) var(--lightness-35));
+		--primary-light: hsl(var(--primary-h) 55% var(--lightness-70));
+		--primary-lightest: hsl(var(--primary-h) 55% var(--lightness-95));
 
 		/* Accent variations */
-		--accent-darkest: hsl(var(--accent-h) var(--accent-s) var(--l-25));
-		--accent-dark: hsl(var(--accent-h) var(--accent-s) var(--l-35));
-		--accent-neutral: hsl(var(--accent-h) var(--accent-s) var(--l-50));
-		--accent-light: hsl(var(--accent-h) 65% var(--l-70));
-		--accent-lightest: hsl(var(--accent-h) 65% var(--l-95));
+		--accent-darkest: hsl(var(--accent-h) var(--accent-s) var(--lightness-25));
+		--accent-dark: hsl(var(--accent-h) var(--accent-s) var(--lightness-35));
+		--accent-neutral: hsl(var(--accent-h) var(--accent-s) var(--lightness-50));
+		--accent-light: hsl(var(--accent-h) 65% var(--lightness-70));
+		--accent-lightest: hsl(var(--accent-h) 65% var(--lightness-95));
 
 		/* Semantic */
 		--color-background: var(--neutral-100);
@@ -216,7 +216,7 @@
 		--color-border: hsl(var(--neutral-h) 10% 85%);
 
 		/* Glass / overlays */
-		--nav-glass-bg: hsl(0 0% 0% / 0.4);
+		--nav-glass-background: hsl(0 0% 0% / 0.4);
 		--nav-glass-blur: 1.125rem; 
 
 		--overlay-hero: hsl(0 0% 0% / 0.5);
@@ -298,7 +298,7 @@
 
 	/* Button basics using pseudo-private tokens */
 	.btn {
-		--_bg: transparent;
+		--_background: transparent;
 		--_color: var(--color-text);
 		--_shadow: none;
 		--_gap: var(--space-md);
@@ -315,7 +315,7 @@
 		gap: var(--_gap);
 		cursor: pointer;
 		border: none;
-		background: var(--_bg);
+		background: var(--_background);
 		color: var(--_color);
 		box-shadow: var(--_shadow);
 		font-family: var(--font-body);
@@ -324,9 +324,9 @@
 		font-size: clamp(1rem, 2vw, 1.125rem);
 
 		transition:
-			transform var(--dur-1) var(--ease-out),
-			opacity var(--dur-2) var(--ease-out),
-			box-shadow var(--dur-2) var(--ease-out);
+			transform var(--duration-1) var(--ease-out),
+			opacity var(--duration-2) var(--ease-out),
+			box-shadow var(--duration-2) var(--ease-out);
 
 		&:active {
 			--_shadow: inset 0.1875rem 0.1875rem 0.4375rem hsl(0 0% 0% / 0.18);
@@ -336,7 +336,7 @@
 	/* ------------------------------ Type 1 (gradient button) ------------------------------ */
 
 	.btn--gradient {
-		--_bg: var(--color-background);
+		--_background: var(--color-background);
 		--_color: var(--color-text);
 		--_height: 3.75rem; 
 		--_min-width: clamp(10rem, 35vw, 14rem);
@@ -350,7 +350,7 @@
 		min-width: var(--_min-width);
 		padding: var(--_padding);
 		border-radius: var(--_radius);
-		background: var(--_bg);
+		background: var(--_background);
 		color: var(--_color);
 
 		justify-content: space-between;
@@ -413,7 +413,7 @@
 	/* ------------------------------ Type 2 (icon-only expanding button) ------------------------------ */
 
 	.btn--expand { 
-		--_bg: var(--color-background);
+		--_background: var(--color-background);
 		--_height: 3.75rem;
 		--_padding: 0;
 		--_icon-size: 3.75rem;
@@ -423,7 +423,7 @@
 		height: var(--_icon-size);
 		padding: var(--_padding);
 		border-radius: var(--radius-pill);
-		background: var(--_bg);
+		background: var(--_background);
 
 		box-sizing: border-box;
 		justify-content: center;
@@ -432,8 +432,8 @@
 		white-space: nowrap;
 
 		transition:
-			width var(--dur-2) var(--ease-out),
-			padding var(--dur-2) var(--ease-out);
+			width var(--duration-2) var(--ease-out),
+			padding var(--duration-2) var(--ease-out);
 
 		.btn-label {
 			opacity: 0;
@@ -441,7 +441,7 @@
 			visibility: hidden;
 			pointer-events: none;
 			transform: translateX(50%);
-			transition: transform var(--dur-2) var(--ease-out), opacity var(--dur-2) var(--ease-out);
+			transition: transform var(--duration-2) var(--ease-out), opacity var(--duration-2) var(--ease-out);
 		}
 
 		&:hover {
@@ -503,7 +503,7 @@
 
 			transform: scaleX(0);
 			transform-origin: left;
-			transition: transform var(--dur-3) var(--ease-out);
+			transition: transform var(--duration-3) var(--ease-out);
 		}
 
 		&:hover::after,
