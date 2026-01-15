@@ -233,7 +233,7 @@
 				}
 
 				.footer-info {
-					margin-top: 4rem;
+					margin-top: 7rem;
 					text-align: left;
 					position: static;
 					.socials {
