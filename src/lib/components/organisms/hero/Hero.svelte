@@ -138,9 +138,9 @@
 
 
   <section class="info-line" bind:this={infoLineEl}>
-		<button class="btn btn--type1 btn--blue">
-			<span class="btn_label">Tickets kopen</span>
-			<span class="btn_icon">
+		<button class="btn btn--gradient btn--blue .hero-btn">
+			<span class="btn-label">Tickets kopen</span>
+			<span class="btn-icon">
 				<img src="/images/arrow-exhibition-2.svg" alt="arrow" />
 			</span>
 		</button>
@@ -224,11 +224,11 @@
 	}
 
 	.hero-content h1 {
-		font-size: var(--h1);
+		font-size: var(--font-size-2xl);
 	}
 
 	.hero-content h2 {
-		font-size: var(--h2);
+		font-size: var(--font-size-xl);
 		font-weight: 300;
 	}
 
@@ -329,7 +329,7 @@
 			line-height: 1.2;
 		}
 
-		.hero-button {
+		.hero-btn {
 			bottom: -7vh;
 		}
 
@@ -340,7 +340,7 @@
 			max-width: 60%;
 		}
 
-		.hero-button {
+		.hero-btn {
 			bottom: clamp(1vh, 4vh, -4vh);
 			left: clamp(24rem, calc(5vw + 28rem), 35rem);
 		}
