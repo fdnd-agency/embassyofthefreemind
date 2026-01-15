@@ -138,30 +138,23 @@
 
 
   <section class="info-line" bind:this={infoLineEl}>
-		<button class="hero-button">
-      Tickets kopen
-      <div class="arrow-circle">
-        <span>
-          <img
-            src="images/arrow-exhibition-2.svg"
-            height="18"
-            width="18"
-            alt="arrow"
-          />
-        </span>
-      </div>
-    </button>
-    <div class="info-time">
-      <p>Wed. to Sat. 10.00-17.00h</p>
-      <p>Sun. 11.00-18.00h</p>
-    </div>
+		<button class="btn btn--gradient btn--blue .hero-btn">
+			<span class="btn-label">Tickets kopen</span>
+			<span class="btn-icon">
+				<img src="/images/arrow-exhibition-2.svg" alt="arrow" />
+			</span>
+		</button>
+		<div class="info-time">
+			<p>Wed. to Sat. 10.00-17.00h</p>
+			<p>Sun. 11.00-18.00h</p>
+		</div>
   </section>
 
 </section>
 
 
 <style>
-	/* HERO SECTION */
+
 	.hero {
 		font-family: var(--font-body);
 		font-weight: 100;
@@ -179,7 +172,7 @@
 		content: '';
 		position: absolute;
 		inset: 0;
-		background: hsla(0, 0%, 0%, 0.512);
+		background: var(--overlay-hero);
 		z-index: 1;
 	}
 
@@ -223,7 +216,7 @@
 
 	.hero-content h1,
 	.hero-content h2 {
-		font-family: 'Night Mango', serif;
+		font-family: var(--font-display);
 		font-weight: 400;
 		color: white;
 		margin: 0;
@@ -231,11 +224,11 @@
 	}
 
 	.hero-content h1 {
-		font-size: clamp(61px, 6vw, 160px);
+		font-size: var(--font-size-2xl);
 	}
 
 	.hero-content h2 {
-		font-size: clamp(46px, 4vw, 85px);
+		font-size: var(--font-size-xl);
 		font-weight: 300;
 	}
 
@@ -263,51 +256,10 @@
 		gap: 0.5rem;
 	}
 
-	/* BUTTON */
-
-	.hero-button {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 21px;
-		background: white;
-		color: var(--color-text-dark, #0f0f0f);
-		border: none;
-		border-radius: 2rem;
-		height: 50px;
-		min-width: 180px;
-		white-space: nowrap;
-		padding: 6px 7px 6px 1.5rem;
-		font-family: var(--font-body);
-		font-size: 1rem;
-		cursor: pointer;
-	}
-
-	.arrow-circle {
-		background-color: #002646;
-		color: white;
-		width: 40.78px;
-		height: 42.05px;
-		border-radius: 50%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		font-size: 1.2em;
-		font-weight: bold;
-		transition:
-			background-color 0.4s ease,
-			background 0.4s ease;
-	}
-
-	.arrow-circle span {
-		transform: translateY(2px);
-		display: block;
-	}
-
 	.hero-overlay {
 		position: absolute;
 		inset: 0;
-		background: hsla(60, 12%, 13%, 0.512);
+		background: var(--overlay-warm);
 		z-index: 1;
 	}
 
@@ -377,7 +329,7 @@
 			line-height: 1.2;
 		}
 
-		.hero-button {
+		.hero-btn {
 			bottom: -7vh;
 		}
 
@@ -388,7 +340,7 @@
 			max-width: 60%;
 		}
 
-		.hero-button {
+		.hero-btn {
 			bottom: clamp(1vh, 4vh, -4vh);
 			left: clamp(24rem, calc(5vw + 28rem), 35rem);
 		}

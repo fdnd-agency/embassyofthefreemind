@@ -5,7 +5,12 @@
 			<p>Ontvang nieuwe verhalen en highlights uit de collectie.</p>
 			<form>
 				<input type="email" placeholder="E-mail" />
-				<button type="submit">Subscribe</button>
+			    <button type="submit" class="btn btn--gradient btn--gold">
+                    <span class="btn-label">Subscribe</span>
+                	<span class="btn-icon">
+			        <img src="/images/arrow-exhibition-2.svg" height="18" width="18" alt="arrow" />
+			        </span>
+                </button>
 			</form>
 		</section>
 
@@ -93,14 +98,6 @@
                         color: white;
                         border: none;
                         border-bottom: 1px solid white;
-                    }
-                    button {
-                        background-color: white;
-                        border: 1px solid;
-                        border-radius: 30px;
-                        width: 200px;
-                        padding: 0.5rem;
-                        cursor: pointer;
                     }
                 }
                 @media (min-width: 1024px) {
