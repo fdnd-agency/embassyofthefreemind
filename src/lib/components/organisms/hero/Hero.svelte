@@ -2,25 +2,25 @@
   import { onMount, onDestroy } from 'svelte';
   import { gsap } from 'gsap';
 
-  const SLIDE_DURATION = 5000; 
+  const SLIDE_DURATION = 5000;
 
   const slides = [
     {
       title: 'Vier 450 jaar',
       subtitle: 'Amsterdam in het huis met de hoofden',
-      image: '/images/background-1.png',
+      base: '/images/hero/background-1',
       alt: "Painting by William Blake titled Jacob's Ladder"
     },
     {
       title: 'Off planets perspective',
       subtitle: 'drawings by Joost Elffers',
-      image: '/images/background-2.png',
-      alt: 'Off planets perspective – drawings by Joost Elffers'
+      base: '/images/hero/background-2',
+      alt: 'Off planets perspective - drawings by Joost Elffers'
     },
     {
       title: 'Hidden knowledge',
       subtitle: 'mystieke boeken en symbolen',
-      image: '/images/background-3.png',
+      base: '/images/hero/background-3',
       alt: 'Hidden knowledge exhibition'
     }
   ];
@@ -29,83 +29,90 @@
   const total = slides.length;
   let intervalId;
 
-	let heroContentEl;
+  let heroContentEl;
   let infoLineEl;
   let heroArrowsEl;
   let heroTl;
 
+  const mod = (n, m) => ((n % m) + m) % m;
+  const prevIndex = () => mod(current - 1, total);
+  const nextIndex = () => mod(current + 1, total);
+
   function nextSlide() {
     current = (current + 1) % total;
   }
-
-  function goToSlide(index) {
-    current = index;
-    resetInterval();
-  }
-
-	function goNext() {
-  current = (current + 1) % total;
-  resetInterval();
-}
-
-	function goPrev() {
-		current = (current - 1 + total) % total;
-		resetInterval();
-	}
 
   function resetInterval() {
     clearInterval(intervalId);
     intervalId = setInterval(nextSlide, SLIDE_DURATION);
   }
 
+  function goNext() {
+    current = (current + 1) % total;
+    resetInterval();
+  }
+
+  function goPrev() {
+    current = (current - 1 + total) % total;
+    resetInterval();
+  }
+
+  function isRenderable(index) {
+    return index === current || index === prevIndex() || index === nextIndex();
+  }
+
   onMount(() => {
     intervalId = setInterval(nextSlide, SLIDE_DURATION);
 
     heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-
     heroTl
-      .from(heroContentEl, {
-        y: 40,
-        opacity: 0,
-        duration: 0.9
-      })
-
-      .from(
-        heroArrowsEl,
-        {
-          y: 20,
-          opacity: 0,
-          duration: 0.6
-        },
-        '-=0.5' 
-      )
-			
-      .from(
-        infoLineEl,
-        {
-          y: 40,
-          opacity: 0,
-          duration: 0.9
-        },
-        '-=0.3'
-      );
+      .from(heroContentEl, { y: 40, opacity: 0, duration: 0.9 })
+      .from(heroArrowsEl, { y: 20, opacity: 0, duration: 0.6 }, '-=0.5')
+      .from(infoLineEl, { y: 40, opacity: 0, duration: 0.9 }, '-=0.3');
   });
 
   onDestroy(() => {
     clearInterval(intervalId);
-		if (heroTl) heroTl.kill();
+    if (heroTl) heroTl.kill();
   });
 </script>
 
-
 <section class="hero">
-  <div class="hero-slides">
-    {#each slides as slide, index}
-      <img
-        src={slide.image}
-        alt={slide.alt}
-        class:active={index === current}
-      />
+  <div class="hero-slides" aria-hidden="true">
+    {#each slides as slide, index (slide.base)}
+      {#if isRenderable(index)}
+        <picture class:active={index === current}>
+
+          <source
+            type="image/avif"
+            srcset="
+              {slide.base}-960.avif 960w,
+              {slide.base}-1600.avif 1600w,
+              {slide.base}-1920.avif 1920w
+            "
+            sizes="100vw"
+          />
+
+          <source
+            type="image/webp"
+            srcset="
+              {slide.base}-960.webp 960w,
+              {slide.base}-1600.webp 1600w,
+              {slide.base}-1920.webp 1920w
+            "
+            sizes="100vw"
+          />
+
+          <img
+            src="{slide.base}.png"
+            alt={slide.alt}
+            decoding="async"
+            fetchpriority={index === 0 ? 'high' : 'auto'}
+            loading={index === 0 ? 'eager' : 'lazy'}
+            class:active={index === current}
+          />
+        </picture>
+      {/if}
     {/each}
   </div>
 
@@ -145,7 +152,7 @@
       <div class="arrow-circle">
         <span>
           <img
-            src="images/arrow-exhibition-2.svg"
+            src="/images/arrow-exhibition-2.svg"
             height="18"
             width="18"
             alt="arrow"
@@ -196,10 +203,15 @@
 		z-index: 0;
 	}
 
+	.hero-slides picture,
 	.hero-slides img {
 		position: absolute;
+		inset: 0;
 		width: 100%;
 		height: 100%;
+	}
+
+	.hero-slides img {
 		object-fit: cover;
 		opacity: 0;
 		transition: opacity 1s ease-in-out;
@@ -254,11 +266,11 @@
 	}
 
 	.hero-title h1 {
-		font-size: var(--h1);
+		font-size: clamp(3.8rem, 6vw, 10rem);
 	}
 
 	.hero-title h2 {
-		font-size: var(--h2);
+    font-size: clamp(2.8rem, 4vw, 5.3rem);
 		font-weight: 300;
 	}
 
@@ -276,6 +288,7 @@
 	}
 
 	.info-line p {
+		font-size: clamp(1rem, 1.2vw, 1.125rem);
 		margin: 0;
 	}
 
@@ -334,16 +347,9 @@
 	}
 
 	.hero-content,
-	.info-line,
-	.hero-navigation {
+	.info-line {
 		position: relative;
 		z-index: 2;
-	}
-
-	.hero-navigation {
-		display: flex;
-		align-items: center;
-		gap: 1.5rem;
 	}
 
 	.hero-arrows {

@@ -18,14 +18,15 @@
 <style>
 	@font-face {
 		font-family: 'Night Mango';
-		src: url('/static/fonts/NightMango.ttf') format('truetype');
+		src: url('/fonts/NightMango.ttf') format('truetype');
+		font-display: swap;
 		font-weight: 400;
 		font-style: normal;
 	}
 
 	:root {
-		--font-display: 'Night Mango', serif;
-		--font-body: 'Inter', sans-serif;
+		--font-display: "Night Mango", serif;
+		--font-body: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 		background-color: rgb(255, 255, 255);
 	}
 
