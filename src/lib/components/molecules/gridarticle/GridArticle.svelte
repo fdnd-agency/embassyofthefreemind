@@ -15,10 +15,10 @@
 		<picture>
 			<img class="grid-image" src={imageUrl} alt={altText} loading="lazy" decoding="async" />
 		</picture>
-		<a href={linkUrl} class="btn btn--type2 read-more-button">
-			<span class="btn_label">Meer lezen</span>
-			<span class="btn_icon" aria-hidden="true">
-				<img src="images/arrow-exhibition.svg" height="15" width="15" alt="" />
+		<a href={linkUrl} class="btn btn--expand read-more-link" aria-label={`Meer lezen: ${title}`}>
+			<span class="btn-label">Meer lezen</span>
+			<span class="btn-icon" aria-hidden="true">
+				<img src="images/arrow-exhibition.svg" height="20" width="20" alt="" />
 			</span>
 		</a>
 	</div>
@@ -69,84 +69,38 @@
 		}
 	}
 
-	.read-more-button{
-    bottom: 15px;
-    right: 15px;
-    box-shadow: 0 4px 10px rgba(0,0,0,.2);
-    z-index: 2;
-  }
-
-
 	.read-more-link {
 		position: absolute;
-		bottom: 15px;
-		right: 15px;
-		height: 40px;
-		width: 40px;
-		display: flex;
+		bottom: 1rem;
+		right: 1rem;
+		z-index: 2;
+		--_shadow: var(--shadow-float);
+	}
+
+	.read-more-link .btn-icon img {
+		display: block;
+	}
+
+	.read-more-link .btn-icon {
+		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		padding: 10px 10px;
-		background-color: white;
-		border-radius: 4em;
-		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-		transition:
-			width 0.3s ease-in-out,
-			background-color 0.3s ease-in-out,
-			opacity 0.3s ease-in-out;
-		font-size: 1.2em;
-		font-weight: 600;
-		color: #1a202c;
-		white-space: nowrap;
-		overflow: hidden;
-		opacity: 1;
-		z-index: 2;
-		text-decoration: none;
 	}
 
-	.read-more-link .text-content {
-		color: #002646;
-		opacity: 0;
-		max-width: 0;
-		min-width: 0;
-		flex-basis: 0;
-		transition:
-			opacity 0s,
-			max-width 0.3s,
-			margin-right 0.3s;
-	}
-
-	.media-container:hover .read-more-link {
-		width: 110px;
+	.read-more-link:hover,
+	.read-more-link:focus-visible {
+		width: fit-content;
+		max-width: 12rem;
 		justify-content: space-between;
-		opacity: 1;
-		padding: 10px 20px;
 	}
 
-	.media-container:hover .read-more-link .text-content {
+	.read-more-link:hover .btn-label,
+	.read-more-link:focus-visible .btn-label {
 		opacity: 1;
-		max-width: 70px;
-		margin-right: 8px;
-		transition:
-			opacity 0.2s 0.1s,
-			max-width 0.3s,
-			margin-right 0.3s;
+		visibility: visible;
+		pointer-events: auto;
+		transform: translateX(0%);
+		max-width: 12ch;
 	}
 
-	@media (700px <= width <= 1100px) {
-		.media-container:hover .read-more-link {
-			max-width: 140px;
-		}
-		.media-container:hover .read-more-link .text-content {
-			max-width: 100px;
-		}
-	}
-	@media (width > 1100px) {
-		.media-container:hover .read-more-link {
-			width: 150px;
-		}
-		.media-container:hover .read-more-link .text-content {
-			max-width: 120px;
-		}
-	}
 </style>

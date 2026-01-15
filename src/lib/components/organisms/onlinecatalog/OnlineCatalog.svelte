@@ -5,12 +5,12 @@
             <p>Een gedeelte van boeken uit onze collectie is al gedigitaliseerd. Met uw steun kunnen we de rest van onze collectie ook digitaliseren. Blader door objecten die het verhaal van onze geschiedenis vertellen. Elk object is voorzien van context, herkomst en datering.</p>
         </div>
         
-        <button type="button" class="btn btn--type1 btn--blue">
-			<span class="btn_label">Catalogus Bekijken</span>
-			<span class="btn_icon">
-				<img src="images/arrow-exhibition-2.svg" height="15" width="15" alt="arrow" />
-			</span>
-		</button>
+        <a class="btn btn--gradient btn--blue catalog-link" href="/">
+        <span class="btn-label">Catalogus bekijken</span>
+        <span class="btn-icon" aria-hidden="true">
+            <img src="images/arrow-exhibition-2.svg" height="15" width="15" alt="" />
+        </span>
+        </a>
 
         <div class="card-container">
             <div class="cards-wrapper">
@@ -63,26 +63,7 @@
         border-radius: 30px;
         width: 80vw;
         text-align: center;
-        .catalog-link {
-            text-decoration: none;
-            color: #002646;
-            background-color: white;
-            border: 1px solid gray;
-            border-radius: 30px;
-            padding: 1rem;
-            span {
-                position: relative;
-                background-color: #002646;
-                padding: 5px;
-                border-radius: 20px;
-                img {
-                    filter: brightness(0) invert(1);
-                    position: relative;
-                    top: 4px;
-                }
-            }
-  
-        }
+
         @media (min-width: 1040px) {
             top: 15rem;
             .cat-title{
