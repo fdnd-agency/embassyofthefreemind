@@ -68,16 +68,20 @@
             font-size: 32px;
         }
         article {
+            display: flex;
+            flex-direction: column;
             background-color: #002646;
             color: white;
             border: 1px solid #ccc;
             padding: 2.25rem;
             border-radius: 30px;
+            gap: 1rem;
             span {
-                background-color: #fff;
-                color: #000;
+                /* background-color: black; */
+                color: white;
                 padding: 0.25rem;
                 text-align: right;
+                text-transform: uppercase;
             }
             a {
                 width: 164px;
