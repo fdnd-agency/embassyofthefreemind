@@ -1,6 +1,10 @@
 <script>
-    /** @type {import('./$types').PageProps} */
+    
     let { data } = $props();
+    const exhibitions = data.exhibitions;
+
+    const formatDate = v => new Date(v).toLocaleDateString('nl-NL', { day:'numeric', month:'long', year:'numeric' });
+
 </script>
 
 <section class="exhibitions-hero">
@@ -10,38 +14,24 @@
 
 <section class="exhibitions-list">  
     <h2 class="exhibitions-title">Bekijk Evenementen</h2>
-    <article>
-        <span>1 augustus 2026</span>
-        <h2>Exhibition Title</h2>
-        <details>
-            <summary>Lees meer</summary>
-            <p>This is a brief description of the exhibition. It provides insights into what visitors can expect.</p>
-        </details>
-        <img src="https://placehold.co/100" alt="Exhibition Thumbnail">
-        <a href="#">Tickets</a>
-    </article>
 
-    <article>
-        <span>1 augustus 2026</span>
-        <h2>Exhibition Title</h2>
-        <details>
-            <summary>Lees meer</summary>
-            <p>This is a brief description of the exhibition. It provides insights into what visitors can expect.</p>
-        </details>
-        <img src="https://placehold.co/100" alt="Exhibition Thumbnail">
-        <a href="#">Tickets</a>
-    </article>
-
+    {#each exhibitions as exhibition}
         <article>
-        <span>1 augustus 2026</span>
-        <h2>Exhibition Title</h2>
-        <details>
-            <summary>Lees meer</summary>
-            <p>This is a brief description of the exhibition. It provides insights into what visitors can expect.</p>
-        </details>
-        <img src="https://placehold.co/100" alt="Exhibition Thumbnail">
-        <a href="#">Tickets</a>
-    </article>
+            {#if exhibition.date_start}
+                <span>{formatDate(exhibition.date_start)}</span>
+            {:else}
+                <span>Datum nog niet bekend</span>
+            {/if}
+            <h2>{exhibition.name}</h2>
+            <details>
+                <summary>Lees meer</summary>
+                <p>{exhibition.description}</p>
+            </details>
+            <img src="https://placehold.co/100" alt="Exhibition Thumbnail">
+            <a href="#">Tickets</a>
+        </article>
+    {/each}
+
 </section>
 
 
@@ -78,14 +68,27 @@
             font-size: 32px;
         }
         article {
+            background-color: #002646;
+            color: white;
             border: 1px solid #ccc;
-            padding: 1rem;
-            border-radius: 8px;
+            padding: 2.25rem;
+            border-radius: 30px;
+            span {
+                background-color: #fff;
+                color: #000;
+                padding: 0.25rem;
+                text-align: right;
+            }
             a {
+                width: 164px;
+                display: block;   
+                margin: 0 auto;     
                 text-decoration: none;
-                padding: 1rem;
-                display: flex;
-                justify-content: center;
+                padding: 0.5rem;
+                border-radius: 30px;
+                color: #000;
+                background-color: #fff;
+                text-align: center;
             }
             h2 {
                 font-size: 24px;
