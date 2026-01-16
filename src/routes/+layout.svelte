@@ -1,9 +1,9 @@
 <script>
-  import '$lib/styles/global-styles.css';
-  import favicon from '$lib/assets/favicon.svg';
-  import { NavBar, Footer } from '$lib';
+	import '$lib/styles/global-styles.css';
+	import favicon from '$lib/assets/favicon.svg';
+	import { NavBar, Footer } from '$lib';
 
-  let { children } = $props();
+	let { children } = $props();
 </script>
 
 <svelte:head>
@@ -12,6 +12,14 @@
 
 <NavBar />
 
-{@render children?.()}
+<main>
+	{@render children?.()}
+</main>
 
 <Footer />
+
+<style>
+	main {
+		overflow-x: hidden;
+	}
+</style>
