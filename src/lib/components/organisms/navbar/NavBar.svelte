@@ -96,7 +96,7 @@
           <nav class="sidepanel-nav">
             <ul>
               <li><a href="#">Over ons</a></li>
-              <li><a href="#"><strong>Bezoek en tickets</strong></a></li>
+              <li><a href="#" style="font-weight: 600">Bezoek en tickets</a></li>
               <li><a href="#">Support de EFM</a></li>
               <li><a href="#">Agenda</a></li>
               <li class="submenu">
@@ -472,7 +472,7 @@ header {
   color: white;
   text-decoration: none;
   font-size: 16px;
-	font-weight: 400;
+	font-weight: 300;
 }
 
 .submenu {
@@ -490,7 +490,7 @@ header {
   cursor: pointer;
   padding: 0;
 	font-size: 16px;
-	font-weight: lighter;
+	font-weight: regular;
 }
 
 .submenu-caret {

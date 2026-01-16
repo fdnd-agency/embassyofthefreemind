@@ -11,15 +11,12 @@
 <article class="available-now-card">
 	<header>
 		<h3>Tentoonstellingen</h3>
-		<a href="/exhibitions"
-			>Alle tentoonstellingen bekijken <img
-				class="arrow-exhibition"
-				src="images/arrow-exhibition.svg"
-				height="15"
-				width="15"
-				alt="arrow"
-			/></a
-		>
+		<a href="/exhibitions" class="btn btn--underscore">
+			<span class="btn-label">Alle tentoonstellingen bekijken</span>
+			<span class="btn-arrow" aria-hidden="true">
+				<img src="images/arrow-exhibition.svg" alt="" />
+			</span>
+		</a>
 	</header>
 	<section class="image-section">
 		<img src={imageUrl} alt="Alchemistische afbeelding met tekst" class="main-image" />
@@ -34,18 +31,12 @@
 				<p class="subtitle">{subtitle}</p>
 
 				<div class="date-arrow-row">
-					<p class="ticket-text">Boek ticket</p>
-					<div class="arrow-circle">
-						<span
-							><img
-								class="arrow-ticket"
-								src="images/arrow-exhibition-2.svg"
-								height="12"
-								width="12"
-								alt="arrow"
-							/></span
-						>
-					</div>
+					<span class="btn btn--underscore btn--inverse ticket-underscore" aria-hidden="true">
+						<span class="btn-label">Boek ticket</span>
+						<span class="btn-arrow" aria-hidden="true">
+							<img src="images/arrow-exhibition-2.svg" alt="" />
+						</span>
+					</span>
 				</div>
 			</div>
 		</a>
@@ -224,9 +215,6 @@
 		line-height: 0;
 	}
 
-	.arrow-exhibition {
-		margin-left: 1rem;
-	}
 
 	.text-content .title {
 		font-size: clamp(1.3rem, 1.386rem + 2.905vw, 3rem);
