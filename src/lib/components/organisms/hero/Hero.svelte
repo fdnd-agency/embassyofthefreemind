@@ -1,8 +1,7 @@
 <script>
   import { onMount, onDestroy } from 'svelte';
-  import { gsap } from 'gsap';
 
-  const SLIDE_DURATION = 5000;
+  const SLIDE_DURATION = 4000;
 
   const slides = [
     {
@@ -27,60 +26,52 @@
 
   let current = 0;
   const total = slides.length;
+
   let intervalId;
+  let motionOK = true;
 
-  let heroContentEl;
-  let infoLineEl;
-  let heroArrowsEl;
-  let heroTl;
-
-  const mod = (n, m) => ((n % m) + m) % m;
-  const prevIndex = () => mod(current - 1, total);
-  const nextIndex = () => mod(current + 1, total);
-
-  function nextSlide() {
+  function next() {
     current = (current + 1) % total;
   }
-
-  function resetInterval() {
-    clearInterval(intervalId);
-    intervalId = setInterval(nextSlide, SLIDE_DURATION);
-  }
-
-  function goNext() {
-    current = (current + 1) % total;
-    resetInterval();
-  }
-
-  function goPrev() {
+  function prev() {
     current = (current - 1 + total) % total;
-    resetInterval();
   }
 
-  function isRenderable(index) {
-    return index === current || index === prevIndex() || index === nextIndex();
+  function startAutoplay() {
+    if (!motionOK) return;
+    stopAutoplay();
+    intervalId = setInterval(next, SLIDE_DURATION);
+  }
+
+  function stopAutoplay() {
+    if (intervalId) clearInterval(intervalId);
+    intervalId = null;
+  }
+
+  function userNext() {
+    next();
+    stopAutoplay();
+  }
+
+  function userPrev() {
+    prev();
+    stopAutoplay();
   }
 
   onMount(() => {
-    intervalId = setInterval(nextSlide, SLIDE_DURATION);
+    motionOK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-    heroTl
-      .from(heroContentEl, { y: 40, opacity: 0, duration: 0.9 })
-      .from(heroArrowsEl, { y: 20, opacity: 0, duration: 0.6 }, '-=0.5')
-      .from(infoLineEl, { y: 40, opacity: 0, duration: 0.9 }, '-=0.3');
+    startAutoplay();
   });
 
   onDestroy(() => {
-    clearInterval(intervalId);
-    if (heroTl) heroTl.kill();
+    stopAutoplay();
   });
 </script>
 
-<section class="hero">
+<section class="hero" aria-label="Highlights">
   <div class="hero-slides" aria-hidden="true">
     {#each slides as slide, index (slide.base)}
-      {#if isRenderable(index)}
         <picture class:active={index === current}>
 
           <source
@@ -112,13 +103,12 @@
             class:active={index === current}
           />
         </picture>
-      {/if}
     {/each}
   </div>
 
-  <div class="hero-overlay"></div>
+  <div class="hero-overlay" aria-hidden="true"></div>
 
-	<div class="hero-content" bind:this={heroContentEl}>
+	<div class="hero-content" >
 		<p>hoogtepunten</p>
 
 		<div class="hero-title">
@@ -126,19 +116,22 @@
 			<h2>{slides[current].subtitle}</h2>
 		</div>
 
-		<div class="hero-arrows" bind:this={heroArrowsEl}>
-			<button class="arrow-btn" on:click={() => goPrev()} aria-label="Vorige slide">
-				<svg width="20" height="20" fill="none" stroke="white" stroke-width="1.5">
+		<div class="hero-arrows" >
+			<button class="arrow-btn" type="button" on:click={userPrev}>
+				<span class="sr-only">Previous slide</span>
+				<svg aria-hidden="true" width="20" height="20" fill="none" stroke="white" stroke-width="1.5">
 					<polyline points="12 4 7 10 12 16" />
 				</svg>
 			</button>
 
-			<div class="hero-counter">
+			<div class="hero-counter" aria-hidden="true">
+				<p class="sr-only">Slide {current + 1} of {total}</p>
 				{current + 1} <span>|</span> {total}
 			</div>
 
-			<button class="arrow-btn" on:click={() => goNext()} aria-label="Volgende slide">
-				<svg width="20" height="20" fill="none" stroke="white" stroke-width="1.5">
+			<button class="arrow-btn" type="button" on:click={userNext}>
+				<span class="sr-only">Next slide</span>
+				<svg aria-hidden="true" width="20" height="20" fill="none" stroke="white" stroke-width="1.5">
 					<polyline points="8 4 13 10 8 16" />
 				</svg>
 			</button>
@@ -146,23 +139,35 @@
 	</div>
 
 
-  <section class="info-line" bind:this={infoLineEl}>
-		<button class="btn btn--gradient btn--blue .hero-btn">
+  <aside class="info-line">
+		<a class="btn btn--gradient btn--blue hero-btn" href="/tickets">
 			<span class="btn-label">Tickets kopen</span>
-			<span class="btn-icon">
-				<img src="/images/arrow-exhibition-2.svg" alt="arrow" />
+			<span class="btn-icon" aria-hidden="true">
+				<img src="/images/arrow-exhibition-2.svg" alt=""/>
 			</span>
-		</button>
+		</a>
 		<div class="info-time">
 			<p>Wed. to Sat. 10.00-17.00h</p>
 			<p>Sun. 11.00-18.00h</p>
 		</div>
-  </section>
+  </aside>
 
 </section>
 
 
 <style>
+
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
 
 	.hero {
 		font-family: var(--font-body);
@@ -213,6 +218,10 @@
 	.hero-slides img.active {
 		opacity: 1;
 	}
+
+	.hero-slides img {
+    object-fit: cover;
+  }
 
 	/* HERO CONTENT */
 	.hero-content {
