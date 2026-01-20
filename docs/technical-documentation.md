@@ -1,8 +1,4 @@
-![alt text](image-2.png)
 
-![alt text](image.png)
-
-![alt text](image-1.png)
 
 # Technical Documentation
 
@@ -34,5 +30,18 @@ We primarily interact with the CMS API.
 To run the project locally, you currently **do not** need to configure environment variables.
 
 The application fetches data from a public API endpoint. If authentication or private endpoints are added in the future, an `.env` file will be required.
+
+so for future use you need to:
+
+- **`example.env`**: This file contains the list of required variables without sensitive values.
+- **Setup**: Duplicate `example.env` to a new file named `.env`.
+- **Credentials**: Ask the project lead (or Joost) for the actual values to fill in your `.env` file.
+- **make changes** Ask for the project lead for the directus admin login if you want to add things to Directus yourself.
+
+![alt text](image-2.png)
+
+![alt text](image.png)
+
+![alt text](image-1.png)
 
 ![alt text](image-3.png)
