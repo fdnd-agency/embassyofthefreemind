@@ -54,7 +54,7 @@
             font-size: 48px;
             z-index: 1;
             @media (min-width: 1024px) {
-                font-size: 144px;
+                font-size: 124px;
             }
         }
         img {
@@ -75,12 +75,15 @@
     .exhibitions-list {
         padding: 1rem;
         @media (min-width: 1024px) {
-            padding: 25rem;
+            padding: 20rem;
         }
         .exhibitions-title {
             text-align: center;
             padding-top: 10rem;
             font-size: 32px;
+            @media (min-width: 1024px) {
+                font-size: 64px;
+            }   
         }
         .exhibitions-grid {
             display: grid;
