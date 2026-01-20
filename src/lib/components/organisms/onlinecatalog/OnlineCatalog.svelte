@@ -48,6 +48,9 @@
         width: 80vw;
         text-align: right;
 
+        container-type: inline-size;
+        container-name: catalog;
+
         .catalog-link {
     
             transition: color 0.1s ease-in-out;
@@ -55,9 +58,7 @@
                 color: var(--blue-stop-03);
             }
         }
-
-        @media (min-width: 1040px) {
-            top: 15rem;
+        @container catalog (min-width: 800px) {
             .cat-title{
                 display: flex;
                 h2 {
@@ -121,10 +122,15 @@
             &:hover {
                 transform: scale(1.1);
             }            
-            @media (min-width: 1040px) {
-                width: 25vw;
-            }
         }
+    }
+
+    @container catalog (min-width: 600px) {
+        .cards-wrapper .card a { width: 45vw; }
+    }
+
+    @container catalog (min-width: 900px) {
+        .cards-wrapper .card a { width: 25vw; }
     }
 
     @supports (scroll-snap-type: x mandatory) {
