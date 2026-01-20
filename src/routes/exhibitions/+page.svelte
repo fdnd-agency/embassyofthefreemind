@@ -9,7 +9,7 @@
 
 <section class="exhibitions-hero">
     <h1>Evenementen & <br>Tickets</h1>
-    <img src="/images/hero-exh.png" alt="exhibition-image">
+    <img src="/images/hero-exh.png" alt="Evenementen & Tickets">
 </section>
 
 <section class="exhibitions-list">  
@@ -27,8 +27,8 @@
                 <summary>Lees meer</summary>
                 <p>{exhibition.description}</p>
             </details>
-            <img src="https://placehold.co/100" alt="Exhibition Thumbnail">
-            <a href="#">Tickets</a>
+            <img src={`https://fdnd-agency.directus.app/assets/${exhibition.cover}`} alt="{exhibition.name} cover image">
+            <a href="/">Tickets</a>
         </article>
     {/each}
 
@@ -77,8 +77,6 @@
             border-radius: 30px;
             gap: 1rem;
             span {
-                /* background-color: black; */
-                color: white;
                 padding: 0.25rem;
                 text-align: right;
                 text-transform: uppercase;
@@ -115,4 +113,5 @@
             }
         }
     }
+
 </style>
