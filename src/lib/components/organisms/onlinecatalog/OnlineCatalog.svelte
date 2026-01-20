@@ -5,7 +5,7 @@
 <section class="cat-container">
     <section class="online-catalog">
         <div class="cat-title">
-            <h2>Onze Collectie</h2>
+            <h3>Onze Collectie</h3>
             <p>Een gedeelte van boeken uit onze collectie is al gedigitaliseerd. Met uw steun kunnen we de rest van onze collectie ook digitaliseren. Blader door objecten die het verhaal van onze geschiedenis vertellen. Elk object is voorzien van context, herkomst en datering.</p>
         </div>    
         <a class="btn--underscore" href="/">Online Catalogus bekijken</a>
@@ -60,7 +60,7 @@
         @container catalog (min-width: 800px) {
             .cat-title{
                 display: flex;
-                h2 {
+                h3 {
                     font-size: 3rem;
                     white-space: nowrap;
                 }
@@ -130,6 +130,10 @@
 
     @container catalog (min-width: 900px) {
         .cards-wrapper .card a { width: 25vw; }
+    }
+
+    .cards-wrapper {
+        scrollbar-width: none;
     }
 
     @supports (scroll-snap-type: x mandatory) {
