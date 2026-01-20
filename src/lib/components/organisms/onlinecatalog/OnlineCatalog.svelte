@@ -12,19 +12,23 @@
 
         <div class="card-container">
             <div class="cards-wrapper">
-                {#each books as book}
-                    <div class="card">
-                    <a href="/">
-                        <img class="book-cover" src={`https://fdnd-agency.directus.app/assets/${book.image}`} 
-                        alt="{book.title} cover image" 
-                        loading="lazy" 
-                        decoding="async"
-                        >
-                        <p>{book.author}</p>
-                        <h3>{book.title}</h3>
-                    </a>
-                    </div>
-                {/each}
+                {#if books?.length}
+                    {#each books as book}
+                        <div class="card">
+                            <a href="/">
+                                <img class="book-cover" src={`https://fdnd-agency.directus.app/assets/${book.image}`} 
+                                alt="{book.title} cover image" 
+                                loading="lazy" 
+                                decoding="async"
+                                >
+                                <p>{book.author}</p>
+                                <h3>{book.title}</h3>
+                            </a>
+                        </div>
+                    {/each}
+                {:else}
+                    <h3>Geen boeken beschikbaar.</h3>
+                {/if}
             </div>
         </div>
     </section>
@@ -146,6 +150,51 @@
             scroll-snap-align: start;
         }
     }
+
+    /* USER HAS PREFERS REDUCED MOTION  */
+
+    @media (prefers-reduced-motion: reduce) {
+        .cards-wrapper {
+            scroll-behavior: auto;      /* geen smooth scrolling */
+        }
+
+        .cards-wrapper .card a {
+            transition: none;           /* geen hover-animatie */
+        }
+
+        .cards-wrapper .card a:hover {
+            transform: none;            /* geen scale */
+        }
+    }
+
+    /* FALLBACK IF CONTAINER QUERIES ARE NOT SUPPORTED */
+    
+    @supports not (container-type: inline-size) {
+        @media (min-width: 800px) {
+            .cat-title{
+            display: flex;
+            }
+            .cat-title h3{
+            font-size: 3rem;
+            white-space: nowrap;
+            }
+            .cat-title p{
+            font-size: 1.25rem;
+            line-height: 1.6;
+            width: 35%;
+            margin-left: auto;
+            }
+        }
+
+        @media (min-width: 600px) {
+            .cards-wrapper .card a { width: 45vw; }
+        }
+
+        @media (min-width: 900px) {
+            .cards-wrapper .card a { width: 25vw; }
+        }
+    }
+
 
     
 </style>
