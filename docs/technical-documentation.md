@@ -2,13 +2,25 @@
 
 # Technical Documentation
 
+## Project Overview
+Project name: Embassy of the Free Mind
+
+EFM is a museum that focusses on the preservation of old texts. It's located on Amsterdam and has digitalized part of its collection.
+They wanted a complete modern design overhaul for theri website. 
+
+It's built in SvelteKit with Vite as build tool and being hosted on Netlify.
+
+/routes contains all pages and server logic
+/lib/components contains all reusable components
+/static contains all the assets
+
 ## Code Structure
-The project follows a modular architecture designed for maintainability and scalability.
+The project follows a modular architecture designed for maintainability and scalability. we've used Atomic design (https://atomicdesign.bradfrost.com/chapter-2/). 
 - **Components**: We strive to create as many reusable components as possible. Following our coding conventions, class names and component files use **kebab-case**.
 - **Conventions**: We adhere (mostly) to the FDND code conventions, ensuring consistent formatting, whitespace usage, and commenting. (prettier enabled)
 
 ## Data Model
-A complete data model has been designed to structure the information within the application.
+(insert data model here. couldnt find it)
 
 > **Note:** Currently, we are only utilizing the data from the database for the **Exhibitions** page. While the model exists for the broader system, the active implementation of database retrieval is currently focused on this specific section.
 
