@@ -1,4 +1,7 @@
 <script>
+    let { data } = $props();
+	const books = data.books ?? []; 
+
 	import { SectionWithLinks, Exhibitions, Hero, OnlineCatalog, Sponsors } from '$lib';
 	const myImageUrl = '/images/image61.jpg';
 </script>
@@ -15,6 +18,6 @@
 	linkUrl="nog niets"
 />
 
-<OnlineCatalog />
+<OnlineCatalog books={books} />
 
 <Sponsors />
