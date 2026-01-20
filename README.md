@@ -23,13 +23,13 @@ During this semester, we created a redesign of their website. We worked on the h
 
 ## Tech Stack
 
-- Svelte (v5)
-- SvelteKit (v2)
-- Vite (v7)
-- TypeScript (dev dependency)
-- Prettier (code formatting)
+- SvelteKit
+- HTML
+- CSS
+- JavaScript
 - GSAP (animations)
-- Adapter(s): `@sveltejs/adapter-netlify` (present in devDependencies)
+
+- Directus ( CMS )
 
 Files and structure highlights
 - `src/routes/` — page routes (About, Exhibitions, Academy, Guided Tours, Online Collection, Visit)
