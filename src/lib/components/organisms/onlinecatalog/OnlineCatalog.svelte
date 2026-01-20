@@ -52,7 +52,6 @@
         container-name: catalog;
 
         .catalog-link {
-    
             transition: color 0.1s ease-in-out;
             &:hover {
                 color: var(--blue-stop-03);
@@ -120,7 +119,7 @@
 
             }
             &:hover {
-                transform: scale(1.1);
+                transform: scale(1.02);
             }            
         }
     }
