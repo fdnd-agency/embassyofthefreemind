@@ -13,24 +13,27 @@
 </section>
 
 <section class="exhibitions-list">  
+
     <h2 class="exhibitions-title">Bekijk Evenementen</h2>
 
-    {#each exhibitions as exhibition}
-        <article>
-            {#if exhibition.date_start}
-                <span>{formatDate(exhibition.date_start)}</span>
-            {:else}
-                <span>Datum nog niet bekend</span>
-            {/if}
-            <h2>{exhibition.name}</h2>
-            <details>
-                <summary>Lees meer</summary>
-                <p>{exhibition.description}</p>
-            </details>
-            <img src={`https://fdnd-agency.directus.app/assets/${exhibition.cover}`} alt="{exhibition.name} cover image">
-            <a href="/">Tickets</a>
-        </article>
-    {/each}
+    <div class="exhibitions-grid">
+        {#each exhibitions as exhibition}
+            <article>
+                {#if exhibition.date_start}
+                    <span>{formatDate(exhibition.date_start)}</span>
+                {:else}
+                    <span>Datum nog niet bekend</span>
+                {/if}
+                <h2>{exhibition.name}</h2>
+                <details>
+                    <summary>Lees meer</summary>
+                    <p>{exhibition.description}</p>
+                </details>
+                <img src={`https://fdnd-agency.directus.app/assets/${exhibition.cover}`} alt="{exhibition.name} cover image">
+                <a href="/">Tickets</a>
+            </article>
+        {/each}
+    </div>
 
 </section>
 
@@ -40,6 +43,10 @@
         background-color: #002646;
         height: 35vh;
         padding: 1rem;
+        @media (min-width: 1024px) {
+            height: 50vh;
+            /* padding: 1rem; */
+        }
         h1 {
             font-weight: bold;
             position: absolute;
@@ -47,6 +54,10 @@
             color: white;
             font-size: 48px;
             z-index: 1;
+            @media (min-width: 1024px) {
+                font-size: 144px;
+                /* left: 10vw; */
+            }
         }
         img {
             display: block;
@@ -54,18 +65,29 @@
             width: 90vw;
             position: relative;
             top: 70%;
+            @media (min-width: 768px) {
+                width: 60vw;
+            }
+            @media (min-width: 1024px) {
+                width: 50vw;
+            }
         }
     }
 
     .exhibitions-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        padding: 2rem;
+        padding: 1rem;
+        @media (min-width: 1024px) {
+            padding: 25rem;
+        }
         .exhibitions-title {
             text-align: center;
             padding-top: 10rem;
             font-size: 32px;
+        }
+        .exhibitions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
         }
         article {
             display: flex;
