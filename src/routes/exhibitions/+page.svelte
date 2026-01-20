@@ -45,7 +45,6 @@
         padding: 1rem;
         @media (min-width: 1024px) {
             height: 50vh;
-            /* padding: 1rem; */
         }
         h1 {
             font-weight: bold;
@@ -56,7 +55,6 @@
             z-index: 1;
             @media (min-width: 1024px) {
                 font-size: 144px;
-                /* left: 10vw; */
             }
         }
         img {
