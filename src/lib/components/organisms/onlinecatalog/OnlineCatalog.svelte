@@ -1,3 +1,7 @@
+<script>
+  let { books = [] } = $props();
+</script>
+
 <section class="cat-container">
     <section class="online-catalog">
         <div class="cat-title">
@@ -6,44 +10,21 @@
         </div>
         
         <a class="btn btn--gradient btn--blue catalog-link" href="/">
-        <span class="btn-label">Catalogus bekijken</span>
-        <span class="btn-icon" aria-hidden="true">
-            <img src="images/arrow-exhibition-2.svg" height="15" width="15" alt="" />
-        </span>
+            <span class="btn-label">Online Catalogus bekijken</span>
+            <img src="images/arrow-exhibition.svg" height="15" width="15" alt="link-arrow" />
         </a>
 
         <div class="card-container">
             <div class="cards-wrapper">
-                <div class="card">
-                    <img class="book-cover" src="images/book-templ.png" alt="book-name">
-                    <p>Tiedemann, Dieterich</p>
-                    <h3>Versuch einer Erklärung des Ursprunges der Sprache</h3>
-                    <a href="#">
-                        <span>
-                            <img src="images/arrow-exhibition.svg" height="25" width="25" alt="arrow" />
-                        </span>
+                {#each books as book}
+                    <div class="card">
+                    <a href="/">
+                        <img class="book-cover" src={`https://fdnd-agency.directus.app/assets/${book.image}`} alt="{book.title} cover image" >
+                        <p>{book.author}</p>
+                        <h3>{book.title}</h3>
                     </a>
-                </div>
-                <div class="card">
-                    <img class="book-cover" src="images/book-templ.png" alt="book-name">
-                    <p>Tiedemann, Dieterich</p>
-                    <h3>Versuch einer Erklärung des Ursprunges der Sprache</h3>
-                    <a href="#">
-                        <span>
-                            <img src="images/arrow-exhibition.svg" height="25" width="25" alt="arrow" />
-                        </span>
-                    </a>
-                </div>                
-                <div class="card">
-                    <img class="book-cover" src="images/book-templ.png" alt="book-name">
-                    <p>Tiedemann, Dieterich</p>
-                    <h3>Versuch einer Erklärung des Ursprunges der Sprache</h3>
-                    <a href="#">
-                        <span>
-                            <img src="images/arrow-exhibition.svg" height="25" width="25" alt="arrow" />
-                        </span>
-                    </a>
-                </div>
+                    </div>
+                {/each}
             </div>
         </div>
     </section>
@@ -59,10 +40,17 @@
 
     .online-catalog {
         padding: 2rem;
-        background-color: #E6EDF2;;
         border-radius: 30px;
         width: 80vw;
-        text-align: center;
+        text-align: right;
+
+        .catalog-link {
+    
+            transition: color 0.1s ease-in-out;
+            &:hover {
+                color: var(--blue-stop-03);
+            }
+        }
 
         @media (min-width: 1040px) {
             top: 15rem;
@@ -100,17 +88,17 @@
         -webkit-overflow-scrolling: touch;
         scroll-behavior: auto;
 
-        .card {
+        .card a{
             position: relative;
             display: flex;
             margin: 0;
+            gap: 1rem;
             flex-direction: column;
             text-align: left;
-            background-color: white;
             width: 72vw;
             min-width: 13rem;
-            border-radius: 30px;
             padding: 1rem;
+            transition: transform 0.1s linear;
             p {
                 color: gray;
                 font-size: 18px;
@@ -120,15 +108,15 @@
                 font-size: 20px;
                 margin-right: 4rem;
             }
-            .book-cover {
-                border-radius: 20px;
-            }
             span {
                 position: absolute;
                 bottom: 1rem;
                 right: 1.5rem;
 
             }
+            &:hover {
+                transform: scale(1.1);
+            }            
             @media (min-width: 1040px) {
                 width: 25vw;
             }
