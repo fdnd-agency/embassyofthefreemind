@@ -7,12 +7,8 @@
         <div class="cat-title">
             <h2>Onze Collectie</h2>
             <p>Een gedeelte van boeken uit onze collectie is al gedigitaliseerd. Met uw steun kunnen we de rest van onze collectie ook digitaliseren. Blader door objecten die het verhaal van onze geschiedenis vertellen. Elk object is voorzien van context, herkomst en datering.</p>
-        </div>
-        
-        <a class="btn btn--gradient btn--blue catalog-link" href="/">
-            <span class="btn-label">Online Catalogus bekijken</span>
-            <img src="images/arrow-exhibition.svg" height="15" width="15" alt="link-arrow" />
-        </a>
+        </div>    
+        <a class="btn--underscore" href="/">Online Catalogus bekijken</a>
 
         <div class="card-container">
             <div class="cards-wrapper">
@@ -56,6 +52,10 @@
             &:hover {
                 color: var(--blue-stop-03);
             }
+        }
+
+        .btn--underscore {
+            padding: 1rem;
         }
         @container catalog (min-width: 800px) {
             .cat-title{
