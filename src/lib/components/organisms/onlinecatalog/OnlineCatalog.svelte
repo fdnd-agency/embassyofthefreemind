@@ -19,7 +19,11 @@
                 {#each books as book}
                     <div class="card">
                     <a href="/">
-                        <img class="book-cover" src={`https://fdnd-agency.directus.app/assets/${book.image}`} alt="{book.title} cover image" >
+                        <img class="book-cover" src={`https://fdnd-agency.directus.app/assets/${book.image}`} 
+                        alt="{book.title} cover image" 
+                        loading="lazy" 
+                        decoding="async"
+                        >
                         <p>{book.author}</p>
                         <h3>{book.title}</h3>
                     </a>
@@ -71,7 +75,7 @@
         }
     }
     
-    .cards-container {
+    .card-container {
         display: grid;
         grid-template-columns: var(--page-margin) [center-start] 1fr [center-end] var(--page-margin);
     }
