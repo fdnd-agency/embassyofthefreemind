@@ -88,7 +88,7 @@ Example user steps
 ## Related Documentation
 
 - CONTRIBUTING: [`CONTRIBUTING.md` ](https://github.com/fdnd-agency/embassyofthefreemind/blob/dev/CONTRIBUTING.md)
-- HANDOVER: `HANDOVER.md`
+- HANDOVER: [`HANDOVER.md`](https://github.com/fdnd-agency/embassyofthefreemind/blob/dev/HANDOVER.md)
 
 ## Team
 
