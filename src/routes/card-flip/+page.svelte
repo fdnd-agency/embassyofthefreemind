@@ -74,10 +74,13 @@
       </div>
       <div class="cardFront">
             <img
-                src="https://embassyofthefreemind.com/images/Poster_Gewetensvrijheid.png"
+                src="/images/Poster_Gewetensvrijheid.webp"
                 alt="Poster Freedom Of Conscience"
-                loading="lazy"
+                width="250"
+                height="400"
+                loading="eager"
                 decoding="async"
+                fetchpriority="high"
              />
       </div>
     </div>
@@ -90,8 +93,10 @@
       </div>
       <div class="cardFront playcardFront">
             <img
-                src="https://embassyofthefreemind.com/images/Poster_Gewetensvrijheid.png"
+                src="/images/Poster_Gewetensvrijheid.webp"
                 alt="Poster Freedom Of Conscience"
+                width="250"
+                height="400"
                 loading="lazy"
                 decoding="async"
              />
@@ -143,8 +148,8 @@
   }
   
   .cardFront img {
-    width: 100%;
-    height: 100%;
+    width: 250px;
+    height: 400px;
     object-fit: cover;
     display: block;
   }
