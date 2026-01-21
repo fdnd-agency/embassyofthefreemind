@@ -10,13 +10,13 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<NavBar />
+<!-- <NavBar /> -->
 
 <main>
 	{@render children?.()}
 </main>
 
-<Footer />
+<!-- <Footer /> -->
 
 <style>
 	main {
