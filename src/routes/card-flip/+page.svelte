@@ -72,16 +72,30 @@
             <p>15 oktober 2024 t/m 10 januari 2025</p>
             <p>Exhibition</p>
       </div>
-      <div class="cardFront"></div>
+      <div class="cardFront">
+            <img
+                src="https://embassyofthefreemind.com/images/Poster_Gewetensvrijheid.png"
+                alt="Poster Freedom Of Conscience"
+                loading="lazy"
+                decoding="async"
+             />
+      </div>
     </div>
 
-    <div class="cardCont" tabindex="0" role="button" aria-label="Flip card for Freedom Of Conscience exhibition details">
+    <div class="cardCont" tabindex="0" role="button" aria-label="Flip card for Freedom Of Conscience exhibition details">   
       <div class="cardBack playcardBack">
             <p>Freedom Of Conscience</p>
             <p>12 januari 2025 t/m 15 januari 2025</p>
             <p>Exhibition</p>
       </div>
-      <div class="cardFront playcardFront"></div>
+      <div class="cardFront playcardFront">
+            <img
+                src="https://embassyofthefreemind.com/images/Poster_Gewetensvrijheid.png"
+                alt="Poster Freedom Of Conscience"
+                loading="lazy"
+                decoding="async"
+             />
+      </div>
     </div>
   </div>
 </section>
@@ -127,9 +141,11 @@
     place-items: center;
     background-color: rgb(109, 98, 67);
   }
-
-  .cardFront { background-image: url('https://embassyofthefreemind.com/images/Poster_Gewetensvrijheid.png'); }
-
-  .playcardFront { background-image: url("https://embassyofthefreemind.com/images/Poster_Gewetensvrijheid.png"); }
-
+  
+  .cardFront img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 </style>
