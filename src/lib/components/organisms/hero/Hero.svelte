@@ -1,7 +1,7 @@
 <script>
   import { onMount, onDestroy } from 'svelte';
 
-  const SLIDE_DURATION = 4000;
+  const SLIDE_DURATION = 5000;
 
   const slides = [
     {
@@ -30,17 +30,18 @@
   let intervalId;
   let motionOK = true;
 
-  function next() {
+  function nextAuto() {
     current = (current + 1) % total;
   }
-  function prev() {
+
+  function prevAuto() {
     current = (current - 1 + total) % total;
   }
 
   function startAutoplay() {
     if (!motionOK) return;
     stopAutoplay();
-    intervalId = setInterval(next, SLIDE_DURATION);
+    intervalId = setInterval(nextAuto, SLIDE_DURATION);
   }
 
   function stopAutoplay() {
@@ -48,19 +49,22 @@
     intervalId = null;
   }
 
+  function resetAutoplay() {
+    startAutoplay();
+  }
+
   function userNext() {
-    next();
-    stopAutoplay();
+    nextAuto();
+    resetAutoplay();
   }
 
   function userPrev() {
-    prev();
-    stopAutoplay();
+    prevAuto();
+    resetAutoplay();
   }
 
   onMount(() => {
     motionOK = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
     startAutoplay();
   });
 
@@ -110,11 +114,13 @@
 
 	<div class="hero-content" >
 		<p>hoogtepunten</p>
-
-		<div class="hero-title">
-			<h1>{slides[current].title}</h1>
-			<h2>{slides[current].subtitle}</h2>
-		</div>
+		
+		{#key current}
+			<div class="hero-title">
+				<h1>{slides[current].title}</h1>
+				<h2>{slides[current].subtitle}</h2>
+			</div>
+		{/key}
 
 		<div class="hero-arrows" >
 			<button class="arrow-btn" type="button" on:click={userPrev}>
@@ -254,6 +260,8 @@
 		flex-direction: column;
 		justify-content: center;
 		gap: 0;
+		opacity: 0;
+		transition: opacity 1s ease-in-out;
 	}
 
 	.hero-title h1,
@@ -267,6 +275,15 @@
 		line-height: 1;
 	}
 
+	.hero-title {
+		opacity: 0;
+		animation: heroFadeIn 1.2s ease-in-out forwards;
+	}
+
+	@keyframes heroFadeIn {
+		to { opacity: 1; }
+	}
+
 	.hero-content h1 {
 		font-size: var(--font-size-2xl);
 	}
@@ -274,6 +291,12 @@
 	.hero-content h2 {
 		font-size: var(--font-size-xl);
 		font-weight: 300;
+	}
+
+	.hero-content p {	
+		@media (min-width: 700px){
+			padding-bottom: 1rem;
+		}
 	}
 
 	/* INFORMATION LINE */
@@ -323,6 +346,9 @@
 		font-weight: 100;
 		color: white;
 		flex: 0 0 auto;
+		@media (min-width: 700px){
+			padding-top: 1rem;
+		}
 	}
 	
 	.arrow-btn {

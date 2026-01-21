@@ -11,16 +11,15 @@
     <nav class="header-nav">
       <h2 class="sr-only">Hoofdnavigatie</h2>
       <ul class="nav-list">
-        <li class="nav-item"><a class="nav-link" href="#">Collectie</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Verhalen</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Online catalogus</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Over ons</a></li>
-        <li class="nav-item"><a class="nav-link nav-link-strong" href="#">Tickets kopen</a></li>
+        <li class="nav-item"><a class="nav-link" href="/">Collectie</a></li>
+        <li class="nav-item"><a class="nav-link" href="/">Verhalen</a></li>
+        <li class="nav-item"><a class="nav-link" href="/">Online catalogus</a></li>
+        <li class="nav-item"><a class="nav-link" href="/">Over ons</a></li>
+        <li class="nav-item"><a class="nav-link nav-link-strong" href="/">Tickets kopen</a></li>
       </ul>
     </nav>
 
     <section class="header-right">
-
       <details class="lang">
         <summary class="lang-btn">
           <span>EN</span>
@@ -73,14 +72,17 @@
             <nav class="sidepanel-nav">
               <h2 class="sr-only">Menu</h2>
               <ul class="nav-list">
-                <li class="nav-item"><a class="nav-link" href="#">Over ons</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" style="font-weight: 600">Bezoek en tickets</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Support de EFM</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Agenda</a></li>
+                <li class="nav-item"><a class="nav-link" href="/">Over ons</a></li>
+                <li class="nav-item">
+                  <a class="nav-link nav-link-strong" href="/">Bezoek en tickets</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="/">Support de EFM</a></li>
+                <li class="nav-item"><a class="nav-link" href="/">Agenda</a></li>
+
                 <li class="nav-item submenu">
                   <details>
                     <summary class="submenu-toggle">
-                      <span>Collectie</span>
+                      <span class="submenu-label">Collectie</span>
                       <svg
                         aria-hidden="true"
                         class="submenu-caret caret"
@@ -96,18 +98,18 @@
                     </summary>
 
                     <ul class="nav-list">
-                      <li class="nav-item"><a class="nav-link" href="#">Tentoonstellingen</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#">Collectiestukken</a></li>
+                      <li class="nav-item"><a class="nav-link" href="/">Exhibitions</a></li>
+                      <li class="nav-item"><a class="nav-link" href="/">Collection</a></li>
                     </ul>
                   </details>
                 </li>
 
-                <li class="nav-item"><a class="nav-link" href="#">Research</a></li>
+                <li class="nav-item"><a class="nav-link" href="/">Research</a></li>
 
                 <li class="nav-item submenu">
                   <details>
                     <summary class="submenu-toggle">
-                      <span>Academy</span>
+                      <span class="submenu-label">Academy</span>
                       <svg
                         aria-hidden="true"
                         class="submenu-caret caret"
@@ -123,8 +125,8 @@
                     </summary>
 
                     <ul class="nav-list">
-                      <li class="nav-item"><a class="nav-link" href="#">Programma</a></li>
-                      <li class="nav-item"><a class="nav-link" href="#">Events</a></li>
+                      <li class="nav-item"><a class="nav-link" href="/">Program</a></li>
+                      <li class="nav-item"><a class="nav-link" href="/">Events</a></li>
                     </ul>
                   </details>
                 </li>
@@ -137,14 +139,14 @@
             </div>
           </div>
         </aside>
-
       </details>
     </section>
   </section>
 </header>
 
 <style>
-header {
+
+.header {
   position: fixed;
   z-index: 10;
   width: 100%;
@@ -167,13 +169,6 @@ header {
   border: 0;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  * {
-    transition: none !important;
-    scroll-behavior: auto !important;
-  }
-}
-
 summary::-webkit-details-marker {
   display: none;
 }
@@ -182,7 +177,80 @@ summary {
   list-style: none;
 }
 
-/* ---------------- HEADER LAYOUT ---------------- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* ----------------------------- Nav -------------------------------- */
+/* ------------------------------------------------------------------ */
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  font-size: 14px;
+  text-wrap: nowrap;
+
+  @media (min-width: 1200px) {
+    font-size: 16px;
+  }
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+.nav-link-strong {
+  font-weight: 600;
+}
+
+.nav-link,
+.submenu-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  width: fit-content;
+  padding-bottom: 0.2rem;
+}
+
+.nav-link::after,
+.submenu-toggle::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.3s ease-out;
+}
+
+.nav-item:hover > .nav-link::after,
+.nav-item:focus-within > .nav-link::after,
+.submenu > details:hover > .submenu-toggle::after,
+.submenu > details:focus-within > .submenu-toggle::after {
+  width: 100%;
+}
+
+.submenu > details[open] > .submenu-toggle::after {
+  width: 0;
+  transition: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* -------------------------- Header layout ------------------------- */
+/* ------------------------------------------------------------------ */
 
 .header-content {
   display: flex;
@@ -213,60 +281,10 @@ summary {
   }
 }
 
-.nav-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
 .header-nav .nav-list {
   display: flex;
-  gap: clamp(10px, 4vw, 60px);
-  list-style: none;
   align-items: center;
-}
-
-.nav-item {
-  font-size: 14px;
-  padding-bottom: 0.2rem;
-  position: relative;
-  text-wrap: nowrap;
-  @media (min-width: 1200px) {
-    font-size: 16px;
-  }
-}
-
-.nav-link {
-  color: white;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: 300;
-}
-
-/* underline */
-
-.nav-item::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 1px;
-  background: white;
-  transition: width 0.3s ease-out;
-}
-
-.nav-item:hover::before {
-  width: 100%;
-}
-
-.nav-item.submenu:has(details[open])::before,
-.nav-item.submenu:has(details[open]):hover::before {
-  width: 0;
-}
-
-.nav-item.submenu:has(details[open])::before {
-  transition: none;
+  gap: clamp(10px, 4vw, 60px);
 }
 
 .header-right {
@@ -277,7 +295,9 @@ summary {
   gap: 1.75rem;
 }
 
-/* ---------------- LANGUAGE MENU (details) ---------------- */
+/* ------------------------------------------------------------------ */
+/* ------------------------- Language menu -------------------------- */
+/* ------------------------------------------------------------------ */
 
 .lang {
   position: relative;
@@ -310,10 +330,6 @@ summary {
   list-style: none;
 }
 
-.lang-menu li {
-  list-style: none;
-}
-
 .lang-menu a {
   display: block;
   padding: 0.5rem 1rem;
@@ -334,12 +350,7 @@ summary {
   opacity: 0.8;
 }
 
-/* rotate caret when open */
-.lang[open] .lang-caret {
-  transform: rotate(180deg);
-}
-
-/* ---------------- HAMBURGER (summary) ---------------- */
+/* ------------------------ Hamburger ------------------------ */
 
 .hamburger-btn {
   width: 30px;
@@ -396,17 +407,17 @@ summary {
   top: 0;
 }
 
-/* ---------------- SIDEPANEL (details) ---------------- */
+/* ------------------------------------------------------------------ */
+/* -------------------------- Sidepanel ----------------------------- */
+/* ------------------------------------------------------------------ */
 
 .sidepanel-details {
   position: relative;
 }
 
-/* closed state */
 .sidepanel {
   position: fixed;
-  display: flex;
-  flex-direction: column;
+  display: flex; flex-direction: column;
   top: 0;
   right: 0;
   height: 100vh;
@@ -421,23 +432,25 @@ summary {
   pointer-events: none;
   transition: transform 0.35s ease-out, opacity 0.35s ease-out;
   z-index: 20;
+
+  @media (min-width: 650px) {
+    width: min(400px, 85vw);
+  }
 }
 
-/* open state */
 .sidepanel-details[open] .sidepanel {
   transform: translateX(0%);
   opacity: 1;
   pointer-events: auto;
 }
 
-/* SIDEPANEL CONTENT */
 .sidepanel-inner {
   position: relative;
   display: flex;
   flex-direction: column;
   flex: 1;
   box-sizing: border-box;
-  min-height: 0; 
+  min-height: 0;
   padding: 5rem 2rem 2rem;
   opacity: 0;
   transform: translateY(50%);
@@ -471,68 +484,40 @@ summary {
   font-size: 1rem;
 }
 
-/* Menu */
+/* Sidepanel nav layout */
 .sidepanel-nav .nav-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
   display: inline-flex;
   flex-direction: column;
   gap: 3rem;
 }
 
-.nav-list .nav-link {
-  color: white;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: 300;
-}
-
-/* Submenu details */
+/* Submenu */
 .submenu details {
   display: block;
-}
-
-.submenu-toggle {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  background: none;
-  border: none;
-  color: inherit;
-  cursor: pointer;
-  padding: 0;
-  font-size: 16px;
-  font-weight: 300;
 }
 
 .submenu-caret {
   opacity: 0.7;
 }
 
-.submenu details[open] .submenu-caret {
+.submenu details[open] .submenu-caret,
+.lang[open] .lang-caret {
   transform: rotate(180deg);
 }
 
- .submenu .nav-list {
+.submenu .nav-list {
   padding-top: 2.5rem;
 }
 
-/* Footer */
+/* ------------------------ Footer ------------------------ */
+
 .sidepanel-footer {
-  margin-top: auto;             
+  margin-top: auto;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;    
+  justify-content: flex-end;
   gap: 0.75rem;
   text-align: right;
-}
-
-@media (min-width: 650px) {
-  .sidepanel {
-    width: min(400px, 85vw);
-  }
 }
 
 </style>
