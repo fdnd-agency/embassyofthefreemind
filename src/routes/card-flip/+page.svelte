@@ -44,6 +44,16 @@
         card.addEventListener('mouseleave', () => tl.reverse());
         }
 
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                tl.reversed() ? tl.play(0) : tl.reverse();
+            }
+            });
+
+            card.addEventListener('focus', () => tl.play(0));
+            card.addEventListener('blur', () => tl.reverse());
+
       });
     }, wrap);
 
@@ -56,7 +66,7 @@
   <p>Hover over or tap the cards to see the flip animation.</p>
 
   <div id="mainWrap" bind:this={wrap}>
-    <div class="cardCont">
+    <div class="cardCont" tabindex="0" role="button" aria-label="Flip card for Freedom Of Conscience exhibition details">
       <div class="cardBack">
             <p>Freedom Of Conscience</p>
             <p>15 oktober 2024 t/m 10 januari 2025</p>
@@ -65,7 +75,7 @@
       <div class="cardFront"></div>
     </div>
 
-    <div class="cardCont">
+    <div class="cardCont" tabindex="0" role="button" aria-label="Flip card for Freedom Of Conscience exhibition details">
       <div class="cardBack playcardBack">
             <p>Freedom Of Conscience</p>
             <p>12 januari 2025 t/m 15 januari 2025</p>
@@ -80,14 +90,14 @@
   .intro-cardflip { 
     display: grid; 
     place-items: center;
-    height: 70vh; 
+    height: 100vh; 
     gap: 2rem; 
     padding: 3rem 1rem; 
     h2 {
         padding: 5rem;
     }
     @media ( min-width: 1040px) {
-        height: 70vh;
+        height: 80vh;
     }
 }
   #mainWrap { 
