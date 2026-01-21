@@ -2,7 +2,7 @@
 
 ## Current Status
 The project has a solid technical foundation with a modular structure. We have set up the integration with the Directus CMS, and the front-end is built using SvelteKit. The design implementation follows the FDND conventions.
-We've shifted away from the original focus. We didn't have access to all the original data in a CMS which could be filtered. So we fully focused on the redesign of the homepage instead of the online catalogue.
+We've shifted away from the original focus. We didn't have access to all the original data in a CMS which could be filtered. So we fully focused on the redesign of the homepage instead of the online catalogue. The homepage is fully finished.
 
 ## Key Features
 
