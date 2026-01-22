@@ -338,7 +338,7 @@
 	.btn--gradient {
 		--_background: var(--color-background);
 		--_color: var(--color-text);
-		--_height: 3.75rem; 
+		--_height: 3rem; 
 		--_min-width: clamp(10rem, 35vw, 14rem);
 		--_padding: 0.375rem 0.4375rem 0.375rem 1.5rem;
 		--_gap: clamp(1rem, 2vw, 1.5rem);
@@ -414,9 +414,9 @@
 
 	.btn--expand { 
 		--_background: var(--color-background);
-		--_height: 3.75rem;
+		--_height: 3rem;
 		--_padding: 0;
-		--_icon-size: 3.75rem;
+		--_icon-size: 3rem;
 		--_icon-svg: 1.25rem;
 
 		min-width: var(--_icon-size);
