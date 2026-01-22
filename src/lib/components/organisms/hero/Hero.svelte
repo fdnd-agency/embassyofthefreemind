@@ -130,8 +130,11 @@
 				</svg>
 			</button>
 
+			<p class="sr-only" aria-live="polite" aria-atomic="true">
+				Slide {current + 1} of {total}
+			</p>
+
 			<div class="hero-counter" aria-hidden="true">
-				<p class="sr-only">Slide {current + 1} of {total}</p>
 				{current + 1} <span>|</span> {total}
 			</div>
 
