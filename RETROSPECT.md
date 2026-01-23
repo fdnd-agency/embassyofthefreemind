@@ -87,36 +87,41 @@ Beter plannen, eerder testen en duidelijker communiceren over voortgang en verwa
 
 ### 1. Waar ben je trots op in dit project?
 
-
+Dit sprint ben ik trots voor mijn componenten Navbar en Hero, waar ik echt heb gekeken naar optimaliseren, verbeteren van Accessibility ten opzichte van vorige sprint. Ik heb ook gewerkt aan global stylesheet, en ik vind dat het mooi en professioneel eruit ziet. 
 
 ---
 
 ### 2. Wat ging er goed?
 
+Het ging goed in het bepalen wat er nog moest worden gedaan en laatste puntjes op i zetten. 
 
 ---
 
 ### 3. Wat kon beter?
 
-
+Er was in bepaakde momenten gebrek aan samenwerking en communicatie tussen alle teamleden, maar op gegeven moment was dit opgelost. Sommige taken hadden mij wat meer tijd gekost om op te lossen, maar dat heb ik op tijd laten weten aan mijn teamgenoten en er waren geen problemen mee. 
 
 ---
 
 ### 4. Wat was jouw belangrijkste bijdrage?
 
-
+Mijn belangrijkste bijdrage was:
+- Maken van Hero en NavBar componenten, verbeteren en feedback verwerken vanuit vorige sprints.
+- Verbeteren van performance en accessibility.
+- Global stylesheet ontwerpen en implementeren.
+- Initiatiseren van samenwerking, aangeven wat nog beter moet en aandacht nodig heeft en hoe wij daar aan de slag kunnen gaan. 
 
 ---
 
 ### 5. Wat heb je technisch geleerd?
-
+Ik heb meer geleerd over Accessibility en Performance verbeteren, css pseudo-private tokens gebruiken, GSAP. 
 
 
 ---
 
 ### 6. Wat neem je mee naar een volgend project of stage in ons geval?
 
-
+Mijn kennis over component-focust coding, accessibility en performance, semantische html schrijven, werken met frameworks. 
 
 ---
 
