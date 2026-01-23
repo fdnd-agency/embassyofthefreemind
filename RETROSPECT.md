@@ -47,36 +47,39 @@ Beter plannen, eerder testen en duidelijker communiceren over voortgang en verwa
 
 ### 1. Waar ben je trots op in dit project?
 
+Homepage is af en de opdrachtgever is er zeer tevreden mee.
 
 
 ---
 
 ### 2. Wat ging er goed?
 
+Veel pull request kunnen schrijven en naar de dev branch kunnen mergen. 
 
 ---
 
 ### 3. Wat kon beter?
 
+Dit is dezelfde feedback als ik vorige sprints gaf. Maar elkaar strengere deadlines geven en ervoor zorgen dat de taken die ge-assigned worden ook voltooit worden.
 
 
 ---
 
 ### 4. Wat was jouw belangrijkste bijdrage?
 
-
+de volgende components: Exhibitions, sectionwitlinks, gridarticle, sponsorbar en ervoor gezorgt dat we atomic design aanhouden. 
 
 ---
 
 ### 5. Wat heb je technisch geleerd?
 
-
+Responsible AI use. 
 
 ---
 
 ### 6. Wat neem je mee naar een volgend project of stage in ons geval?
 
-
+Zo veel mogelijk leren en vragen stellen.
 
 ---
 
@@ -126,7 +129,12 @@ Mijn kennis over component-focust coding, accessibility en performance, semantis
 ---
 
 
-## Conclusie:
+## Conclusie sprint 18:
+
+Project: In componenten werken is soms best onnodig en veel moeite als je iets maar 1x gebruikt en zorgt voor problemen met scope. Als we dit project op dezelfde keer opnieuw zouden moeten maken zouden we het niet op deze manier indelen. Voor een volgend projecten zouden we ook regels voor componenten opstellen. We zijn nu heel veel tijd kwijt aan het refactoren van code.
+
+Samenwerking:
+Tijdens het werken aan issue's kunnen we elkaar meer helpen door elkaar te taggen. Dit zijn wij bij andere projecten goed gaan.
 
 ------------------------------
 
