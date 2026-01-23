@@ -1,28 +1,29 @@
-# 🤝 Afspraken over samenwerking
+# Afspraken over samenwerking
 
-## 📢 Communicatie
+### 📢 Communicatie
 - Overleg vindt plaats via **Microsoft Teams**.  
 - Iedereen reageert binnen **24 uur**.  
 - Feedback verloopt via **GitHub Issues** (alleen bij hoge urgentie via Teams).  
 
-## 👥 Samenwerking
+### 👥 Samenwerking
 - Iedereen is verantwoordelijk voor zijn eigen rol.  
-- We helpen elkaar waar nodig om het gezamenlijke doel te bereiken.  
+- We helpen elkaar waar nodig om het gezamenlijke doel te bereiken.
+- Taken worden duidelijk verdeeld en vastgelegd in het projectboard.
 
-## 🗳️ Besluitvorming
+### 🗳️ Besluitvorming
 - Belangrijke keuzes nemen we **samen**.  
 - Wanneer er geen consensus is, hakt de **projectleider** de knoop door.  
 
-## ⏱️ Kwaliteit & Deadlines
+### ⏱️ Kwaliteit & Deadlines
 - Werk wordt **op tijd** opgeleverd.  
 - We controleren elkaars werk op **kwaliteit** voordat het wordt ingeleverd.  
 
-## 🌱 Respect & Betrokkenheid
+### 🌱 Respect & Betrokkenheid
 - We luisteren naar ieders mening en ideeën.  
 - Iedereen krijgt de kans om actief bij te dragen.  
 - We respecteren elkaars minder sterke kanten en gaan daar op een constructieve manier mee om.  
 
-# Code Conventies
+# 🛠 Code Conventies
 We houden ons aan de [FDND code conventies](https://docs.fdnd.nl/conventies.html)
 - Bij het aanmaken van nieuwe class names, maken we gebruik van kebab-case
 - Maak zoveel mogelijk componenten
@@ -30,7 +31,8 @@ We houden ons aan de [FDND code conventies](https://docs.fdnd.nl/conventies.html
 - Duidelijke commits gekoppeld aan de issues, hou zich aan conventional commits conventies:
 https://www.conventionalcommits.org/en/v1.0.0/
 
-## Conventional Commits 
+
+## ✍🏻 Conventional Commits 
 
 ### Structuur
 
@@ -75,9 +77,25 @@ of met footer:
 
 `chore!: node 6 support droppen + BREAKING CHANGE: ...`
 
----
+## 🌿 Branch naamgeving
 
-## PR template
+Elke branch naam moet in het kort duidelijk maken wat in het algemeen het doel is van veranderingen op dat branch, wat maakt het voor andere developers makkelijk te verstaan. 
+
+### Structuur
+
+Als branch afgeleid is van issue, vermeld issue nummer in branch naam. Gebruik kebab-case, houd namen kort maar beschrijvend (rond 3 woorden). 
+Gebruik dit format voor branch naamgeving:
+
+`<type>/<opt:#issue><description>`
+
+bijvoorbeeld: 
+
+```
+feat/issue-123-blog-filter
+style/header-layout
+```
+
+## 🧱 PR template
 ```md
 ## Wat is er veranderd?
 - Benoem hier de issues met #
@@ -90,7 +108,6 @@ of met footer:
 - Geef hier een demo
 ```
 
----
 
 ## 📌 Team Canvas
 <img width="1133" height="802" alt="image" src="https://github.com/user-attachments/assets/2c332fb6-a5eb-4ddc-82e4-4a4c6ac492ce" />
