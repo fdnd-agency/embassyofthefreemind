@@ -84,6 +84,7 @@ Elke branch naam moet in het kort duidelijk maken wat in het algemeen het doel i
 ### Structuur
 
 Als branch afgeleid is van issue, vermeld issue nummer in branch naam. Gebruik kebab-case, houd namen kort maar beschrijvend (rond 3 woorden). 
+
 Gebruik dit format voor branch naamgeving:
 
 `<type>/<opt:#issue><description>`
@@ -95,19 +96,35 @@ feat/issue-123-blog-filter
 style/header-layout
 ```
 
-## 🧱 PR template
+## 🧱 Pull Request conventies
+
+Vermeld bij elke PR:
+
+- Heeft een duidelijke titel.
+- Een voor meerdere issues waar het aan gekoppeld is. 
+- Wordt gereviewd door minimaal 1 teamlid. 
+- Geen merge zonder review, tenzij anders afgesproken.
+- Schrijf pull request altijd in het Engels. 
+
+### PR template
+
 ```md
-## Wat is er veranderd?
-- Benoem hier de issues met #
-- Beschrijf wat je gemaakt heb
+## What does this change?
+- Benoem hier de issues die worden gesloten met dit pull request. 
+- Beschrijf wat je gemaakt heb.
 
-## Waar wil ik feedback op?
-- Benoem hier waar je feedback op wil
+## Hoe was dit getest 
+- Benoem hier hoe jij de veranderingen hebt getest (User test, Browser test, Accessibility test, Performance test etc.).
+- Laat testresultaten zien.
 
-## Visuals
-- Geef hier een demo
+## Images
+- Geef hier visuele voorbeelden
+
+## How to review
+- Schrijf hier de instructie voor reviewer van pull request.
+- Moeten er nog andere tests worden gedaan?
+- Waar moet vooral op worden gelet?
 ```
-
 
 ## 📌 Team Canvas
 <img width="1133" height="802" alt="image" src="https://github.com/user-attachments/assets/2c332fb6-a5eb-4ddc-82e4-4a4c6ac492ce" />
