@@ -1,4 +1,126 @@
-# FINAL RETROSPECT
+# FINAL RETROSPECT - **Project:** Embassy of the Free Mind
+
+
+##**Student naam:** Recep
+
+---
+
+### 1. Waar ben je trots op in dit project?
+
+
+
+---
+
+### 2. Wat ging er goed?
+
+
+---
+
+### 3. Wat kon beter?
+
+
+
+---
+
+### 4. Wat was jouw belangrijkste bijdrage?
+
+
+
+---
+
+### 5. Wat heb je technisch geleerd?
+
+
+
+---
+
+### 6. Wat neem je mee naar een volgend project of stage in ons geval?
+
+
+
+---
+
+## **Student naam:** Sebastiaan
+
+---
+
+### 1. Waar ben je trots op in dit project?
+
+
+
+---
+
+### 2. Wat ging er goed?
+
+
+---
+
+### 3. Wat kon beter?
+
+
+
+---
+
+### 4. Wat was jouw belangrijkste bijdrage?
+
+
+
+---
+
+### 5. Wat heb je technisch geleerd?
+
+
+
+---
+
+### 6. Wat neem je mee naar een volgend project of stage in ons geval?
+
+
+
+---
+
+
+**Student naam:** Alisa
+
+---
+
+### 1. Waar ben je trots op in dit project?
+
+
+
+---
+
+### 2. Wat ging er goed?
+
+
+---
+
+### 3. Wat kon beter?
+
+
+
+---
+
+### 4. Wat was jouw belangrijkste bijdrage?
+
+
+
+---
+
+### 5. Wat heb je technisch geleerd?
+
+
+
+---
+
+### 6. Wat neem je mee naar een volgend project of stage in ons geval?
+
+
+
+---
+
+
+## Conclusie:
 
 ------------------------------
 
