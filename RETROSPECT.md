@@ -1,42 +1,43 @@
 # FINAL RETROSPECT - **Project:** Embassy of the Free Mind
 
 
-##**Student naam:** Recep
+## **Student naam:** Recep
 
 ---
 
 ### 1. Waar ben je trots op in dit project?
 
-
+Hoe de homepagina redesign eindproudct er nu uit ziet. Dat ik heb kunnen werken aan het opzetten van een database en daar wat mee heb kunnen doen.
 
 ---
 
 ### 2. Wat ging er goed?
 
+De samenwerking binnen het team verliep prima en de communicatie was duidelijk. Taken werden goed verdeeld en opgepakt.
 
 ---
 
 ### 3. Wat kon beter?
 
-
+De planning had strakker gekund, we bleven wel wat langer vasthangen op het begin omdat we geen data hadden ontvangen van de opdrachtgever.
 
 ---
 
 ### 4. Wat was jouw belangrijkste bijdrage?
 
-
+Het bouwen en stylen van front-end componenten, opstellen van de database tables en daar gebruik van maken.
 
 ---
 
 ### 5. Wat heb je technisch geleerd?
 
-
+Ik heb meer ervaring opgedaan met api/databases, component-based werken en het verbeteren van interacties.
 
 ---
 
 ### 6. Wat neem je mee naar een volgend project of stage in ons geval?
 
-
+Beter plannen, eerder testen en duidelijker communiceren over voortgang en verwachtingen.
 
 ---
 
