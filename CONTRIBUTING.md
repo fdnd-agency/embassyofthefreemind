@@ -168,3 +168,7 @@ sebas over sebas - Design verder uitwerken.
 
 leertaak scrum sprint 17. post mortem
 <img width="1168" height="879" alt="image" src="https://github.com/user-attachments/assets/da7afe75-97e9-4e2b-833a-08e8ce8b9068" />
+
+## link burn-up chart issue sprint 18:
+
+https://github.com/fdnd-agency/embassyofthefreemind/issues/206
