@@ -23,22 +23,20 @@ During this semester, we created a redesign of their website. We worked on the h
 
 ## Design & Development Decisions
 
-This project focuses on clarity, accessibility, and reusability.
+### Design Goals
+The main goal of this redesign was to create a calm, accessible, and content-focused website that reflects the cultural and intellectual identity of the Embassy of the Free Mind.
 
-- **Component-based structure**  
-  Reusable components were built to keep the interface consistent and maintainable.
+### User Experience Considerations
+The design prioritizes readability, clear navigation, and a logical page structure to support both casual visitors and users seeking in-depth information.
 
-- **Content-first design**  
-  The layout prioritizes readable text and clear navigation to support the educational nature of the Embassy.
+### Component & Structure Choices
+A component-based structure was chosen to maintain consistency across the site and to make the codebase easier to maintain and extend.
 
-- **Progressive enhancement**  
-  Animations (GSAP) enhance the experience but never block content or usability.
+### Motion & Interaction
+Animations are used selectively to enhance interaction and guide attention, while ensuring performance and accessibility are not compromised.
 
-- **Responsive by default**  
-  The design works across desktop, tablet, and mobile devices.
-
-- **Practical constraints**  
-  Some design ideas could not be fully implemented due to missing or incomplete data from the CMS, requiring flexible solutions.
+### Constraints & Trade-offs
+Some design ideas could not be fully implemented due to missing or incomplete data from the CMS. This required us to adapt designs and focus on flexible, scalable solutions.
 
 ## Tech Stack
 
