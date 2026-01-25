@@ -21,6 +21,25 @@ During this semester, we created a redesign of their website. We worked on the h
 <img width="700" alt="efm-desktop" src="https://github.com/user-attachments/assets/bc364c8c-8f1e-478a-96d3-c1af1467d426" />
 <img width="300" alt="efm-mobile" src="https://github.com/user-attachments/assets/12b49a6b-be01-4fd7-b649-7b783c314366" />
 
+## Design & Development Decisions
+
+This project focuses on clarity, accessibility, and reusability.
+
+- **Component-based structure**  
+  Reusable components were built to keep the interface consistent and maintainable.
+
+- **Content-first design**  
+  The layout prioritizes readable text and clear navigation to support the educational nature of the Embassy.
+
+- **Progressive enhancement**  
+  Animations (GSAP) enhance the experience but never block content or usability.
+
+- **Responsive by default**  
+  The design works across desktop, tablet, and mobile devices.
+
+- **Practical constraints**  
+  Some design ideas could not be fully implemented due to missing or incomplete data from the CMS, requiring flexible solutions.
+
 ## Tech Stack
 
 - SvelteKit
