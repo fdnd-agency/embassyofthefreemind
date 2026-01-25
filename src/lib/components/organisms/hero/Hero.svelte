@@ -450,4 +450,20 @@
 
 	}
 
+	@media (prefers-reduced-motion: reduce) {
+  .hero-slides img {
+    transition: none;
+  }
+
+  .hero-title {
+    animation: none;
+    transition: none;
+    opacity: 1; 
+  }
+
+  .arrow-btn {
+    transition: none;
+  }
+}
+
 </style>
