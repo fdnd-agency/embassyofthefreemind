@@ -104,13 +104,9 @@
 							color: white;
 						}
 					}
-					button {
-						background-color: white;
-						border: 1px solid;
-						border-radius: 30px;
-						width: 200px;
-						padding: 0.5rem;
-						cursor: pointer;
+					.btn--gradient {
+						--_height: 3.5rem;
+						width: clamp(15rem, 30vw, 20rem);
 					}
 				}
 				@media (min-width: 1024px) {

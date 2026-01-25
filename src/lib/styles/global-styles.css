@@ -322,6 +322,8 @@
 		font-weight: 400;
 		text-decoration: none;
 		font-size: clamp(1rem, 2vw, 1.125rem);
+		text-align: left;
+		-webkit-appearance: none;
 
 		transition:
 			transform var(--duration-1) var(--ease-out),
